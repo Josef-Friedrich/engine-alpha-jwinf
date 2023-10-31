@@ -74,6 +74,15 @@ public class Level extends Scene implements KeyListener {
     return map;
   }
 
+  public void addActor(Actor actor) {
+    this.actor = actor;
+    add(actor);
+  }
+
+  public Actor getActor() {
+    return actor;
+  }
+
   public void controlActor(ActorAction action) {
     action.act(actor, this);
   }

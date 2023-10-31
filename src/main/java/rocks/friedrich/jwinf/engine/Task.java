@@ -21,7 +21,7 @@ public class Task {
    */
   public String intro;
 
-  public Level[] levels;
+  public Level[] levels = new Level[3];
 
   /**
    * Die aktuelle Figur.
@@ -39,6 +39,14 @@ public class Task {
 
   public static int speed = 1;
 
+  public void launchLevelByDifficulty(DifficultyLevel difficulty) {
+    launchLevel(levels[difficulty.getIndex()]);
+  }
+
+  public void launchLevelByDifficulty(int difficulty) {
+    launchLevel(levels[difficulty]);
+  }
+
   public static void launchLevel(Level level) {
     if (!Game.isRunning()) {
       Game.start(pixelPerMeter * level.width, pixelPerMeter * level.height, level);
@@ -50,6 +58,7 @@ public class Task {
     }
 
     map = level.getMap();
+    actor = level.getActor();
 
     level.focus();
   }
