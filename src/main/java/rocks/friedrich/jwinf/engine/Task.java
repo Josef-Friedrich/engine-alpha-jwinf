@@ -3,6 +3,7 @@ package rocks.friedrich.jwinf.engine;
 import ea.Game;
 import ea.animation.Interpolator;
 import ea.animation.interpolation.EaseInOutFloat;
+import ea.animation.interpolation.LinearFloat;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren Schwierigkeitsgraden
@@ -19,6 +20,8 @@ public class Task {
    * Zum Beispiel „Programmiere den Roboter“
    */
   public String intro;
+
+  public Level[] levels;
 
   /**
    * Die aktuelle Figur.
@@ -49,6 +52,14 @@ public class Task {
     map = level.getMap();
 
     level.focus();
+  }
+
+  public static void toggleInterpolator() {
+    if (!(interpolator instanceof EaseInOutFloat)) {
+      interpolator = new EaseInOutFloat(0, 1);
+    } else {
+      interpolator = new LinearFloat(0, 1);
+    }
   }
 
 }

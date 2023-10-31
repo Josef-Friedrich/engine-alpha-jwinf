@@ -2,7 +2,7 @@ package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
 import rocks.friedrich.jwinf.engine.Task;
 
-public class CandleTask {
+public class CandleTask extends Task {
 
   public static void main(String[] args) {
     new CandleTask().selectLevel(2);
@@ -32,7 +32,7 @@ public class CandleTask {
 
     CandleLevel level = new CandleLevel(width, height, robotPosition, candles);
 
-    Task.launchLevel(level);
+    launchLevel(level);
 
     level.controlRobot((robot, exercise) -> {
       while (robot.getGridX() < exercise.width - 1) {

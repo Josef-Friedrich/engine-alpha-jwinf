@@ -1,5 +1,8 @@
 package rocks.friedrich.jwinf.engine;
 
+import java.awt.event.KeyEvent;
+
+import ea.event.KeyListener;
 import ea.Scene;
 
 /**
@@ -10,12 +13,13 @@ import ea.Scene;
  * <em>easy</em>), Dreistern-(<code>Version***</code>, <em>medium</em>), und
  * eine Vierstern-Version (<code>Version****</code>, <em>hard</em>).
  */
-public class Level extends Scene {
+public class Level extends Scene implements KeyListener {
 
   DifficultyLevel difficulty;
 
   /**
-   * Zum Beispiel „Der Roboter soll den Edelstein einsammeln. Sobald er das Feld mit dem
+   * Zum Beispiel „Der Roboter soll den Edelstein einsammeln. Sobald er das Feld
+   * mit dem
    * Edelstein erreicht, wird dieser automatisch eingesammelt.“
    */
   String intro;
@@ -77,5 +81,15 @@ public class Level extends Scene {
   public void focus() {
     getCamera().setFocus(getGrid());
     getCamera().setZoom(Task.pixelPerMeter);
+  }
+
+  @Override
+  public void onKeyDown(KeyEvent keyEvent) {
+    switch (keyEvent.getKeyCode()) {
+
+      case KeyEvent.VK_M:
+        Task.toggleInterpolator();
+        break;
+    }
   }
 }
