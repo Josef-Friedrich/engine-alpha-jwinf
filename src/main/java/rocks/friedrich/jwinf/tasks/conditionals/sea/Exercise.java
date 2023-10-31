@@ -47,7 +47,7 @@ public class Exercise extends Scene implements KeyListener {
     // <rect x="24.828125" y="202.171875" width="21.28125" height="21.28125" rx="0"
     // ry="0" fill="#d4e8c4" stroke="#49b675" style=""></rect>
 
-    LetterTileMap map = new LetterTileMap(width, height, "sea/", "png");
+    LetterTileMap map = new LetterTileMap(width, height, "images/sea/", "png");
     map.registerImage('1', "sea_tl");
     map.registerImage('2', "sea_tr");
     map.registerImage('3', "sea_bl");
@@ -75,7 +75,7 @@ public class Exercise extends Scene implements KeyListener {
     map.setObstacles('b', 'f', 'g', 't', 'w');
     add(map);
 
-    robot = new ActorInTilemap("candle/robot.png", map);
+    robot = new ActorInTilemap("images/candle/robot.png", map);
     robot.setCenter(0, 1);
     add(robot);
 

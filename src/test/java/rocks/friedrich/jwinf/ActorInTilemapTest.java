@@ -37,7 +37,7 @@ public class ActorInTilemapTest extends Scene implements KeyListener {
 
     setBackgroundColor(new Color(212, 232, 196));
 
-    LetterTileMap map = new LetterTileMap(width, height, "sea/", "png");
+    LetterTileMap map = new LetterTileMap(width, height, "images/sea/", "png");
 
     map.registerImage('r', "road");
 
@@ -51,7 +51,7 @@ public class ActorInTilemapTest extends Scene implements KeyListener {
 
     add(map);
 
-    robot = new ActorInTilemap("candle/robot.png", map);
+    robot = new ActorInTilemap("images/candle/robot.png", map);
     robot.setCenter(0, 0);
     add(robot);
 

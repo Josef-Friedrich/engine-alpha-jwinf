@@ -5,7 +5,7 @@ import rocks.friedrich.jwinf.engine.LetterTileMap;
 public class TileMap extends LetterTileMap {
 
   public TileMap(int width, int height) {
-    super(width, height, "candle", "png");
+    super(width, height, "images/candle", "png");
     registerImage('b', "background");
     registerImage('c', "candle");
     registerImage('w', "wick");

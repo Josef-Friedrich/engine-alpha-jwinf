@@ -6,7 +6,7 @@ import rocks.friedrich.jwinf.engine.LetterTileMap;
 class Robot extends ActorInTilemap {
 
   public Robot(LetterTileMap map) {
-    super("candle/robot.png", map);
+    super("images/candle/robot.png", map);
     this.speed = 1;
   }
 
