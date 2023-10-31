@@ -1,7 +1,7 @@
-package rocks.friedrich.jwinf.candle;
+package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
-import rocks.friedrich.jwinf.ActorInTilemap;
-import rocks.friedrich.jwinf.LetterTileMap;
+import rocks.friedrich.jwinf.engine.ActorInTilemap;
+import rocks.friedrich.jwinf.engine.LetterTileMap;
 
 class Robot extends ActorInTilemap {
 

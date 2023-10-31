@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.candle;
+package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
 import ea.Game;
 

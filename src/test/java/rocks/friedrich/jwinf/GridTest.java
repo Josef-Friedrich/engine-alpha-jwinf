@@ -1,8 +1,8 @@
-package rocks.friedrich.jwinf.test;
+package rocks.friedrich.jwinf;
 
 import ea.Game;
 import ea.Scene;
-import rocks.friedrich.jwinf.Grid;
+import rocks.friedrich.jwinf.engine.Grid;
 
 public class GridTest extends Scene {
 

@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf;
+package rocks.friedrich.jwinf.engine;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

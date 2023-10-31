@@ -11,4 +11,4 @@
  *
  * Hinweis: Der Roboter erkennt Gras, Bäume, Büsche, Blumen und Mauern als Hindernis.
  */
-package rocks.friedrich.jwinf.sea;
+package rocks.friedrich.jwinf.tasks.conditionals.sea;

@@ -1,6 +1,6 @@
-package rocks.friedrich.jwinf.candle;
+package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
-import rocks.friedrich.jwinf.LetterTileMap;
+import rocks.friedrich.jwinf.engine.LetterTileMap;
 
 public class TileMap extends LetterTileMap {
 

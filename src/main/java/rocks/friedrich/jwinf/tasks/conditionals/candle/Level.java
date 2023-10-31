@@ -1,8 +1,8 @@
-package rocks.friedrich.jwinf.candle;
+package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
 import ea.Scene;
-import rocks.friedrich.jwinf.Grid;
-import rocks.friedrich.jwinf.Color;
+import rocks.friedrich.jwinf.engine.Color;
+import rocks.friedrich.jwinf.engine.Grid;
 
 interface RobotAction {
   public void act(Robot robot, Level exercise);

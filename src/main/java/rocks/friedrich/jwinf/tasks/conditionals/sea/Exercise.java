@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.sea;
+package rocks.friedrich.jwinf.tasks.conditionals.sea;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -6,11 +6,10 @@ import java.awt.event.KeyEvent;
 import ea.Game;
 import ea.Scene;
 import ea.event.KeyListener;
-
-import rocks.friedrich.jwinf.Actor;
-import rocks.friedrich.jwinf.ActorInTilemap;
-import rocks.friedrich.jwinf.LetterTileMap;
-import rocks.friedrich.jwinf.Grid;
+import rocks.friedrich.jwinf.engine.Actor;
+import rocks.friedrich.jwinf.engine.ActorInTilemap;
+import rocks.friedrich.jwinf.engine.Grid;
+import rocks.friedrich.jwinf.engine.LetterTileMap;
 
 public class Exercise extends Scene implements KeyListener {
 

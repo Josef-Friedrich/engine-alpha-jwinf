@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf;
+package rocks.friedrich.jwinf.engine;
 
 public class Color extends java.awt.Color {
 

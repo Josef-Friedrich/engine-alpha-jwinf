@@ -1,11 +1,11 @@
-package rocks.friedrich.jwinf.test;
+package rocks.friedrich.jwinf;
 
 import ea.Game;
 import ea.Scene;
 import ea.event.KeyListener;
-import rocks.friedrich.jwinf.LetterTileMap;
-import rocks.friedrich.jwinf.Actor;
-import rocks.friedrich.jwinf.ActorInTilemap;
+import rocks.friedrich.jwinf.engine.Actor;
+import rocks.friedrich.jwinf.engine.ActorInTilemap;
+import rocks.friedrich.jwinf.engine.LetterTileMap;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
