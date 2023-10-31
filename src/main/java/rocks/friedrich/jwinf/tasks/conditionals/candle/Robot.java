@@ -1,11 +1,11 @@
 package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
 import rocks.friedrich.jwinf.engine.ActorInTilemap;
-import rocks.friedrich.jwinf.engine.LetterTileMap;
+import rocks.friedrich.jwinf.engine.TileMap;
 
 class Robot extends ActorInTilemap {
 
-  public Robot(LetterTileMap map) {
+  public Robot(TileMap map) {
     super("images/candle/robot.png", map);
     this.speed = 1;
   }

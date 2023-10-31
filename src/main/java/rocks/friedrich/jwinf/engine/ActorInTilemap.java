@@ -3,9 +3,9 @@ package rocks.friedrich.jwinf.engine;
 import ea.Direction;
 
 public class ActorInTilemap extends Actor {
-  protected LetterTileMap map;
+  protected TileMap map;
 
-  public ActorInTilemap(String filepath, LetterTileMap map) {
+  public ActorInTilemap(String filepath, TileMap map) {
     super(filepath);
     this.map = map;
 

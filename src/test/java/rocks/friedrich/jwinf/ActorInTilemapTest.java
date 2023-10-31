@@ -5,7 +5,7 @@ import ea.Scene;
 import ea.event.KeyListener;
 import rocks.friedrich.jwinf.engine.Actor;
 import rocks.friedrich.jwinf.engine.ActorInTilemap;
-import rocks.friedrich.jwinf.engine.LetterTileMap;
+import rocks.friedrich.jwinf.engine.TileMap;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -37,7 +37,7 @@ public class ActorInTilemapTest extends Scene implements KeyListener {
 
     setBackgroundColor(new Color(212, 232, 196));
 
-    LetterTileMap map = new LetterTileMap(width, height, "images/sea/", "png");
+    TileMap map = new TileMap(width, height, "images/sea/", "png");
 
     map.registerImage('r', "road");
 
