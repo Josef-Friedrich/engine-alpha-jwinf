@@ -2,14 +2,14 @@ package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
 import ea.Game;
 
-public class ExerciseCollection {
+public class CandleTask {
   private int pixelPerMeter = 60;
 
   public static void main(String[] args) {
-    new ExerciseCollection().selectLevel(2);
+    new CandleTask().selectLevel(2);
   }
 
-  void launchLevel(Level scene) {
+  void launchLevel(CandleLevel scene) {
     if (!Game.isRunning()) {
       Game.start(pixelPerMeter * scene.width, pixelPerMeter * scene.height, scene);
       Game.setTitle("Zünde alle Kerzen an");
@@ -19,8 +19,7 @@ public class ExerciseCollection {
       Game.transitionToScene(scene);
     }
 
-    scene.getCamera().setFocus(scene.grid);
-    scene.getCamera().setZoom(pixelPerMeter);
+    scene.focus();
   }
 
   void selectLevel(int difficulty) {
@@ -45,7 +44,7 @@ public class ExerciseCollection {
 
     }
 
-    Level scene = new Level(width, height, robotPosition, candles);
+    CandleLevel scene = new CandleLevel(width, height, robotPosition, candles);
 
     launchLevel(scene);
 

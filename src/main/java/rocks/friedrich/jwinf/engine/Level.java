@@ -2,13 +2,29 @@ package rocks.friedrich.jwinf.engine;
 
 import ea.Scene;
 
+/**
+ * Ein Schwierigkeitsgrad bzw. eine Version einer Trainingsaufgabe.
+ *
+ * Eine Trainingsaufgabe kann mehrere Versionen unterschiedlicher
+ * Schwierigkeitsgrade haben, z. B. eine Zweistern- (<code>Version**</code>,
+ * <em>easy</em>), Dreistern-(<code>Version***</code>, <em>medium</em>), und
+ * eine Vierstern-Version (<code>Version****</code>, <em>hard</em>).
+ */
 public class Level extends Scene {
+
+  DifficultyLevel difficulty;
+
+  /**
+   * Zum Beispiel „Der Roboter soll den Edelstein einsammeln. Sobald er das Feld mit dem
+   * Edelstein erreicht, wird dieser automatisch eingesammelt.“
+   */
+  String intro;
 
   public int width;
 
   public int height;
 
-  Grid grid;
+  protected Grid grid;
 
   TileMap background;
 
@@ -31,7 +47,16 @@ public class Level extends Scene {
     add(grid);
   }
 
+  public Grid getGrid() {
+    return grid;
+  }
+
   public void controlActor(ActorAction action) {
     action.act(actor, this);
+  }
+
+  public void focus() {
+    getCamera().setFocus(getGrid());
+    getCamera().setZoom(Task.pixelPerMeter);
   }
 }

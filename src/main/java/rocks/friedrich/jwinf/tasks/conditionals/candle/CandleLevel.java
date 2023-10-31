@@ -1,20 +1,12 @@
 package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
-import ea.Scene;
-import rocks.friedrich.jwinf.engine.Color;
-import rocks.friedrich.jwinf.engine.Grid;
+import rocks.friedrich.jwinf.engine.Level;
 
 interface RobotAction {
-  public void act(Robot robot, Level exercise);
+  public void act(Robot robot, CandleLevel exercise);
 }
 
-public class Level extends Scene {
-
-  public int width;
-
-  public int height;
-
-  Grid grid;
+public class CandleLevel extends Level {
 
   TileMap background;
 
@@ -26,9 +18,8 @@ public class Level extends Scene {
    * @param robotPosition - starting from 0 {0, 0} is bottom left
    * @param candles       - starting from 0, wick positions
    */
-  public Level(int width, int height, int[] robotPosition, int[][] candles) {
-    this.width = width;
-    this.height = height;
+  public CandleLevel(int width, int height, int[] robotPosition, int[][] candles) {
+    super(width, height);
 
     setGrid("b4ccc7", "c5e2dd");
 
@@ -45,14 +36,6 @@ public class Level extends Scene {
     add(robot);
     robot.setRotation(0);
     robot.setSpeed(1.5f);
-  }
-
-  public void setGrid(String gridColor, String backgroundColor) {
-    grid = new Grid(width, height);
-    grid.setColor(new Color(gridColor));
-    grid.setBackground(new Color(backgroundColor));
-    grid.setPosition(-0.5f, -0.5f);
-    add(grid);
   }
 
   public void controlRobot(RobotAction robotAction) {
