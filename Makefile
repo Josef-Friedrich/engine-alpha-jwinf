@@ -16,4 +16,7 @@ dependency:
 		-Dversion=4.0.0-SNAPSHOT \
 		-Dpackaging=jar
 
+package:
+	mvn package
+
 .PHONY: dependency
