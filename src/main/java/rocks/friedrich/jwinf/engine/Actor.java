@@ -11,7 +11,6 @@ import ea.Vector;
 import ea.actor.Image;
 import ea.animation.Interpolator;
 import ea.animation.ValueAnimator;
-import ea.animation.interpolation.EaseInOutFloat;
 import ea.animation.interpolation.SinusFloat;
 
 interface MovementListener {
@@ -293,19 +292,33 @@ public class Actor extends Image {
     setCenter(center);
   }
 
-  private void animate(float duration, Consumer<Float> setter) {
-    animate(duration, setter, new EaseInOutFloat(0, 1));
-  }
-
-  private void animate(float duration, Consumer<Float> setter, Interpolator<Float> interpolator) {
+  /**
+   *
+   * @param duration
+   * @param setter
+   * @param interpolator
+   * @param block        Wenn wahr, dann blockiere diese Methode
+   *                     solange, bis die Animation vollendet ist.
+   */
+  protected void animate(float duration, Consumer<Float> setter, Interpolator<Float> interpolator, boolean block,
+      Runnable onCompletion) {
     CompletableFuture<Void> future = new CompletableFuture<>();
 
     ValueAnimator<Float> animator = new ValueAnimator<>(duration, setter, interpolator, this);
 
     animator.addCompletionListener(value -> {
       setter.accept(value);
-      future.complete(null);
+      if (onCompletion != null && block) {
+        onCompletion.run();
+        future.complete(null);
+      } else if (onCompletion == null && block) {
+        future.complete(null);
+      }
     });
+
+    if (!block) {
+      future.complete(null);
+    }
 
     addFrameUpdateListener(animator);
 
@@ -314,6 +327,18 @@ public class Actor extends Image {
     } catch (InterruptedException | ExecutionException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  protected void animate(float duration, Consumer<Float> setter, Interpolator<Float> interpolator) {
+    animate(duration, setter, interpolator, true, null);
+  }
+
+  protected void animate(float duration, Consumer<Float> setter, boolean block) {
+    animate(duration, setter, Task.interpolator, block, null);
+  }
+
+  protected void animate(float duration, Consumer<Float> setter) {
+    animate(duration, setter, Task.interpolator, true, null);
   }
 
 }

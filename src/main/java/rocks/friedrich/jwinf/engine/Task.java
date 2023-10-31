@@ -1,6 +1,8 @@
 package rocks.friedrich.jwinf.engine;
 
 import ea.Game;
+import ea.animation.Interpolator;
+import ea.animation.interpolation.EaseInOutFloat;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren Schwierigkeitsgraden
@@ -30,6 +32,10 @@ public class Task {
 
   public static int pixelPerMeter = 60;
 
+  public static Interpolator<Float> interpolator = new EaseInOutFloat(0, 1);
+
+  public static int speed = 1;
+
   public static void launchLevel(Level level) {
     if (!Game.isRunning()) {
       Game.start(pixelPerMeter * level.width, pixelPerMeter * level.height, level);
@@ -44,4 +50,5 @@ public class Task {
 
     level.focus();
   }
+
 }
