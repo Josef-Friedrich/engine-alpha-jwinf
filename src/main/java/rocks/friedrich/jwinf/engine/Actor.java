@@ -35,15 +35,71 @@ public class Actor extends Image {
    */
   private boolean inMotion = false;
 
+  protected float speed = 1;
+
   public Actor(String filepath) {
     super(filepath, 1, 1);
+
+    // grid edges
+    addMovementListener((int x, int y, Direction direction) -> {
+      switch (direction) {
+        case RIGHT:
+          return x < Task.map.getWidth() - 1;
+
+        case UP:
+          return y < Task.map.getHeight() - 1;
+
+        case LEFT:
+          return x > 0;
+
+        case DOWN:
+          return y > 0;
+
+        default:
+          return true;
+      }
+    });
+
+    // Obstacles
+    addMovementListener((int x, int y, Direction direction) -> {
+      int xMovement = 0;
+      int yMovement = 0;
+
+      switch (direction) {
+        case RIGHT:
+          xMovement = 1;
+          break;
+
+        case UP:
+          yMovement = 1;
+          break;
+
+        case LEFT:
+          xMovement = -1;
+          break;
+
+        case DOWN:
+          yMovement = -1;
+          break;
+
+        default:
+      }
+
+      return !Task.map.isObstacle(x + xMovement, y + yMovement);
+    });
   }
 
   public void addMovementListener(MovementListener listener) {
     movementListeners.add(listener);
   }
 
-  protected float speed = 1;
+  /**
+   * Gib den Buchstaben der Kachel zurück, auf dem sich das Objekt gerade
+   * befindet.
+   */
+  public char getTile() {
+    return Task.map.getLetter(getGridX(), getGridY());
+  }
 
   public void setSpeed(float speed) {
     this.speed = speed;
@@ -86,6 +142,14 @@ public class Actor extends Image {
     return true;
   }
 
+  public boolean canMoveAnimated(Direction direction) {
+    boolean result = canMove(direction);
+    if (!result) {
+      wiggle();
+    }
+    return result;
+  }
+
   public void go(Direction direction) {
     float degree = 90;
 
@@ -110,7 +174,7 @@ public class Actor extends Image {
         System.out.println("Not supported direction");
     }
 
-    if (!canMove(direction)) {
+    if (!canMoveAnimated(direction)) {
       return;
     }
 
@@ -184,19 +248,6 @@ public class Actor extends Image {
     }, new SinusFloat(0, 45));
     wait(0.1);
     inMotion = false;
-  }
-
-  public void goRectangle() {
-    while (true) {
-      go(Direction.RIGHT);
-      go(Direction.UP);
-      wiggle();
-      go(Direction.UP);
-      go(Direction.LEFT);
-      go(Direction.DOWN);
-      wiggle();
-      go(Direction.DOWN);
-    }
   }
 
   public void rotateByAnimated(double degree) {

@@ -1,5 +1,5 @@
 package rocks.friedrich.jwinf.engine;
 
 interface ActorAction {
-  public void act(ActorInTilemap actor, Level exercise);
+  public void act(Actor actor, Level exercise);
 }

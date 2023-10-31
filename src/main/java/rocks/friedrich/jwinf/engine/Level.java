@@ -26,9 +26,14 @@ public class Level extends Scene {
 
   protected Grid grid;
 
-  TileMap background;
+  /**
+   * Der Haupt-Kachelsatz. Die Figur muss auf diesen Kachelsatz Zugriff haben,
+   * um entscheiden zu können, ob sie sich vor einem Hindernis befindet oder
+   * nicht.
+   */
+  protected TileMap map;
 
-  ActorInTilemap actor;
+  Actor actor;
 
   /**
    * @param width  Grid width
@@ -49,6 +54,20 @@ public class Level extends Scene {
 
   public Grid getGrid() {
     return grid;
+  }
+
+  public void setMap(TileMap map) {
+    this.map = map;
+    add(this.map);
+  }
+
+  public void setMap(String pathPrefix, String extension) {
+    map = new TileMap(width, height, pathPrefix, extension);
+    add(map);
+  }
+
+  public TileMap getMap() {
+    return map;
   }
 
   public void controlActor(ActorAction action) {

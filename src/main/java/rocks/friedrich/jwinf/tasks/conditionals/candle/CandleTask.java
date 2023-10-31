@@ -1,25 +1,11 @@
 package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
-import ea.Game;
+import rocks.friedrich.jwinf.engine.Task;
 
 public class CandleTask {
-  private int pixelPerMeter = 60;
 
   public static void main(String[] args) {
     new CandleTask().selectLevel(2);
-  }
-
-  void launchLevel(CandleLevel scene) {
-    if (!Game.isRunning()) {
-      Game.start(pixelPerMeter * scene.width, pixelPerMeter * scene.height, scene);
-      Game.setTitle("Zünde alle Kerzen an");
-      // Game.setDebug(true);
-    } else {
-      Game.setFrameSize(pixelPerMeter * scene.width, pixelPerMeter * scene.height);
-      Game.transitionToScene(scene);
-    }
-
-    scene.focus();
   }
 
   void selectLevel(int difficulty) {
@@ -44,11 +30,11 @@ public class CandleTask {
 
     }
 
-    CandleLevel scene = new CandleLevel(width, height, robotPosition, candles);
+    CandleLevel level = new CandleLevel(width, height, robotPosition, candles);
 
-    launchLevel(scene);
+    Task.launchLevel(level);
 
-    scene.controlRobot((robot, exercise) -> {
+    level.controlRobot((robot, exercise) -> {
       while (robot.getGridX() < exercise.width - 1) {
         robot.goRight();
 

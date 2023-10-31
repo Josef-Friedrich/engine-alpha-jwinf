@@ -1,18 +1,18 @@
 package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
-import rocks.friedrich.jwinf.engine.ActorInTilemap;
-import rocks.friedrich.jwinf.engine.TileMap;
+import rocks.friedrich.jwinf.engine.Actor;
+import rocks.friedrich.jwinf.engine.Task;
 
-class Robot extends ActorInTilemap {
+class Robot extends Actor {
 
-  public Robot(TileMap map) {
-    super("images/candle/robot.png", map);
+  public Robot() {
+    super("images/candle/robot.png");
     this.speed = 1;
   }
 
   public void lightCandle() {
     if (getTile() == 'w') {
-      map.setTile(getGridX(), getGridY(), 'f');
+      Task.map.setTile(getGridX(), getGridY(), 'f');
     } else {
       wiggle();
     }

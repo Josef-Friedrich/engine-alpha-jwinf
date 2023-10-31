@@ -8,7 +8,7 @@ interface RobotAction {
 
 public class CandleLevel extends Level {
 
-  TileMap background;
+  TileMap map;
 
   Robot robot;
 
@@ -23,15 +23,15 @@ public class CandleLevel extends Level {
 
     setGrid("b4ccc7", "c5e2dd");
 
-    background = new TileMap(width, height);
-    add(background);
+    map = new TileMap(width, height);
+    setMap(map);
 
     for (int i = 0; i < candles.length; i++) {
       int[] candlePosition = candles[i];
-      background.setCandle(candlePosition[0], candlePosition[1]);
+      map.setCandle(candlePosition[0], candlePosition[1]);
     }
 
-    robot = new Robot(background);
+    robot = new Robot();
     robot.setCenter(robotPosition[0], robotPosition[1]);
     add(robot);
     robot.setRotation(0);

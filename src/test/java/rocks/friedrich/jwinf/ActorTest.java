@@ -4,16 +4,16 @@ import ea.Game;
 import ea.Scene;
 import ea.event.KeyListener;
 import rocks.friedrich.jwinf.engine.Actor;
-import rocks.friedrich.jwinf.engine.ActorInTilemap;
 import rocks.friedrich.jwinf.engine.TileMap;
+import rocks.friedrich.jwinf.engine.Task;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-public class ActorInTilemapTest extends Scene implements KeyListener {
+public class ActorTest extends Scene implements KeyListener {
 
   public static void main(String[] args) {
-    new ActorInTilemapTest();
+    new ActorTest();
   }
 
   private int pixelPerMeter = 60;
@@ -24,7 +24,7 @@ public class ActorInTilemapTest extends Scene implements KeyListener {
 
   private Actor robot;
 
-  public ActorInTilemapTest() {
+  public ActorTest() {
     width = 5;
     height = 5;
 
@@ -49,9 +49,11 @@ public class ActorInTilemapTest extends Scene implements KeyListener {
 
     map.setObstacles('r');
 
+    Task.map = map;
+
     add(map);
 
-    robot = new ActorInTilemap("images/candle/robot.png", map);
+    robot = new Actor("images/candle/robot.png");
     robot.setCenter(0, 0);
     add(robot);
 

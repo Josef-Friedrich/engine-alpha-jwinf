@@ -1,7 +1,10 @@
 package rocks.friedrich.jwinf.engine;
 
+import ea.Game;
+
 /**
- * Eine Trainingsaufgabe (Task) besteht aus mehreren Schwierigkeitsgraden (Level)
+ * Eine Trainingsaufgabe (Task) besteht aus mehreren Schwierigkeitsgraden
+ * (Level)
  */
 public class Task {
 
@@ -26,4 +29,19 @@ public class Task {
   public static TileMap map;
 
   public static int pixelPerMeter = 60;
+
+  public static void launchLevel(Level level) {
+    if (!Game.isRunning()) {
+      Game.start(pixelPerMeter * level.width, pixelPerMeter * level.height, level);
+      Game.setTitle("Zünde alle Kerzen an");
+      // Game.setDebug(true);
+    } else {
+      Game.setFrameSize(pixelPerMeter * level.width, pixelPerMeter * level.height);
+      Game.transitionToScene(level);
+    }
+
+    map = level.getMap();
+
+    level.focus();
+  }
 }
