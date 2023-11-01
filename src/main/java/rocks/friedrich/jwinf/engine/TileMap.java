@@ -10,9 +10,9 @@ import ea.actor.Tile;
  * Ein Kachelsatz (tile map), bei dem die einzelnen Kacheln (tile) durch
  * Buchstaben (letter) repräsentiert sind.
  *
- * Die Größe der Kachel wird auf 1 x 1 Pixelmeter und die linke untere Ecke
- * an die Position -0.5 x -0.5 im Engine-Alpha-Koordinatensystem gesetzt,
- * sodass zum Beispiel (0,0) die Mitte der ersten Kachel (links unten)
+ * Die Größe der Kachel wird auf 1 x 1 Pixelmeter und die linke oberen Ecke
+ * an die Position -0.5 x 0.5 im Engine-Alpha-Koordinatensystem gesetzt,
+ * sodass zum Beispiel (0,0) die Mitte der ersten Kachel (links oben)
  * adressiert.
  */
 public class TileMap extends TileContainer {
@@ -31,7 +31,9 @@ public class TileMap extends TileContainer {
   /**
    * Ein Speicher für einprägsamere Namen für eine Kachel als nur der Buchstabe.
    */
-  HashMap<String, Character> names;
+  HashMap<Character, String> names;
+
+  HashMap<String, Character> namesToLetter;
 
   HashMap<Character, Tile> tiles;
 
@@ -64,10 +66,12 @@ public class TileMap extends TileContainer {
     this.pathPrefix = pathPrefix;
     this.extension = extension;
     names = new HashMap<>();
+    namesToLetter = new HashMap<>();
     obstacles = new HashSet<>();
     tiles = new HashMap<>();
     letters = new char[width][height];
-    setPosition(-0.5f, -0.5f);
+    // Damit (0,0) auf die Mitte der Kachel zeigt.
+    setPosition(-0.5f, - height + 0.5f);
   }
 
   private void createTile(char letter, String filePath) {
@@ -92,13 +96,15 @@ public class TileMap extends TileContainer {
       name = filePath;
     }
 
-    if (names.get(name) != null) {
+    if (namesToLetter.get(name) != null) {
       throw new IllegalArgumentException(String.format("Eine Kachel mit dem Namen „%s“ existiert bereits!", name));
     }
-    names.put(name, letter);
+    namesToLetter.put(name, letter);
+    names.put(letter, name);
 
     if (tiles.get(letter) != null) {
-      throw new IllegalArgumentException(String.format("Eine Kachel mit dem Buchstaben „%s“ existiert bereits!", letter));
+      throw new IllegalArgumentException(
+          String.format("Eine Kachel mit dem Buchstaben „%s“ existiert bereits!", letter));
     }
     createTile(letter, filePath);
   }
@@ -111,7 +117,7 @@ public class TileMap extends TileContainer {
    * @param x Die x-Position im Kachelgitter. 0 adressiert die erste,
    *          (ganz am linken Rand gelegene) Spalte.
    * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
-   *          (unterste) Zeile.
+   *          (oberste) Zeile.
    */
   public char getLetter(int x, int y) {
     return letters[x][y];
@@ -121,7 +127,7 @@ public class TileMap extends TileContainer {
    * @param x Die x-Position im Kachelgitter. 0 adressiert die erste,
    *          (ganz am linken Rand gelegene) Spalte.
    * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
-   *          (unterste) Zeile.
+   *          (oberste) Zeile.
    */
   private Tile getTileFromCache(int x, int y) {
     return tiles.get(getLetter(x, y));
@@ -173,10 +179,10 @@ public class TileMap extends TileContainer {
 
   public void parseMap(String[] rows) {
     checkHeight(rows);
-    int currentRow = height - 1;
+    int currentRow = 0;
     for (String row : rows) {
       setRow(currentRow, row);
-      currentRow--;
+      currentRow++;
     }
   }
 
@@ -198,21 +204,21 @@ public class TileMap extends TileContainer {
    * @param x    Die x-Position im Kachelgitter. 0 adressiert die erste,
    *             (ganz am linken Rand gelegene) Spalte.
    * @param y    Die y-Position im Kachelgitter. 0 adressiert die erste,
-   *             (unterste) Zeile.
+   *             (oberste) Zeile.
    * @param tile Der Buchstabe, der für ein bestimmtes Kachelbild registiert
    *             wurde.
    */
   public void setTile(int x, int y, char tile) {
     checkLetter(tile);
     letters[x][y] = tile;
-    setTile(x, height - y - 1, getTileFromCache(x, y));
+    setTile(x, y, getTileFromCache(x, y));
   }
 
   /**
    * Setzt die Kacheln in einer Zeile von links nach rechts.
    *
    * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
-   *          (unterste) Zeile.
+   *          (oberste) Zeile.
    */
   public void setRow(int y, String row) {
     checkWidth(row);
@@ -222,7 +228,7 @@ public class TileMap extends TileContainer {
   }
 
   /**
-   * Setzt die Kacheln in einer Spalte von unten nach oben.
+   * Setzt die Kacheln in einer Spalte von oben nach unten.
    *
    * @param x Die x-Position im Kachelgitter. 0 adressiert die erste,
    *          (ganz am linken Rand gelegene) Spalte.
@@ -251,7 +257,7 @@ public class TileMap extends TileContainer {
    * @param x Die x-Position im Kachelgitter. 0 adressiert die erste,
    *          (ganz am linken Rand gelegene) Spalte.
    * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
-   *          (unterste) Zeile.
+   *          (oberste) Zeile.
    */
   public boolean isObstacle(int x, int y) {
     return obstacles.contains(getLetter(x, y));

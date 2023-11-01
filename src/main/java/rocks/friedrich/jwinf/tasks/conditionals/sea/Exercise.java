@@ -41,7 +41,7 @@ public class Exercise extends Scene implements KeyListener {
     Grid grid = new Grid(width, height);
     grid.setBackground(new Color(212, 232, 196));
     grid.setColor(new Color(73, 182, 117));
-    grid.setPosition(-0.5f, -0.5f);
+    grid.setPosition(-0.5f, - height + 0.5f);
     add(grid);
 
     // <rect x="24.828125" y="202.171875" width="21.28125" height="21.28125" rx="0"

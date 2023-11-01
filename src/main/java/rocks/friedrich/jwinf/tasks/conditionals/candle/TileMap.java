@@ -14,11 +14,12 @@ public class TileMap extends rocks.friedrich.jwinf.engine.TileMap {
     fill('b');
   }
 
-  public void setCandle(int x, int height) {
-    for (int y = 0; y < height; y++) {
+  public void setCandle(int x, int candleHeight) {
+    int wickPosition = height - candleHeight - 1;
+    for (int y = height - 1; y > wickPosition; y--) {
       setTile(x, y, 'c');
     }
-    setTile(x, height, 'w');
+    setTile(x, wickPosition, 'w');
   }
 
 }

@@ -52,7 +52,8 @@ public class Level extends Scene implements KeyListener {
     grid = new Grid(width, height);
     grid.setColor(new Color(gridColor));
     grid.setBackground(new Color(backgroundColor));
-    grid.setPosition(-0.5f, -0.5f);
+    // Damit (0,0) in der Mitte einer Kachel liegt.
+    grid.setPosition(-0.5f, - height + 0.5f);
     add(grid);
   }
 
