@@ -89,7 +89,7 @@ public class Level extends Scene implements KeyListener {
 
   public void focus() {
     getCamera().setFocus(getGrid());
-    getCamera().setZoom(Task.pixelPerMeter);
+    getCamera().setZoom(State.pixelPerMeter);
   }
 
   @Override
@@ -97,7 +97,7 @@ public class Level extends Scene implements KeyListener {
     switch (keyEvent.getKeyCode()) {
 
       case KeyEvent.VK_M:
-        Task.toggleInterpolator();
+        Controller.toggleInterpolator();
         break;
     }
   }

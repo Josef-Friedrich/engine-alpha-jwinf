@@ -8,7 +8,7 @@ import ea.Scene;
 import ea.event.KeyListener;
 import rocks.friedrich.jwinf.engine.Actor;
 import rocks.friedrich.jwinf.engine.Grid;
-import rocks.friedrich.jwinf.engine.Task;
+import rocks.friedrich.jwinf.engine.State;
 import rocks.friedrich.jwinf.engine.TileMap;
 
 public class Exercise extends Scene implements KeyListener {
@@ -79,7 +79,7 @@ public class Exercise extends Scene implements KeyListener {
     robot.setCenter(0, 1);
     add(robot);
 
-    Task.map = map;
+    State.map = map;
 
     getCamera().setFocus(map);
     getCamera().setZoom(pixelPerMeter);

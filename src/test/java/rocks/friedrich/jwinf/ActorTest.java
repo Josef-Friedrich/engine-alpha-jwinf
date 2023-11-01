@@ -5,7 +5,7 @@ import ea.Scene;
 import ea.event.KeyListener;
 import rocks.friedrich.jwinf.engine.Actor;
 import rocks.friedrich.jwinf.engine.TileMap;
-import rocks.friedrich.jwinf.engine.Task;
+import rocks.friedrich.jwinf.engine.State;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -49,7 +49,7 @@ public class ActorTest extends Scene implements KeyListener {
 
     map.setObstacles('r');
 
-    Task.map = map;
+    State.map = map;
 
     add(map);
 

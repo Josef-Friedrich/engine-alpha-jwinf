@@ -43,10 +43,10 @@ public class Actor extends Image {
     addMovementListener((int x, int y, Direction direction) -> {
       switch (direction) {
         case RIGHT:
-          return x < Task.map.getWidth() - 1;
+          return x < State.map.getWidth() - 1;
 
         case UP:
-          return y < Task.map.getHeight() - 1;
+          return y < State.map.getHeight() - 1;
 
         case LEFT:
           return x > 0;
@@ -84,7 +84,7 @@ public class Actor extends Image {
         default:
       }
 
-      return !Task.map.isObstacle(x + xMovement, y + yMovement);
+      return !State.map.isObstacle(x + xMovement, y + yMovement);
     });
   }
 
@@ -97,7 +97,7 @@ public class Actor extends Image {
    * befindet.
    */
   public char getTile() {
-    return Task.map.getLetter(getGridX(), getGridY());
+    return State.map.getLetter(getGridX(), getGridY());
   }
 
   public void setSpeed(float speed) {
@@ -334,11 +334,11 @@ public class Actor extends Image {
   }
 
   protected void animate(float duration, Consumer<Float> setter, boolean block) {
-    animate(duration, setter, Task.interpolator, block, null);
+    animate(duration, setter, State.interpolator, block, null);
   }
 
   protected void animate(float duration, Consumer<Float> setter) {
-    animate(duration, setter, Task.interpolator, true, null);
+    animate(duration, setter, State.interpolator, true, null);
   }
 
 }

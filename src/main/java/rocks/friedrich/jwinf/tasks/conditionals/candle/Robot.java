@@ -1,7 +1,7 @@
 package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
 import rocks.friedrich.jwinf.engine.Actor;
-import rocks.friedrich.jwinf.engine.Task;
+import rocks.friedrich.jwinf.engine.State;
 
 class Robot extends Actor {
 
@@ -12,7 +12,7 @@ class Robot extends Actor {
 
   public void lightCandle() {
     if (getTile() == 'w') {
-      Task.map.setTile(getGridX(), getGridY(), 'f');
+      State.map.setTile(getGridX(), getGridY(), 'f');
     } else {
       wiggle();
     }
