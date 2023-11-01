@@ -43,10 +43,10 @@ public class Actor extends Image {
     addMovementListener((int x, int y, Direction direction) -> {
       switch (direction) {
         case RIGHT:
-          return x < State.map.getWidth() - 1;
+          return x < State.map.width - 1;
 
         case UP:
-          return y < State.map.getHeight() - 1;
+          return y < State.map.height - 1;
 
         case LEFT:
           return x > 0;

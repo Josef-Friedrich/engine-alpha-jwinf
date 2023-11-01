@@ -21,15 +21,20 @@ public class TileMap extends TileContainer {
   /**
    * Die Breite des Kachelsatzes, d. h. die Anzahl der Kacheln in der x-Richtung.
    */
-  int width;
+  public int width;
 
   /**
    * Die Höhe des Kachelsatzes, d. h. die Anzahl der Kacheln in der y-Richtung.
    */
-  int height;
+  public int height;
 
-  HashMap<Character, String> images;
+  /**
+   * Ein Speicher für einprägsamere Namen für eine Kachel als nur der Buchstabe.
+   */
+  HashMap<String, Character> names;
+
   HashMap<Character, Tile> tiles;
+
   HashSet<Character> obstacles;
 
   String pathPrefix;
@@ -58,30 +63,14 @@ public class TileMap extends TileContainer {
     this.height = height;
     this.pathPrefix = pathPrefix;
     this.extension = extension;
+    names = new HashMap<>();
     obstacles = new HashSet<>();
-    images = new HashMap<>();
     tiles = new HashMap<>();
     letters = new char[width][height];
     setPosition(-0.5f, -0.5f);
   }
 
-  /**
-   * Gib die Breite des Kachelsatzes, d. h. die Anzahl der Kacheln in der
-   * x-Richtung, zurück.
-   */
-  public int getWidth() {
-    return width;
-  }
-
-  /**
-   * Gib die Höhe des Kachelsatzes, d. h. die Anzahl der Kacheln in der
-   * y-Richtung, zurück.
-   */
-  public int getHeight() {
-    return height;
-  }
-
-  private void createTile(char letter, String fileName) {
+  private void createTile(char letter, String filePath) {
     String extension;
     if (this.extension != null) {
       extension = "." + this.extension;
@@ -95,15 +84,27 @@ public class TileMap extends TileContainer {
         pathPrefix = pathPrefix + "/";
       }
     }
-    tiles.put(letter, ea.actor.TileMap.createFromImage(pathPrefix + fileName + extension));
+    tiles.put(letter, ea.actor.TileMap.createFromImage(pathPrefix + filePath + extension));
+  }
+
+  public void registerImage(char letter, String filePath, String name) {
+    if (name == null) {
+      name = filePath;
+    }
+
+    if (names.get(name) != null) {
+      throw new IllegalArgumentException(String.format("Eine Kachel mit dem Namen „%s“ existiert bereits!", name));
+    }
+    names.put(name, letter);
+
+    if (tiles.get(letter) != null) {
+      throw new IllegalArgumentException(String.format("Eine Kachel mit dem Buchstaben „%s“ existiert bereits!", letter));
+    }
+    createTile(letter, filePath);
   }
 
   public void registerImage(char letter, String filePath) {
-    if (images.get(letter) != null) {
-      throw new IllegalArgumentException(String.format("Eine Kachel mit dem Buchstaben %s existiert bereits.", letter));
-    }
-    images.put(letter, filePath);
-    createTile(letter, filePath);
+    registerImage(letter, filePath, null);
   }
 
   /**
@@ -172,7 +173,7 @@ public class TileMap extends TileContainer {
 
   public void parseMap(String[] rows) {
     checkHeight(rows);
-    int currentRow = getHeight() - 1;
+    int currentRow = height - 1;
     for (String row : rows) {
       setRow(currentRow, row);
       currentRow--;
