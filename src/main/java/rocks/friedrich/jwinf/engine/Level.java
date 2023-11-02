@@ -35,7 +35,7 @@ public class Level extends Scene implements KeyListener {
    * um entscheiden zu können, ob sie sich vor einem Hindernis befindet oder
    * nicht.
    */
-  protected TileMap map;
+  protected RealTileMap map;
 
   Actor actor;
 
@@ -61,17 +61,17 @@ public class Level extends Scene implements KeyListener {
     return grid;
   }
 
-  public void setMap(TileMap map) {
+  public void setMap(RealTileMap map) {
     this.map = map;
-    add(this.map);
+    add(this.map.container);
   }
 
   public void setMap(String pathPrefix, String extension) {
-    map = new TileMap(width, height, pathPrefix, extension);
-    add(map);
+    map = new RealTileMap(width, height, pathPrefix, extension);
+    add(map.container);
   }
 
-  public TileMap getMap() {
+  public RealTileMap getMap() {
     return map;
   }
 

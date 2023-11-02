@@ -9,7 +9,7 @@ import ea.event.KeyListener;
 import rocks.friedrich.jwinf.engine.Actor;
 import rocks.friedrich.jwinf.engine.Grid;
 import rocks.friedrich.jwinf.engine.State;
-import rocks.friedrich.jwinf.engine.TileMap;
+import rocks.friedrich.jwinf.engine.RealTileMap;
 
 public class Exercise extends Scene implements KeyListener {
 
@@ -47,7 +47,7 @@ public class Exercise extends Scene implements KeyListener {
     // <rect x="24.828125" y="202.171875" width="21.28125" height="21.28125" rx="0"
     // ry="0" fill="#d4e8c4" stroke="#49b675" style=""></rect>
 
-    TileMap map = new TileMap(width, height, "images/sea/", "png");
+    RealTileMap map = new RealTileMap(width, height, "images/sea/", "png");
     map.registerImage('1', "sea_tl");
     map.registerImage('2', "sea_tr");
     map.registerImage('3', "sea_bl");
@@ -73,7 +73,7 @@ public class Exercise extends Scene implements KeyListener {
         "wwgtbbbbbw" });
 
     map.setObstacles('b', 'f', 'g', 't', 'w');
-    add(map);
+    add(map.container);
 
     robot = new Actor("images/candle/robot.png");
     robot.setCenter(0, 1);
@@ -81,7 +81,7 @@ public class Exercise extends Scene implements KeyListener {
 
     State.map = map;
 
-    getCamera().setFocus(map);
+    getCamera().setFocus(map.container);
     getCamera().setZoom(pixelPerMeter);
   }
 

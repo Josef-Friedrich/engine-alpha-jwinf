@@ -3,9 +3,6 @@ package rocks.friedrich.jwinf.engine;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import ea.actor.TileContainer;
-import ea.actor.Tile;
-
 /**
  * Ein Kachelsatz (tile map), bei dem die einzelnen Kacheln (tile) durch
  * Buchstaben (letter) repräsentiert sind.
@@ -15,7 +12,7 @@ import ea.actor.Tile;
  * sodass zum Beispiel (0,0) die Mitte der ersten Kachel (links oben)
  * adressiert.
  */
-public class TileMap extends TileContainer {
+abstract class TileMap {
   char[][] letters;
 
   /**
@@ -35,11 +32,10 @@ public class TileMap extends TileContainer {
 
   HashMap<String, Character> namesToLetter;
 
-  HashMap<Character, Tile> tiles;
-
   HashSet<Character> obstacles;
 
   String pathPrefix;
+
   String extension;
 
   public TileMap(int width, int height) {
@@ -60,7 +56,6 @@ public class TileMap extends TileContainer {
    *                   werden.
    */
   public TileMap(int width, int height, String pathPrefix, String extension) {
-    super(width, height, 1, 1);
     this.width = width;
     this.height = height;
     this.pathPrefix = pathPrefix;
@@ -68,13 +63,10 @@ public class TileMap extends TileContainer {
     names = new HashMap<>();
     namesToLetter = new HashMap<>();
     obstacles = new HashSet<>();
-    tiles = new HashMap<>();
     letters = new char[width][height];
-    // Damit (0,0) auf die Mitte der Kachel zeigt.
-    setPosition(-0.5f, - height + 0.5f);
   }
 
-  private void createTile(char letter, String filePath) {
+  protected String assembleFilePath(String filePath) {
     String extension;
     if (this.extension != null) {
       extension = "." + this.extension;
@@ -88,28 +80,36 @@ public class TileMap extends TileContainer {
         pathPrefix = pathPrefix + "/";
       }
     }
-    tiles.put(letter, ea.actor.TileMap.createFromImage(pathPrefix + filePath + extension));
+    return pathPrefix + filePath + extension;
   }
 
-  public void registerImage(char letter, String filePath, String name) {
-    if (name == null) {
-      name = filePath;
-    }
+  protected abstract void createTile(char letter, String filePath);
 
+  protected final void setName(char letter, String name) {
     if (namesToLetter.get(name) != null) {
       throw new IllegalArgumentException(String.format("Eine Kachel mit dem Namen „%s“ existiert bereits!", name));
     }
     namesToLetter.put(name, letter);
     names.put(letter, name);
+  }
 
-    if (tiles.get(letter) != null) {
+  protected final void checkLetterUnset(char letter) {
+    if (names.get(letter) != null) {
       throw new IllegalArgumentException(
           String.format("Eine Kachel mit dem Buchstaben „%s“ existiert bereits!", letter));
     }
+  }
+
+  public final void registerImage(char letter, String filePath, String name) {
+    if (name == null) {
+      name = filePath;
+    }
+    setName(letter, name);
+    checkLetterUnset(letter);
     createTile(letter, filePath);
   }
 
-  public void registerImage(char letter, String filePath) {
+  public final void registerImage(char letter, String filePath) {
     registerImage(letter, filePath, null);
   }
 
@@ -119,18 +119,8 @@ public class TileMap extends TileContainer {
    * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
    *          (oberste) Zeile.
    */
-  public char getLetter(int x, int y) {
+  public final char getLetter(int x, int y) {
     return letters[x][y];
-  }
-
-  /**
-   * @param x Die x-Position im Kachelgitter. 0 adressiert die erste,
-   *          (ganz am linken Rand gelegene) Spalte.
-   * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
-   *          (oberste) Zeile.
-   */
-  private Tile getTileFromCache(int x, int y) {
-    return tiles.get(getLetter(x, y));
   }
 
   /**
@@ -140,17 +130,17 @@ public class TileMap extends TileContainer {
    * @param tile Der Buchstabe, der für ein bestimmtes Kachelbild registiert
    *             wurde.
    */
-  private boolean existsTile(char tile) {
+  protected final boolean existsTile(char tile) {
     if (tile == ' ') {
       return true;
     }
-    return tiles.get(tile) != null;
+    return names.get(tile) != null;
   }
 
   /**
    * @throws IllegalArgumentException
    */
-  private void checkWidth(String row) {
+  protected final void checkWidth(String row) {
     if (row.length() > width) {
       throw new IllegalArgumentException(
           String.format("Anzahl der Zeichen in einer Reihe (%s) muss kleiner gleich numX (%s) sein!", row,
@@ -161,7 +151,7 @@ public class TileMap extends TileContainer {
   /**
    * @throws IllegalArgumentException
    */
-  private void checkHeight(String[] rows) {
+  protected final void checkHeight(String[] rows) {
     if (rows.length > height) {
       throw new IllegalArgumentException(
           String.format("Anzahl der Reihen (%s) muss kleiner gleich numY (%s) sein!", rows.length, height));
@@ -171,13 +161,13 @@ public class TileMap extends TileContainer {
   /**
    * @throws IllegalArgumentException
    */
-  private void checkLetter(char letter) {
+  protected final void checkLetter(char letter) {
     if (!existsTile(letter)) {
       throw new IllegalArgumentException(String.format("Unbekannte Kachel mit dem Buchstaben “%s”!", letter));
     }
   }
 
-  public void parseMap(String[] rows) {
+  public final void parseMap(String[] rows) {
     checkHeight(rows);
     int currentRow = 0;
     for (String row : rows) {
@@ -192,7 +182,7 @@ public class TileMap extends TileContainer {
    * @param tile Der Buchstabe, der für ein bestimmtes Kachelbild registiert
    *             wurde.
    */
-  public void fill(char tile) {
+  public final void fill(char tile) {
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
         setTile(x, y, tile);
@@ -208,11 +198,7 @@ public class TileMap extends TileContainer {
    * @param tile Der Buchstabe, der für ein bestimmtes Kachelbild registiert
    *             wurde.
    */
-  public void setTile(int x, int y, char tile) {
-    checkLetter(tile);
-    letters[x][y] = tile;
-    setTile(x, y, getTileFromCache(x, y));
-  }
+  public abstract void setTile(int x, int y, char tile);
 
   /**
    * Setzt die Kacheln in einer Zeile von links nach rechts.
@@ -220,7 +206,7 @@ public class TileMap extends TileContainer {
    * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
    *          (oberste) Zeile.
    */
-  public void setRow(int y, String row) {
+  public final void setRow(int y, String row) {
     checkWidth(row);
     for (int x = 0; x < row.length(); x++) {
       setTile(x, y, row.charAt(x));
@@ -233,7 +219,7 @@ public class TileMap extends TileContainer {
    * @param x Die x-Position im Kachelgitter. 0 adressiert die erste,
    *          (ganz am linken Rand gelegene) Spalte.
    */
-  public void setColumn(int x, String column) {
+  public final void setColumn(int x, String column) {
     for (int y = 0; y < column.length(); y++) {
       setTile(x, y, column.charAt(y));
     }
@@ -244,7 +230,7 @@ public class TileMap extends TileContainer {
    *
    * @param obstacles Die Buchstaben der Kacheln, die als Hindernis gelten.
    */
-  public void setObstacles(char... obstacles) {
+  public final void setObstacles(char... obstacles) {
     for (char c : obstacles) {
       this.obstacles.add(c);
     }
@@ -259,7 +245,7 @@ public class TileMap extends TileContainer {
    * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
    *          (oberste) Zeile.
    */
-  public boolean isObstacle(int x, int y) {
+  public final boolean isObstacle(int x, int y) {
     return obstacles.contains(getLetter(x, y));
   }
 

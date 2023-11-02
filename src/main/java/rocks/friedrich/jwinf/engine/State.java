@@ -28,6 +28,6 @@ public class State {
   /**
    * Der aktuelle Kachelsatz.
    */
-  public static TileMap map;
+  public static RealTileMap map;
 
 }
