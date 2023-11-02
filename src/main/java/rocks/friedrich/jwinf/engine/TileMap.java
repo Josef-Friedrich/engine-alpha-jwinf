@@ -94,10 +94,11 @@ abstract class TileMap {
   }
 
   protected final void checkLetterUnset(char letter) {
-    if (names.get(letter) != null) {
-      throw new IllegalArgumentException(
-          String.format("Eine Kachel mit dem Buchstaben „%s“ existiert bereits!", letter));
-    }
+    // if (names.get(letter) != null) {
+    // throw new IllegalArgumentException(
+    // String.format("Eine Kachel mit dem Buchstaben „%s“ existiert bereits!",
+    // letter));
+    // }
   }
 
   public final void registerImage(char letter, String filePath, String name) {

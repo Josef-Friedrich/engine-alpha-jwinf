@@ -38,7 +38,6 @@ public class RealTileMap extends TileMap {
    *                   werden.
    */
   public RealTileMap(int width, int height, String pathPrefix, String extension) {
-
     super(width, height, pathPrefix, extension);
     tiles = new HashMap<>();
 
