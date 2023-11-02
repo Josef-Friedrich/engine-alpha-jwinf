@@ -31,7 +31,6 @@ public class Exercise extends Scene implements KeyListener {
 
     if (!Game.isRunning()) {
       Game.start(pixelPerMeter * width, pixelPerMeter * height, this);
-      // Game.setDebug(true);
     } else {
       Game.transitionToScene(this);
     }
@@ -41,11 +40,8 @@ public class Exercise extends Scene implements KeyListener {
     Grid grid = new Grid(width, height);
     grid.setBackground(new Color(212, 232, 196));
     grid.setColor(new Color(73, 182, 117));
-    grid.setPosition(-0.5f, - height + 0.5f);
+    grid.setPosition(-0.5f, -height + 0.5f);
     add(grid);
-
-    // <rect x="24.828125" y="202.171875" width="21.28125" height="21.28125" rx="0"
-    // ry="0" fill="#d4e8c4" stroke="#49b675" style=""></rect>
 
     RealTileMap map = new RealTileMap(width, height, "images/sea/", "png");
     map.registerImage('1', "sea_tl");
@@ -89,22 +85,18 @@ public class Exercise extends Scene implements KeyListener {
   public void onKeyDown(KeyEvent keyEvent) {
     switch (keyEvent.getKeyCode()) {
       case KeyEvent.VK_RIGHT:
-        // robot.moveBy(1, 0);
         robot.goRightNonBlocking();
         break;
 
       case KeyEvent.VK_UP:
-        // robot.moveBy(0, 1);
         robot.goUpNonBlocking();
         break;
 
       case KeyEvent.VK_LEFT:
-        // robot.moveBy(-1, 0);
         robot.goLeftNonBlocking();
         break;
 
       case KeyEvent.VK_DOWN:
-        // robot.moveBy(0, -1);
         robot.goDownNonBlocking();
         break;
     }
