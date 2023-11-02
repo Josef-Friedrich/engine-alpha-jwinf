@@ -15,6 +15,8 @@ import java.util.HashSet;
 abstract class TileMap {
   char[][] letters;
 
+  HashSet<Character> letterSet;
+
   /**
    * Die Breite des Kachelsatzes, d. h. die Anzahl der Kacheln in der x-Richtung.
    */
@@ -60,6 +62,7 @@ abstract class TileMap {
     this.height = height;
     this.pathPrefix = pathPrefix;
     this.extension = extension;
+    letterSet = new HashSet<>();
     names = new HashMap<>();
     namesToLetter = new HashMap<>();
     obstacles = new HashSet<>();
@@ -94,11 +97,11 @@ abstract class TileMap {
   }
 
   protected final void checkLetterUnset(char letter) {
-    // if (names.get(letter) != null) {
-    // throw new IllegalArgumentException(
-    // String.format("Eine Kachel mit dem Buchstaben „%s“ existiert bereits!",
-    // letter));
-    // }
+    if (letterSet.contains(letter)) {
+      throw new IllegalArgumentException(
+          String.format("Eine Kachel mit dem Buchstaben „%s“ existiert bereits!",
+              letter));
+    }
   }
 
   public final void registerImage(char letter, String filePath, String name) {
@@ -107,6 +110,7 @@ abstract class TileMap {
     }
     setName(letter, name);
     checkLetterUnset(letter);
+    letterSet.add(letter);
     createTile(letter, filePath);
   }
 
