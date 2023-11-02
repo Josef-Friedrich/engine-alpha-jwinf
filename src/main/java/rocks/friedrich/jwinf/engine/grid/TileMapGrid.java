@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine;
+package rocks.friedrich.jwinf.engine.grid;
 
 import java.util.HashMap;
 
@@ -14,17 +14,17 @@ import ea.actor.TileContainer;
  * sodass zum Beispiel (0,0) die Mitte der ersten Kachel (links oben)
  * adressiert.
  */
-public class RealTileMap extends TileMap {
+public class TileMapGrid extends Grid {
 
   HashMap<Character, Tile> tiles;
 
   public TileContainer container;
 
-  public RealTileMap(int width, int height) {
+  public TileMapGrid(int width, int height) {
     this(width, height, "", null);
   }
 
-  public RealTileMap(int width, int height, String pathPrefix) {
+  public TileMapGrid(int width, int height, String pathPrefix) {
     this(width, height, pathPrefix, null);
   }
 
@@ -37,7 +37,7 @@ public class RealTileMap extends TileMap {
    * @param extension  Die Dateiendung der Bild-Dateien, die als Kacheln verwendet
    *                   werden.
    */
-  public RealTileMap(int width, int height, String pathPrefix, String extension) {
+  public TileMapGrid(int width, int height, String pathPrefix, String extension) {
     super(width, height, pathPrefix, extension);
     tiles = new HashMap<>();
 

@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine;
+package rocks.friedrich.jwinf.engine.grid;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,7 +12,7 @@ import java.util.HashSet;
  * sodass zum Beispiel (0,0) die Mitte der ersten Kachel (links oben)
  * adressiert.
  */
-abstract class TileMap {
+abstract class Grid {
 
   /**
    * Die Breite des Kachelsatzes, d. h. die Anzahl der Kacheln in der x-Richtung.
@@ -44,11 +44,11 @@ abstract class TileMap {
 
   protected String extension;
 
-  public TileMap(int width, int height) {
+  public Grid(int width, int height) {
     this(width, height, "", null);
   }
 
-  public TileMap(int width, int height, String pathPrefix) {
+  public Grid(int width, int height, String pathPrefix) {
     this(width, height, pathPrefix, null);
   }
 
@@ -61,7 +61,7 @@ abstract class TileMap {
    * @param extension  Die Dateiendung der Bild-Dateien, die als Kacheln verwendet
    *                   werden.
    */
-  public TileMap(int width, int height, String pathPrefix, String extension) {
+  public Grid(int width, int height, String pathPrefix, String extension) {
     this.width = width;
     this.height = height;
     letters = new HashSet<>();

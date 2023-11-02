@@ -4,8 +4,8 @@ import ea.Game;
 import ea.Scene;
 import ea.event.KeyListener;
 import rocks.friedrich.jwinf.engine.Actor;
-import rocks.friedrich.jwinf.engine.RealTileMap;
 import rocks.friedrich.jwinf.engine.State;
+import rocks.friedrich.jwinf.engine.grid.TileMapGrid;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -37,7 +37,7 @@ public class ActorTest extends Scene implements KeyListener {
 
     setBackgroundColor(new Color(212, 232, 196));
 
-    RealTileMap map = new RealTileMap(width, height, "images/sea/", "png");
+    TileMapGrid map = new TileMapGrid(width, height, "images/sea/", "png");
 
     map.registerImage('r', "road");
 

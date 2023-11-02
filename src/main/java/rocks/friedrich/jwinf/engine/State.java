@@ -2,6 +2,7 @@ package rocks.friedrich.jwinf.engine;
 
 import ea.animation.Interpolator;
 import ea.animation.interpolation.EaseInOutFloat;
+import rocks.friedrich.jwinf.engine.grid.TileMapGrid;
 
 public class State {
   public static int pixelPerMeter = 60;
@@ -28,6 +29,6 @@ public class State {
   /**
    * Der aktuelle Kachelsatz.
    */
-  public static RealTileMap map;
+  public static TileMapGrid map;
 
 }

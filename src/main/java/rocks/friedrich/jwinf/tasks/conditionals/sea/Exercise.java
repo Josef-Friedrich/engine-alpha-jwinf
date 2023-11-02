@@ -9,7 +9,7 @@ import ea.event.KeyListener;
 import rocks.friedrich.jwinf.engine.Actor;
 import rocks.friedrich.jwinf.engine.Grid;
 import rocks.friedrich.jwinf.engine.State;
-import rocks.friedrich.jwinf.engine.RealTileMap;
+import rocks.friedrich.jwinf.engine.grid.TileMapGrid;
 
 public class Exercise extends Scene implements KeyListener {
 
@@ -43,7 +43,7 @@ public class Exercise extends Scene implements KeyListener {
     grid.setPosition(-0.5f, -height + 0.5f);
     add(grid);
 
-    RealTileMap map = new RealTileMap(width, height, "images/sea/", "png");
+    TileMapGrid map = new TileMapGrid(width, height, "images/sea/", "png");
     map.registerImage('1', "sea_tl");
     map.registerImage('2', "sea_tr");
     map.registerImage('3', "sea_bl");
