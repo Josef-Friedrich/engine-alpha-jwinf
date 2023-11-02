@@ -14,7 +14,9 @@ public class Controller {
     }
   }
 
-    public static void launchLevel(Level level) {
+  public static void launchLevel(Level level) {
+    State.level = level;
+
     if (!Game.isRunning()) {
       Game.start(State.pixelPerMeter * level.width, State.pixelPerMeter * level.height, level);
       Game.setTitle("Zünde alle Kerzen an");
@@ -26,7 +28,6 @@ public class Controller {
 
     State.map = level.getMap();
     State.actor = level.getActor();
-
     level.focus();
   }
 }

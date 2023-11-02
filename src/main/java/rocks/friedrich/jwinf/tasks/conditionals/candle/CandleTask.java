@@ -2,11 +2,30 @@ package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
 import rocks.friedrich.jwinf.engine.DifficultyLevel;
 import rocks.friedrich.jwinf.engine.Task;
+import rocks.friedrich.jwinf.engine.State;
 
 public class CandleTask extends Task {
 
   public static void main(String[] args) {
-    new CandleTask().launchLevelByDifficulty(0);
+    new CandleTask().launchLevelByDifficulty(2);
+
+    Robot robot = (Robot) State.actor;
+
+    while (robot.getGridX() < State.level.width - 1) {
+      robot.goRight();
+
+      if (robot.isOnCandle()) {
+        while (robot.isOnCandle()) {
+          robot.goUp();
+        }
+
+        robot.lightCandle();
+
+        while (robot.getGridY() < State.level.height - 1) {
+          robot.goDown();
+        }
+      }
+    }
   }
 
   public CandleTask() {
@@ -42,32 +61,5 @@ public class CandleTask extends Task {
 
       levels[i] = new CandleLevel(width, height, robotPosition, candles);
     }
-  }
-
-  void selectLevel(DifficultyLevel difficulty) {
-
-    // launchLevel(level);
-
-    // level.controlRobot((robot, exercise) -> {
-    //   while (robot.getGridX() < exercise.width - 1) {
-    //     robot.goRight();
-
-    //     if (robot.isOnCandle()) {
-    //       while (robot.isOnCandle()) {
-    //         robot.goUp();
-    //       }
-
-    //       robot.lightCandle();
-
-    //       while (robot.getGridY() > 0) {
-    //         robot.goDown();
-    //       }
-    //     }
-    //   }
-    // });
-
-    // if (difficulty < 3) {
-    //   selectLevel(++difficulty);
-    // }
   }
 }

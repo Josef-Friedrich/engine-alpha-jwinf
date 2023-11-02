@@ -33,7 +33,8 @@ public class CandleLevel extends Level {
 
     robot = new Robot();
     robot.placeInGrid(robotPosition[0], robotPosition[1]);
-    add(robot);
+    addActor(robot);
+
     robot.setRotation(0);
     robot.setSpeed(1.5f);
   }
