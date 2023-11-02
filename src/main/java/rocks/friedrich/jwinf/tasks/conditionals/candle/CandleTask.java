@@ -19,7 +19,7 @@ public class CandleTask extends Task {
 
       int width = 9;
       int height = 6;
-      int[] robotPosition = new int[] { 1, 0 };
+      int[] robotPosition = new int[] { 1, 5 };
       int[][] candles;
 
       switch (i) {

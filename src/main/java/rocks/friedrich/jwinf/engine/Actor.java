@@ -46,13 +46,13 @@ public class Actor extends Image {
           return x < State.map.width - 1;
 
         case UP:
-          return y < State.map.height - 1;
+          return y > 0;
 
         case LEFT:
           return x > 0;
 
         case DOWN:
-          return y > 0;
+          return y < State.map.height - 1;
 
         default:
           return true;
@@ -70,7 +70,7 @@ public class Actor extends Image {
           break;
 
         case UP:
-          yMovement = 1;
+          yMovement = -1;
           break;
 
         case LEFT:
@@ -78,7 +78,7 @@ public class Actor extends Image {
           break;
 
         case DOWN:
-          yMovement = -1;
+          yMovement = 1;
           break;
 
         default:
@@ -128,7 +128,7 @@ public class Actor extends Image {
     // Falls die animierte Navigation nicht zu einem exakten Punkt im Kachelgitter
     // führt, wird die Figur auf die nächst gelegene exakte Koordinate gezwungen.
     // Möglicherweiße sprint die Figur dann.
-    setCenter(getGridX(), getGridY());
+    setCenter(getGridX(), -1 * getGridY());
     inMotion = false;
   }
 
@@ -226,7 +226,7 @@ public class Actor extends Image {
    * Kachelgitter befindet.
    */
   public int getGridY() {
-    return Math.round(getCenter().getY());
+    return -1 * Math.round(getCenter().getY());
   }
 
   public void wiggle() {
@@ -341,4 +341,10 @@ public class Actor extends Image {
     animate(duration, setter, State.interpolator, true, null);
   }
 
+  public void placeInGrid(int x, int y) {
+    if (y > 0) {
+      y = y * -1;
+    }
+    setCenter(x, y);
+  }
 }

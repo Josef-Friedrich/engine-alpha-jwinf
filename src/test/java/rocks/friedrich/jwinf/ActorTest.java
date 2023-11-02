@@ -54,7 +54,7 @@ public class ActorTest extends Scene implements KeyListener {
     add(map.container);
 
     robot = new Actor("images/candle/robot.png");
-    robot.setCenter(0, 0);
+    robot.placeInGrid(0, 4);
     add(robot);
 
     getCamera().setFocus(map.container);
