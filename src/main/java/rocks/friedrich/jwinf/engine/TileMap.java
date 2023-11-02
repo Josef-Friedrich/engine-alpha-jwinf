@@ -13,9 +13,6 @@ import java.util.HashSet;
  * adressiert.
  */
 abstract class TileMap {
-  char[][] letters;
-
-  HashSet<Character> letterSet;
 
   /**
    * Die Breite des Kachelsatzes, d. h. die Anzahl der Kacheln in der x-Richtung.
@@ -27,18 +24,25 @@ abstract class TileMap {
    */
   public int height;
 
+  protected char[][] letterMap;
+
+  /**
+   * Um doppelte Buchstaben zu verhindern.
+   */
+  protected HashSet<Character> letters;
+
   /**
    * Ein Speicher für einprägsamere Namen für eine Kachel als nur der Buchstabe.
    */
-  HashMap<Character, String> names;
+  protected HashMap<Character, String> names;
 
-  HashMap<String, Character> namesToLetter;
+  protected HashMap<String, Character> namesToLetter;
 
-  HashSet<Character> obstacles;
+  protected HashSet<Character> obstacles;
 
-  String pathPrefix;
+  protected String pathPrefix;
 
-  String extension;
+  protected String extension;
 
   public TileMap(int width, int height) {
     this(width, height, "", null);
@@ -60,13 +64,13 @@ abstract class TileMap {
   public TileMap(int width, int height, String pathPrefix, String extension) {
     this.width = width;
     this.height = height;
-    this.pathPrefix = pathPrefix;
-    this.extension = extension;
-    letterSet = new HashSet<>();
+    letters = new HashSet<>();
     names = new HashMap<>();
     namesToLetter = new HashMap<>();
     obstacles = new HashSet<>();
-    letters = new char[width][height];
+    letterMap = new char[width][height];
+    this.pathPrefix = pathPrefix;
+    this.extension = extension;
   }
 
   protected String assembleFilePath(String filePath) {
@@ -97,7 +101,7 @@ abstract class TileMap {
   }
 
   protected final void checkLetterUnset(char letter) {
-    if (letterSet.contains(letter)) {
+    if (letters.contains(letter)) {
       throw new IllegalArgumentException(
           String.format("Eine Kachel mit dem Buchstaben „%s“ existiert bereits!",
               letter));
@@ -110,7 +114,7 @@ abstract class TileMap {
     }
     setName(letter, name);
     checkLetterUnset(letter);
-    letterSet.add(letter);
+    letters.add(letter);
     createTile(letter, filePath);
   }
 
@@ -125,7 +129,7 @@ abstract class TileMap {
    *          (oberste) Zeile.
    */
   public final char getLetter(int x, int y) {
-    return letters[x][y];
+    return letterMap[x][y];
   }
 
   /**

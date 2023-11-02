@@ -69,7 +69,7 @@ public class RealTileMap extends TileMap {
    */
   public void setTile(int x, int y, char tile) {
     checkLetter(tile);
-    letters[x][y] = tile;
+    letterMap[x][y] = tile;
     container.setTile(x, y, getTileFromCache(x, y));
   }
 
