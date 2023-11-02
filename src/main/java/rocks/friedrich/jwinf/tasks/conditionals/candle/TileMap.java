@@ -1,8 +1,6 @@
 package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
-import rocks.friedrich.jwinf.engine.grid.TileMapGrid;
-
-public class TileMap extends TileMapGrid {
+public class TileMap extends rocks.friedrich.jwinf.engine.map.TileMap {
 
   public TileMap(int width, int height) {
     super(width, height, "images/candle", "png");

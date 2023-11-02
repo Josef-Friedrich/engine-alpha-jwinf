@@ -3,7 +3,7 @@ package rocks.friedrich.jwinf.engine;
 import java.awt.event.KeyEvent;
 
 import ea.event.KeyListener;
-import rocks.friedrich.jwinf.engine.grid.TileMapGrid;
+import rocks.friedrich.jwinf.engine.map.TileMap;
 import ea.Scene;
 
 /**
@@ -36,7 +36,7 @@ public class Level extends Scene implements KeyListener {
    * um entscheiden zu können, ob sie sich vor einem Hindernis befindet oder
    * nicht.
    */
-  protected TileMapGrid map;
+  protected TileMap map;
 
   Actor actor;
 
@@ -62,17 +62,17 @@ public class Level extends Scene implements KeyListener {
     return grid;
   }
 
-  public void setMap(TileMapGrid map) {
+  public void setMap(TileMap map) {
     this.map = map;
     add(this.map.container);
   }
 
   public void setMap(String pathPrefix, String extension) {
-    map = new TileMapGrid(width, height, pathPrefix, extension);
+    map = new TileMap(width, height, pathPrefix, extension);
     add(map.container);
   }
 
-  public TileMapGrid getMap() {
+  public TileMap getMap() {
     return map;
   }
 

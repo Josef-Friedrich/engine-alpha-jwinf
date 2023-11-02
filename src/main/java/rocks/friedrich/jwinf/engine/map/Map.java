@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine.grid;
+package rocks.friedrich.jwinf.engine.map;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,7 +12,19 @@ import java.util.HashSet;
  * sodass zum Beispiel (0,0) die Mitte der ersten Kachel (links oben)
  * adressiert.
  */
-abstract class Grid {
+abstract class Map {
+
+  /**
+   * x-Koordinate im Engine-Alpha Koordinatensystem. Bezieht sich auf die Mitte
+   * der linken oberen Kachel.
+   */
+  int x;
+
+  /**
+   * y-Koordinate im Engine-Alpha Koordinatensystem. Bezieht sich auf die Mitte
+   * der linken oberen Kachel.
+   */
+  int y;
 
   /**
    * Die Breite des Kachelsatzes, d. h. die Anzahl der Kacheln in der x-Richtung.
@@ -44,11 +56,11 @@ abstract class Grid {
 
   protected String extension;
 
-  public Grid(int width, int height) {
+  public Map(int width, int height) {
     this(width, height, "", null);
   }
 
-  public Grid(int width, int height, String pathPrefix) {
+  public Map(int width, int height, String pathPrefix) {
     this(width, height, pathPrefix, null);
   }
 
@@ -61,7 +73,7 @@ abstract class Grid {
    * @param extension  Die Dateiendung der Bild-Dateien, die als Kacheln verwendet
    *                   werden.
    */
-  public Grid(int width, int height, String pathPrefix, String extension) {
+  public Map(int width, int height, String pathPrefix, String extension) {
     this.width = width;
     this.height = height;
     letters = new HashSet<>();
@@ -258,4 +270,8 @@ abstract class Grid {
     return obstacles.contains(getLetter(x, y));
   }
 
+  public void setPosition(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
 }
