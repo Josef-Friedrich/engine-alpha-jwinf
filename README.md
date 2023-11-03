@@ -10,8 +10,13 @@ https://git.bwinf.de/bwinf/medal
 
 https://github.com/France-ioi/bebras-modules
 
+https://www.france-ioi.org/
+
+https://github.com/France-ioi/bebras-modules/blob/master/pemFioi/quickAlgo/README.md
 
 https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js
+
+https://concours.castor-informatique.fr/
 
 ```js
 function initTask(subTask) {
