@@ -2,7 +2,7 @@
 
 import * as fs from 'node:fs'
 
-import { task, data } from './task.mjs'
+import { task, data } from './input.mjs'
 
 console.log(task)
 console.log(data)
@@ -16,4 +16,4 @@ const json = JSON.stringify(result, null, 2)
 
 console.log(json)
 
-fs.writeFileSync('.scripts/task.json', json)
+fs.writeFileSync('.scripts/output.json', json)
