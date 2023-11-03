@@ -61,6 +61,5 @@ public class Grid extends Actor {
     for (int gridY = 0; gridY <= numY; gridY++) {
       g.fillRect(0, -Math.round(gridY * gridSize), Math.round(numX * gridSize), 1);
     }
-
   }
 }

@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine.json;
+package rocks.friedrich.jwinf.engine.data;
 
 import java.io.IOException;
 
@@ -8,28 +8,28 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import rocks.friedrich.jwinf.engine.json.model.Level;
-import rocks.friedrich.jwinf.engine.json.model.Task;
-import rocks.friedrich.jwinf.engine.json.model.Tile;
+import rocks.friedrich.jwinf.engine.data.model.LevelData;
+import rocks.friedrich.jwinf.engine.data.model.TaskData;
+import rocks.friedrich.jwinf.engine.data.model.TileData;
 import rocks.friedrich.jwinf.engine.map.TileMap;
 
 public class TaskLoader {
 
-  public static Task load(String filePath) throws StreamReadException, DatabindException, IOException {
+  public static TaskData load(String filePath) throws StreamReadException, DatabindException, IOException {
     ObjectMapper objectMapper = new ObjectMapper();
-    return objectMapper.readValue(ResourceLoader.loadAsStream(filePath), Task.class);
+    return objectMapper.readValue(ResourceLoader.loadAsStream(filePath), TaskData.class);
   }
 
   public static TileMap createTileMap(String filePath) throws StreamReadException, DatabindException, IOException {
-    Task task = load(filePath);
+    TaskData task = load(filePath);
 
     task.initialize();
 
-    Level level = task.getLevel(2);
+    LevelData level = task.getLevel(2);
 
     TileMap map = new TileMap(level.getWidth(), level.getHeight(), "images");
 
-    for (Tile tile : task.getTiles()) {
+    for (TileData tile : task.getTiles()) {
       map.registerImage(tile.letter, tile.relPath, tile.name);
     }
 
@@ -37,7 +37,7 @@ public class TaskLoader {
       for (int x = 0; x < level.getWidth(); x++) {
         int num = level.tiles[y][x];
         if (num != 1) {
-          Tile tile = task.getTile(num);
+          TileData tile = task.getTile(num);
           map.setTile(x, y, tile.letter);
         }
       }
@@ -48,7 +48,7 @@ public class TaskLoader {
 
   public static void main(String[] args) {
     try {
-      Task task = load("json/candle.json");
+      TaskData task = load("json/candle.json");
       System.out.println(task._tiles.get("robot").img);
     } catch (StreamReadException e) {
       e.printStackTrace();

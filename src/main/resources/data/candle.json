@@ -1,5 +1,5 @@
 {
-  "heading": "Kerzen anzünden",
+  "title": "Kerzen anzünden",
   "intro": "Programmiere den Roboter:\nDer Roboter soll alle Kerzen anzünden.",
   "menu": ["Bedingte Anweisungen – Übungen", "Zünde alle Kerzen an"],
   "sources": [

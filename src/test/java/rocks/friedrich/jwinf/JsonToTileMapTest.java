@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 
 import ea.Scene;
 import rocks.friedrich.jwinf.engine.Controller;
-import rocks.friedrich.jwinf.engine.json.TaskLoader;
+import rocks.friedrich.jwinf.engine.data.TaskLoader;
 import rocks.friedrich.jwinf.engine.map.TileMap;
 
 public class JsonToTileMapTest extends Scene {
@@ -20,7 +20,7 @@ public class JsonToTileMapTest extends Scene {
     Controller.launchScene(this);
 
     try {
-      TileMap map = TaskLoader.createTileMap("json/candle.json");
+      TileMap map = TaskLoader.createTileMap("data/candle.json");
 
       add(map.container);
     } catch (StreamReadException e) {

@@ -1,6 +1,6 @@
-package rocks.friedrich.jwinf.engine.json.model;
+package rocks.friedrich.jwinf.engine.data.model;
 
-public class Tile {
+public class TileData {
 
   /**
    * Relativer Pfad zu <code>src/main/resources/images</code>. Zum Beispiel:

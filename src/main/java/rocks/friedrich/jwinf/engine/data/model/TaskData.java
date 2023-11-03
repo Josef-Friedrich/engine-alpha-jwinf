@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine.json.model;
+package rocks.friedrich.jwinf.engine.data.model;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -8,17 +8,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import rocks.friedrich.jwinf.engine.DifficultyLevel;
 
-public class Task {
+public class TaskData {
 
   /**
-   * Quelle HTML head title. Zum Beispiel: „Kerzen anzünden“
+   * Quelle HTML head title oder In h1 HTML-Tags im HTML-Quelltext. Zum Beispiel: „Kerzen anzünden“
    */
   public String title;
-
-  /**
-   * In h1 HTML-Tags im HTML-Quelltext. Zum Beispiel: „Kerzen anzünden“
-   */
-  public String heading;
 
   /**
    * Quelle HTML DIV class taskIntro
@@ -43,30 +38,30 @@ public class Task {
   public String[] sources;
 
   @JsonProperty("tiles")
-  public Map<String, Tile> _tiles;
+  public Map<String, TileData> _tiles;
 
   /**
    * Nur die Kacheln, die benötigt werden, d. h. die einen Buchstaben, Namen und
    * eine relativen Dateipfad haben.
    */
-  private HashMap<Integer, Tile> tilesIndex;
+  private HashMap<Integer, TileData> tilesIndex;
 
   @JsonProperty("levels")
-  public Levels _levels;
+  public LevelCollectionData _levels;
 
-  public Task() {
+  public TaskData() {
     tilesIndex = new HashMap<>();
   }
 
-  public Level getLevel(DifficultyLevel difficulty, int test) {
+  public LevelData getLevel(DifficultyLevel difficulty, int test) {
     return _levels.getLevel(difficulty, test);
   }
 
-  public Level getLevel(DifficultyLevel difficulty) {
+  public LevelData getLevel(DifficultyLevel difficulty) {
     return getLevel(difficulty, 0);
   }
 
-  public Level getLevel(int difficulty) {
+  public LevelData getLevel(int difficulty) {
     return getLevel(DifficultyLevel.indexOf(difficulty), 0);
   }
 
@@ -78,18 +73,18 @@ public class Task {
   }
 
   private void buildTilesIndex() {
-    for (Tile tile : _tiles.values()) {
+    for (TileData tile : _tiles.values()) {
       if (tile.relPath != null && tile.num != 0) {
         tilesIndex.put(tile.num, tile);
       }
     }
   }
 
-  public Tile getTile(int num) {
+  public TileData getTile(int num) {
     return tilesIndex.get(num);
   }
 
-  public Collection<Tile> getTiles() {
+  public Collection<TileData> getTiles() {
     return tilesIndex.values();
   }
 }
