@@ -1,4 +1,11 @@
 {
+  "heading": "Kerzen anzünden",
+  "intro": "Programmiere den Roboter:\nDer Roboter soll alle Kerzen anzünden.",
+  "menu": ["Bedingte Anweisungen – Übungen", "Zünde alle Kerzen an"],
+  "sources": [
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/index_new.html?channelId=task",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js"
+  ],
   "tiles": {
     "robot": {
       "img": "blue_robot.png",
@@ -11,6 +18,7 @@
     "initial_paint": {
       "num": 3,
       "img": "kerze.png",
+      "relPath": "candle/candle.png",
       "side": 60,
       "isPaint": true,
       "zOrder": 1
@@ -18,6 +26,7 @@
     "paint": {
       "num": 2,
       "img": "flamme.png",
+      "relPath": "candle/flame.png",
       "side": 60,
       "isWithdrawable": true,
       "zOrder": 1
@@ -25,6 +34,7 @@
     "marker": {
       "num": 4,
       "img": "docht.png",
+      "relPath": "candle/wick.png",
       "side": 60,
       "isContainer": true,
       "zOrder": 0
