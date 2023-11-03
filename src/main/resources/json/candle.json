@@ -19,6 +19,8 @@
       "num": 3,
       "img": "kerze.png",
       "relPath": "candle/candle.png",
+      "name": "candle",
+      "letter": "c",
       "side": 60,
       "isPaint": true,
       "zOrder": 1
@@ -27,6 +29,8 @@
       "num": 2,
       "img": "flamme.png",
       "relPath": "candle/flame.png",
+      "name": "flame",
+      "letter": "f",
       "side": 60,
       "isWithdrawable": true,
       "zOrder": 1
@@ -35,6 +39,8 @@
       "num": 4,
       "img": "docht.png",
       "relPath": "candle/wick.png",
+      "name": "wick",
+      "letter": "w",
       "side": 60,
       "isContainer": true,
       "zOrder": 0
