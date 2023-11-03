@@ -1,5 +1,4 @@
 {
-  "test": "test",
   "tiles": {
     "robot": {
       "img": "blue_robot.png",
