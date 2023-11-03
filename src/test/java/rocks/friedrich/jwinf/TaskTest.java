@@ -1,14 +1,14 @@
 package rocks.friedrich.jwinf;
 
-import rocks.friedrich.jwinf.engine.TaskNg;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import rocks.friedrich.jwinf.engine.task.Task;
+
 class TaskTest {
 
-  TaskNg task = new TaskNg("data/candle.json");
+  Task task = new Task("data/candle.json");
 
   @Test
   void title() {

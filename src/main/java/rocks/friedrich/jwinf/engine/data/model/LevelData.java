@@ -1,12 +1,12 @@
 package rocks.friedrich.jwinf.engine.data.model;
 
-import rocks.friedrich.jwinf.engine.DifficultyLevel;
+import rocks.friedrich.jwinf.engine.Difficulty;
 
 public class LevelData {
   public int[][] tiles;
   public InitItemData[] initItems;
 
-  public DifficultyLevel difficulty;
+  public Difficulty difficulty;
 
   /**
    * 0 no other test 1: first test of x 2: second test of x. x > 2

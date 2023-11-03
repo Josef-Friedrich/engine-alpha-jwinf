@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.tasks.conditionals.candle;
 
-import rocks.friedrich.jwinf.engine.DifficultyLevel;
+import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.Task;
 import rocks.friedrich.jwinf.engine.State;
 
@@ -33,7 +33,7 @@ public class CandleTask extends Task {
   }
 
   void setupLevels() {
-    for (DifficultyLevel difficulty : DifficultyLevel.values()) {
+    for (Difficulty difficulty : Difficulty.values()) {
       int i = difficulty.getIndex();
 
       int width = 9;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import rocks.friedrich.jwinf.engine.DifficultyLevel;
+import rocks.friedrich.jwinf.engine.Difficulty;
 
 public class LevelCollectionData {
   public LevelData[] easy;
@@ -13,13 +13,13 @@ public class LevelCollectionData {
 
   public List<LevelData> getLevelList() {
     List<LevelData> collection = new ArrayList<>();
-    prepareList(easy, DifficultyLevel.EASY, collection);
-    prepareList(medium, DifficultyLevel.MEDIUM, collection);
-    prepareList(hard, DifficultyLevel.HARD, collection);
+    prepareList(easy, Difficulty.EASY, collection);
+    prepareList(medium, Difficulty.MEDIUM, collection);
+    prepareList(hard, Difficulty.HARD, collection);
     return collection;
   }
 
-  private void prepareList(LevelData[] levels, DifficultyLevel difficulty, Collection<LevelData> collection) {
+  private void prepareList(LevelData[] levels, Difficulty difficulty, Collection<LevelData> collection) {
     if (levels.length > 1) {
       for (int i = 1; i <= levels.length; i++) {
         LevelData level = levels[i - 1];
@@ -35,7 +35,7 @@ public class LevelCollectionData {
     }
   }
 
-  public LevelData getLevel(DifficultyLevel difficulty, int test) {
+  public LevelData getLevel(Difficulty difficulty, int test) {
     LevelData[] levels;
 
     switch (difficulty) {
@@ -56,11 +56,11 @@ public class LevelCollectionData {
     return levels[test];
   }
 
-  public LevelData getLevel(DifficultyLevel difficulty) {
+  public LevelData getLevel(Difficulty difficulty) {
     return getLevel(difficulty, 0);
   }
 
   public LevelData getLevel(int difficulty) {
-    return getLevel(DifficultyLevel.indexOf(difficulty), 0);
+    return getLevel(Difficulty.indexOf(difficulty), 0);
   }
 }

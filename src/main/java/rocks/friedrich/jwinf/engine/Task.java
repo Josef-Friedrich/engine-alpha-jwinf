@@ -18,7 +18,7 @@ public class Task {
 
   public Level[] levels = new Level[3];
 
-  public void launchLevelByDifficulty(DifficultyLevel difficulty) {
+  public void launchLevelByDifficulty(Difficulty difficulty) {
     Controller.launchLevel(levels[difficulty.getIndex()]);
   }
 

@@ -1,14 +1,9 @@
 package rocks.friedrich.jwinf;
 
-import java.io.IOException;
-
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
-
 import ea.Scene;
 import rocks.friedrich.jwinf.engine.Controller;
-import rocks.friedrich.jwinf.engine.data.TaskLoader;
 import rocks.friedrich.jwinf.engine.map.TileMap;
+import rocks.friedrich.jwinf.engine.task.Task;
 
 public class JsonToTileMapTest extends Scene {
 
@@ -18,18 +13,8 @@ public class JsonToTileMapTest extends Scene {
 
   public JsonToTileMapTest() {
     Controller.launchScene(this);
-
-    try {
-      TileMap map = TaskLoader.createTileMap("data/candle.json");
-
-      add(map.container);
-    } catch (StreamReadException e) {
-      e.printStackTrace();
-    } catch (DatabindException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Task task = new Task("data/candle.json");
+    TileMap map = task.getLevel(0).createTileMap();
+    add(map.container);
   }
-
 }

@@ -16,7 +16,7 @@ import ea.Scene;
  */
 public class Level extends Scene implements KeyListener {
 
-  DifficultyLevel difficulty;
+  Difficulty difficulty;
 
   /**
    * Zum Beispiel „Der Roboter soll den Edelstein einsammeln. Sobald er das Feld

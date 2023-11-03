@@ -3,7 +3,10 @@ package rocks.friedrich.jwinf.engine;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum DifficultyLevel {
+/**
+ * Der Schwierigkeitsgrad
+ */
+public enum Difficulty {
 
   /**
    * Leichter Schwierigkeitsgrad: Zweistern-Version (<code>Version**</code>,
@@ -25,20 +28,20 @@ public enum DifficultyLevel {
 
   private int index;
 
-  private static Map<Integer, DifficultyLevel> map = new HashMap<>();
+  private static Map<Integer, Difficulty> map = new HashMap<>();
 
-  private DifficultyLevel(int index) {
+  private Difficulty(int index) {
     this.index = index;
   }
 
   static {
-    for (DifficultyLevel level : DifficultyLevel.values()) {
+    for (Difficulty level : Difficulty.values()) {
       map.put(level.index, level);
     }
   }
 
-  public static DifficultyLevel indexOf(int level) {
-    return (DifficultyLevel) map.get(level);
+  public static Difficulty indexOf(int level) {
+    return (Difficulty) map.get(level);
   }
 
   public int getIndex() {
