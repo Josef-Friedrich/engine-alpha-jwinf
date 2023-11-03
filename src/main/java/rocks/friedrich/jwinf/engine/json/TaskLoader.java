@@ -1,7 +1,6 @@
 package rocks.friedrich.jwinf.engine.json;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import ea.internal.io.ResourceLoader;
 
@@ -24,30 +23,21 @@ public class TaskLoader {
   public static TileMap createTileMap(String filePath) throws StreamReadException, DatabindException, IOException {
     Task task = load(filePath);
 
-    Level level = task.levels.easy[0];
+    task.initialize();
 
-    int height = level.tiles.length;
-    int width = level.tiles[0].length;
+    Level level = task.getLevel(2);
 
-    HashMap<Integer, Tile> tiles = new HashMap<>();
+    TileMap map = new TileMap(level.getWidth(), level.getHeight(), "images");
 
-    for (Tile tile : task.tiles.values()) {
-      if (tile.relPath != null && tile.num != 0) {
-        tiles.put(tile.num, tile);
-      }
-    }
-
-    TileMap map = new TileMap(width, height, "images");
-
-    for (Tile tile : tiles.values()) {
+    for (Tile tile : task.getTiles()) {
       map.registerImage(tile.letter, tile.relPath, tile.name);
     }
 
-    for (int y = 0; y < height; y++) {
-      for (int x = 0; x < width; x++) {
+    for (int y = 0; y < level.getHeight(); y++) {
+      for (int x = 0; x < level.getWidth(); x++) {
         int num = level.tiles[y][x];
         if (num != 1) {
-          Tile tile = tiles.get(num);
+          Tile tile = task.getTile(num);
           map.setTile(x, y, tile.letter);
         }
       }
@@ -59,7 +49,7 @@ public class TaskLoader {
   public static void main(String[] args) {
     try {
       Task task = load("json/candle.json");
-      System.out.println(task.tiles.get("robot").img);
+      System.out.println(task._tiles.get("robot").img);
     } catch (StreamReadException e) {
       e.printStackTrace();
     } catch (DatabindException e) {
