@@ -1,15 +1,10 @@
 package rocks.friedrich.jwinf.engine.task;
 
-import java.awt.event.KeyEvent;
-
 import ea.Scene;
-import ea.event.KeyListener;
 import rocks.friedrich.jwinf.engine.Actor;
 import rocks.friedrich.jwinf.engine.Color;
-import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.Grid;
-import rocks.friedrich.jwinf.engine.State;
 import rocks.friedrich.jwinf.engine.data.model.LevelData;
 import rocks.friedrich.jwinf.engine.data.model.TileData;
 import rocks.friedrich.jwinf.engine.map.TileMap;
@@ -22,7 +17,7 @@ import rocks.friedrich.jwinf.engine.map.TileMap;
  * <em>easy</em>), Dreistern-(<code>Version***</code>, <em>medium</em>), und
  * eine Vierstern-Version (<code>Version****</code>, <em>hard</em>).
  */
-public class Level extends Scene implements KeyListener {
+public class Level extends Scene {
 
   public LevelData data;
 
@@ -65,18 +60,15 @@ public class Level extends Scene implements KeyListener {
   }
 
   public TileMap createTileMap() {
-
-    LevelData level = task.getLevel(2).data;
-
-    TileMap map = new TileMap(level.getWidth(), level.getHeight(), "images");
+    TileMap map = new TileMap(width, height, "images");
 
     for (TileData tile : task.getTiles()) {
       map.registerImage(tile.letter, tile.relPath, tile.name);
     }
 
-    for (int y = 0; y < level.getHeight(); y++) {
-      for (int x = 0; x < level.getWidth(); x++) {
-        int num = level.tiles[y][x];
+    for (int y = 0; y < height; y++) {
+      for (int x = 0; x < width; x++) {
+        int num = data.tiles[y][x];
         if (num != 1) {
           TileData tile = task.getTile(num);
           map.setTile(x, y, tile.letter);
@@ -109,24 +101,5 @@ public class Level extends Scene implements KeyListener {
   public void addActor(Actor actor) {
     this.actor = actor;
     add(actor);
-  }
-
-  // public void controlActor(ActorAction action) {
-  // action.act(actor, this);
-  // }
-
-  public void focus() {
-    getCamera().setFocus(grid);
-    getCamera().setZoom(State.pixelPerMeter);
-  }
-
-  @Override
-  public void onKeyDown(KeyEvent keyEvent) {
-    switch (keyEvent.getKeyCode()) {
-
-      case KeyEvent.VK_M:
-        Controller.toggleInterpolator();
-        break;
-    }
   }
 }

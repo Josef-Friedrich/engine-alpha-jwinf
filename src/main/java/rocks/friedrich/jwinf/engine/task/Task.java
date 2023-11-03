@@ -3,6 +3,8 @@ package rocks.friedrich.jwinf.engine.task;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.data.JsonLoader;
@@ -57,12 +59,16 @@ public class Task {
     }
   }
 
-    public TileData getTile(int num) {
+  public TileData getTile(int num) {
     return tiles.get(num);
   }
 
   public Collection<TileData> getTiles() {
     return tiles.values();
+  }
+
+  public Map<Difficulty, List<Level>> getLevels() {
+    return levels.levels;
   }
 
   public Level getLevel(Difficulty difficulty, int test) {

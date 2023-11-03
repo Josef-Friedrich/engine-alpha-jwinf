@@ -10,7 +10,7 @@ import rocks.friedrich.jwinf.engine.data.model.LevelCollectionData;
 import rocks.friedrich.jwinf.engine.data.model.LevelData;
 
 public class LevelCollection {
-  Task task;
+  public Task task;
   public Map<Difficulty, List<Level>> levels;
 
   public LevelCollection(LevelCollectionData data, Task task) {
