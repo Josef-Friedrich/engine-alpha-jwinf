@@ -28,6 +28,20 @@ public class TaskData {
   public String[] menu;
 
   /**
+   * Ist in
+   * https://jwinf.de/tasks/jwinf/_common/modules/pemFioi/blocklyRobot_lib-1.1.js
+   * definiert
+   */
+  public String backgroundColor;
+
+  /**
+   * Ist in
+   * https://jwinf.de/tasks/jwinf/_common/modules/pemFioi/blocklyRobot_lib-1.1.js
+   * definiert (borderColor)
+   */
+  public String gridColor;
+
+  /**
    * Links zu den Quellen der JSON-Datei:
    * https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/index_new.html?channelId=task
    * https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js

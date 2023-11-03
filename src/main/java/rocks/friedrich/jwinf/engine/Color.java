@@ -9,9 +9,23 @@ public class Color extends java.awt.Color {
     super(r, g, b);
   }
 
-  public Color(String hexCode) {
-    this(Integer.valueOf(hexCode.substring(0, 2), 16), Integer.valueOf(hexCode.substring(2, 4), 16),
-        Integer.valueOf(hexCode.substring(4, 6), 16));
+  public Color(Color c) {
+    super(c.getRed(), c.getGreen(), c.getBlue());
+
   }
 
+  private static int toInt(String hex, int start) {
+    return Integer.valueOf(hex.substring(start, start + 2), 16);
+  }
+
+  public static Color fromHex(String hex) {
+    if (hex.charAt(0) == '#') {
+      hex = hex.substring(1);
+    }
+    return new Color(toInt(hex, 0), toInt(hex, 2), toInt(hex, 4));
+  }
+
+  public Color(String hexCode) {
+    this(Color.fromHex(hexCode));
+  }
 }

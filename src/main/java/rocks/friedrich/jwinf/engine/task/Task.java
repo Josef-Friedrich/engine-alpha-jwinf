@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import rocks.friedrich.jwinf.engine.Color;
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.data.JsonLoader;
 import rocks.friedrich.jwinf.engine.data.model.TaskData;
@@ -37,6 +38,10 @@ public class Task {
    */
   public HashMap<Integer, TileData> tiles;
 
+  public Color backgroundColor;
+
+  public Color gridColor;
+
   public Task(String filePath) {
     try {
       data = JsonLoader.load(filePath);
@@ -45,6 +50,9 @@ public class Task {
     }
     title = data.title;
     intro = data.intro;
+
+    backgroundColor = new Color(data.backgroundColor);
+    gridColor = new Color(data.gridColor);
 
     tiles = new HashMap<Integer, TileData>();
     buildTilesIndex(data);

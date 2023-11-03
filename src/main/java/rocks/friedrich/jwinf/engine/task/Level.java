@@ -2,7 +2,6 @@ package rocks.friedrich.jwinf.engine.task;
 
 import ea.Scene;
 import rocks.friedrich.jwinf.engine.Actor;
-import rocks.friedrich.jwinf.engine.Color;
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.Grid;
 import rocks.friedrich.jwinf.engine.data.model.LevelData;
@@ -79,10 +78,25 @@ public class Level extends Scene {
     return map;
   }
 
+  public Grid createGrid() {
+    Grid grid = new Grid(width, height);
+    grid.setColor(task.gridColor);
+    grid.setBackground(task.backgroundColor);
+    return grid;
+  }
+
+  public void paintMapInScene(Scene scene, float x, float y) {
+    var grid = createGrid();
+    grid.setPosition(x, y);
+    scene.add(grid);
+
+    var tileMap = createTileMap().container;
+    tileMap.setPosition(x, y);
+    scene.add(tileMap);
+  }
+
   public void setGrid(String gridColor, String backgroundColor) {
-    grid = new Grid(width, height);
-    grid.setColor(new Color(gridColor));
-    grid.setBackground(new Color(backgroundColor));
+    grid = createGrid();
     // Damit (0,0) in der Mitte einer Kachel liegt.
     grid.setPosition(-0.5f, -height + 0.5f);
     add(grid);
