@@ -1,0 +1,21 @@
+{
+  "title": "",
+  "intro": "",
+  "menu": [""],
+  "sources": [
+    ""
+  ],
+  "grid": {
+    "backgroundColor": "",
+    "gridColor": "",
+    "tiles": {
+      "xxx": {
+        "relPath": "",
+        "name": "",
+        "letter": ""
+      }
+    }
+  },
+  "levels": {
+  }
+}

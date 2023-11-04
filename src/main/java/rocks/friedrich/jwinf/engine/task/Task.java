@@ -51,8 +51,8 @@ public class Task {
     title = data.title;
     intro = data.intro;
 
-    backgroundColor = new Color(data.backgroundColor);
-    gridColor = new Color(data.gridColor);
+    backgroundColor = new Color(data.grid.backgroundColor);
+    gridColor = new Color(data.grid.gridColor);
 
     tiles = new HashMap<Integer, TileData>();
     buildTilesIndex(data);
@@ -60,7 +60,7 @@ public class Task {
   }
 
   private void buildTilesIndex(TaskData data) {
-    for (TileData tile : data.tiles.values()) {
+    for (TileData tile : data.grid.tiles.values()) {
       if (tile.relPath != null && tile.num != 0) {
         tiles.put(tile.num, tile);
       }

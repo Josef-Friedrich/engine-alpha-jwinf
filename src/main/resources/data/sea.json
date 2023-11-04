@@ -1,0 +1,276 @@
+{
+  "title": "Finde den Weg zum See",
+  "intro": "Programmiere den Roboter:\nDer Roboter möchte schwimmen gehen. Auf dem Weg zum See darf er die Straße nicht verlassen.\nHinweis: Der Roboter erkennt Gras, Bäume, Büsche, Blumen und Mauern als Hindernis.",
+  "menu": [" Bedingte Anweisungen – Übungen", "Finde den Weg zum See "],
+  "sources": [
+    "https://jwinf.de/task/1158",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2019/19-DE-12-stay-on-the-road/task_new.js",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2019/19-DE-12-stay-on-the-road/index_new.html?channelId=task"
+  ],
+  "id": "19-DE-12-stay-on-the-road",
+  "version": "de.01",
+  "authors": "Jens Beuckenhauer",
+  "grid": {
+    "hideSaveOrLoad": true,
+    "conceptViewer": false,
+    "contextType": "labyrinth",
+    "backgroundColor": "#d4e8c4",
+    "languageStrings": {
+      "blocklyRobot_lib": {
+        "label": {
+          "obstacleInFront": "vor Hindernis"
+        },
+        "messages": {
+          "successReachExit": "Bravo, der Roboter hat den See erreicht!",
+          "failureReachExit": "Der Roboter ist noch nicht beim See."
+        }
+      }
+    },
+    "maxInstructions": {
+      "easy": 10,
+      "medium": 10,
+      "hard": 18
+    },
+    "limitedUses": [
+      {
+        "blocks": ["controls_repeat"],
+        "nbUses": 3
+      }
+    ],
+    "includeBlocks": {
+      "groupByCategory": false,
+      "generatedBlocks": {
+        "robot": ["left", "right", "forward", "obstacleInFront"]
+      },
+      "standardBlocks": {
+        "includeAll": false,
+        "wholeCategories": [],
+        "singleBlocks": {
+          "shared": ["controls_repeat"],
+          "easy": ["controls_if"],
+          "medium": ["logic_negate", "controls_if", "controls_if_else"],
+          "hard": ["logic_negate", "controls_if", "controls_if_else"]
+        }
+      },
+      "pythonAdditionalFunctions": {
+        "shared": ["range"]
+      }
+    },
+    "blocklyColourTheme": "bwinf",
+    "checkEndEveryTurn": true,
+    "tiles": {
+      "robot": {
+        "img": "pink_robot.png",
+        "side": 80,
+        "nbStates": 9,
+        "isRobot": true,
+        "offsetX": -20,
+        "zOrder": 2
+      },
+      "road": {
+        "num": 1,
+        "img": "road.png",
+        "relPath": "sea/road.png",
+        "name": "road",
+        "letter": "r",
+        "side": 60,
+        "isObstacle": false,
+        "zOrder": 0
+      },
+      "sand": {
+        "num": 3,
+        "img": "sand.png",
+        "relPath": "sea/sand.png",
+        "name": "sand",
+        "letter": "s",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 0
+      },
+      "beach_tl": {
+        "num": 6,
+        "img": "Beach_tl.png",
+        "relPath": "sea/sea_tl.png",
+        "name": "sea_tl",
+        "letter": "1",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 0
+      },
+      "beach_tr": {
+        "num": 7,
+        "img": "Beach_tr.png",
+        "relPath": "sea/sea_tr.png",
+        "name": "sea_tr",
+        "letter": "2",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 0
+      },
+      "beach_bl": {
+        "num": 8,
+        "img": "Beach_bl.png",
+        "relPath": "sea/sea_bl.png",
+        "name": "sea_bl",
+        "letter": "3",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 0
+      },
+      "beach_br": {
+        "num": 9,
+        "img": "Beach_br.png",
+        "relPath": "sea/sea_br.png",
+        "name": "sea_br",
+        "letter": "4",
+        "side": 60,
+        "isObstacle": false,
+        "isExit": true,
+        "zOrder": 0
+      },
+      "bush": {
+        "num": 2,
+        "img": "bush.png",
+        "relPath": "sea/bush.png",
+        "name": "bush",
+        "letter": "w",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 0
+      },
+      "water": {
+        "num": 4,
+        "img": "water.png",
+        "side": 60,
+        "isObstacle": false,
+        "isExit": true,
+        "zOrder": 0
+      },
+      "gras": {
+        "num": 5,
+        "img": "grass.png",
+        "relPath": "sea/grass.png",
+        "name": "grass",
+        "letter": "g",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 0
+      },
+      "water_full": {
+        "num": 17,
+        "img": "water_full.png",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 1
+      },
+      "tree": {
+        "num": 15,
+        "img": "tree.png",
+        "relPath": "sea/tree.png",
+        "name": "tree",
+        "letter": "t",
+        "side": 80,
+        "isObstacle": true,
+        "zOrder": 2,
+        "offsetX": -10,
+        "offsetY": 8
+      },
+      "flowers": {
+        "num": 16,
+        "img": "flowers.png",
+        "relPath": "sea/flowers.png",
+        "name": "flowers",
+        "letter": "f",
+        "side": 50,
+        "isObstacle": true,
+        "zOrder": 1,
+        "offsetX": 5
+      },
+      "obstacle_small": {
+        "num": 10,
+        "img": "grey_brick_wall_small.png",
+        "relPath": "sea/brick.png",
+        "name": "brick",
+        "letter": "b",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 0
+      }
+    },
+    "gridColor": "#49b675"
+  },
+  "levels": {
+    "easy": [
+      {
+        "tiles": [
+          [3, 3, 3, 2, 2, 5, 5, 5, 15, 15],
+          [3, 6, 7, 5, 5, 5, 5, 5, 5, 5],
+          [3, 8, 9, 1, 1, 1, 1, 1, 5, 5],
+          [16, 5, 5, 5, 5, 5, 5, 1, 5, 5],
+          [5, 5, 5, 5, 5, 16, 15, 1, 2, 5],
+          [5, 5, 5, 5, 15, 5, 5, 1, 2, 5],
+          [5, 15, 5, 16, 5, 15, 2, 1, 2, 5],
+          [5, 5, 5, 5, 5, 5, 2, 1, 2, 16],
+          [1, 1, 1, 1, 1, 1, 1, 1, 15, 5],
+          [2, 5, 5, 15, 10, 10, 10, 10, 10, 2]
+        ],
+        "initItems": [
+          {
+            "row": 8,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      }
+    ],
+    "medium": [
+      {
+        "tiles": [
+          [3, 3, 3, 15, 2, 2, 2, 2, 2, 5],
+          [3, 6, 7, 2, 16, 16, 15, 5, 5, 5],
+          [3, 8, 9, 1, 1, 1, 1, 1, 2, 5],
+          [15, 5, 5, 5, 5, 2, 2, 1, 5, 5],
+          [15, 16, 5, 5, 5, 5, 5, 1, 5, 2],
+          [1, 1, 1, 1, 1, 1, 1, 1, 5, 2],
+          [2, 15, 1, 2, 2, 1, 16, 5, 5, 5],
+          [2, 2, 1, 2, 5, 1, 1, 1, 1, 1],
+          [1, 1, 1, 15, 15, 5, 5, 5, 2, 5],
+          [2, 16, 2, 5, 5, 5, 5, 5, 5, 5]
+        ],
+        "initItems": [
+          {
+            "row": 8,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      }
+    ],
+    "hard": [
+      {
+        "tiles": [
+          [3, 3, 3, 16, 2, 2, 2, 1, 5, 16],
+          [3, 6, 7, 5, 5, 16, 15, 1, 5, 2],
+          [3, 8, 9, 1, 1, 1, 1, 1, 5, 2],
+          [5, 2, 5, 5, 5, 5, 15, 1, 5, 2],
+          [2, 10, 10, 10, 10, 10, 15, 1, 5, 15],
+          [1, 1, 1, 1, 1, 1, 5, 1, 1, 1],
+          [16, 5, 1, 5, 5, 1, 15, 1, 2, 2],
+          [5, 5, 1, 5, 5, 1, 1, 1, 1, 1],
+          [1, 1, 1, 16, 5, 5, 5, 5, 2, 2],
+          [5, 15, 5, 2, 2, 16, 2, 5, 5, 5]
+        ],
+        "initItems": [
+          {
+            "row": 8,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      }
+    ]
+  }
+}

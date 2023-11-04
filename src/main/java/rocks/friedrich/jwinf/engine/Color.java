@@ -11,7 +11,6 @@ public class Color extends java.awt.Color {
 
   public Color(Color c) {
     super(c.getRed(), c.getGreen(), c.getBlue());
-
   }
 
   private static int toInt(String hex, int start) {

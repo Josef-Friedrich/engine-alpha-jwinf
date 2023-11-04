@@ -1,7 +1,5 @@
 package rocks.friedrich.jwinf.engine.data.model;
 
-import java.util.Map;
-
 import rocks.friedrich.jwinf.engine.Difficulty;
 
 public class TaskData {
@@ -28,27 +26,28 @@ public class TaskData {
   public String[] menu;
 
   /**
-   * Ist in
-   * https://jwinf.de/tasks/jwinf/_common/modules/pemFioi/blocklyRobot_lib-1.1.js
-   * definiert
-   */
-  public String backgroundColor;
-
-  /**
-   * Ist in
-   * https://jwinf.de/tasks/jwinf/_common/modules/pemFioi/blocklyRobot_lib-1.1.js
-   * definiert (borderColor)
-   */
-  public String gridColor;
-
-  /**
    * Links zu den Quellen der JSON-Datei:
    * https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/index_new.html?channelId=task
    * https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js
    */
   public String[] sources;
 
-  public Map<String, TileData> tiles;
+  /**
+   * Zum Beispiel: „19-DE-12-stay-on-the-road“
+   */
+  public String id;
+
+  /**
+   * Zum Beispiel: „de.01“
+   */
+  public String version;
+
+  /**
+   * Zum Beispiel: „Jens Beuckenhauer“
+   */
+  public String authors;
+
+  public GridData grid;
 
   public LevelCollectionData levels;
 

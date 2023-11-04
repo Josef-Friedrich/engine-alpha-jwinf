@@ -1,4 +1,10 @@
-export const task = {
+// https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js
+
+const subTask = {};
+
+export default subTask;
+
+subTask.gridInfos = {
   hideSaveOrLoad: true,
   conceptViewer: false,
   contextType: "paint",
@@ -133,7 +139,7 @@ export const task = {
   // }
 };
 
-export const data = {
+subTask.data = {
   easy: [
     {
       tiles: [

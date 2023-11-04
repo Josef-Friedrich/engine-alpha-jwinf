@@ -62,6 +62,16 @@ public class TileData {
   /**
    * Importiert aus Javascript-Datei.
    */
+  public boolean isObstacle;
+
+  /**
+   * Importiert aus Javascript-Datei.
+   */
+  public boolean isExit;
+
+  /**
+   * Importiert aus Javascript-Datei.
+   */
   public boolean isContainer;
 
   /**
@@ -78,5 +88,7 @@ public class TileData {
    * Importiert aus Javascript-Datei.
    */
   public boolean isWithdrawable;
+
+  public int nbStates;
 
 }
