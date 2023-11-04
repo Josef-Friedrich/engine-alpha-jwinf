@@ -15,7 +15,7 @@ public class AllLevelsTest extends Scene {
   public AllLevelsTest() {
     var task = new Task("data/sea.json");
     var levels = new AllLevels(task);
-    levels.getCamera().setPosition(new Vector(15, 0));
+    levels.getCamera().setPosition(new Vector(15, 5));
     Controller.launchScene(1200, 600, levels);
   }
 }

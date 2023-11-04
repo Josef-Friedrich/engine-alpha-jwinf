@@ -68,13 +68,12 @@ public class Level extends Scene {
     for (int y = 0; y < height; y++) {
       for (int x = 0; x < width; x++) {
         int num = data.tiles[y][x];
-        if (num != 1) {
-          TileData tile = task.getTile(num);
+        TileData tile = task.getTile(num);
+        if (tile != null) {
           map.setTile(x, y, tile.letter);
         }
       }
     }
-
     return map;
   }
 

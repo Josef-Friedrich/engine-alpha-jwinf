@@ -14,8 +14,7 @@ public class AllLevels extends Scene {
     task.getLevels().forEach((difficulty, levels) -> {
       levels.forEach((level) -> {
         level.paintMapInScene(this, x, 0);
-        x += 10;
-        ;
+        x += level.width + 1;
       });
     });
   }
