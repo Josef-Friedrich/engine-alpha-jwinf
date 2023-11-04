@@ -13,7 +13,7 @@ public class AllLevelsTest extends Scene {
   }
 
   public AllLevelsTest() {
-    var task = Task.loadById("20-DE-13-Kerzen-einfach");
+    var task = Task.loadById("17-FR-07-platforms-marbles");
     var levels = new AllLevels(task);
     levels.getCamera().setPosition(new Vector(15, 5));
     Controller.launchScene(1200, 600, levels);

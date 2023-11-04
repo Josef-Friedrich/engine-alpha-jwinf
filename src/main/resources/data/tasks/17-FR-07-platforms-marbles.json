@@ -8,7 +8,7 @@
   "intros": {
     "easy": "Der Roboter soll die rote Flagge erreichen.\nDie rote Flagge befindet sich immer in einer Lücke über dem Gang.\n<i>Beachte: Dein Programm muss mit allen Testfällen zurechtkommen.</i>",
     "medium": "Der Roboter soll die rote Flagge erreichen.\nDie rote Flagge befindet sich immer in einer Lücke über <b>oder</b> unter dem Gang.\n<i>Beachte: Dein Programm muss mit allen Testfällen zurechtkommen.</i>",
-    "heard": "Der Roboter soll die rote Flagge erreichen.\nEs gibt mehrere Lücken über und unter dem Gang. Die rote Flagge befindet sich in einer davon.\n<i>Beachte: Dein Programm muss mit allen Testfällen zurechtkommen.</i>"
+    "hard": "Der Roboter soll die rote Flagge erreichen.\nEs gibt mehrere Lücken über und unter dem Gang. Die rote Flagge befindet sich in einer davon.\n<i>Beachte: Dein Programm muss mit allen Testfällen zurechtkommen.</i>"
   },
   "menu": ["Bedingte Anweisungen – Übungen", "Finde das Ziel"],
   "sources": [
@@ -53,7 +53,40 @@
     },
     "blocklyColourTheme": "bwinf",
     "ignoreInvalidMoves": false,
-    "checkEndEveryTurn": true
+    "checkEndEveryTurn": true,
+    "backgroundColor": "#c5b6af",
+    "gridColor": "#888888",
+    "tiles": {
+      "robot": {
+        "img": "pink_robot.png",
+        "side": 80,
+        "nbStates": 9,
+        "isRobot": true,
+        "offsetX": -11,
+        "offsetY": 3,
+        "zOrder": 3
+      },
+      "obstacle": {
+        "num": 2,
+        "img": "grey_brick_wall.png",
+        "relPath": "labyrinth/wall.png",
+        "name": "wall",
+        "letter": "w",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 0
+      },
+      "flag": {
+        "num": 3,
+        "img": "flag.png",
+        "relPath": "labyrinth/flag.png",
+        "name": "flag",
+        "letter": "f",
+        "side": 60,
+        "isExit": true,
+        "zOrder": 0
+      }
+    }
   },
   "levels": {
     "easy": [

@@ -49,6 +49,8 @@ public class TaskData {
    */
   public String authors;
 
+  public String[] translators;
+
   public GridData grid;
 
   public LevelCollectionData levels;
