@@ -1,0 +1,166 @@
+{
+  "id": "17-FR-07-platforms-marbles",
+  "version": "de.01",
+  "authors": "Mathias Hiron",
+  "translators": ["Robert Czechowski", "Wolfgang Pohl"],
+  "title": "Finde das Ziel",
+  "intro": "Programmiere den Roboter:",
+  "intros": {
+    "easy": "Der Roboter soll die rote Flagge erreichen.\nDie rote Flagge befindet sich immer in einer Lücke über dem Gang.\n<i>Beachte: Dein Programm muss mit allen Testfällen zurechtkommen.</i>",
+    "medium": "Der Roboter soll die rote Flagge erreichen.\nDie rote Flagge befindet sich immer in einer Lücke über <b>oder</b> unter dem Gang.\n<i>Beachte: Dein Programm muss mit allen Testfällen zurechtkommen.</i>",
+    "heard": "Der Roboter soll die rote Flagge erreichen.\nEs gibt mehrere Lücken über und unter dem Gang. Die rote Flagge befindet sich in einer davon.\n<i>Beachte: Dein Programm muss mit allen Testfällen zurechtkommen.</i>"
+  },
+  "menu": ["Bedingte Anweisungen – Übungen", "Finde das Ziel"],
+  "sources": [
+    "https://jwinf.de/task/1157",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2018/18-DE-11/task_new.js",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2018/18-DE-11/index_new.html?channelId=task"
+  ],
+  "grid": {
+    "hideSaveOrLoad": true,
+    "conceptViewer": false,
+    "contextType": "labyrinth",
+    "hasGravity": false,
+    "maxInstructions": {
+      "easy": 12,
+      "medium": 20,
+      "hard": 32
+    },
+    "includeBlocks": {
+      "groupByCategory": false,
+      "generatedBlocks": {
+        "robot": {
+          "shared": ["forward", "obstacleInFront", "right", "left", "onExit"],
+          "easy": [],
+          "medium": [],
+          "hard": []
+        }
+      },
+      "standardBlocks": {
+        "includeAll": false,
+        "wholeCategories": {
+          "easy": [],
+          "medium": [],
+          "hard": []
+        },
+        "singleBlocks": {
+          "shared": ["controls_if", "controls_untilWhile", "controls_if_else"],
+          "easy": ["logic_negate"],
+          "medium": ["logic_negate"],
+          "hard": ["logic_negate"]
+        }
+      }
+    },
+    "blocklyColourTheme": "bwinf",
+    "ignoreInvalidMoves": false,
+    "checkEndEveryTurn": true
+  },
+  "levels": {
+    "easy": [
+      {
+        "tiles": [
+          [2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 3, 2, 2],
+          [2, 1, 1, 1, 1, 1, 2],
+          [2, 2, 2, 2, 2, 2, 2]
+        ],
+        "initItems": [
+          {
+            "row": 2,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      },
+      {
+        "tiles": [
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2, 3, 2, 2, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+        ],
+        "initItems": [
+          {
+            "row": 2,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      }
+    ],
+    "medium": [
+      {
+        "tiles": [
+          [2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2, 2],
+          [2, 1, 1, 1, 1, 1, 2],
+          [2, 2, 2, 2, 3, 2, 2],
+          [2, 2, 2, 2, 2, 2, 2]
+        ],
+        "initItems": [
+          {
+            "row": 2,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      },
+      {
+        "tiles": [
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2, 3, 2, 2, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+        ],
+        "initItems": [
+          {
+            "row": 2,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      }
+    ],
+    "hard": [
+      {
+        "tiles": [
+          [2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 1, 2, 2],
+          [2, 1, 1, 1, 1, 1, 2],
+          [2, 2, 1, 2, 3, 2, 2],
+          [2, 2, 2, 2, 2, 2, 2]
+        ],
+        "initItems": [
+          {
+            "row": 2,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      },
+      {
+        "tiles": [
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 1, 2, 2, 3, 2, 2, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 2, 2, 2, 1, 2, 1, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+        ],
+        "initItems": [
+          {
+            "row": 2,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      }
+    ]
+  }
+}

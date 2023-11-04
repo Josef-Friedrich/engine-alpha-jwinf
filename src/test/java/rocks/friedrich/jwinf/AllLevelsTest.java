@@ -13,7 +13,7 @@ public class AllLevelsTest extends Scene {
   }
 
   public AllLevelsTest() {
-    var task = new Task("data/sea.json");
+    var task = Task.loadById("20-DE-13-Kerzen-einfach");
     var levels = new AllLevels(task);
     levels.getCamera().setPosition(new Vector(15, 5));
     Controller.launchScene(1200, 600, levels);

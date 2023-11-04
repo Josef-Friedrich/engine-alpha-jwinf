@@ -1,17 +1,28 @@
 {
-  "Grundbausteine – Einführung": {
-    "Bausteine zusammensetzen": "",
-    "Befehlsfolgen - Objekte im Weltraum": "",
-    "Befehlsfolgen - Murmeln": "",
-    "Plattformen": "",
-    "Lichter anzünden": "",
-    "Wiederholungen": "",
-    "Muster malen": "",
-    "Bedingte Anweisung": "",
-    "Labyrinth": "",
-    "Mehr Wiederholungen": "",
-    "Zick-Zack": "",
-    "Fischen": "",
-    "Abschluss: Haus malen": ""
+  "menu": {
+    "Grundbausteine – Einführung": {
+      "Bausteine zusammensetzen": null,
+      "Befehlsfolgen - Objekte im Weltraum": null,
+      "Befehlsfolgen - Murmeln": null,
+      "Plattformen": null,
+      "Lichter anzünden": null,
+      "Wiederholungen": null,
+      "Muster malen": null,
+      "Bedingte Anweisung": null,
+      "Labyrinth": null,
+      "Mehr Wiederholungen": null,
+      "Zick-Zack": null,
+      "Fischen": null,
+      "Abschluss: Haus malen": null
+    },
+    "Bedingte Anweisungen – Übungen": {
+      "Zünde alle Kerzen an": "20-DE-13-Kerzen-einfach",
+      "Finde das Ziel": "17-FR-07-platforms-marbles",
+      "Finde den Weg zum See": "19-DE-12-stay-on-the-road",
+      "Beheize das Schloss": null,
+      "Plattformen": null,
+      "Edelsteine und Hindernisse": null,
+      "Zelluläre Automaten": null
+    }
   }
 }

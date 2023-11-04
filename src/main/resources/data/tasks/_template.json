@@ -1,6 +1,15 @@
 {
+  "id": "",
+  "version": "",
+  "authors": "",
+  "translators": [""],
   "title": "",
   "intro": "",
+  "intros": {
+    "easy": "",
+    "medium": "",
+    "heard": ""
+  },
   "menu": [""],
   "sources": [
     ""

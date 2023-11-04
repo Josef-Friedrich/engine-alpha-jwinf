@@ -1,4 +1,7 @@
 {
+  "id": "19-DE-12-stay-on-the-road",
+  "version": "de.01",
+  "authors": "Jens Beuckenhauer",
   "title": "Finde den Weg zum See",
   "intro": "Programmiere den Roboter:\nDer Roboter möchte schwimmen gehen. Auf dem Weg zum See darf er die Straße nicht verlassen.\nHinweis: Der Roboter erkennt Gras, Bäume, Büsche, Blumen und Mauern als Hindernis.",
   "menu": [" Bedingte Anweisungen – Übungen", "Finde den Weg zum See "],
@@ -7,9 +10,6 @@
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2019/19-DE-12-stay-on-the-road/task_new.js",
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2019/19-DE-12-stay-on-the-road/index_new.html?channelId=task"
   ],
-  "id": "19-DE-12-stay-on-the-road",
-  "version": "de.01",
-  "authors": "Jens Beuckenhauer",
   "grid": {
     "hideSaveOrLoad": true,
     "conceptViewer": false,

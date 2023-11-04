@@ -8,7 +8,7 @@ import rocks.friedrich.jwinf.engine.task.Task;
 
 class TaskTest {
 
-  Task task = new Task("data/candle.json");
+  Task task = Task.loadById("20-DE-13-Kerzen-einfach");
 
   @Test
   void title() {

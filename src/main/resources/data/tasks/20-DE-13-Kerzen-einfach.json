@@ -1,8 +1,12 @@
 {
+  "id": "20-DE-13-Kerzen-einfach",
+  "version": "de.01",
+  "authors": "JwInf 2020",
   "title": "Kerzen anzünden",
   "intro": "Programmiere den Roboter:\nDer Roboter soll alle Kerzen anzünden.",
   "menu": ["Bedingte Anweisungen – Übungen", "Zünde alle Kerzen an"],
   "sources": [
+    "https://jwinf.de/task/1156",
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/index_new.html?channelId=task",
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js"
   ],

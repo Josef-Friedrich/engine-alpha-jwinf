@@ -44,7 +44,7 @@ public class Task {
 
   public Task(String filePath) {
     try {
-      data = JsonLoader.load(filePath);
+      data = JsonLoader.loadTask(filePath);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -57,6 +57,10 @@ public class Task {
     tiles = new HashMap<Integer, TileData>();
     buildTilesIndex(data);
     levels = new LevelCollection(data.levels, this);
+  }
+
+  public static Task loadById(String id) {
+    return new Task("data/tasks/%s.json".formatted(id));
   }
 
   private void buildTilesIndex(TaskData data) {

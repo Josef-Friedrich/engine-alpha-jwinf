@@ -20,6 +20,8 @@ public class TaskData {
    */
   public String intro;
 
+  public IntrosByDifficultyData intros;
+
   /**
    * HTML DIV id=menu
    */
