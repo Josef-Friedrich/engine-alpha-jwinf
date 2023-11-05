@@ -31,4 +31,6 @@ public class State {
    */
   public static TileMap map;
 
+  public static Menu menu = new Menu();
+
 }

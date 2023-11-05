@@ -1,7 +1,7 @@
 package rocks.friedrich.jwinf.engine.data;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -18,7 +18,7 @@ public class JsonLoader {
     return mapper.readValue(ResourceLoader.loadAsStream(filePath), TaskData.class);
   }
 
-  public static Map<String, Map<String, String>> loadMenu() throws StreamReadException, DatabindException, IOException {
+  public static LinkedHashMap<String, LinkedHashMap<String, String>> loadMenu() throws StreamReadException, DatabindException, IOException {
     ObjectMapper mapper = new ObjectMapper();
     var menu = mapper.readValue(ResourceLoader.loadAsStream("data/menu.json"), MenuData.class);
     return menu.menu;

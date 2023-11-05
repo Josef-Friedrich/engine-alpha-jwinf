@@ -1,7 +1,7 @@
 package rocks.friedrich.jwinf.engine.data.model;
 
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 public class MenuData {
-  public Map<String, Map<String, String>> menu;
+  public LinkedHashMap<String, LinkedHashMap<String, String>> menu;
 }
