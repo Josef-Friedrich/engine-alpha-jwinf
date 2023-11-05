@@ -1,5 +1,26 @@
 {
   "menu": {
+    "Arbeitsheft Algorithmen": {
+      "Bausteine zusammensetzen": null,
+      "Befehlsfolgen - Objekte im Weltraum": null,
+      "Befehlsfolgen - Murmeln": null,
+      "Plattformen": null,
+      "Lichter anzünden": null,
+      "Wiederholungen": null,
+      "Muster malen": null,
+      "Mehr Wiederholungen": null,
+      "Zick-Zack": null,
+      "Bedingte Anweisung": null,
+      "Labyrinth": null,
+      "Fischen": null,
+      "Haus malen": null,
+      "Murmel ablegen": null,
+      "Alle Murmeln": null,
+      "Finde das Ziel": null,
+      "Zünde alle Kerzen an": null,
+      "Finde den Weg zum See": null,
+      "Holz und Plattformen": null
+    },
     "Grundbausteine – Einführung": {
       "Bausteine zusammensetzen": null,
       "Befehlsfolgen - Objekte im Weltraum": null,
@@ -15,6 +36,28 @@
       "Fischen": null,
       "Abschluss: Haus malen": null
     },
+    "Schildkröte – Einführung": {
+      "Gehen": null,
+      "Drehen": null,
+      "Parameter": null,
+      "Wiederholungen": null
+    },
+    "Wiederholungen – Vertiefung": {
+      "Solange / Bis: Schatz": null,
+      "Solange / Bis: Murmeln": null,
+      "Ornamente": null
+    },
+    "Wiederholungen – Übungen": {
+      "Edelsteine sammeln": null,
+      "Muster malen": null,
+      "Straße sichern": null,
+      "Schneeflocke": null,
+      "Murmel ablegen": null,
+      "Schlange": null,
+      "Flaggen": null,
+      "Schnecke": null,
+      "Fünfeck": null
+    },
     "Bedingte Anweisungen – Übungen": {
       "Zünde alle Kerzen an": "20-DE-13-Kerzen-einfach",
       "Finde das Ziel": "17-FR-07-platforms-marbles",
@@ -23,6 +66,62 @@
       "Plattformen": null,
       "Edelsteine und Hindernisse": null,
       "Zelluläre Automaten": null
-    }
+    },
+    "Ein-/Ausgabe – Einführung": {
+      "Text ausgeben": null,
+      "Text verändern": null,
+      "Buchstaben entnehmen": null,
+      "Textteile entnehmen": null,
+      "Textteile suchen": null
+    },
+    "Variablen und Logik – Einführung": {
+      "Logische Verknüpfung": null,
+      "Dominosteine": null,
+      "Muster mit Variablen": null
+    },
+    "Variablen und Logik – Übungen": {
+      "Variablen & Rechnen": null,
+      "Alle Murmeln": null,
+      "Rucksack": null,
+      "Murmel finden": null,
+      "Fütterungszeit": null
+    },
+    "Ein-/Ausgabe – Übungen": {
+      "Gemischt": null,
+      "Gedächtnis": null,
+      "Passwörter": null,
+      "Lexikographisch": null,
+      "Text-Teile": null,
+      "Rucksack": null
+    },
+    "Funktionen – Einführung": {
+      "Wie verwende ich: Funktionen": null,
+      "Blumen": null
+    },
+    "Funktionen – Übungen": {
+      "Zahnräder": null,
+      "Kreuz": null,
+      "In der Bibliothek": null,
+      "Haus des Nikolaus": null
+    },
+    "Listen – Einführung": {
+      "Liste erzeugen": null,
+      "Liste durchsuchen": null,
+      "Liste durchlaufen": null,
+      "Text in Liste einlesen": null
+    },
+    "Listen – Übungen": {
+      "Felder färben": null,
+      "Muster malen": null,
+      "Fische ausliefern": null
+    },
+    "Schwere Aufgaben – Übungen": {
+      "Fibonacci-Zahlen": null,
+      "In der Bibliothek": null,
+      "Palindrome": null,
+      "Zelluläre Automaten": null,
+      "Fütterung": null
+    },
+    "Freie Umgebungen": { "Freie Turtle-Umgebung": null }
   }
 }
