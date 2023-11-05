@@ -28,5 +28,4 @@ public class GridData {
   public MaxInstructionsData maxInstructions;
 
   public Map<String, TileData> tiles;
-
 }

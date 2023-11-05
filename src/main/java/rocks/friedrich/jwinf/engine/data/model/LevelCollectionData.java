@@ -11,12 +11,17 @@ public class LevelCollectionData {
   public LevelData[] medium;
   public LevelData[] hard;
 
+  public List<LevelData> list;
+
   public List<LevelData> getLevelList() {
-    List<LevelData> collection = new ArrayList<>();
-    prepareList(easy, Difficulty.EASY, collection);
-    prepareList(medium, Difficulty.MEDIUM, collection);
-    prepareList(hard, Difficulty.HARD, collection);
-    return collection;
+    if (list != null) {
+      return list;
+    }
+    List<LevelData> list = new ArrayList<>();
+    prepareList(easy, Difficulty.EASY, list);
+    prepareList(medium, Difficulty.MEDIUM, list);
+    prepareList(hard, Difficulty.HARD, list);
+    return list;
   }
 
   private void prepareList(LevelData[] levels, Difficulty difficulty, Collection<LevelData> collection) {

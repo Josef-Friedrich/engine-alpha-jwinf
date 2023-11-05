@@ -95,6 +95,18 @@ public class Task {
     return getLevel(Difficulty.indexOf(difficulty), 0);
   }
 
+  public int getNumberOfLevels() {
+    return levels.numberOfLevels;
+  }
+
+  public int getMaxWidth() {
+    return levels.maxWidth;
+  }
+
+  public int getMaxHeight() {
+    return levels.maxHeight;
+  }
+
   // public void launchLevelByDifficulty(DifficultyLevel difficulty) {
   // Controller.launchLevel(getLevel(difficulty));
   // }

@@ -11,20 +11,47 @@ import rocks.friedrich.jwinf.engine.data.model.LevelData;
 
 public class LevelCollection {
   public Task task;
+
   public Map<Difficulty, List<Level>> levels;
+
+  public List<Level> list;
+
+  public int numberOfLevels;
+
+  public int maxWidth;
+
+  public int maxHeight;
+
+  private void setMaxWidthAndHeight() {
+    for (Level level : list) {
+      if (level.width > maxWidth) {
+        maxWidth = level.width;
+      }
+      if (level.height > maxHeight) {
+        maxHeight = level.height;
+      }
+    }
+  }
 
   public LevelCollection(LevelCollectionData data, Task task) {
     this.task = task;
+    list = new ArrayList<>();
     levels = new EnumMap<>(Difficulty.class);
-    for (LevelData level : data.getLevelList()) {
-      Difficulty difficulty = level.difficulty;
+    for (LevelData levelData : data.getLevelList()) {
+      Difficulty difficulty = levelData.difficulty;
       List<Level> levelList = levels.get(difficulty);
       if (levelList == null) {
         levelList = new ArrayList<Level>();
         levels.put(difficulty, levelList);
       }
-      levelList.add(new Level(level, task));
+      Level level = new Level(levelData, task);
+      levelList.add(level);
+      list.add(level);
     }
+
+    numberOfLevels = list.size();
+
+    setMaxWidthAndHeight();
   }
 
   public Level getLevel(Difficulty difficulty, int test) {
@@ -41,4 +68,5 @@ public class LevelCollection {
   public Level getLevel(int difficulty) {
     return getLevel(Difficulty.indexOf(difficulty), 0);
   }
+
 }
