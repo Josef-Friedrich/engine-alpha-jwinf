@@ -1,6 +1,7 @@
 package rocks.friedrich.jwinf.engine.scenes;
 
 import ea.Scene;
+import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.task.Task;
 
 public class AllLevels extends Scene {
@@ -10,16 +11,20 @@ public class AllLevels extends Scene {
   /**
    * aktuelle x-Position
    */
-  private int x = 0;
+  private float x = 0;
 
   /**
    * aktuelle y-Position
    */
-  private int y = 0;
+  private float y = 0;
 
   public AllLevels(Task task) {
     this.task = task;
     paintLevels();
+  }
+
+  public AllLevels(String taskId) {
+    this(Task.loadById(taskId));
   }
 
   public void paintLevels() {
@@ -32,4 +37,9 @@ public class AllLevels extends Scene {
       x += task.getMaxWidth() + 1;
     });
   }
+
+  public static void main(String[] args) {
+    Controller.launchScene(new AllLevels("17-FR-07-platforms-marbles"));
+  }
+
 }

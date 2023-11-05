@@ -1,5 +1,6 @@
 package rocks.friedrich.jwinf.engine.scenes;
 
+import ea.Game;
 import ea.Scene;
 import ea.actor.Rectangle;
 import ea.actor.Text;
@@ -45,7 +46,17 @@ public class MainMenu extends Scene {
       rectangle.setBorderRadius(BORDER_RADIUS);
       rectangle.setColor(AREA_COLOR);
       rectangle.addMouseClickListener((vector, mouseButton) -> {
-        System.out.println(content);
+        if (rectangle.contains(vector)) {
+          System.out.println(content);
+        }
+      });
+
+      rectangle.addFrameUpdateListener((v) -> {
+        if (rectangle.contains(Game.getMousePositionInCurrentScene())) {
+          rectangle.setOpacity(0.5f);;
+        } else {
+          rectangle.setOpacity(1f);;
+        }
       });
       return rectangle;
     }
