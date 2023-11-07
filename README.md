@@ -1,22 +1,36 @@
 # engine-alpha-jwinf
 
-Implementation der Übungsaufgaben auf jwinf in Java mit Hilfe der engine alpha
+Ein Versuch die
+[Trainingsaufgaben](https://jwinf.de/contest/?filter=open) auf
+[jwinf.de](https://jwinf.de) (Jugendwettbewerb Informatik) in Java
+nachzuprogrammieren. Als Gaming Engine kommt die [Engine
+Alpha](https://engine-alpha.org) zum Einsatz.
+
+
+Die Website jfinf.de läuft auf [medal](https://git.bwinf.de/bwinf/medal)
+(eine kleine, in Rust geschriebene Plattform für Browser-Wettbewerbe).
+Die einzelnen Aufgaben sind mit den
+[bebras-modules](https://github.com/France-ioi/bebras-modules)
+umgesetzt, die von der [Association
+France-ioi](https://www.france-ioi.org) bereit gestellt wird.
+
 
 # Build dependency
 
 make dependency
 
-https://git.bwinf.de/bwinf/medal
-
-https://github.com/France-ioi/bebras-modules
-
-https://www.france-ioi.org/
 
 https://github.com/France-ioi/bebras-modules/blob/master/pemFioi/quickAlgo/README.md
 
-https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js
+## Umsetzung einer Trainingsaufgabe auf jwinf.de
 
-https://concours.castor-informatique.fr/
+Eine Trainingsaufgabe ist in einer Javascript- und einer HTML-Datei definiert z. B.
+
+[Bedingte Anweisungen – Übungen / Zünde alle Kerzen an](https://jwinf.de/task/1156)
+
+### Javascript
+
+[20-DE-13-Kerzen-einfach/task_new.js](https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js)
 
 ```js
 function initTask(subTask) {
@@ -39,8 +53,8 @@ function initTask(subTask) {
           dropObject : "zuendeKerzeAn"
          },
          messages: {
-            successContainersFilled: "Bravo, der Roboter hat alle Kerzen angezündet!",
-            failureContainersFilled: "Der Roboter hat die Kerzen nicht korrekt angezündet.",
+            successContainersFilled: "Bravo, der Roboter hat alle Kerzen angezÃ¼ndet!",
+            failureContainersFilled: "Der Roboter hat die Kerzen nicht korrekt angezÃ¼ndet.",
          }
       }
    },
@@ -90,6 +104,41 @@ function initTask(subTask) {
     blocklyColourTheme: "bwinf",
     ignoreInvalidMoves: false,
     checkEndEveryTurn: false,
+    // checkEndCondition: function(context, lastTurn) {
+    //   var solved = true;
+    //   for (var iRow = 0; iRow < context.tiles.length; iRow++) {
+    //     var row = subTask.data[subTask.level][subTask.iTestCase].tiles[iRow];
+    //     for (var iCol = 0; iCol < row.length; iCol++) {
+    //       var markers = context.getItems(iRow, iCol, {
+    //         isMarker: true
+    //       });
+    //       var paint = context.getItems(iRow, iCol, {
+    //         isPaint: true
+    //       });
+    //       if (paint.length != markers.length) {
+    //         solved = false;
+    //       }
+    //     }
+    //   }
+    //   if (solved) {
+    //     context.success = true;
+    //     throw (window.taskStrings.success);
+    //   }
+    //   if (lastTurn) {
+    //     context.success = false;
+    //     throw (window.taskStrings.failure);
+    //   }
+    // },
+    // computeGrade: function(context, message) {
+    //   var rate = 0;
+    //   if (context.success) {
+    //     rate = 1;
+    //   }
+    //   return {
+    //     successRate: rate,
+    //     message: message
+    //   };
+    // }
   };
 
   subTask.data = {
@@ -146,4 +195,87 @@ function initTask(subTask) {
 }
 
 initWrapper(initTask, ["easy", "medium", "hard"], null, true);
+
+```
+
+### HTML
+
+[20-DE-13-Kerzen-einfach/index_new.html?channelId=task](https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/index_new.html?channelId=task)
+
+```html
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Kerzen anzünden</title>
+  <script>
+    window.stringsLanguage = 'de';
+    window.taskStrings = {
+      success: "Bravo! Der Roboter hat alle Kerzen angezündet.",
+      failure: "Dein Roboter hat nicht alle Kerzen angezündet.",
+    };
+  </script>
+  <script class="remove" type="text/javascript" src="../../../_common/modules/pemFioi/importModules-1.4-mobileFirst.js"
+    id="import-modules"></script>
+  <script class="remove" type="text/javascript">
+    var modulesPath = '../../../_common/modules/'
+    importModules([
+      'jquery-1.7.1', 'JSON-js', 'raphael-2.2.1', 'beaver-task-2.0', 'jschannel', 'raphaelFactory-1.0', 'delayFactory-1.0', 'simulationFactory-1.0',
+      'platform-pr', 'buttonsAndMessages', 'beav-1.0', 'installationAPI.01', 'miniPlatform', 'conceptDisplay-1.0', 'conceptViewer-1.0', 'conceptViewer_css-1.0',
+      'taskStyles-mobileFirst', 'blockly-robot-1.1', 'jwinf_css'
+    ]);
+    // set Blockly as default language when none is specified through ?language=
+    importLanguageModules('blockly');
+  </script>
+  <script class="remove" type="text/javascript">
+    var json = {
+      "id": "20-DE-13-Kerzen-einfach",
+      "language": "de",
+      "version": "de.01",
+      "authors": "JwInf 2020",
+      "translators": [],
+      "license": "",
+      "taskPathPrefix": "",
+      "modulesPathPrefix": "",
+      "browserSupport": [],
+      "fullFeedback": true,
+      "minWidth": "auto"
+    };
+  </script>
+  <script type="text/javascript" src="task_new.js"></script>
+</head>
+
+<body onresize="task.displayedSubTask.updateScale()">
+  <div id="task">
+    <h1>Kerzen anzünden</h1>
+    <img src="marker.png" style="display:none" />
+    <img src="paint.png" style="display:none" />
+    <img src="green_robot.png" style="display:none" />
+    <img src="icon.png" style="display:none" />
+
+    <div id="tabsContainer"></div>
+    <div id="taskContent" style="text-align:left;position:relative">
+      <div id="taskIntro">
+        Programmiere den Roboter:<br>
+        <p>
+          Der Roboter soll alle Kerzen anzünden.
+        </p>
+        <div class="hard">
+          <p data-lang="blockly">
+            Der Baustein <img src='aufKerze.png'style="vertical-align: middle" /> gibt <code>True</code> zurück, wenn der Roboter auf einer Kerze <img src='kerze.png' width="50px"/> steht.
+          </p>
+          <p data-lang="python">
+            Die Funktion <code>aufKerze()</code> gibt <code>True</code> zurück, wenn der Roboter auf einer Kerze <img src='kerze.png' width="50px"/> steht.
+          </p>
+        </div>
+      </div>
+      <div id="gridContainer"></div>
+      <div id="blocklyLibContent"></div>
+    </div>
+
+  </div><!-- task -->
+</body>
+
+</html>
 ```
