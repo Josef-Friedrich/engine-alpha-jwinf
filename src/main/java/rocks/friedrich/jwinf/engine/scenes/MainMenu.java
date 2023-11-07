@@ -4,12 +4,14 @@ import ea.Game;
 import ea.Scene;
 import ea.actor.Rectangle;
 import ea.actor.Text;
+import ea.internal.Bounds;
 import ea.internal.io.FontLoader;
 import rocks.friedrich.jwinf.engine.Color;
 import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.State;
+import rocks.friedrich.jwinf.engine.WindowScene;
 
-public class MainMenu extends Scene {
+public class MainMenu extends Scene implements WindowScene {
 
   private final float FONT_SIZE = 0.8f;
 
@@ -17,15 +19,21 @@ public class MainMenu extends Scene {
 
   private final float BORDER_RADIUS = 0.3f;
 
+  private final float INITAL_X = 0;
+
+  private final float INITAL_Y = 0;
+
+  private final float RECTANGLE_WIDTH = 20;
+
   /**
    * aktuelle y-Position.
    */
-  private float y = 8;
+  private float y = INITAL_X;
 
   /**
    * aktuelle x-Position.
    */
-  private float x = -10;
+  private float x = INITAL_Y;
 
   class ColoredArea {
     private Rectangle rectangle;
@@ -42,12 +50,12 @@ public class MainMenu extends Scene {
     }
 
     private Rectangle createRectangle() {
-      Rectangle rectangle = new Rectangle(20, FONT_SIZE * 2);
+      Rectangle rectangle = new Rectangle(RECTANGLE_WIDTH, FONT_SIZE * 2);
       rectangle.setBorderRadius(BORDER_RADIUS);
       rectangle.setColor(AREA_COLOR);
       rectangle.addMouseClickListener((vector, mouseButton) -> {
         if (rectangle.contains(vector)) {
-          Controller.launchScene(new SubMenu(main));
+          Controller.launchScene((WindowScene) new SubMenu(main));
         }
       });
 
@@ -67,6 +75,7 @@ public class MainMenu extends Scene {
       text.setColor(Color.BLACK);
       return text;
     }
+
   }
 
   public MainMenu() {
@@ -76,8 +85,16 @@ public class MainMenu extends Scene {
     });
   }
 
+  public Bounds getWindowBounds() {
+    return new Bounds(INITAL_X - 2, y, RECTANGLE_WIDTH + 2, INITAL_Y - y + 2);
+  }
+
+  public String getTitle() {
+    return "Trainingsaufgaben";
+  }
+
   public static void launch() {
-    Controller.launchScene(new MainMenu());
+    Controller.launchScene((WindowScene) new MainMenu());
   }
 
   public static void main(String[] args) {

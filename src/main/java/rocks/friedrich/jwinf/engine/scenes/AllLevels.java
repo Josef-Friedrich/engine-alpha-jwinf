@@ -1,13 +1,12 @@
 package rocks.friedrich.jwinf.engine.scenes;
 
 import ea.Scene;
-import ea.Vector;
 import ea.internal.Bounds;
 import rocks.friedrich.jwinf.engine.Controller;
-import rocks.friedrich.jwinf.engine.FittingScene;
+import rocks.friedrich.jwinf.engine.WindowScene;
 import rocks.friedrich.jwinf.engine.task.Task;
 
-public class AllLevels extends Scene implements FittingScene {
+public class AllLevels extends Scene implements WindowScene {
 
   public Task task;
 
@@ -37,7 +36,6 @@ public class AllLevels extends Scene implements FittingScene {
 
   public AllLevels(String taskId) {
     this(Task.loadById(taskId));
-    centerCamera();
   }
 
   public float getWidth() {
@@ -45,35 +43,18 @@ public class AllLevels extends Scene implements FittingScene {
     return (task.getMaxWidth() * numDiff) + (MARGIN * numDiff - 1);
   }
 
-  private float getPixelmeter() {
-    return getCamera().getZoom();
-  }
-
-  public int getWidthPixel() {
-    return Math.round(getWidth() * getPixelmeter());
-  }
-
   public float getHeight() {
     int numLevels = task.getMaxLevelsPerDifficulty();
     return (task.getMaxHeight() * numLevels) + (MARGIN * numLevels - 1);
-  }
-
-  public int getHeightPixel() {
-    return Math.round(getHeight() * getPixelmeter());
   }
 
   public String getTitle() {
     return task.title;
   }
 
-  private Bounds getBounds() {
+  public Bounds getWindowBounds() {
     return new Bounds(INITAL_X, INITAL_Y - getHeight() + task.getMaxHeight(), getWidth(),
         getHeight());
-  }
-
-  private void centerCamera() {
-    Vector center = getBounds().getCenter();
-    getCamera().setPosition(center);
   }
 
   public void paintLevels() {
@@ -90,7 +71,7 @@ public class AllLevels extends Scene implements FittingScene {
 
   public static void launch(String taskId) {
     var scene = new AllLevels(taskId);
-    Controller.launchScene((FittingScene) scene);
+    Controller.launchScene((WindowScene) scene);
   }
 
   public static void main(String[] args) {

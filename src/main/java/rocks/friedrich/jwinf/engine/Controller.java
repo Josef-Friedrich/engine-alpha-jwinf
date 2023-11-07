@@ -1,9 +1,13 @@
 package rocks.friedrich.jwinf.engine;
 
+import ea.Vector;
+
+import ea.Camera;
 import ea.Game;
 import ea.Scene;
 import ea.animation.interpolation.EaseInOutFloat;
 import ea.animation.interpolation.LinearFloat;
+import ea.internal.Bounds;
 
 public class Controller {
 
@@ -38,9 +42,16 @@ public class Controller {
     launchScene(scene, false);
   }
 
-  public static void launchScene(FittingScene scene) {
-    Game.setTitle(scene.getTitle());
-    launchScene(scene.getWidthPixel(), scene.getHeightPixel(), (Scene) scene);
+  public static void launchScene(WindowScene windowScene) {
+    Scene scene = (Scene) windowScene;
+    Camera camera = scene.getCamera();
+    float pixelPerMeter = camera.getZoom();
+    Bounds bounds = windowScene.getWindowBounds();
+    Vector center = bounds.getCenter();
+    camera.setPostion(center.getX(), center.getY());
+    Game.setTitle(windowScene.getTitle());
+    launchScene(Math.round(pixelPerMeter * bounds.getWidth()), Math.round(pixelPerMeter * bounds.getHeight()),
+        (Scene) windowScene);
   }
 
   public static void launchLevel(Level level) {

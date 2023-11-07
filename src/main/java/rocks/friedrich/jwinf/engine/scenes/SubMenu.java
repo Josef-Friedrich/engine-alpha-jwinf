@@ -3,26 +3,35 @@ package rocks.friedrich.jwinf.engine.scenes;
 import ea.Game;
 import ea.Scene;
 import ea.actor.Text;
+import ea.internal.Bounds;
 import rocks.friedrich.jwinf.engine.Color;
 import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.Fonts;
 import rocks.friedrich.jwinf.engine.State;
+import rocks.friedrich.jwinf.engine.WindowScene;
 
-public class SubMenu extends Scene {
+public class SubMenu extends Scene implements WindowScene {
 
   private final float FONT_SIZE = 0.8f;
 
-  /**
-   * aktuelle y-Position.
-   */
-  private float y = 8;
+  private final float INITAL_X = 0;
+
+  private final float INITAL_Y = 0;
 
   /**
    * aktuelle x-Position.
    */
-  private float x = -10;
+  private float x = INITAL_X;
+
+  /**
+   * aktuelle y-Position.
+   */
+  private float y = INITAL_Y;
+
+  private String main;
 
   public SubMenu(String main) {
+    this.main = main;
     State.menu.getSub(main).forEach((sub, id) -> {
       Text text = new Text(sub, FONT_SIZE);
       text.setFont(Fonts.regular);
@@ -35,14 +44,13 @@ public class SubMenu extends Scene {
           }
         });
 
-      text.addFrameUpdateListener((deltaSeconds) -> {
-        if (text.contains(Game.getMousePositionInCurrentScene())) {
-          text.setOpacity(0.5f);
-        } else {
-          text.setOpacity(1f);
-        }
-      });
-
+        text.addFrameUpdateListener((deltaSeconds) -> {
+          if (text.contains(Game.getMousePositionInCurrentScene())) {
+            text.setOpacity(0.5f);
+          } else {
+            text.setOpacity(1f);
+          }
+        });
       } else {
         text.setColor(Color.GRAY);
       }
@@ -54,8 +62,16 @@ public class SubMenu extends Scene {
     });
   }
 
+  public Bounds getWindowBounds() {
+    return new Bounds(INITAL_X - 2, y, 12, INITAL_Y - y + 2);
+  }
+
+  public String getTitle() {
+    return main;
+  }
+
   public static void main(String[] args) {
-    Controller.launchScene(new SubMenu("Bedingte Anweisungen – Übungen"));
+    Controller.launchScene((WindowScene) new SubMenu("Bedingte Anweisungen – Übungen"));
   }
 
 }
