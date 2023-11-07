@@ -29,13 +29,13 @@ public class MainMenu extends Scene {
 
   class ColoredArea {
     private Rectangle rectangle;
-    private String content;
+    private String main;
     private Text text;
 
-    public ColoredArea(String content, float x, float y) {
-      this.content = content;
+    public ColoredArea(String main, float x, float y) {
+      this.main = main;
       rectangle = createRectangle();
-      text = createText(content);
+      text = createText(main);
       rectangle.setPosition(x - 1, y - FONT_SIZE / 2);
       text.setPosition(x, y);
       add(rectangle, text);
@@ -47,15 +47,15 @@ public class MainMenu extends Scene {
       rectangle.setColor(AREA_COLOR);
       rectangle.addMouseClickListener((vector, mouseButton) -> {
         if (rectangle.contains(vector)) {
-          System.out.println(content);
+          Controller.launchScene(new SubMenu(main));
         }
       });
 
-      rectangle.addFrameUpdateListener((v) -> {
+      rectangle.addFrameUpdateListener((deltaSeconds) -> {
         if (rectangle.contains(Game.getMousePositionInCurrentScene())) {
-          rectangle.setOpacity(0.5f);;
+          rectangle.setOpacity(0.5f);
         } else {
-          rectangle.setOpacity(1f);;
+          rectangle.setOpacity(1f);
         }
       });
       return rectangle;
