@@ -13,8 +13,9 @@ import rocks.friedrich.jwinf.engine.data.model.TaskData;
 import rocks.friedrich.jwinf.engine.data.model.TileData;
 
 /**
- * Eine Trainingsaufgabe (Task) besteht aus mehreren Schwierigkeitsgraden
- * (Level)
+ * Eine Trainingsaufgabe (Task) besteht aus mehreren (in der Regel 3)
+ * Schwierigkeitsgraden (Difficulty). Ein Schwierikeitsgrad kann einen oder
+ * mehrere Tests (Level) haben.
  */
 public class Task {
 
@@ -41,6 +42,11 @@ public class Task {
   public Color backgroundColor;
 
   public Color gridColor;
+
+  /**
+   * Die Anzahl an Tests (Level) der Schwierkeitsstufe mit den meisten Tests.
+   */
+  private int maxLevelsPerDifficulty;
 
   public Task(String filePath) {
     try {
@@ -95,16 +101,48 @@ public class Task {
     return getLevel(Difficulty.indexOf(difficulty), 0);
   }
 
-  public int getNumberOfLevels() {
-    return levels.numberOfLevels;
-  }
-
+  /**
+   * Die Anzahl der Kacheln einer Zeile, des Tests (Level) mit der
+   * größten
+   * horizonalen Ausdehnung.
+   */
   public int getMaxWidth() {
     return levels.maxWidth;
   }
 
+  /**
+   * Die Anzahl der Kacheln einer Zeile, des Tests (Level) mit der
+   * größten
+   * vertikalen Ausdehnung.
+   */
   public int getMaxHeight() {
     return levels.maxHeight;
+  }
+
+  /**
+   * Die Anzahl an Schwierigkeitsgraden (In der Regel 3).
+   */
+  public int getNumberOfDifficulties() {
+    return levels.levels.size();
+  }
+
+  /**
+   * Die Anzahl der Tests des Schwierikeitsgrads mit den meisten Tests.
+   */
+  public int getMaxLevelsPerDifficulty() {
+    getLevels().forEach((difficulty, levels) -> {
+      if (maxLevelsPerDifficulty < levels.size()) {
+        maxLevelsPerDifficulty = levels.size();
+      }
+    });
+    return maxLevelsPerDifficulty;
+  }
+
+  /**
+   * Die Anzahl aller Tests (Level).
+   */
+  public int getNumberOfLevels() {
+    return levels.numberOfLevels;
   }
 
   // public void launchLevelByDifficulty(DifficultyLevel difficulty) {

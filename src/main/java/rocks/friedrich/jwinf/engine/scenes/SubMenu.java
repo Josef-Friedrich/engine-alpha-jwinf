@@ -31,7 +31,7 @@ public class SubMenu extends Scene {
         text.setColor(Color.BLACK);
         text.addMouseClickListener((vector, mouseButton) -> {
           if (text.contains(vector)) {
-            Controller.launchScene(new AllLevels(id));
+            AllLevels.launch(id);
           }
         });
 

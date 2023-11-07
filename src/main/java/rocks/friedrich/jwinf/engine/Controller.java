@@ -16,7 +16,7 @@ public class Controller {
   }
 
   public static void launchScene(int width, int height, Scene scene, boolean debug) {
-    scene.setBackgroundColor(Color.WHITE);
+    scene.setBackgroundColor(Color.GRAY);
     if (!Game.isRunning()) {
       Game.start(width, height, scene);
       Game.setDebug(debug);

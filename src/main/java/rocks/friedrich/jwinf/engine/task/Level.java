@@ -9,7 +9,7 @@ import rocks.friedrich.jwinf.engine.data.model.TileData;
 import rocks.friedrich.jwinf.engine.map.TileMap;
 
 /**
- * Ein Schwierigkeitsgrad bzw. eine Version einer Trainingsaufgabe.
+ * Ein Test bzw. eine Version einer Trainingsaufgabe in einer bestimmen Schwierigkeit.
  *
  * Eine Trainingsaufgabe kann mehrere Versionen unterschiedlicher
  * Schwierigkeitsgrade haben, z. B. eine Zweistern- (<code>Version**</code>,

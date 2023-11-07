@@ -9,6 +9,9 @@ import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.data.model.LevelCollectionData;
 import rocks.friedrich.jwinf.engine.data.model.LevelData;
 
+/**
+ * Die Tests (Level) nach Schwierigkeitsgraden geordnet.
+ */
 public class LevelCollection {
   public Task task;
 
