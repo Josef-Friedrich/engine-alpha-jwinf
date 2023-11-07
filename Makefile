@@ -24,4 +24,7 @@ package:
 json:
 	./.scripts/convert-task-json.mjs
 
+test:
+	mvn test
+
 .PHONY: dependency

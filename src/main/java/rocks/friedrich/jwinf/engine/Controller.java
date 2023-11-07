@@ -16,7 +16,7 @@ public class Controller {
   }
 
   public static void launchScene(int width, int height, Scene scene, boolean debug) {
-    scene.setBackgroundColor(Color.GRAY);
+    scene.setBackgroundColor(Color.WHITE);
     if (!Game.isRunning()) {
       Game.start(width, height, scene);
       Game.setDebug(debug);
@@ -36,6 +36,11 @@ public class Controller {
 
   public static void launchScene(Scene scene) {
     launchScene(scene, false);
+  }
+
+  public static void launchScene(FittingScene scene) {
+    Game.setTitle(scene.getTitle());
+    launchScene(scene.getWidthPixel(), scene.getHeightPixel(), (Scene) scene);
   }
 
   public static void launchLevel(Level level) {

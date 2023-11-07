@@ -1,13 +1,13 @@
 package rocks.friedrich.jwinf.engine.scenes;
 
-import ea.Game;
 import ea.Scene;
 import ea.Vector;
 import ea.internal.Bounds;
 import rocks.friedrich.jwinf.engine.Controller;
+import rocks.friedrich.jwinf.engine.FittingScene;
 import rocks.friedrich.jwinf.engine.task.Task;
 
-public class AllLevels extends Scene {
+public class AllLevels extends Scene implements FittingScene {
 
   public Task task;
 
@@ -62,6 +62,10 @@ public class AllLevels extends Scene {
     return Math.round(getHeight() * getPixelmeter());
   }
 
+  public String getTitle() {
+    return task.title;
+  }
+
   private Bounds getBounds() {
     return new Bounds(INITAL_X, INITAL_Y - getHeight() + task.getMaxHeight(), getWidth(),
         getHeight());
@@ -86,8 +90,7 @@ public class AllLevels extends Scene {
 
   public static void launch(String taskId) {
     var scene = new AllLevels(taskId);
-    Game.setTitle(scene.task.title);
-    Controller.launchScene(scene.getWidthPixel(), scene.getHeightPixel(), scene);
+    Controller.launchScene((FittingScene) scene);
   }
 
   public static void main(String[] args) {

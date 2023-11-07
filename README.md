@@ -6,23 +6,20 @@ Ein Versuch die
 nachzuprogrammieren. Als Gaming Engine kommt die [Engine
 Alpha](https://engine-alpha.org) zum Einsatz.
 
-
-Die Website jfinf.de läuft auf [medal](https://git.bwinf.de/bwinf/medal)
+Die Website jwinf.de läuft auf [medal](https://git.bwinf.de/bwinf/medal)
 (eine kleine, in Rust geschriebene Plattform für Browser-Wettbewerbe).
 Die einzelnen Aufgaben sind mit den
 [bebras-modules](https://github.com/France-ioi/bebras-modules)
 umgesetzt, die von der [Association
 France-ioi](https://www.france-ioi.org) bereit gestellt wird.
 
-
 # Build dependency
 
 make dependency
 
-
 https://github.com/France-ioi/bebras-modules/blob/master/pemFioi/quickAlgo/README.md
 
-## Umsetzung einer Trainingsaufgabe auf jwinf.de
+## Umsetzung einer Trainingsaufgabe auf jwinf.de:
 
 Eine Trainingsaufgabe ist in einer Javascript- und einer HTML-Datei definiert z. B.
 

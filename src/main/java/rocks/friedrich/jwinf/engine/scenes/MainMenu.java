@@ -76,8 +76,12 @@ public class MainMenu extends Scene {
     });
   }
 
-  public static void main(String[] args) {
+  public static void launch() {
     Controller.launchScene(new MainMenu());
+  }
+
+  public static void main(String[] args) {
+    launch();
   }
 
 }
