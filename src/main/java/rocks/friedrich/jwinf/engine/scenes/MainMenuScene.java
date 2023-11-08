@@ -5,13 +5,13 @@ import ea.Scene;
 import ea.actor.Rectangle;
 import ea.actor.Text;
 import ea.internal.Bounds;
-import ea.internal.io.FontLoader;
 import rocks.friedrich.jwinf.engine.Color;
 import rocks.friedrich.jwinf.engine.Controller;
+import rocks.friedrich.jwinf.engine.Fonts;
 import rocks.friedrich.jwinf.engine.State;
 import rocks.friedrich.jwinf.engine.WindowScene;
 
-public class MainMenu extends Scene implements WindowScene {
+public class MainMenuScene extends Scene implements WindowScene {
 
   private final float FONT_SIZE = 0.8f;
 
@@ -55,7 +55,7 @@ public class MainMenu extends Scene implements WindowScene {
       rectangle.setColor(AREA_COLOR);
       rectangle.addMouseClickListener((vector, mouseButton) -> {
         if (rectangle.contains(vector)) {
-          Controller.launchScene((WindowScene) new SubMenu(main));
+          Controller.launchScene((WindowScene) new SubMenuScene(main));
         }
       });
 
@@ -71,14 +71,14 @@ public class MainMenu extends Scene implements WindowScene {
 
     private Text createText(String content) {
       Text text = new Text(content, FONT_SIZE);
-      text.setFont(FontLoader.loadFromFile("fonts/titilium/TitilliumWeb-Bold.ttf"));
+      text.setFont(Fonts.bold);
       text.setColor(Color.BLACK);
       return text;
     }
 
   }
 
-  public MainMenu() {
+  public MainMenuScene() {
     State.menu.getMain().forEach((main, submenu) -> {
       new ColoredArea(main, x, y);
       y -= 2.5 * FONT_SIZE;
@@ -94,7 +94,7 @@ public class MainMenu extends Scene implements WindowScene {
   }
 
   public static void launch() {
-    Controller.launchScene((WindowScene) new MainMenu());
+    Controller.launchScene((WindowScene) new MainMenuScene());
   }
 
   public static void main(String[] args) {

@@ -23,7 +23,9 @@ public class Controller {
     scene.setBackgroundColor(Color.WHITE);
     if (!Game.isRunning()) {
       Game.start(width, height, scene);
-      Game.setDebug(debug);
+      if (debug) {
+        Game.setDebug(true);
+      }
     } else {
       Game.setFrameSize(width, height);
       Game.transitionToScene(scene);

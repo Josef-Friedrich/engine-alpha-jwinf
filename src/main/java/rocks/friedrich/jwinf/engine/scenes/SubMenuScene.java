@@ -10,7 +10,7 @@ import rocks.friedrich.jwinf.engine.Fonts;
 import rocks.friedrich.jwinf.engine.State;
 import rocks.friedrich.jwinf.engine.WindowScene;
 
-public class SubMenu extends Scene implements WindowScene {
+public class SubMenuScene extends Scene implements WindowScene {
 
   private final float FONT_SIZE = 0.8f;
 
@@ -30,7 +30,7 @@ public class SubMenu extends Scene implements WindowScene {
 
   private String main;
 
-  public SubMenu(String main) {
+  public SubMenuScene(String main) {
     this.main = main;
     State.menu.getSub(main).forEach((sub, id) -> {
       Text text = new Text(sub, FONT_SIZE);
@@ -40,7 +40,7 @@ public class SubMenu extends Scene implements WindowScene {
         text.setColor(Color.BLACK);
         text.addMouseClickListener((vector, mouseButton) -> {
           if (text.contains(vector)) {
-            AllLevels.launch(id);
+            AllLevelsScene.launch(id);
           }
         });
 
@@ -71,7 +71,7 @@ public class SubMenu extends Scene implements WindowScene {
   }
 
   public static void main(String[] args) {
-    Controller.launchScene((WindowScene) new SubMenu("Bedingte Anweisungen – Übungen"));
+    Controller.launchScene((WindowScene) new SubMenuScene("Bedingte Anweisungen – Übungen"));
   }
 
 }

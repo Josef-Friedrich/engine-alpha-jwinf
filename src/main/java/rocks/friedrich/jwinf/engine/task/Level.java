@@ -84,6 +84,10 @@ public class Level extends Scene {
     return grid;
   }
 
+  /**
+   * @param x - x-Koordinate der linken unteren Ecke
+   * @param y - y-Koordinate der linken unteren Ecke
+   */
   public void paintMapInScene(Scene scene, float x, float y) {
     var grid = createGrid();
     grid.setPosition(x, y);

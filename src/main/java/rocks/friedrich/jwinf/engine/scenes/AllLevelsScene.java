@@ -6,7 +6,7 @@ import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.WindowScene;
 import rocks.friedrich.jwinf.engine.task.Task;
 
-public class AllLevels extends Scene implements WindowScene {
+public class AllLevelsScene extends Scene implements WindowScene {
 
   public Task task;
 
@@ -29,12 +29,12 @@ public class AllLevels extends Scene implements WindowScene {
    */
   private float y = 0;
 
-  public AllLevels(Task task) {
+  public AllLevelsScene(Task task) {
     this.task = task;
     paintLevels();
   }
 
-  public AllLevels(String taskId) {
+  public AllLevelsScene(String taskId) {
     this(Task.loadById(taskId));
   }
 
@@ -70,7 +70,7 @@ public class AllLevels extends Scene implements WindowScene {
   }
 
   public static void launch(String taskId) {
-    var scene = new AllLevels(taskId);
+    var scene = new AllLevelsScene(taskId);
     Controller.launchScene((WindowScene) scene);
   }
 
