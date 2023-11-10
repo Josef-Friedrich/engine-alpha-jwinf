@@ -8,6 +8,7 @@ import ea.Scene;
 import ea.animation.interpolation.EaseInOutFloat;
 import ea.animation.interpolation.LinearFloat;
 import ea.internal.Bounds;
+import rocks.friedrich.jwinf.engine.task.Level;
 
 public class Controller {
 
@@ -58,9 +59,8 @@ public class Controller {
 
   public static void launchLevel(Level level) {
     State.level = level;
-    launchScene(State.pixelPerMeter * level.width, State.pixelPerMeter * level.height, level);
-    State.map = level.getMap();
-    State.actor = level.getActor();
-    level.focus();
+    launchScene(State.pixelPerMeter * level.cols, State.pixelPerMeter * level.rows, level);
+    State.map = level.tileMap;
+    State.actor = level.actor;
   }
 }
