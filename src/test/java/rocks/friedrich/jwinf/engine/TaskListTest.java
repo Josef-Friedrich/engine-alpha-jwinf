@@ -21,7 +21,7 @@ public class TaskListTest {
 
   @Test
   public void methodGet() {
-    assertEquals(list.get(0), "17-FR-07-platforms-marbles");
+    assertEquals(list.getId(0), "17-FR-07-platforms-marbles");
   }
 
   @Test

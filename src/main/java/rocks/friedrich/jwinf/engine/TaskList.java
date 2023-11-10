@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import ea.internal.io.ResourceLoader;
+import rocks.friedrich.jwinf.engine.task.Task;
 
 public class TaskList {
 
@@ -27,8 +28,16 @@ public class TaskList {
         .collect(Collectors.toList());
   }
 
-  public String get(int index) {
+  public List<String> getIds() {
+    return ids;
+  }
+
+  public String getId(int index) {
     return ids.get(current);
+  }
+
+  public Task get(int index) {
+    return Task.loadById(getId(index));
   }
 
   public void reset() {
