@@ -1,8 +1,6 @@
 package rocks.friedrich.jwinf.engine.task;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +8,6 @@ import rocks.friedrich.jwinf.engine.Color;
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.data.JsonLoader;
 import rocks.friedrich.jwinf.engine.data.model.TaskData;
-import rocks.friedrich.jwinf.engine.data.model.TileData;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren (in der Regel 3)
@@ -33,11 +30,7 @@ public class Task {
 
   public LevelCollection levels;
 
-  /**
-   * Nur die Kacheln, die benötigt werden, d. h. die einen Buchstaben, Namen und
-   * eine relativen Dateipfad haben.
-   */
-  public HashMap<Integer, TileData> tiles;
+  public TilesStore tiles;
 
   public Color backgroundColor;
 
@@ -60,29 +53,12 @@ public class Task {
     backgroundColor = new Color(data.grid.backgroundColor);
     gridColor = new Color(data.grid.gridColor);
 
-    tiles = new HashMap<Integer, TileData>();
-    buildTilesIndex(data);
+    tiles = new TilesStore(data.grid.tiles);
     levels = new LevelCollection(data.levels, this);
   }
 
   public static Task loadById(String id) {
     return new Task("data/tasks/%s.json".formatted(id));
-  }
-
-  private void buildTilesIndex(TaskData data) {
-    for (TileData tile : data.grid.tiles.values()) {
-      if (tile.relPath != null && tile.num != 0) {
-        tiles.put(tile.num, tile);
-      }
-    }
-  }
-
-  public TileData getTile(int num) {
-    return tiles.get(num);
-  }
-
-  public Collection<TileData> getTiles() {
-    return tiles.values();
   }
 
   public Map<Difficulty, List<Level>> getLevels() {

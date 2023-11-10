@@ -9,7 +9,8 @@ import rocks.friedrich.jwinf.engine.data.model.TileData;
 import rocks.friedrich.jwinf.engine.map.TileMap;
 
 /**
- * Ein Test bzw. eine Version einer Trainingsaufgabe in einer bestimmen Schwierigkeit.
+ * Ein Test bzw. eine Version einer Trainingsaufgabe in einer bestimmen
+ * Schwierigkeit.
  *
  * Eine Trainingsaufgabe kann mehrere Versionen unterschiedlicher
  * Schwierigkeitsgrade haben, z. B. eine Zweistern- (<code>Version**</code>,
@@ -39,42 +40,46 @@ public class Level extends Scene {
 
   public Grid grid;
 
+  public LevelMap map;
+
   /**
    * Der Haupt-Kachelsatz. Die Figur muss auf diesen Kachelsatz Zugriff haben,
    * um entscheiden zu können, ob sie sich vor einem Hindernis befindet oder
    * nicht.
    */
-  public TileMap map;
+  public TileMap tileMap;
 
   public Actor actor;
 
   public Level(LevelData data, Task task) {
     this.data = data;
     this.task = task;
-
-    width = data.getWidth();
-    height = data.getHeight();
+    map = new LevelMap(data.tiles);
+    width = map.cols;
+    height = map.rows;
     difficulty = data.difficulty;
     testNo = data.testNo;
   }
 
   public TileMap createTileMap() {
-    TileMap map = new TileMap(width, height, "images");
+    TileMap tileMap = new TileMap(width, height, "images");
 
-    for (TileData tile : task.getTiles()) {
-      map.registerImage(tile.letter, tile.relPath, tile.name);
+    for (TileData tile : task.tiles.all()) {
+      if (tile.relPath != null) {
+        tileMap.registerImage(tile.letter, tile.relPath, tile.name);
+      }
     }
 
-    for (int y = 0; y < height; y++) {
-      for (int x = 0; x < width; x++) {
-        int num = data.tiles[y][x];
-        TileData tile = task.getTile(num);
+    for (int row = 0; row < map.rows; row++) {
+      for (int col = 0; col < map.cols; col++) {
+        int num = data.tiles[row][col];
+        TileData tile = task.tiles.get(num);
         if (tile != null) {
-          map.setTile(x, y, tile.letter);
+          tileMap.setTile(col, row, tile.letter);
         }
       }
     }
-    return map;
+    return tileMap;
   }
 
   public Grid createGrid() {
@@ -105,14 +110,14 @@ public class Level extends Scene {
     add(grid);
   }
 
-  public void setMap(TileMap map) {
-    this.map = map;
-    add(this.map.container);
+  public void setTileMap(TileMap map) {
+    this.tileMap = map;
+    add(this.tileMap.container);
   }
 
   public void setMap(String pathPrefix, String extension) {
-    map = new TileMap(width, height, pathPrefix, extension);
-    add(map.container);
+    tileMap = new TileMap(width, height, pathPrefix, extension);
+    add(tileMap.container);
   }
 
   public void addActor(Actor actor) {
