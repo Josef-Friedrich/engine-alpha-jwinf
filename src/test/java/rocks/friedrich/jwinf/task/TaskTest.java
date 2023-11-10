@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf;
+package rocks.friedrich.jwinf.task;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -43,12 +43,12 @@ class TaskTest {
 
   @Test
   void methodGetMaxWidth() {
-    assertEquals(task.getMaxWidth(), 10);
+    assertEquals(task.getMaxCols(), 10);
   }
 
   @Test
   void methodGetMaxHeight() {
-    assertEquals(task.getMaxHeight(), 6);
+    assertEquals(task.getMaxRows(), 6);
   }
 
   @Test

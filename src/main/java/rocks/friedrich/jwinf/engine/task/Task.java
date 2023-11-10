@@ -82,8 +82,8 @@ public class Task {
    * größten
    * horizonalen Ausdehnung.
    */
-  public int getMaxWidth() {
-    return levels.maxWidth;
+  public int getMaxCols() {
+    return levels.maxCols;
   }
 
   /**
@@ -91,8 +91,8 @@ public class Task {
    * größten
    * vertikalen Ausdehnung.
    */
-  public int getMaxHeight() {
-    return levels.maxHeight;
+  public int getMaxRows() {
+    return levels.maxRows;
   }
 
   /**

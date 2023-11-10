@@ -27,7 +27,7 @@ public class LevelScene extends Scene implements WindowScene {
   }
 
   public Bounds getWindowBounds() {
-    return new Bounds(0, 0, level.width, level.height);
+    return new Bounds(0, 0, level.cols, level.rows);
   }
 
   public String getTitle() {

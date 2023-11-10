@@ -34,9 +34,9 @@ public class Level extends Scene {
    */
   public String intro;
 
-  public int width;
+  public int cols;
 
-  public int height;
+  public int rows;
 
   public Grid grid;
 
@@ -55,14 +55,14 @@ public class Level extends Scene {
     this.data = data;
     this.task = task;
     map = new LevelMap(data.tiles);
-    width = map.cols;
-    height = map.rows;
+    cols = map.cols;
+    rows = map.rows;
     difficulty = data.difficulty;
     testNo = data.testNo;
   }
 
   public TileMap createTileMap() {
-    TileMap tileMap = new TileMap(width, height, "images");
+    TileMap tileMap = new TileMap(cols, rows, "images");
 
     for (TileData tile : task.tiles.all()) {
       if (tile.relPath != null) {
@@ -83,7 +83,7 @@ public class Level extends Scene {
   }
 
   public Grid createGrid() {
-    Grid grid = new Grid(width, height);
+    Grid grid = new Grid(cols, rows);
     grid.setColor(task.gridColor);
     grid.setBackground(task.backgroundColor);
     return grid;
@@ -106,7 +106,7 @@ public class Level extends Scene {
   public void setGrid(String gridColor, String backgroundColor) {
     grid = createGrid();
     // Damit (0,0) in der Mitte einer Kachel liegt.
-    grid.setPosition(-0.5f, -height + 0.5f);
+    grid.setPosition(-0.5f, -rows + 0.5f);
     add(grid);
   }
 
@@ -116,7 +116,7 @@ public class Level extends Scene {
   }
 
   public void setMap(String pathPrefix, String extension) {
-    tileMap = new TileMap(width, height, pathPrefix, extension);
+    tileMap = new TileMap(cols, rows, pathPrefix, extension);
     add(tileMap.container);
   }
 

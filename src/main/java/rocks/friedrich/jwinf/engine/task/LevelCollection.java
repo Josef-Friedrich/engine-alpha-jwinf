@@ -21,17 +21,17 @@ public class LevelCollection {
 
   public int numberOfLevels;
 
-  public int maxWidth;
+  public int maxCols;
 
-  public int maxHeight;
+  public int maxRows;
 
-  private void setMaxWidthAndHeight() {
+  private void setMaxRowsAndCols() {
     for (Level level : list) {
-      if (level.width > maxWidth) {
-        maxWidth = level.width;
+      if (level.cols > maxCols) {
+        maxCols = level.cols;
       }
-      if (level.height > maxHeight) {
-        maxHeight = level.height;
+      if (level.rows > maxRows) {
+        maxRows = level.rows;
       }
     }
   }
@@ -54,7 +54,7 @@ public class LevelCollection {
 
     numberOfLevels = list.size();
 
-    setMaxWidthAndHeight();
+    setMaxRowsAndCols();
   }
 
   public Level getLevel(Difficulty difficulty, int test) {

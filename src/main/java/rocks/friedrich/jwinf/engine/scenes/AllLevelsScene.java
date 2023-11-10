@@ -40,12 +40,12 @@ public class AllLevelsScene extends Scene implements WindowScene {
 
   public float getWidth() {
     int numDiff = task.getNumberOfDifficulties();
-    return (task.getMaxWidth() * numDiff) + (MARGIN * numDiff - 1);
+    return (task.getMaxCols() * numDiff) + (MARGIN * numDiff - 1);
   }
 
   public float getHeight() {
     int numLevels = task.getMaxLevelsPerDifficulty();
-    return (task.getMaxHeight() * numLevels) + (MARGIN * numLevels - 1);
+    return (task.getMaxRows() * numLevels) + (MARGIN * numLevels - 1);
   }
 
   public String getTitle() {
@@ -53,7 +53,7 @@ public class AllLevelsScene extends Scene implements WindowScene {
   }
 
   public Bounds getWindowBounds() {
-    return new Bounds(INITAL_X, INITAL_Y - getHeight() + task.getMaxHeight(), getWidth(),
+    return new Bounds(INITAL_X, INITAL_Y - getHeight() + task.getMaxRows(), getWidth(),
         getHeight());
   }
 
@@ -63,9 +63,9 @@ public class AllLevelsScene extends Scene implements WindowScene {
       y = INITAL_Y;
       levels.forEach((level) -> {
         level.paintMapInScene(this, x, y);
-        y -= task.getMaxHeight() + 1;
+        y -= task.getMaxRows() + 1;
       });
-      x += task.getMaxWidth() + 1;
+      x += task.getMaxCols() + 1;
     });
   }
 
