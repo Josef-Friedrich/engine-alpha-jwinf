@@ -1,12 +1,18 @@
 package rocks.friedrich.jwinf.engine.scenes;
 
+import java.awt.event.KeyEvent;
+
 import ea.Scene;
+import ea.event.KeyListener;
 import ea.internal.Bounds;
 import rocks.friedrich.jwinf.engine.Controller;
+import rocks.friedrich.jwinf.engine.TaskList;
 import rocks.friedrich.jwinf.engine.WindowScene;
 import rocks.friedrich.jwinf.engine.task.Task;
 
-public class AllLevelsScene extends Scene implements WindowScene {
+public class AllLevelsScene extends Scene implements WindowScene, KeyListener {
+
+  static TaskList taskList = TaskList.readFromMenu();
 
   public Task task;
 
@@ -72,6 +78,18 @@ public class AllLevelsScene extends Scene implements WindowScene {
   public static void launch(String taskId) {
     var scene = new AllLevelsScene(taskId);
     Controller.launchScene((WindowScene) scene);
+  }
+
+  @Override
+  public void onKeyDown(KeyEvent e) {
+    switch (e.getKeyCode()) {
+      case KeyEvent.VK_UP:
+        launch(taskList.next());
+        break;
+      case KeyEvent.VK_DOWN:
+        launch(taskList.previous());
+        break;
+    }
   }
 
   public static void main(String[] args) {
