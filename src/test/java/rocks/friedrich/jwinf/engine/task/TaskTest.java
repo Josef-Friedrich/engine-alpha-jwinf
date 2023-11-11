@@ -41,7 +41,7 @@ class TaskTest {
 
   @Test
   void all() throws IOException {
-    TaskList list = new TaskList();
+    TaskList list = TaskList.readFromResources();
     for (String id : list.getIds()) {
       Task task = Task.loadById(id);
       assertTrue(task.title != null);

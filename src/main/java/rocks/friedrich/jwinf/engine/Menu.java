@@ -10,7 +10,7 @@ import rocks.friedrich.jwinf.engine.data.JsonLoader;
 
 public class Menu {
 
-  LinkedHashMap<String, LinkedHashMap<String, String>> data;
+  private LinkedHashMap<String, LinkedHashMap<String, String>> data;
 
   public Menu() {
     try {

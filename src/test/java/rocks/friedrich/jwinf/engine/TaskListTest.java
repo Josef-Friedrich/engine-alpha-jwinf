@@ -16,7 +16,19 @@ public class TaskListTest {
   }
 
   public TaskListTest() throws IOException {
-    list = new TaskList();
+    list = TaskList.readFromResources();
+  }
+
+  @Test
+  public void methodReadFromResources() throws IOException  {
+    TaskList list = TaskList.readFromResources();
+    assertEquals(list.size(), 3);
+  }
+
+  @Test
+  public void methodReadFromMenu() throws IOException  {
+    TaskList list = TaskList.readFromMenu();
+    assertEquals(list.size(), 3);
   }
 
   @Test

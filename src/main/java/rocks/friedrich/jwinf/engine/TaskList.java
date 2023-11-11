@@ -2,6 +2,7 @@ package rocks.friedrich.jwinf.engine;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,16 +17,34 @@ public class TaskList {
 
   private int current = 0;
 
-  public TaskList() throws IOException {
-    ids = listTaskIds();
-    Collections.sort(ids);
+  public TaskList(List<String> ids) {
+    this.ids = ids;
   }
 
-  private List<String> listTaskIds() throws IOException {
-    return Stream.of(ResourceLoader.loadAsFile("data/tasks").listFiles())
+  public static TaskList readFromResources() throws IOException {
+    List<String> ids = Stream.of(ResourceLoader.loadAsFile("data/tasks").listFiles())
         .filter(file -> !file.isDirectory() && !file.getName().equals("_template.json"))
         .map(File::getName).map((String fileName) -> fileName.replace(".json", ""))
         .collect(Collectors.toList());
+    Collections.sort(ids);
+    return new TaskList(ids);
+  }
+
+  public static TaskList readFromMenu() {
+    Menu menu = new Menu();
+    List<String> ids = new ArrayList<>();
+    menu.getMain().forEach((main, sub) -> {
+      sub.forEach((subMenu, taskId) -> {
+        if (taskId != null) {
+          ids.add(taskId);
+        }
+      });
+    });
+    return new TaskList(ids);
+  }
+
+  public int size() {
+    return ids.size();
   }
 
   public List<String> getIds() {
