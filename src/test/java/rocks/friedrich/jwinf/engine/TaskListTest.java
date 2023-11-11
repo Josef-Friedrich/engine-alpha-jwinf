@@ -20,15 +20,15 @@ public class TaskListTest {
   }
 
   @Test
-  public void methodReadFromResources() throws IOException  {
+  public void methodReadFromResources() throws IOException {
     TaskList list = TaskList.readFromResources();
-    assertEquals(list.size(), 3);
+    assertEquals(list.size(), 4);
   }
 
   @Test
-  public void methodReadFromMenu() throws IOException  {
+  public void methodReadFromMenu() throws IOException {
     TaskList list = TaskList.readFromMenu();
-    assertEquals(list.size(), 3);
+    assertEquals(list.size(), 4);
   }
 
   @Test
@@ -43,6 +43,6 @@ public class TaskListTest {
 
   @Test
   public void methodPrevious() {
-    assertEquals(list.previous(), "20-DE-13-Kerzen-einfach");
+    assertEquals(list.previous(), "castor-informatique.fr__questions__algorea_training_2__01_sequence_02_gems");
   }
 }

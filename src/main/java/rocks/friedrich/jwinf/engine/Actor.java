@@ -12,16 +12,19 @@ import ea.actor.Image;
 import ea.animation.Interpolator;
 import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
+import rocks.friedrich.jwinf.engine.task.LevelMap;
 
 interface MovementListener {
   /**
-   * @param x         Die aktuelle x-Position der Figur im Kachel-Gitter.
-   * @param y         Die aktuelle y-Position der Figur im Kachel-Gitter.
+   * @param row       Die aktuelle Zeile (y), in der sich die Figur im
+   *                  Kachel-Gitter befindet.
+   * @param col       Die aktuelle Spalte (x), in der sich die Figur im
+   *                  Kachel-Gitter befindet.
    * @param direction Die Richtung, in der sich die Figur bewegen will.
    *
    * @return Wahr, wenn sich die Figur bewegen darf, sonst falsch.
    */
-  boolean allowMovement(int x, int y, Direction direction);
+  boolean allowMovement(int row, int col, Direction direction);
 }
 
 public class Actor extends Image {
@@ -34,25 +37,28 @@ public class Actor extends Image {
    */
   private boolean inMotion = false;
 
+  private LevelMap map;
+
   protected float speed = 1;
 
-  public Actor(String filepath) {
+  public Actor(String filepath, LevelMap map) {
     super(filepath, 1, 1);
+    this.map = map;
 
     // grid edges
-    addMovementListener((int x, int y, Direction direction) -> {
+    addMovementListener((int row, int col, Direction direction) -> {
       switch (direction) {
         case RIGHT:
-          return x < State.map.width - 1;
+          return col < map.cols - 1;
 
         case UP:
-          return y > 0;
+          return row > 0;
 
         case LEFT:
-          return x > 0;
+          return col > 0;
 
         case DOWN:
-          return y < State.map.height - 1;
+          return row < map.rows - 1;
 
         default:
           return true;
@@ -60,44 +66,36 @@ public class Actor extends Image {
     });
 
     // Obstacles
-    addMovementListener((int x, int y, Direction direction) -> {
-      int xMovement = 0;
-      int yMovement = 0;
+    addMovementListener((int row, int col, Direction direction) -> {
+      int colMovement = 0;
+      int rowMovement = 0;
 
       switch (direction) {
         case RIGHT:
-          xMovement = 1;
+          colMovement = 1;
           break;
 
         case UP:
-          yMovement = -1;
+          rowMovement = -1;
           break;
 
         case LEFT:
-          xMovement = -1;
+          colMovement = -1;
           break;
 
         case DOWN:
-          yMovement = 1;
+          rowMovement = 1;
           break;
 
         default:
       }
 
-      return !State.map.isObstacle(x + xMovement, y + yMovement);
+      return !map.isObstacle(row + rowMovement, col + colMovement);
     });
   }
 
   public void addMovementListener(MovementListener listener) {
     movementListeners.add(listener);
-  }
-
-  /**
-   * Gib den Buchstaben der Kachel zurück, auf dem sich das Objekt gerade
-   * befindet.
-   */
-  public char getTile() {
-    return State.map.getLetter(getGridX(), getGridY());
   }
 
   public void setSpeed(float speed) {
@@ -128,13 +126,13 @@ public class Actor extends Image {
     // Falls die animierte Navigation nicht zu einem exakten Punkt im Kachelgitter
     // führt, wird die Figur auf die nächst gelegene exakte Koordinate gezwungen.
     // Möglicherweiße sprint die Figur dann.
-    setCenter(getGridX(), -1 * getGridY());
+    setCenter(col(), -1 * row());
     inMotion = false;
   }
 
   public boolean canMove(Direction direction) {
     for (MovementListener listener : this.movementListeners) {
-      if (!listener.allowMovement(getGridX(), getGridY(), direction)) {
+      if (!listener.allowMovement(col(), row(), direction)) {
         return false;
       }
     }
@@ -213,20 +211,28 @@ public class Actor extends Image {
     new Thread(this::goDown).start();
   }
 
-  /**
-   * Der gerundete x-Wert der Koordinate, an der sich die Figur im
-   * Kachelgitter befindet.
-   */
-  public int getGridX() {
-    return Math.round(getCenter().getX());
+  private int translateXToCol(int x) {
+    return x - map.x;
   }
 
   /**
-   * Der gerundete y-Wert der Koordinate, an der sich die Figur im
-   * Kachelgitter befindet.
+   * Die Spalte, in der sich die Figur im Kachelgitter befindet.
    */
-  public int getGridY() {
-    return -1 * Math.round(getCenter().getY());
+  public int col() {
+    return translateXToCol(Math.round(getCenter().getX()));
+  }
+
+  private int translateYToRow(int y) {
+    // y-Koordinate des linken oberen Ecks des Kachelgitters (Ursprung des Kachelgitter)
+    int yMap0 = map.rows - 1 + y;
+    return y - yMap0;
+  }
+
+  /**
+   * Die Reihe, in der sich die Figur im Kachelgitter befindet.
+   */
+  public int row() {
+    return translateYToRow(Math.round(getCenter().getY()));
   }
 
   public void wiggle() {
@@ -341,7 +347,7 @@ public class Actor extends Image {
     animate(duration, setter, State.interpolator, true, null);
   }
 
-  public void placeInGrid(int x, int y) {
+  public void placeInMap(int x, int y) {
     if (y > 0) {
       y = y * -1;
     }

@@ -83,10 +83,10 @@ public class AllLevelsScene extends Scene implements WindowScene, KeyListener {
   @Override
   public void onKeyDown(KeyEvent e) {
     switch (e.getKeyCode()) {
-      case KeyEvent.VK_UP:
+      case KeyEvent.VK_N:
         launch(taskList.next());
         break;
-      case KeyEvent.VK_DOWN:
+      case KeyEvent.VK_P:
         launch(taskList.previous());
         break;
     }
