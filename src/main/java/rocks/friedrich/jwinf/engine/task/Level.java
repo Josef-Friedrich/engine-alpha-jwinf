@@ -2,9 +2,9 @@ package rocks.friedrich.jwinf.engine.task;
 
 import ea.Scene;
 import ea.Vector;
-import rocks.friedrich.jwinf.engine.Robot;
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.Grid;
+import rocks.friedrich.jwinf.engine.Robot;
 import rocks.friedrich.jwinf.engine.data.model.LevelData;
 import rocks.friedrich.jwinf.engine.data.model.TileData;
 import rocks.friedrich.jwinf.engine.map.TileMap;
@@ -55,7 +55,7 @@ public class Level extends Scene {
   public Level(LevelData data, Task task) {
     this.data = data;
     this.task = task;
-    map = new LevelMap(data.tiles);
+    map = new LevelMap(data.tiles, task.tiles);
     cols = map.cols;
     rows = map.rows;
     difficulty = data.difficulty;
@@ -94,24 +94,25 @@ public class Level extends Scene {
    * @param x - x-Koordinate der linken unteren Ecke
    * @param y - y-Koordinate der linken unteren Ecke
    */
-  public Robot paintMapInScene(Scene scene, float x, float y) {
-    var grid = createGrid();
-    grid.setPosition(x, y);
-    scene.add(grid);
+  public LevelActors paintMapInScene(Scene scene, float x, float y) {
+    LevelActors actors = new LevelActors();
+    actors.grid = createGrid();
+    actors.grid.setPosition(x - 0.5f, y - 0.5f);
+    scene.add(actors.grid);
 
-    var tileMap = createTileMap().container;
-    tileMap.setPosition(x, y);
-    scene.add(tileMap);
+    actors.tileMap = createTileMap().container;
+    actors.tileMap.setPosition(x - 0.5f, y - 0.5f);
+    scene.add(actors.tileMap);
 
-    Robot robot = new Robot("candle/robot.png", map);
+    actors.robot = new Robot("images/candle/robot.png", map);
 
     map.setPosition(x, y);
 
     Vector robotPosition = map.translateToVector(data.initItems[0].row, data.initItems[0].col);
-    robot.setCenter(robotPosition.getX(), robotPosition.getY());
-    scene.add(robot);
+    actors.robot.setCenter(robotPosition.getX(), robotPosition.getY());
+    scene.add(actors.robot);
 
-    return robot;
+    return actors;
   }
 
   public void setGrid(String gridColor, String backgroundColor) {

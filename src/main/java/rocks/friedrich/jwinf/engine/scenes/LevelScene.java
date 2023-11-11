@@ -30,11 +30,12 @@ public class LevelScene extends Scene implements WindowScene, KeyListener {
   public LevelScene(Task task, Difficulty difficulty, int test) {
     this.task = task;
     level = task.getLevel(difficulty, test);
-    level.paintMapInScene(this, 0, 0);
+    var actors = level.paintMapInScene(this, 0, 0);
+    robot = actors.robot;
   }
 
   public Bounds getWindowBounds() {
-    return new Bounds(0, 0, level.cols, level.rows);
+    return new Bounds(-0.5f, -0.5f, level.cols, level.rows);
   }
 
   public String getTitle() {

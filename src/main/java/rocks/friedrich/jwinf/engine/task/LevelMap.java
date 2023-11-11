@@ -32,10 +32,18 @@ public class LevelMap {
    */
   public int y;
 
+  public LevelMap(int[][] map, TilesStore tiles) {
+    this.map = map;
+    rows = map.length;
+    cols = map[0].length;
+    this.tiles = tiles;
+  }
+
   public LevelMap(int[][] map) {
     this.map = map;
     rows = map.length;
     cols = map[0].length;
+    tiles = new TilesStore();
   }
 
   public LevelMap(int rows, int cols) {
@@ -48,7 +56,11 @@ public class LevelMap {
   }
 
   public boolean isObstacle(int row, int col) {
-    return get(row, col).isObstacle;
+    TileData tile = get(row, col);
+    if (tile != null) {
+      return tile.isObstacle;
+    }
+    return false;
   }
 
   public void setPosition(float x, float y) {
@@ -57,18 +69,19 @@ public class LevelMap {
   }
 
   /**
+   * y-Koordinate des Ursprungs des Kachelgitters (links oben)
+   */
+  public int row0y() {
+    return y + rows - 1;
+  }
+
+  /**
    * @param vector Ein Punkt im Engine-Alpha-Koordinatensystem.
    */
   public Point translateToPoint(Vector vector) {
     int xVector = Math.round(vector.getX());
     int yVector = Math.round(vector.getY());
-    // Verankerung der linken UNTEREN Ecke des Kachelgitters.
-    int xMap = x;
-    int yMap = y;
-
-    // y-Koordinate des Ursprungs des Kachelgitters (links oben)
-    int yMap0 = yMap + rows - 1;
-    return new Point(yMap0 - yVector, xVector - xMap);
+    return new Point(row0y() - yVector, xVector - x);
   }
 
   public Point translateToPoint(float x, float y) {
@@ -76,14 +89,7 @@ public class LevelMap {
   }
 
   public Vector translateToVector(Point point) {
-    // y-Koordinate des linken oberen Ecks des Kachelgitters (Ursprung des
-    // Kachelgitter)
-    // int yMap0 = map.rows - 1 + y;
-    // return y - yMap0;
-
-    // int xV = Math.round(vector.getX());
-    // int yV = Math.round(vector.getY());
-    return new Vector(0, 0);
+    return new Vector(x + point.col, row0y() - point.row);
   }
 
   public Vector translateToVector(int row, int col) {

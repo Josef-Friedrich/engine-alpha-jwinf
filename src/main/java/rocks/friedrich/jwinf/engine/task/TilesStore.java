@@ -30,6 +30,10 @@ public class TilesStore {
     }
   }
 
+  public TilesStore() {
+    this(new HashMap<String, TileData>());
+  }
+
   public TileData get(int num) {
     return tilesByNumber.get(num);
   }

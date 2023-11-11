@@ -13,6 +13,7 @@ import ea.animation.Interpolator;
 import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.engine.task.LevelMap;
+import rocks.friedrich.jwinf.engine.task.Point;
 
 interface MovementListener {
   /**
@@ -126,13 +127,13 @@ public class Robot extends Image {
     // Falls die animierte Navigation nicht zu einem exakten Punkt im Kachelgitter
     // führt, wird die Figur auf die nächst gelegene exakte Koordinate gezwungen.
     // Möglicherweiße sprint die Figur dann.
-    setCenter(col(), -1 * row());
+    // setCenter(Math.round(getX()), Math.round(getY()));
     inMotion = false;
   }
 
   public boolean canMove(Direction direction) {
     for (MovementListener listener : this.movementListeners) {
-      if (!listener.allowMovement(col(), row(), direction)) {
+      if (!listener.allowMovement(row(), col(), direction)) {
         return false;
       }
     }
@@ -211,28 +212,22 @@ public class Robot extends Image {
     new Thread(this::goDown).start();
   }
 
-  private int translateXToCol(int x) {
-    return x - map.x;
+  public Point point() {
+    return map.translateToPoint(getCenter());
   }
 
   /**
    * Die Spalte, in der sich die Figur im Kachelgitter befindet.
    */
   public int col() {
-    return translateXToCol(Math.round(getCenter().getX()));
-  }
-
-  private int translateYToRow(int y) {
-    // y-Koordinate des linken oberen Ecks des Kachelgitters (Ursprung des Kachelgitter)
-    int yMap0 = map.rows - 1 + y;
-    return y - yMap0;
+    return point().col;
   }
 
   /**
    * Die Reihe, in der sich die Figur im Kachelgitter befindet.
    */
   public int row() {
-    return translateYToRow(Math.round(getCenter().getY()));
+    return point().row;
   }
 
   public void wiggle() {

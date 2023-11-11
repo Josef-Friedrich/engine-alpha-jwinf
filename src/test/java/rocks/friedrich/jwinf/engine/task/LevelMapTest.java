@@ -25,32 +25,44 @@ public class LevelMapTest {
     assertEquals(map.cols, 5);
   }
 
+  private void assertPoint(Point point, int row, int col) {
+    assertEquals(point.row, row);
+    assertEquals(point.col, col);
+  }
+
   @Test
   public void methodTranslateToPoint() {
-    LevelMap map = create(3, 4, 3, 2);
-    Point point = map.translateToPoint(new Vector(5, 3));
-    assertEquals(point.row, 1);
-    assertEquals(point.col, 2);
+    Point point = create(3, 4, 3, 2).translateToPoint(5, 3);
+    assertPoint(point, 1, 2);
 
-    map = create(3, 4, -3, -2);
-    point = map.translateToPoint(new Vector(-1, -1));
-    assertEquals(point.row, 1);
-    assertEquals(point.col, 2);
+    point = create(3, 4, -3, -2).translateToPoint(-1, -1);
+    assertPoint(point, 1, 2);
 
-    map = create(3, 4, 5, -5);
-    point = map.translateToPoint(new Vector(7, -4));
-    assertEquals(point.row, 1);
-    assertEquals(point.col, 2);
+    point = create(3, 4, 5, -5).translateToPoint(7, -4);
+    assertPoint(point, 1, 2);
 
-    map = create(3, 4, 0, 0);
-    point = map.translateToPoint(new Vector(2, 1));
-    assertEquals(point.row, 1);
-    assertEquals(point.col, 2);
+    point = create(3, 4, 0, 0).translateToPoint(2, 1);
+    assertPoint(point, 1, 2);
 
-    map = create(10, 10, -5, -5);
-    point = map.translateToPoint(new Vector(4, 4));
-    assertEquals(point.row, 0);
-    assertEquals(point.col, 9);
+    point = create(10, 10, -5, -5).translateToPoint(4, 4);
+    assertPoint(point, 0, 9);
+  }
+
+  private void assertVector(Vector vector, int x, int y) {
+    assertEquals(vector.getX(), x);
+    assertEquals(vector.getY(), y);
+  }
+
+  @Test
+  public void methodTranslateToVector() {
+    Vector vector = create(3, 4, 3, 2).translateToVector(2, 0);
+    assertVector(vector, 3, 2);
+
+    vector = create(3, 4, -3, -2).translateToVector(2, 0);
+    assertVector(vector, -3, -2);
+
+    vector = create(3, 4, 0, 0).translateToVector(0, 0);
+    assertVector(vector, 0, 2);
   }
 
 }
