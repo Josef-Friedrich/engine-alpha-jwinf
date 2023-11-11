@@ -3,7 +3,7 @@ package rocks.friedrich.jwinf;
 import ea.Game;
 import ea.Scene;
 import ea.event.KeyListener;
-import rocks.friedrich.jwinf.engine.Actor;
+import rocks.friedrich.jwinf.engine.Robot;
 import rocks.friedrich.jwinf.engine.State;
 import rocks.friedrich.jwinf.engine.map.TileMap;
 
@@ -22,7 +22,7 @@ public class ActorTest extends Scene implements KeyListener {
 
   public int height;
 
-  private Actor robot;
+  private Robot robot;
 
   public ActorTest() {
     width = 5;

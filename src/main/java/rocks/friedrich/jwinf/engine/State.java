@@ -26,7 +26,7 @@ public class State {
   /**
    * Die aktuelle Figur.
    */
-  public static Actor actor;
+  public static Robot actor;
 
   /**
    * Der aktuelle Kachelsatz.

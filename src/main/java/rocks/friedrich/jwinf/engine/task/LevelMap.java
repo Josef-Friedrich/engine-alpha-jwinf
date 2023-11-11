@@ -51,9 +51,9 @@ public class LevelMap {
     return get(row, col).isObstacle;
   }
 
-  public void setPosition(int x, int y) {
-    this.x = x;
-    this.y = y;
+  public void setPosition(float x, float y) {
+    this.x = Math.round(x);
+    this.y = Math.round(y);
   }
 
   /**
@@ -71,6 +71,10 @@ public class LevelMap {
     return new Point(yMap0 - yVector, xVector - xMap);
   }
 
+  public Point translateToPoint(float x, float y) {
+    return translateToPoint(new Vector(x, y));
+  }
+
   public Vector translateToVector(Point point) {
     // y-Koordinate des linken oberen Ecks des Kachelgitters (Ursprung des
     // Kachelgitter)
@@ -80,6 +84,10 @@ public class LevelMap {
     // int xV = Math.round(vector.getX());
     // int yV = Math.round(vector.getY());
     return new Vector(0, 0);
+  }
+
+  public Vector translateToVector(int row, int col) {
+    return translateToVector(new Point(row, col));
   }
 
 }

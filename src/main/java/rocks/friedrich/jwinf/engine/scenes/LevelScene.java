@@ -1,16 +1,23 @@
 package rocks.friedrich.jwinf.engine.scenes;
 
+import java.awt.event.KeyEvent;
+
 import ea.Scene;
 import ea.internal.Bounds;
+import rocks.friedrich.jwinf.engine.Robot;
 import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.WindowScene;
 import rocks.friedrich.jwinf.engine.task.Level;
 import rocks.friedrich.jwinf.engine.task.Task;
 
-public class LevelScene extends Scene implements WindowScene {
+import ea.event.KeyListener;
+
+public class LevelScene extends Scene implements WindowScene, KeyListener {
   public Task task;
   public Level level;
+
+  private Robot robot;
 
   public LevelScene(String taskId, Difficulty difficulty) {
     this(taskId, difficulty, 0);
@@ -40,6 +47,35 @@ public class LevelScene extends Scene implements WindowScene {
 
   public static void launch(String taskId, Difficulty difficulty, int test) {
     Controller.launchScene((WindowScene) new LevelScene(taskId, difficulty, test));
+  }
+
+  @Override
+  public void onKeyDown(KeyEvent e) {
+    switch (e.getKeyCode()) {
+      // n = next
+      case KeyEvent.VK_N:
+        break;
+      // p = previous
+      case KeyEvent.VK_P:
+
+        break;
+
+      case KeyEvent.VK_RIGHT:
+        robot.goRightNonBlocking();
+        break;
+
+      case KeyEvent.VK_UP:
+        robot.goUpNonBlocking();
+        break;
+
+      case KeyEvent.VK_LEFT:
+        robot.goLeftNonBlocking();
+        break;
+
+      case KeyEvent.VK_DOWN:
+        robot.goDownNonBlocking();
+        break;
+    }
   }
 
   public static void main(String[] args) {

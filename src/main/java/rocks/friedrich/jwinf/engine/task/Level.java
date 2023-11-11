@@ -1,7 +1,8 @@
 package rocks.friedrich.jwinf.engine.task;
 
 import ea.Scene;
-import rocks.friedrich.jwinf.engine.Actor;
+import ea.Vector;
+import rocks.friedrich.jwinf.engine.Robot;
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.Grid;
 import rocks.friedrich.jwinf.engine.data.model.LevelData;
@@ -49,7 +50,7 @@ public class Level extends Scene {
    */
   public TileMap tileMap;
 
-  public Actor actor;
+  public Robot actor;
 
   public Level(LevelData data, Task task) {
     this.data = data;
@@ -93,7 +94,7 @@ public class Level extends Scene {
    * @param x - x-Koordinate der linken unteren Ecke
    * @param y - y-Koordinate der linken unteren Ecke
    */
-  public void paintMapInScene(Scene scene, float x, float y) {
+  public Robot paintMapInScene(Scene scene, float x, float y) {
     var grid = createGrid();
     grid.setPosition(x, y);
     scene.add(grid);
@@ -101,6 +102,16 @@ public class Level extends Scene {
     var tileMap = createTileMap().container;
     tileMap.setPosition(x, y);
     scene.add(tileMap);
+
+    Robot robot = new Robot("candle/robot.png", map);
+
+    map.setPosition(x, y);
+
+    Vector robotPosition = map.translateToVector(data.initItems[0].row, data.initItems[0].col);
+    robot.setCenter(robotPosition.getX(), robotPosition.getY());
+    scene.add(robot);
+
+    return robot;
   }
 
   public void setGrid(String gridColor, String backgroundColor) {
@@ -120,7 +131,7 @@ public class Level extends Scene {
     add(tileMap.container);
   }
 
-  public void addActor(Actor actor) {
+  public void addActor(Robot actor) {
     this.actor = actor;
     add(actor);
   }

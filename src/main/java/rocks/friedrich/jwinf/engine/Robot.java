@@ -27,7 +27,7 @@ interface MovementListener {
   boolean allowMovement(int row, int col, Direction direction);
 }
 
-public class Actor extends Image {
+public class Robot extends Image {
 
   private List<MovementListener> movementListeners = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class Actor extends Image {
 
   protected float speed = 1;
 
-  public Actor(String filepath, LevelMap map) {
+  public Robot(String filepath, LevelMap map) {
     super(filepath, 1, 1);
     this.map = map;
 
