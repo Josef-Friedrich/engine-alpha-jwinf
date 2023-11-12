@@ -13,7 +13,7 @@ public class Grid extends Actor {
 
   /**
    * In Pixel pro Meter. Ist beispielsweise die Einheit „Pixel pro Meter“ auf 60
-   * Pixel und dieses Attribute auf 2 gesetzt,
+   * Pixel und dieses Attribut auf 2 gesetzt,
    * dann werden die vom Gitter eingeschlossenen Rechtecke 120 auf 120 Pixel groß.
    */
   float size = 1;

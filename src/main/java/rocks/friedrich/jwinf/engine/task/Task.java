@@ -121,12 +121,4 @@ public class Task {
     return levels.numberOfLevels;
   }
 
-  // public void launchLevelByDifficulty(DifficultyLevel difficulty) {
-  // Controller.launchLevel(getLevel(difficulty));
-  // }
-
-  // public void launchLevelByDifficulty(int difficulty) {
-  // Controller.launchLevel(levels[difficulty]);
-  // }
-
 }

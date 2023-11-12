@@ -39,8 +39,6 @@ public class Level extends Scene {
 
   public int rows;
 
-  public Grid grid;
-
   public LevelMap map;
 
   /**
@@ -115,25 +113,4 @@ public class Level extends Scene {
     return actors;
   }
 
-  public void setGrid(String gridColor, String backgroundColor) {
-    grid = createGrid();
-    // Damit (0,0) in der Mitte einer Kachel liegt.
-    grid.setPosition(-0.5f, -rows + 0.5f);
-    add(grid);
-  }
-
-  public void setTileMap(TileMap map) {
-    this.tileMap = map;
-    add(this.tileMap.container);
-  }
-
-  public void setMap(String pathPrefix, String extension) {
-    tileMap = new TileMap(cols, rows, pathPrefix, extension);
-    add(tileMap.container);
-  }
-
-  public void addActor(Robot actor) {
-    this.actor = actor;
-    add(actor);
-  }
 }
