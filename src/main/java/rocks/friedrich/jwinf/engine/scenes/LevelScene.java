@@ -30,7 +30,7 @@ public class LevelScene extends Scene implements WindowScene, KeyListener {
   public LevelScene(Task task, Difficulty difficulty, int test) {
     this.task = task;
     level = task.getLevel(difficulty, test);
-    var actors = level.paintMapInScene(this, 0, 0);
+    var actors = level.placeActorsInScene(this, 0, 0);
     robot = actors.robot;
   }
 

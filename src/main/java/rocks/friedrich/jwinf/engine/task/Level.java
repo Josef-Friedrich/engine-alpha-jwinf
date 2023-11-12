@@ -1,5 +1,7 @@
 package rocks.friedrich.jwinf.engine.task;
 
+import java.lang.reflect.InvocationTargetException;
+
 import ea.Scene;
 import ea.Vector;
 import rocks.friedrich.jwinf.engine.Difficulty;
@@ -88,11 +90,21 @@ public class Level extends Scene {
     return grid;
   }
 
+  public Robot createRobot() throws InstantiationException, IllegalAccessException, IllegalArgumentException,
+      InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
+    Robot robot = Robot.class.getClassLoader()
+        .loadClass("rocks.friedrich.jwinf.tasks.conditionals.candle.Robot")
+        .asSubclass(Robot.class).getDeclaredConstructor(String.class, LevelMap.class).newInstance("images/candle/robot.png", map);
+    robot.addGridEdgesMovementListener();
+    robot.addObstaclesMovementListener();
+    return robot;
+  }
+
   /**
    * @param x - x-Koordinate der linken unteren Ecke
    * @param y - y-Koordinate der linken unteren Ecke
    */
-  public LevelActors paintMapInScene(Scene scene, float x, float y) {
+  public LevelActors placeActorsInScene(Scene scene, float x, float y) {
     LevelActors actors = new LevelActors();
     actors.grid = createGrid();
     actors.grid.setPosition(x - 0.5f, y - 0.5f);
@@ -102,9 +114,14 @@ public class Level extends Scene {
     actors.tileMap.setPosition(x - 0.5f, y - 0.5f);
     scene.add(actors.tileMap);
 
-    actors.robot = new Robot("images/candle/robot.png", map);
-
     map.setPosition(x, y);
+
+    try {
+      actors.robot = createRobot();
+    } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+        | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+      e.printStackTrace();
+    }
 
     Vector robotPosition = map.translateToVector(data.initItems[0].row, data.initItems[0].col);
     actors.robot.setCenter(robotPosition.getX(), robotPosition.getY());

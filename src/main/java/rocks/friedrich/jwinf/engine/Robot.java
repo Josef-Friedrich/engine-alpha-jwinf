@@ -45,8 +45,13 @@ public class Robot extends Image {
   public Robot(String filepath, LevelMap map) {
     super(filepath, 1, 1);
     this.map = map;
+  }
 
-    // grid edges
+  public void addMovementListener(MovementListener listener) {
+    movementListeners.add(listener);
+  }
+
+  public void addGridEdgesMovementListener() {
     addMovementListener((int row, int col, Direction direction) -> {
       switch (direction) {
         case RIGHT:
@@ -65,38 +70,27 @@ public class Robot extends Image {
           return true;
       }
     });
-
-    // Obstacles
-    addMovementListener((int row, int col, Direction direction) -> {
-      int colMovement = 0;
-      int rowMovement = 0;
-
-      switch (direction) {
-        case RIGHT:
-          colMovement = 1;
-          break;
-
-        case UP:
-          rowMovement = -1;
-          break;
-
-        case LEFT:
-          colMovement = -1;
-          break;
-
-        case DOWN:
-          rowMovement = 1;
-          break;
-
-        default:
-      }
-
-      return !map.isObstacle(row + rowMovement, col + colMovement);
-    });
   }
 
-  public void addMovementListener(MovementListener listener) {
-    movementListeners.add(listener);
+  public void addObstaclesMovementListener() {
+    addMovementListener((int row, int col, Direction direction) -> {
+      switch (direction) {
+        case RIGHT:
+          return col < map.cols - 1;
+
+        case UP:
+          return row > 0;
+
+        case LEFT:
+          return col > 0;
+
+        case DOWN:
+          return row < map.rows - 1;
+
+        default:
+          return true;
+      }
+    });
   }
 
   public void setSpeed(float speed) {

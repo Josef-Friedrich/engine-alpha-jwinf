@@ -59,7 +59,7 @@ public class AllLevelsScene extends Scene implements WindowScene, KeyListener {
   }
 
   public Bounds getWindowBounds() {
-    return new Bounds(INITAL_X, INITAL_Y - getHeight() + task.getMaxRows(), getWidth(),
+    return new Bounds(INITAL_X - 0.5f, INITAL_Y - getHeight() + task.getMaxRows() - 0.5f, getWidth(),
         getHeight());
   }
 
@@ -68,7 +68,7 @@ public class AllLevelsScene extends Scene implements WindowScene, KeyListener {
     task.getLevels().forEach((difficulty, levels) -> {
       y = INITAL_Y;
       levels.forEach((level) -> {
-        level.paintMapInScene(this, x, y);
+        level.placeActorsInScene(this, x, y);
         y -= task.getMaxRows() + 1;
       });
       x += task.getMaxCols() + 1;
