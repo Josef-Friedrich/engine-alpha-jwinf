@@ -244,6 +244,10 @@ public class Robot extends Image {
     inMotion = false;
   }
 
+  /**
+   *
+   * @param degree
+   */
   public void rotateByAnimated(double degree) {
     if (inMotion) {
       return;
