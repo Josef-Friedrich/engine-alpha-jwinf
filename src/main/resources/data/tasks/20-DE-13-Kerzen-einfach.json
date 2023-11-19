@@ -10,6 +10,7 @@
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/index_new.html?channelId=task",
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js"
   ],
+  "packagePath": "conditionals/candle",
   "grid": {
     "backgroundColor": "#c5e2dd",
     "gridColor": "#b4ccc7",

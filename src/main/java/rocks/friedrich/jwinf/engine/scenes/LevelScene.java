@@ -80,7 +80,8 @@ public class LevelScene extends Scene implements WindowScene, KeyListener {
   }
 
   public static void main(String[] args) {
-    launch("20-DE-13-Kerzen-einfach", Difficulty.HARD);
+    launch("19-DE-12-stay-on-the-road", Difficulty.HARD);
+    // launch("20-DE-13-Kerzen-einfach", Difficulty.HARD);
   }
 
 }

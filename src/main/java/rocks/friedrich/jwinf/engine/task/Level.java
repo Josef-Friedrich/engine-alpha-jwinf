@@ -92,9 +92,15 @@ public class Level extends Scene {
 
   public Robot createRobot() throws InstantiationException, IllegalAccessException, IllegalArgumentException,
       InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
+
+    String className = "rocks.friedrich.jwinf.tasks.conditionals.candle.Robot";
+    if (task.data.packagePath != null) {
+      className = "rocks.friedrich.jwinf.tasks.%s.Robot".formatted(task.data.packagePath.replace("/", "."));
+    }
     Robot robot = Robot.class.getClassLoader()
-        .loadClass("rocks.friedrich.jwinf.tasks.conditionals.candle.Robot")
-        .asSubclass(Robot.class).getDeclaredConstructor(String.class, LevelMap.class).newInstance("images/candle/robot.png", map);
+        .loadClass(className)
+        .asSubclass(Robot.class).getDeclaredConstructor(String.class, LevelMap.class)
+        .newInstance("images/candle/robot.png", map);
     robot.addGridEdgesMovementListener();
     robot.addObstaclesMovementListener();
     return robot;

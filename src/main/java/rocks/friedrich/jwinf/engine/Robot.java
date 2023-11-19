@@ -74,22 +74,30 @@ public class Robot extends Image {
 
   public void addObstaclesMovementListener() {
     addMovementListener((int row, int col, Direction direction) -> {
+      int rowMovement = 0;
+      int colMovement = 0;
+
       switch (direction) {
         case RIGHT:
-          return col < map.cols - 1;
+          colMovement = 1;
+          break;
 
         case UP:
-          return row > 0;
+          rowMovement = -1;
+          break;
 
         case LEFT:
-          return col > 0;
+          colMovement = -1;
+          break;
 
         case DOWN:
-          return row < map.rows - 1;
+          rowMovement = 1;
+          break;
 
         default:
-          return true;
       }
+
+      return !map.isObstacle(row + rowMovement, col + colMovement);
     });
   }
 
