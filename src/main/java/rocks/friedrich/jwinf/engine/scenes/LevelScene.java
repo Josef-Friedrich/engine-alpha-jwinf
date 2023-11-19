@@ -10,6 +10,7 @@ import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.WindowScene;
 import rocks.friedrich.jwinf.engine.task.Level;
 import rocks.friedrich.jwinf.engine.task.Task;
+import rocks.friedrich.jwinf.engine.RobotAction;
 
 import ea.event.KeyListener;
 
@@ -18,6 +19,8 @@ public class LevelScene extends Scene implements WindowScene, KeyListener {
   public Level level;
 
   private Robot robot;
+
+  private RobotAction action;
 
   public LevelScene(String taskId, Difficulty difficulty) {
     this(taskId, difficulty, 0);
@@ -42,12 +45,34 @@ public class LevelScene extends Scene implements WindowScene, KeyListener {
     return level.task.title;
   }
 
+  public void setAction(RobotAction action) {
+    this.action = action;
+  }
+
+  public void act() {
+    if (action != null) {
+      action.act(robot, level);
+    }
+  }
+
   public static void launch(String taskId, Difficulty difficulty) {
     launch(taskId, difficulty, 0);
   }
 
   public static void launch(String taskId, Difficulty difficulty, int test) {
-    Controller.launchScene((WindowScene) new LevelScene(taskId, difficulty, test));
+    launch(taskId, difficulty, test, null);
+  }
+
+  public static void launch(String taskId, RobotAction action) {
+    launch(taskId, Difficulty.EASY, 0, action);
+  }
+
+  public static void launch(String taskId, Difficulty difficulty, int test, RobotAction action) {
+    LevelScene scene = new LevelScene(taskId, difficulty, test);
+    if (action != null) {
+      scene.setAction(action);
+    }
+    Controller.launchScene((WindowScene) scene);
   }
 
   @Override
@@ -58,7 +83,10 @@ public class LevelScene extends Scene implements WindowScene, KeyListener {
         break;
       // p = previous
       case KeyEvent.VK_P:
+        break;
 
+      case KeyEvent.VK_A:
+        new Thread(this::act).start();
         break;
 
       case KeyEvent.VK_RIGHT:

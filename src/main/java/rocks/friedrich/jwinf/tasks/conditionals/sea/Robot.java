@@ -9,11 +9,11 @@ public class Robot extends rocks.friedrich.jwinf.engine.Robot {
   }
 
   public void rotateLeft() {
-    rotateByAnimated(-90);
+    rotateAnimated(180);
   }
 
   public void rotateRight() {
-    rotateByAnimated(90);
+    rotateAnimated(0);
   }
 
   public boolean isBeforeObstacle() {
