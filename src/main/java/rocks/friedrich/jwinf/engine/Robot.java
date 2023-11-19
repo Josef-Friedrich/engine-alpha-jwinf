@@ -172,7 +172,7 @@ public class Robot extends Image {
   }
 
   /**
-   * Gehe einen Pixelmeter in die Richtung der aktuellen Rotation.
+   * Gehe einen Pixelmeter in Richtung der aktuellen Rotation.
    */
   public void go() {
     go(getDirection());
