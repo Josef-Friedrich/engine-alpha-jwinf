@@ -16,33 +16,29 @@ public class MainMenuScene extends Scene implements WindowScene {
 
   private final Color AREA_COLOR = new Color("#99d422");
 
-  private final float BORDER_RADIUS = 0.3f;
+  private final float INITIAL_X = 0;
 
-  private final float INITAL_X = 0;
-
-  private final float INITAL_Y = 0;
+  private final float INITIAL_Y = 0;
 
   private final float RECTANGLE_WIDTH = 20;
 
   /**
    * aktuelle y-Position.
    */
-  private float y = INITAL_X;
+  private float y = INITIAL_X;
 
   /**
    * aktuelle x-Position.
    */
-  private float x = INITAL_Y;
+  private float x = INITIAL_Y;
 
   class ColoredArea {
-    private Rectangle rectangle;
-    private String main;
-    private Text text;
+    private final String main;
 
     public ColoredArea(String main, float x, float y) {
       this.main = main;
-      rectangle = createRectangle();
-      text = createText(main);
+      Rectangle rectangle = createRectangle();
+      Text text = createText(main);
       rectangle.setPosition(x - 1, y - FONT_SIZE / 2);
       text.setPosition(x, y);
       add(rectangle, text);
@@ -50,6 +46,7 @@ public class MainMenuScene extends Scene implements WindowScene {
 
     private Rectangle createRectangle() {
       Rectangle rectangle = new Rectangle(RECTANGLE_WIDTH, FONT_SIZE * 2);
+      float BORDER_RADIUS = 0.3f;
       rectangle.setBorderRadius(BORDER_RADIUS);
       rectangle.setColor(AREA_COLOR);
       rectangle.addMouseClickListener((vector, mouseButton) -> {
@@ -80,12 +77,12 @@ public class MainMenuScene extends Scene implements WindowScene {
   public MainMenuScene() {
     State.menu.getMain().forEach((main, submenu) -> {
       new ColoredArea(main, x, y);
-      y -= 2.5 * FONT_SIZE;
+      y -= (float) (2.5 * FONT_SIZE);
     });
   }
 
   public Bounds getWindowBounds() {
-    return new Bounds(INITAL_X - 2, y, RECTANGLE_WIDTH + 2, INITAL_Y - y + 2);
+    return new Bounds(INITIAL_X - 2, y, RECTANGLE_WIDTH + 2, INITIAL_Y - y + 2);
   }
 
   public String getTitle() {

@@ -16,13 +16,13 @@ public class AllLevelsScene extends Scene implements WindowScene, KeyListener, A
 
   static TaskList taskList = TaskList.readFromMenu();
 
-  private ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();
+  private final ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();
 
   public Task task;
 
-  private final float INITAL_X = 0;
+  private final float INITIAL_X = 0;
 
-  private final float INITAL_Y = 0;
+  private final float INITIAL_Y = 0;
 
   /**
    * Abstand zwischen den Tests.
@@ -63,7 +63,7 @@ public class AllLevelsScene extends Scene implements WindowScene, KeyListener, A
   }
 
   public Bounds getWindowBounds() {
-    return new Bounds(INITAL_X - 0.5f, INITAL_Y - getHeight() + task.getMaxRows() - 0.5f, getWidth(),
+    return new Bounds(INITIAL_X - 0.5f, INITIAL_Y - getHeight() + task.getMaxRows() - 0.5f, getWidth(),
         getHeight());
   }
 
@@ -72,9 +72,9 @@ public class AllLevelsScene extends Scene implements WindowScene, KeyListener, A
   }
 
   public void paintLevels() {
-    x = INITAL_X;
+    x = INITIAL_X;
     task.getLevels().forEach((difficulty, levels) -> {
-      y = INITAL_Y;
+      y = INITIAL_Y;
       levels.forEach((level) -> {
         assembledLevels.add(level.placeActorsInScene(this, x, y));
         y -= task.getMaxRows() + 1;

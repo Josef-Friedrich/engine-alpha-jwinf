@@ -21,7 +21,7 @@ import rocks.friedrich.jwinf.engine.task.Task;
  * <em>easy</em>), Dreistern-(<code>Version***</code>, <em>medium</em>), und
  * eine Vierstern-Version (<code>Version****</code>, <em>hard</em>).
  */
-public class Level extends Scene {
+public class Level {
 
   public LevelData data;
 

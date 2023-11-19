@@ -16,12 +16,12 @@ import rocks.friedrich.jwinf.engine.robot.RobotAction;
 import ea.event.KeyListener;
 
 public class LevelScene extends Scene implements WindowScene, KeyListener, AssembledLevelScene {
-  private ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();
+  private final ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();
 
   public Task task;
   public Level level;
 
-  private Robot robot;
+  private final Robot robot;
 
   private RobotAction action;
 

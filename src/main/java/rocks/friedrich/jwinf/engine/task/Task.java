@@ -14,7 +14,7 @@ import rocks.friedrich.jwinf.engine.map.TilesStore;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren (in der Regel 3)
- * Schwierigkeitsgraden (Difficulty). Ein Schwierikeitsgrad kann einen oder
+ * Schwierigkeitsgraden (Difficulty). Ein Schwierigkeitsgrad kann einen oder
  * mehrere Tests (Level) haben.
  */
 public class Task {
@@ -40,7 +40,7 @@ public class Task {
   public Color gridColor;
 
   /**
-   * Die Anzahl an Tests (Level) der Schwierkeitsstufe mit den meisten Tests.
+   * Die Anzahl an Tests (Level) der Schwierigkeitsstufe mit den meisten Tests.
    */
   private int maxLevelsPerDifficulty;
 
@@ -83,7 +83,7 @@ public class Task {
   /**
    * Die Anzahl der Kacheln einer Zeile, des Tests (Level) mit der
    * größten
-   * horizonalen Ausdehnung.
+   * horizontalen Ausdehnung.
    */
   public int getMaxCols() {
     return levels.maxCols;
@@ -106,7 +106,7 @@ public class Task {
   }
 
   /**
-   * Die Anzahl der Tests des Schwierikeitsgrads mit den meisten Tests.
+   * Die Anzahl der Tests des Schwierigkeitsgrads mit den meisten Tests.
    */
   public int getMaxLevelsPerDifficulty() {
     getLevels().forEach((difficulty, levels) -> {

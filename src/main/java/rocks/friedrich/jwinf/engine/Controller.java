@@ -1,14 +1,12 @@
 package rocks.friedrich.jwinf.engine;
 
-import ea.Vector;
-
 import ea.Camera;
 import ea.Game;
 import ea.Scene;
+import ea.Vector;
 import ea.animation.interpolation.EaseInOutFloat;
 import ea.animation.interpolation.LinearFloat;
 import ea.internal.Bounds;
-import rocks.friedrich.jwinf.engine.level.Level;
 import rocks.friedrich.jwinf.engine.scenes.WindowScene;
 
 public class Controller {
@@ -56,12 +54,5 @@ public class Controller {
 
   public static void launchScene(int width, int height, Scene scene) {
     launchScene(width, height, scene, false);
-  }
-
-  public static void launchLevel(Level level) {
-    State.level = level;
-    launchScene(State.pixelPerMeter * level.cols, State.pixelPerMeter * level.rows, level);
-    State.map = level.tileMap;
-    State.actor = level.actor;
   }
 }

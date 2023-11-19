@@ -100,6 +100,11 @@ public class Robot extends Image {
     });
   }
 
+  public boolean isOnExit() {
+    var tile = map.get(row(), col());
+    return tile != null && tile.isExit;
+  }
+
   public void setSpeed(float speed) {
     this.speed = speed;
   }
