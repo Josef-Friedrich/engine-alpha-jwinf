@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.tasks.conditionals.sea;
 
-import rocks.friedrich.jwinf.engine.RobotWrapper;
+import rocks.friedrich.jwinf.engine.robot.RobotWrapper;
 
 public class Robot extends RobotWrapper {
 

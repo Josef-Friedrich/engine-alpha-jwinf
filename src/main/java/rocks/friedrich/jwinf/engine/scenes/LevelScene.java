@@ -6,16 +6,13 @@ import java.util.List;
 
 import ea.Scene;
 import ea.internal.Bounds;
-import rocks.friedrich.jwinf.engine.Robot;
-import rocks.friedrich.jwinf.engine.AssembledLevelScene;
 import rocks.friedrich.jwinf.engine.Controller;
-import rocks.friedrich.jwinf.engine.Difficulty;
-import rocks.friedrich.jwinf.engine.WindowScene;
-import rocks.friedrich.jwinf.engine.task.AssembledLevel;
-import rocks.friedrich.jwinf.engine.task.Level;
 import rocks.friedrich.jwinf.engine.task.Task;
-import rocks.friedrich.jwinf.engine.RobotAction;
-
+import rocks.friedrich.jwinf.engine.level.AssembledLevel;
+import rocks.friedrich.jwinf.engine.level.Difficulty;
+import rocks.friedrich.jwinf.engine.level.Level;
+import rocks.friedrich.jwinf.engine.robot.Robot;
+import rocks.friedrich.jwinf.engine.robot.RobotAction;
 import ea.event.KeyListener;
 
 public class LevelScene extends Scene implements WindowScene, KeyListener, AssembledLevelScene {

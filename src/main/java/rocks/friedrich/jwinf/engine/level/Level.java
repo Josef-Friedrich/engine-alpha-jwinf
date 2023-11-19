@@ -1,16 +1,16 @@
-package rocks.friedrich.jwinf.engine.task;
+package rocks.friedrich.jwinf.engine.level;
 
 import java.lang.reflect.InvocationTargetException;
 
 import ea.Scene;
 import ea.Vector;
-import rocks.friedrich.jwinf.engine.Difficulty;
-import rocks.friedrich.jwinf.engine.Grid;
-import rocks.friedrich.jwinf.engine.Robot;
-import rocks.friedrich.jwinf.engine.RobotWrapper;
 import rocks.friedrich.jwinf.engine.data.model.LevelData;
 import rocks.friedrich.jwinf.engine.data.model.TileData;
+import rocks.friedrich.jwinf.engine.map.Grid;
 import rocks.friedrich.jwinf.engine.map.TileMap;
+import rocks.friedrich.jwinf.engine.robot.Robot;
+import rocks.friedrich.jwinf.engine.robot.RobotWrapper;
+import rocks.friedrich.jwinf.engine.task.Task;
 
 /**
  * Ein Test bzw. eine Version einer Trainingsaufgabe in einer bestimmen

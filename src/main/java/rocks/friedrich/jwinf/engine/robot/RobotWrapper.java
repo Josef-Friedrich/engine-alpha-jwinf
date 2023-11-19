@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine;
+package rocks.friedrich.jwinf.engine.robot;
 
 /**
  * Klasse, die den Roboter, einpackt und umhüllt, damit alle Methoden des

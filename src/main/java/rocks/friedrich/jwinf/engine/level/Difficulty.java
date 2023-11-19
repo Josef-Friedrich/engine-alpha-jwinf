@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine;
+package rocks.friedrich.jwinf.engine.level;
 
 import java.util.HashMap;
 import java.util.Map;

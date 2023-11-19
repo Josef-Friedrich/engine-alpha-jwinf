@@ -2,9 +2,10 @@ package rocks.friedrich.jwinf.engine;
 
 import ea.animation.Interpolator;
 import ea.animation.interpolation.EaseInOutFloat;
+import rocks.friedrich.jwinf.engine.level.Level;
 import rocks.friedrich.jwinf.engine.map.TileMap;
+import rocks.friedrich.jwinf.engine.robot.Robot;
 import rocks.friedrich.jwinf.engine.task.Task;
-import rocks.friedrich.jwinf.engine.task.Level;
 
 public class State {
   public static int pixelPerMeter = 60;

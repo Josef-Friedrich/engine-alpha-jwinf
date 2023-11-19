@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine;
+package rocks.friedrich.jwinf.engine.scenes;
 
 import ea.internal.Bounds;
 

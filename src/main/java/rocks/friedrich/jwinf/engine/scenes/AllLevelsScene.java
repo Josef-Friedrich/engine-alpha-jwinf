@@ -7,12 +7,10 @@ import java.util.List;
 import ea.Scene;
 import ea.event.KeyListener;
 import ea.internal.Bounds;
-import rocks.friedrich.jwinf.engine.AssembledLevelScene;
 import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.TaskList;
-import rocks.friedrich.jwinf.engine.WindowScene;
+import rocks.friedrich.jwinf.engine.level.AssembledLevel;
 import rocks.friedrich.jwinf.engine.task.Task;
-import rocks.friedrich.jwinf.engine.task.AssembledLevel;
 
 public class AllLevelsScene extends Scene implements WindowScene, KeyListener, AssembledLevelScene {
 

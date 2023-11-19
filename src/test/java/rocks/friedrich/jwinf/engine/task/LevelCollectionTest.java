@@ -6,7 +6,8 @@ import static rocks.friedrich.jwinf.TestHelper.loadTask;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import rocks.friedrich.jwinf.engine.Difficulty;
+import rocks.friedrich.jwinf.engine.level.Difficulty;
+import rocks.friedrich.jwinf.engine.level.LevelCollection;
 
 class LevelCollectionTest {
 

@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine.task;
+package rocks.friedrich.jwinf.engine.map;
 
 import java.util.Collection;
 import java.util.HashMap;

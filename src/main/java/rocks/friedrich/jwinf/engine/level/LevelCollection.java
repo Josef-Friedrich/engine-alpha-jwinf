@@ -1,13 +1,13 @@
-package rocks.friedrich.jwinf.engine.task;
+package rocks.friedrich.jwinf.engine.level;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
-import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.data.model.LevelCollectionData;
 import rocks.friedrich.jwinf.engine.data.model.LevelData;
+import rocks.friedrich.jwinf.engine.task.Task;
 
 /**
  * Die Tests (Level) nach Schwierigkeitsgraden geordnet.

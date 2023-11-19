@@ -3,9 +3,9 @@ package rocks.friedrich.jwinf;
 import ea.Game;
 import ea.Scene;
 import ea.event.KeyListener;
-import rocks.friedrich.jwinf.engine.Robot;
 import rocks.friedrich.jwinf.engine.State;
 import rocks.friedrich.jwinf.engine.map.TileMap;
+import rocks.friedrich.jwinf.engine.robot.Robot;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;

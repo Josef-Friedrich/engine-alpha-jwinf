@@ -1,9 +1,9 @@
-package rocks.friedrich.jwinf.engine.task;
+package rocks.friedrich.jwinf.engine.level;
 
 import ea.Scene;
 import ea.actor.TileContainer;
-import rocks.friedrich.jwinf.engine.Grid;
-import rocks.friedrich.jwinf.engine.RobotWrapper;
+import rocks.friedrich.jwinf.engine.map.Grid;
+import rocks.friedrich.jwinf.engine.robot.RobotWrapper;
 
 /**
  * Die Figuren und Hintergründe, die erzeugt wurden, um eine Version einer

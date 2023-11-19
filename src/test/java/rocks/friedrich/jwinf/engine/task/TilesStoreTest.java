@@ -3,6 +3,9 @@ package rocks.friedrich.jwinf.engine.task;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+
+import rocks.friedrich.jwinf.engine.map.TilesStore;
+
 import org.junit.jupiter.api.BeforeEach;
 
 public class TilesStoreTest {

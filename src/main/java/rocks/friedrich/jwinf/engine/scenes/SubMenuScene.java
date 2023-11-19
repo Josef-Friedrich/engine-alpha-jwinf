@@ -8,7 +8,6 @@ import rocks.friedrich.jwinf.engine.Color;
 import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.Fonts;
 import rocks.friedrich.jwinf.engine.State;
-import rocks.friedrich.jwinf.engine.WindowScene;
 
 public class SubMenuScene extends Scene implements WindowScene {
 

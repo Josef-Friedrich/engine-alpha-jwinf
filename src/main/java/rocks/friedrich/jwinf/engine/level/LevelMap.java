@@ -1,7 +1,9 @@
-package rocks.friedrich.jwinf.engine.task;
+package rocks.friedrich.jwinf.engine.level;
 
 import ea.Vector;
 import rocks.friedrich.jwinf.engine.data.model.TileData;
+import rocks.friedrich.jwinf.engine.map.Point;
+import rocks.friedrich.jwinf.engine.map.TilesStore;
 
 /**
  * Die mit Kacheln (Tile) ausgefüllte Karte (Map) einer Trainingsaufgabeversion (Level).

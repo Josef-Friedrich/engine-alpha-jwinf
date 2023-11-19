@@ -8,7 +8,8 @@ import ea.Scene;
 import ea.animation.interpolation.EaseInOutFloat;
 import ea.animation.interpolation.LinearFloat;
 import ea.internal.Bounds;
-import rocks.friedrich.jwinf.engine.task.Level;
+import rocks.friedrich.jwinf.engine.level.Level;
+import rocks.friedrich.jwinf.engine.scenes.WindowScene;
 
 public class Controller {
 

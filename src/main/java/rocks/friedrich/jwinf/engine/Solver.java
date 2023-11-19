@@ -1,7 +1,10 @@
 package rocks.friedrich.jwinf.engine;
 
+import rocks.friedrich.jwinf.engine.level.Difficulty;
 import rocks.friedrich.jwinf.engine.scenes.AllLevelsScene;
+import rocks.friedrich.jwinf.engine.scenes.AssembledLevelScene;
 import rocks.friedrich.jwinf.engine.scenes.LevelScene;
+import rocks.friedrich.jwinf.engine.scenes.WindowScene;
 
 /**
  * Klasse, die verschiedene Methoden beinhaltet, die die verschiedenen

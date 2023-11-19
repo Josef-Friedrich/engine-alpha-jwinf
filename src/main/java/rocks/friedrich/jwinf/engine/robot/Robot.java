@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.engine;
+package rocks.friedrich.jwinf.engine.robot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +12,13 @@ import ea.actor.Image;
 import ea.animation.Interpolator;
 import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
-import rocks.friedrich.jwinf.engine.task.LevelMap;
-import rocks.friedrich.jwinf.engine.task.Point;
+import rocks.friedrich.jwinf.engine.State;
+import rocks.friedrich.jwinf.engine.level.LevelMap;
+import rocks.friedrich.jwinf.engine.map.Point;
 
-interface MovementListener {
-  /**
-   * @param row       Die aktuelle Zeile (y), in der sich die Figur im
-   *                  Kachel-Gitter befindet.
-   * @param col       Die aktuelle Spalte (x), in der sich die Figur im
-   *                  Kachel-Gitter befindet.
-   * @param direction Die Richtung, in der sich die Figur bewegen will.
-   *
-   * @return Wahr, wenn sich die Figur bewegen darf, sonst falsch.
-   */
-  boolean allowMovement(int row, int col, Direction direction);
-}
-
+/**
+ *
+ */
 public class Robot extends Image {
 
   private List<MovementListener> movementListeners = new ArrayList<>();

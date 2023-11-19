@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import rocks.friedrich.jwinf.engine.Color;
-import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.data.JsonLoader;
 import rocks.friedrich.jwinf.engine.data.model.TaskData;
+import rocks.friedrich.jwinf.engine.level.Difficulty;
+import rocks.friedrich.jwinf.engine.level.Level;
+import rocks.friedrich.jwinf.engine.level.LevelCollection;
+import rocks.friedrich.jwinf.engine.map.TilesStore;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren (in der Regel 3)
