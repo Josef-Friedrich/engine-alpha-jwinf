@@ -3,6 +3,9 @@ package rocks.friedrich.jwinf.engine.task;
 import ea.Vector;
 import rocks.friedrich.jwinf.engine.data.model.TileData;
 
+/**
+ * Die mit Kacheln (Tile) ausgefüllte Karte (Map) einer Trainingsaufgabeversion (Level).
+ */
 public class LevelMap {
   private int[][] map;
 
@@ -55,6 +58,9 @@ public class LevelMap {
     return tiles.get(num);
   }
 
+  /**
+   * Überprüfe, ob die Kachel eine Hindernis darstellt.
+   */
   public boolean isObstacle(int row, int col) {
     TileData tile = get(row, col);
     if (tile != null) {

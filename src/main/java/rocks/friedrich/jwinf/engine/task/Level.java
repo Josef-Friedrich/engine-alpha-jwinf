@@ -110,30 +110,33 @@ public class Level extends Scene {
    * @param x - x-Koordinate der linken unteren Ecke
    * @param y - y-Koordinate der linken unteren Ecke
    */
-  public LevelActors placeActorsInScene(Scene scene, float x, float y) {
-    LevelActors actors = new LevelActors();
-    actors.grid = createGrid();
-    actors.grid.setPosition(x - 0.5f, y - 0.5f);
-    scene.add(actors.grid);
+  public AssembledLevel placeActorsInScene(Scene scene, float x, float y) {
+    AssembledLevel level = new AssembledLevel();
+    level.level = this;
+    level.x = x;
+    level.y = y;
+    level.scene = scene;
+    level.grid = createGrid();
+    level.grid.setPosition(x - 0.5f, y - 0.5f);
+    scene.add(level.grid);
 
-    actors.tileMap = createTileMap().container;
-    actors.tileMap.setPosition(x - 0.5f, y - 0.5f);
-    scene.add(actors.tileMap);
+    level.tileMap = createTileMap().container;
+    level.tileMap.setPosition(x - 0.5f, y - 0.5f);
+    scene.add(level.tileMap);
 
     map.setPosition(x, y);
 
     try {
-      actors.robot = createRobot();
+      level.robot = createRobot();
+      Vector robotPosition = map.translateToVector(data.initItems[0].row, data.initItems[0].col);
+      level.robot.setCenter(robotPosition.getX(), robotPosition.getY());
+      scene.add(level.robot);
     } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
         | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
       e.printStackTrace();
     }
 
-    Vector robotPosition = map.translateToVector(data.initItems[0].row, data.initItems[0].col);
-    actors.robot.setCenter(robotPosition.getX(), robotPosition.getY());
-    scene.add(actors.robot);
-
-    return actors;
+    return level;
   }
 
 }

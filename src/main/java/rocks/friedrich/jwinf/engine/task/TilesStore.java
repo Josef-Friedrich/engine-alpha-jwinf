@@ -6,6 +6,10 @@ import java.util.Map;
 
 import rocks.friedrich.jwinf.engine.data.model.TileData;
 
+/**
+ * Ein Speicher für Kacheln (Tile). Eine Trainingsaufgabe (Task) bedient sicher
+ * eines Kachelspeichers (TilesStore).
+ */
 public class TilesStore {
   private HashMap<String, TileData> tilesByName;
 

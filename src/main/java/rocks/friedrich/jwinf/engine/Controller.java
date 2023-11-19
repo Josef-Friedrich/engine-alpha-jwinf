@@ -28,21 +28,9 @@ public class Controller {
         Game.setDebug(true);
       }
     } else {
-      Game.setFrameSize(width, height);
       Game.transitionToScene(scene);
+      Game.setFrameSize(width, height);
     }
-  }
-
-  public static void launchScene(int width, int height, Scene scene) {
-    launchScene(width, height, scene, false);
-  }
-
-  public static void launchScene(Scene scene, boolean debug) {
-    launchScene(800, 600, scene, debug);
-  }
-
-  public static void launchScene(Scene scene) {
-    launchScene(scene, false);
   }
 
   public static void launchScene(WindowScene windowScene) {
@@ -55,6 +43,18 @@ public class Controller {
     Game.setTitle(windowScene.getTitle());
     launchScene(Math.round(pixelPerMeter * bounds.getWidth()), Math.round(pixelPerMeter * bounds.getHeight()),
         (Scene) windowScene);
+  }
+
+  public static void launchScene(Scene scene, boolean debug) {
+    launchScene(800, 600, scene, debug);
+  }
+
+  public static void launchScene(Scene scene) {
+    launchScene(scene, false);
+  }
+
+  public static void launchScene(int width, int height, Scene scene) {
+    launchScene(width, height, scene, false);
   }
 
   public static void launchLevel(Level level) {

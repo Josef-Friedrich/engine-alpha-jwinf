@@ -1,20 +1,26 @@
 package rocks.friedrich.jwinf.engine.scenes;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import ea.Scene;
 import ea.internal.Bounds;
 import rocks.friedrich.jwinf.engine.Robot;
+import rocks.friedrich.jwinf.engine.AssembledLevelScene;
 import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.WindowScene;
+import rocks.friedrich.jwinf.engine.task.AssembledLevel;
 import rocks.friedrich.jwinf.engine.task.Level;
 import rocks.friedrich.jwinf.engine.task.Task;
 import rocks.friedrich.jwinf.engine.RobotAction;
 
 import ea.event.KeyListener;
 
-public class LevelScene extends Scene implements WindowScene, KeyListener {
+public class LevelScene extends Scene implements WindowScene, KeyListener, AssembledLevelScene {
+  private ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();
+
   public Task task;
   public Level level;
 
@@ -33,8 +39,13 @@ public class LevelScene extends Scene implements WindowScene, KeyListener {
   public LevelScene(Task task, Difficulty difficulty, int test) {
     this.task = task;
     level = task.getLevel(difficulty, test);
-    var actors = level.placeActorsInScene(this, 0, 0);
-    robot = actors.robot;
+    var assembledLevel = level.placeActorsInScene(this, 0, 0);
+    robot = assembledLevel.robot;
+    assembledLevels.add(assembledLevel);
+  }
+
+  public List<AssembledLevel> getAssembledLevels() {
+    return assembledLevels;
   }
 
   public Bounds getWindowBounds() {

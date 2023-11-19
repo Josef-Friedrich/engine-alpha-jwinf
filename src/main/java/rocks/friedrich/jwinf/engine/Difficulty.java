@@ -44,6 +44,22 @@ public enum Difficulty {
     return (Difficulty) map.get(level);
   }
 
+  public static Difficulty indexOf(String level) {
+    switch (level) {
+      case "easy":
+        return Difficulty.EASY;
+
+      case "medium":
+        return Difficulty.MEDIUM;
+
+      case "hard":
+        return Difficulty.HARD;
+
+      default:
+        throw new IllegalArgumentException("Unknown difficulty level %s".formatted(level));
+    }
+  }
+
   public int getIndex() {
     return index;
   }

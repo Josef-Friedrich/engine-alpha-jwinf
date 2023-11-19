@@ -1,18 +1,24 @@
 package rocks.friedrich.jwinf.engine.scenes;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import ea.Scene;
 import ea.event.KeyListener;
 import ea.internal.Bounds;
+import rocks.friedrich.jwinf.engine.AssembledLevelScene;
 import rocks.friedrich.jwinf.engine.Controller;
 import rocks.friedrich.jwinf.engine.TaskList;
 import rocks.friedrich.jwinf.engine.WindowScene;
 import rocks.friedrich.jwinf.engine.task.Task;
+import rocks.friedrich.jwinf.engine.task.AssembledLevel;
 
-public class AllLevelsScene extends Scene implements WindowScene, KeyListener {
+public class AllLevelsScene extends Scene implements WindowScene, KeyListener, AssembledLevelScene {
 
   static TaskList taskList = TaskList.readFromMenu();
+
+  private ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();
 
   public Task task;
 
@@ -63,12 +69,16 @@ public class AllLevelsScene extends Scene implements WindowScene, KeyListener {
         getHeight());
   }
 
+  public List<AssembledLevel> getAssembledLevels() {
+    return assembledLevels;
+  }
+
   public void paintLevels() {
     x = INITAL_X;
     task.getLevels().forEach((difficulty, levels) -> {
       y = INITAL_Y;
       levels.forEach((level) -> {
-        level.placeActorsInScene(this, x, y);
+        assembledLevels.add(level.placeActorsInScene(this, x, y));
         y -= task.getMaxRows() + 1;
       });
       x += task.getMaxCols() + 1;

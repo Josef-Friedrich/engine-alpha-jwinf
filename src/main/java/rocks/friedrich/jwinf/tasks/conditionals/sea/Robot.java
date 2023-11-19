@@ -8,6 +8,10 @@ public class Robot extends rocks.friedrich.jwinf.engine.Robot {
     super(filePath, map);
   }
 
+  public void go() {
+    go(1);
+  }
+
   public void rotateLeft() {
     rotateAnimated(180);
   }
