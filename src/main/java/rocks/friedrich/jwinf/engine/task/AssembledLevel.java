@@ -3,7 +3,7 @@ package rocks.friedrich.jwinf.engine.task;
 import ea.Scene;
 import ea.actor.TileContainer;
 import rocks.friedrich.jwinf.engine.Grid;
-import rocks.friedrich.jwinf.engine.Robot;
+import rocks.friedrich.jwinf.engine.RobotWrapper;
 
 /**
  * Die Figuren und Hintergründe, die erzeugt wurden, um eine Version einer
@@ -18,7 +18,7 @@ public class AssembledLevel {
 
   public TileContainer tileMap;
 
-  public Robot robot;
+  public RobotWrapper robot;
 
   public Scene scene;
 

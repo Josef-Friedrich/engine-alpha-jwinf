@@ -1,10 +1,23 @@
 package rocks.friedrich.jwinf.tasks.conditionals.sea;
 
-import rocks.friedrich.jwinf.engine.task.LevelMap;
+import rocks.friedrich.jwinf.engine.RobotWrapper;
 
-public class Robot extends rocks.friedrich.jwinf.engine.Robot {
+public class Robot extends RobotWrapper {
 
-  public Robot(String filePath, LevelMap map) {
-    super(filePath, map);
+  public boolean isInFrontOfObstacle() {
+    return actor.isInFrontOfObstacle();
   }
+
+  public void rotateLeft() {
+    actor.rotateLeft();
+  }
+
+  public void rotateRight() {
+    actor.rotateRight();
+  }
+
+  public void go() {
+    actor.go();
+  }
+
 }

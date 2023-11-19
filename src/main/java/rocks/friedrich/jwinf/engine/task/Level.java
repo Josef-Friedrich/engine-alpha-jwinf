@@ -7,6 +7,7 @@ import ea.Vector;
 import rocks.friedrich.jwinf.engine.Difficulty;
 import rocks.friedrich.jwinf.engine.Grid;
 import rocks.friedrich.jwinf.engine.Robot;
+import rocks.friedrich.jwinf.engine.RobotWrapper;
 import rocks.friedrich.jwinf.engine.data.model.LevelData;
 import rocks.friedrich.jwinf.engine.data.model.TileData;
 import rocks.friedrich.jwinf.engine.map.TileMap;
@@ -90,19 +91,21 @@ public class Level extends Scene {
     return grid;
   }
 
-  public Robot createRobot() throws InstantiationException, IllegalAccessException, IllegalArgumentException,
+  public RobotWrapper createRobot() throws InstantiationException, IllegalAccessException, IllegalArgumentException,
       InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
 
     String className = "rocks.friedrich.jwinf.tasks.conditionals.candle.Robot";
     if (task.data.packagePath != null) {
       className = "rocks.friedrich.jwinf.tasks.%s.Robot".formatted(task.data.packagePath.replace("/", "."));
     }
-    Robot robot = Robot.class.getClassLoader()
+    RobotWrapper robot = RobotWrapper.class.getClassLoader()
         .loadClass(className)
-        .asSubclass(Robot.class).getDeclaredConstructor(String.class, LevelMap.class)
-        .newInstance("images/candle/robot.png", map);
-    robot.addGridEdgesMovementListener();
-    robot.addObstaclesMovementListener();
+        .asSubclass(RobotWrapper.class).getDeclaredConstructor()
+        .newInstance();
+
+    robot.actor = new Robot("images/candle/robot.png", map);
+    robot.actor.addGridEdgesMovementListener();
+    robot.actor.addObstaclesMovementListener();
     return robot;
   }
 
@@ -129,8 +132,8 @@ public class Level extends Scene {
     try {
       level.robot = createRobot();
       Vector robotPosition = map.translateToVector(data.initItems[0].row, data.initItems[0].col);
-      level.robot.setCenter(robotPosition.getX(), robotPosition.getY());
-      scene.add(level.robot);
+      level.robot.actor.setCenter(robotPosition.getX(), robotPosition.getY());
+      scene.add(level.robot.actor);
     } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
         | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
       e.printStackTrace();

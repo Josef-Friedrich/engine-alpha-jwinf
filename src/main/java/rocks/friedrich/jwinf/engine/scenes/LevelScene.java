@@ -40,7 +40,7 @@ public class LevelScene extends Scene implements WindowScene, KeyListener, Assem
     this.task = task;
     level = task.getLevel(difficulty, test);
     var assembledLevel = level.placeActorsInScene(this, 0, 0);
-    robot = assembledLevel.robot;
+    robot = assembledLevel.robot.actor;
     assembledLevels.add(assembledLevel);
   }
 
