@@ -7,21 +7,4 @@ public class Robot extends rocks.friedrich.jwinf.engine.Robot {
   public Robot(String filePath, LevelMap map) {
     super(filePath, map);
   }
-
-  public void go() {
-    go(1);
-  }
-
-  public void rotateLeft() {
-    rotateAnimated(180);
-  }
-
-  public void rotateRight() {
-    rotateAnimated(0);
-  }
-
-  public boolean isBeforeObstacle() {
-    return false;
-  }
-
 }

@@ -10,23 +10,47 @@ public class TaskSolver extends Solver<Robot> {
 
   @Override
   public void easy(Robot robot) {
-    robot.rotateRight();
-    robot.go();
+    for (int i = 0; i < 17; i++) {
+      robot.go();
+      if (robot.isInFrontOfObstacle()) {
+        robot.rotateLeft();
+      }
+    }
   }
 
   @Override
   public void medium(Robot robot) {
-    robot.rotateRight();
-    robot.go();
-    robot.go();
+    for (int i = 0; i < 20; i++) {
+      robot.go();
+      if (robot.isInFrontOfObstacle()) {
+        robot.rotateRight();
+        if (robot.isInFrontOfObstacle()) {
+          robot.rotateLeft();
+          robot.rotateLeft();
+        }
+      }
+    }
   }
 
   @Override
   public void hard(Robot robot) {
-    robot.rotateRight();
-    robot.go();
-    robot.go();
-    robot.go();
+    for (int i = 0; i < 20; i++) {
+      robot.go();
+      if (robot.isInFrontOfObstacle()) {
+        robot.rotateRight();
+        if (robot.isInFrontOfObstacle()) {
+          robot.rotateLeft();
+          robot.rotateLeft();
+        }
+      } else {
+        robot.rotateLeft();
+        if (!robot.isInFrontOfObstacle()) {
+          robot.go();
+        } else {
+          robot.rotateRight();
+        }
+      }
+    }
   }
 
   @Override

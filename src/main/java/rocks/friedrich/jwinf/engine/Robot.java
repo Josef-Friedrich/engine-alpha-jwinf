@@ -72,32 +72,40 @@ public class Robot extends Image {
     });
   }
 
+  protected boolean isInFrontOfObstacle(int row, int col, Direction direction) {
+    int rowMovement = 0;
+    int colMovement = 0;
+
+    switch (direction) {
+      case RIGHT:
+        colMovement = 1;
+        break;
+
+      case UP:
+        rowMovement = -1;
+        break;
+
+      case LEFT:
+        colMovement = -1;
+        break;
+
+      case DOWN:
+        rowMovement = 1;
+        break;
+
+      default:
+    }
+
+    return map.isObstacle(row + rowMovement, col + colMovement);
+  }
+
+  public boolean isInFrontOfObstacle() {
+    return isInFrontOfObstacle(row(), col(), getDirection());
+  }
+
   public void addObstaclesMovementListener() {
     addMovementListener((int row, int col, Direction direction) -> {
-      int rowMovement = 0;
-      int colMovement = 0;
-
-      switch (direction) {
-        case RIGHT:
-          colMovement = 1;
-          break;
-
-        case UP:
-          rowMovement = -1;
-          break;
-
-        case LEFT:
-          colMovement = -1;
-          break;
-
-        case DOWN:
-          rowMovement = 1;
-          break;
-
-        default:
-      }
-
-      return !map.isObstacle(row + rowMovement, col + colMovement);
+      return !isInFrontOfObstacle(row, col, direction);
     });
   }
 
@@ -113,7 +121,7 @@ public class Robot extends Image {
     }
   }
 
-  public void go(double meter) {
+  protected void go(double meter) {
     if (inMotion) {
       return;
     }
@@ -148,6 +156,26 @@ public class Robot extends Image {
       wiggle();
     }
     return result;
+  }
+
+  public Direction getDirection() {
+    int rotation = (int) getRotation();
+    if (rotation == 0) {
+      return Direction.RIGHT;
+    } else if (rotation == 90) {
+      return Direction.UP;
+    } else if (rotation == 180) {
+      return Direction.LEFT;
+    } else {
+      return Direction.DOWN;
+    }
+  }
+
+  /**
+   * Gehe einen Pixelmeter in die Richtung der aktuellen Rotation.
+   */
+  public void go() {
+    go(getDirection());
   }
 
   public void go(Direction direction) {
@@ -297,6 +325,20 @@ public class Robot extends Image {
 
     rotateByAnimated(diff);
     setCenter(center);
+  }
+
+  /**
+   * Drehe um 90 Grad nach links.
+   */
+  public void rotateLeft() {
+    rotateByAnimated(90);
+  }
+
+  /**
+   * Drehe um 90 Grad nach rechts.
+   */
+  public void rotateRight() {
+    rotateByAnimated(-90);
   }
 
   /**
