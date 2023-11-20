@@ -68,6 +68,9 @@
       "wall": {
         "num": 6,
         "img": "grey_brick_wall.png",
+        "relPath": "labyrinth/wall.png",
+        "name": "wall",
+        "letter": "w",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
