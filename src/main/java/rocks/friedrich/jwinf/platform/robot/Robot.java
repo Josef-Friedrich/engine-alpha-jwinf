@@ -17,9 +17,6 @@ import rocks.friedrich.jwinf.platform.data.model.TileData;
 import rocks.friedrich.jwinf.platform.level.LevelMap;
 import rocks.friedrich.jwinf.platform.map.Point;
 
-/**
- *
- */
 public class Robot extends Image {
 
   private List<MovementListener> movementListeners = new ArrayList<>();
@@ -284,10 +281,6 @@ public class Robot extends Image {
     inMotion = false;
   }
 
-  /**
-   *
-   * @param degree
-   */
   public void rotateByAnimated(double degree) {
     if (inMotion) {
       return;
