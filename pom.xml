@@ -39,7 +39,7 @@
 
   <repositories>
     <repository>
-      <id>git-repository</id>
+      <id>this-local-git-repo</id>
       <url>file://${project.basedir}/lib</url>
     </repository>
   </repositories>
