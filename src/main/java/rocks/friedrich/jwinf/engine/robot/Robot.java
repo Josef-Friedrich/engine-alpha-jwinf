@@ -13,6 +13,7 @@ import ea.animation.Interpolator;
 import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.engine.State;
+import rocks.friedrich.jwinf.engine.data.model.TileData;
 import rocks.friedrich.jwinf.engine.level.LevelMap;
 import rocks.friedrich.jwinf.engine.map.Point;
 
@@ -32,6 +33,13 @@ public class Robot extends Image {
   private LevelMap map;
 
   protected float speed = 1;
+
+  /**
+   * Behälter in dem Objekte eingesammelt (withdraw) werden können.
+   *
+   * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2458-L2478
+   */
+  public List<TileData> bag = new ArrayList<>();
 
   public Robot(String filepath, LevelMap map) {
     super(filepath, 1, 1);

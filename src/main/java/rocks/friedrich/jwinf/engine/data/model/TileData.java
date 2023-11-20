@@ -85,6 +85,10 @@ public class TileData {
   public boolean isWritable;
 
   /**
+   * Gibt an ob eine Kachel eingesammelt werden kann.
+   *
+   * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3001-L3023
+   *
    * Importiert aus Javascript-Datei.
    */
   public boolean isWithdrawable;
