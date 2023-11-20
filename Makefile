@@ -7,7 +7,7 @@ SOURCES = $(ENGINE)/engine-alpha/target/engine-alpha-4-sources.jar
 
 dependency:
 	cd $(ENGINE)
-	git checkout 4.x_packaging
+	git checkout 4.x
 	git pull
 	mvn package
 	mvn install:install-file \
