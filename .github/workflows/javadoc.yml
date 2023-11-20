@@ -12,10 +12,7 @@ jobs:
       - name: Deploy JavaDoc
         uses: MathieuSoysal/Javadoc-publisher.yml@v2.4.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # https://github.com/Josef-Friedrich/jwinf-java/settings/actions -> Workflow permissions -> Read and write permissions
           javadoc-branch: docs
           java-version: 17
-          javadoc: # url will be https://<username>.github.io/<repo>/javadoc, This can be left as nothing to generate javadocs in the root folder.
-          target-folder:
-          project: maven # or gradle
-          # subdirectories: moduleA moduleB #for subdirectories support, needs to be run with custom command
+          project: maven
