@@ -5,7 +5,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(value = { "hideSaveOrLoad", "conceptViewer", "languageStrings", "limitedUses", "includeBlocks",
-    "blocklyColourTheme", "checkEndEveryTurn", "hasGravity", "ignoreInvalidMoves", "nbPlatforms" })
+    "blocklyColourTheme", "checkEndEveryTurn", "hasGravity", "ignoreInvalidMoves", "nbPlatforms", "actionDelay", "multiple_marbles" })
 public class GridData {
   /**
    * Ist in

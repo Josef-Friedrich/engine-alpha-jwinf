@@ -22,13 +22,13 @@ public class TaskListTest {
   @Test
   public void methodReadFromResources() throws IOException {
     TaskList list = TaskList.readFromResources();
-    assertEquals(list.size(), 4);
+    assertEquals(list.size(), 5);
   }
 
   @Test
   public void methodReadFromMenu() throws IOException {
     TaskList list = TaskList.readFromMenu();
-    assertEquals(list.size(), 4);
+    assertEquals(list.size(), 5);
   }
 
   @Test
