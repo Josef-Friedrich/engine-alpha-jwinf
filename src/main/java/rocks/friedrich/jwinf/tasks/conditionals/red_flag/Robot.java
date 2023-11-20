@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.tasks.conditionals.red_flag;
 
-import rocks.friedrich.jwinf.engine.robot.RobotWrapper;
+import rocks.friedrich.jwinf.platform.robot.RobotWrapper;
 
 public class Robot extends RobotWrapper {
 

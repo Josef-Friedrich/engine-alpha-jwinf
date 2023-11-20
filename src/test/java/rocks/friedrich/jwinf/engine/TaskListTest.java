@@ -7,6 +7,8 @@ import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import rocks.friedrich.jwinf.platform.TaskList;
+
 public class TaskListTest {
   TaskList list;
 

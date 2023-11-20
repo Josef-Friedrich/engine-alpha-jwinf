@@ -1,8 +1,8 @@
 package rocks.friedrich.jwinf;
 
 import ea.Scene;
-import rocks.friedrich.jwinf.engine.Controller;
-import rocks.friedrich.jwinf.engine.task.Task;
+import rocks.friedrich.jwinf.platform.Controller;
+import rocks.friedrich.jwinf.platform.task.Task;
 
 public class JsonToTileMapTest extends Scene {
 

@@ -7,7 +7,8 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
-import rocks.friedrich.jwinf.engine.TaskList;
+import rocks.friedrich.jwinf.platform.TaskList;
+import rocks.friedrich.jwinf.platform.task.Task;
 
 class TaskTest {
 

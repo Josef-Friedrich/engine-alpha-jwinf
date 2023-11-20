@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
-import rocks.friedrich.jwinf.engine.data.JsonLoader;
+import rocks.friedrich.jwinf.platform.data.JsonLoader;
 
 class JsonLoaderTest {
 

@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import ea.Vector;
-import rocks.friedrich.jwinf.engine.level.LevelMap;
-import rocks.friedrich.jwinf.engine.map.Point;
+import rocks.friedrich.jwinf.platform.level.LevelMap;
+import rocks.friedrich.jwinf.platform.map.Point;
 
 public class LevelMapTest {
 

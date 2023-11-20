@@ -2,9 +2,9 @@ package rocks.friedrich.jwinf;
 
 import ea.Scene;
 import ea.Vector;
-import rocks.friedrich.jwinf.engine.Controller;
-import rocks.friedrich.jwinf.engine.scenes.AllLevelsScene;
-import rocks.friedrich.jwinf.engine.task.Task;
+import rocks.friedrich.jwinf.platform.Controller;
+import rocks.friedrich.jwinf.platform.engine_alpha.scenes.AllLevelsScene;
+import rocks.friedrich.jwinf.platform.task.Task;
 
 public class AllLevelsTest extends Scene {
 

@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.tasks.conditionals.sea;
 
-import rocks.friedrich.jwinf.engine.Solver;
+import rocks.friedrich.jwinf.platform.Solver;
 
 public class TaskSolver extends Solver<Robot> {
 
