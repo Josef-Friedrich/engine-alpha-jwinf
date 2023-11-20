@@ -29,7 +29,8 @@ mvn_install_local_repo:
 		-Dsources=$(SOURCES) \
 		-Dversion=4.0.0-SNAPSHOT \
 		-Dpackaging=jar \
-		-DlocalRepositoryPath=lib
+		-DlocalRepositoryPath=lib \
+		-DcreateChecksum=true
 
 package:
 	mvn package
