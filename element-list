@@ -1,0 +1,13 @@
+rocks.friedrich.jwinf.engine
+rocks.friedrich.jwinf.engine.data
+rocks.friedrich.jwinf.engine.data.model
+rocks.friedrich.jwinf.engine.level
+rocks.friedrich.jwinf.engine.map
+rocks.friedrich.jwinf.engine.robot
+rocks.friedrich.jwinf.engine.scenes
+rocks.friedrich.jwinf.engine.task
+rocks.friedrich.jwinf.tasks
+rocks.friedrich.jwinf.tasks.conditionals
+rocks.friedrich.jwinf.tasks.conditionals.candle
+rocks.friedrich.jwinf.tasks.conditionals.red_flag
+rocks.friedrich.jwinf.tasks.conditionals.sea
