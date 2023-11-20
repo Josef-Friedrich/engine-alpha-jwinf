@@ -1,4 +1,4 @@
-# engine-alpha-jwinf
+# Die Trainingsaufgaben des Jugendwettbewerbs Informatik in Java
 
 Ein Versuch die
 [Trainingsaufgaben](https://jwinf.de/contest/?filter=open) auf
