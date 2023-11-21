@@ -7,7 +7,6 @@ import java.util.Map;
 
 import rocks.friedrich.jwinf.platform.data.model.LevelCollectionData;
 import rocks.friedrich.jwinf.platform.data.model.LevelData;
-import rocks.friedrich.jwinf.platform.level.Level;
 import rocks.friedrich.jwinf.platform.logic.Task;
 
 /**

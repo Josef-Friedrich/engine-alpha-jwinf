@@ -8,7 +8,8 @@ import ea.Scene;
 import ea.event.KeyListener;
 import ea.internal.Bounds;
 import rocks.friedrich.jwinf.platform.gui.Controller;
-import rocks.friedrich.jwinf.platform.level.AssembledLevel;
+import rocks.friedrich.jwinf.platform.gui.level.AssembledLevel;
+import rocks.friedrich.jwinf.platform.gui.level.LevelAssembler;
 import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.menu.TaskList;
 
@@ -76,7 +77,8 @@ public class AllLevelsScene extends Scene implements WindowScene, KeyListener, A
     task.getLevels().forEach((difficulty, levels) -> {
       y = INITIAL_Y;
       levels.forEach((level) -> {
-        assembledLevels.add(level.placeActorsInScene(this, x, y));
+        var assembler = new LevelAssembler(level);
+        assembledLevels.add(assembler.placeActorsInScene(this, x, y));
         y -= task.getMaxRows() + 1;
       });
       x += task.getMaxCols() + 1;

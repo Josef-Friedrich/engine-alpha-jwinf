@@ -7,8 +7,8 @@ import java.util.Map;
 import rocks.friedrich.jwinf.platform.data.JsonLoader;
 import rocks.friedrich.jwinf.platform.data.model.TaskData;
 import rocks.friedrich.jwinf.platform.gui.Color;
-import rocks.friedrich.jwinf.platform.level.Level;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
+import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.level.LevelCollection;
 import rocks.friedrich.jwinf.platform.logic.map.TilesStore;
 

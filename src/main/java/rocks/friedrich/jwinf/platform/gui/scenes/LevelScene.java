@@ -5,15 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ea.Scene;
+import ea.event.KeyListener;
 import ea.internal.Bounds;
 import rocks.friedrich.jwinf.platform.gui.Controller;
-import rocks.friedrich.jwinf.platform.level.AssembledLevel;
-import rocks.friedrich.jwinf.platform.level.Level;
+import rocks.friedrich.jwinf.platform.gui.level.AssembledLevel;
+import rocks.friedrich.jwinf.platform.gui.level.LevelAssembler;
 import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
+import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.robot.Robot;
 import rocks.friedrich.jwinf.platform.robot.RobotAction;
-import ea.event.KeyListener;
 
 public class LevelScene extends Scene implements WindowScene, KeyListener, AssembledLevelScene {
   private final ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();
@@ -36,7 +37,8 @@ public class LevelScene extends Scene implements WindowScene, KeyListener, Assem
   public LevelScene(Task task, Difficulty difficulty, int test) {
     this.task = task;
     level = task.getLevel(difficulty, test);
-    var assembledLevel = level.placeActorsInScene(this, 0, 0);
+    var assembler = new LevelAssembler(level);
+    var assembledLevel = assembler.placeActorsInScene(this, 0, 0);
     robot = assembledLevel.robot.actor;
     assembledLevels.add(assembledLevel);
   }
