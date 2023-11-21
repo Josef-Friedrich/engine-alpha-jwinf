@@ -2,6 +2,28 @@ package rocks.friedrich.jwinf.platform.data.model;
 
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 
+/**
+ * Repräsentation in einer JSON-Datei:
+ *
+ * <pre>{@code
+ *   {
+ *     "tiles": [
+ *       [2, 2, 2, 2, 2, 2, 2],
+ *       [2, 2, 2, 2, 3, 2, 2],
+ *       [2, 1, 1, 1, 1, 1, 2],
+ *       [2, 2, 2, 2, 2, 2, 2]
+ *     ],
+ *     "initItems": [
+ *       {
+ *         "row": 2,
+ *         "col": 1,
+ *         "dir": 0,
+ *         "type": "robot"
+ *       }
+ *     ]
+ *   }
+ * }</pre>
+ */
 public class LevelData {
   public int[][] tiles;
   public InitItemData[] initItems;
@@ -13,11 +35,11 @@ public class LevelData {
    */
   public int testNo;
 
-  public int getWidth() {
+  public int getCols() {
     return tiles[0].length;
   }
 
-  public int getHeight() {
+  public int getRows() {
     return tiles.length;
   }
 }

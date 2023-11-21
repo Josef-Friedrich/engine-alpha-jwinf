@@ -7,9 +7,9 @@ import ea.Vector;
 import rocks.friedrich.jwinf.platform.data.model.TileData;
 import rocks.friedrich.jwinf.platform.gui.map.Grid;
 import rocks.friedrich.jwinf.platform.gui.map.TileMap;
+import rocks.friedrich.jwinf.platform.gui.robot.Robot;
+import rocks.friedrich.jwinf.platform.gui.robot.RobotWrapper;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
-import rocks.friedrich.jwinf.platform.robot.Robot;
-import rocks.friedrich.jwinf.platform.robot.RobotWrapper;
 
 /**
  * Klasse, die eine Version einer Trainingsaufgabe zusammenbaut.

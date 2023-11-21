@@ -5,7 +5,7 @@ import ea.Scene;
 import ea.event.KeyListener;
 import rocks.friedrich.jwinf.platform.State;
 import rocks.friedrich.jwinf.platform.gui.map.TileMap;
-import rocks.friedrich.jwinf.platform.robot.Robot;
+import rocks.friedrich.jwinf.platform.gui.robot.Robot;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;

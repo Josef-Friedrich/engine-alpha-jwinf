@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform.robot;
+package rocks.friedrich.jwinf.platform.gui.robot;
 
 /**
  * Klasse, die den Roboter, einpackt und umhüllt, damit alle Methoden des

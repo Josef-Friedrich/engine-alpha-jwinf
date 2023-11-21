@@ -10,11 +10,11 @@ import ea.internal.Bounds;
 import rocks.friedrich.jwinf.platform.gui.Controller;
 import rocks.friedrich.jwinf.platform.gui.level.AssembledLevel;
 import rocks.friedrich.jwinf.platform.gui.level.LevelAssembler;
+import rocks.friedrich.jwinf.platform.gui.robot.Robot;
+import rocks.friedrich.jwinf.platform.gui.robot.RobotAction;
 import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
-import rocks.friedrich.jwinf.platform.robot.Robot;
-import rocks.friedrich.jwinf.platform.robot.RobotAction;
 
 public class LevelScene extends Scene implements WindowScene, KeyListener, AssembledLevelScene {
   private final ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();

@@ -5,5 +5,4 @@ public class MaxInstructionsData {
   public int easy;
   public int medium;
   public int hard;
-
 }

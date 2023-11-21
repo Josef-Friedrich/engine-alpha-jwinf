@@ -3,8 +3,8 @@ package rocks.friedrich.jwinf.platform.gui.level;
 import ea.Scene;
 import ea.actor.TileContainer;
 import rocks.friedrich.jwinf.platform.gui.map.Grid;
+import rocks.friedrich.jwinf.platform.gui.robot.RobotWrapper;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
-import rocks.friedrich.jwinf.platform.robot.RobotWrapper;
 
 /**
  * Die Figuren und Hintergründe, die erzeugt wurden, um eine Version einer

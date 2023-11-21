@@ -1,9 +1,8 @@
 package rocks.friedrich.jwinf.platform.logic.level;
 
 import rocks.friedrich.jwinf.platform.data.model.LevelData;
-import rocks.friedrich.jwinf.platform.gui.map.TileMap;
 import rocks.friedrich.jwinf.platform.logic.Task;
-import rocks.friedrich.jwinf.platform.robot.Robot;
+import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 /**
  * Ein Test bzw. eine Version einer Trainingsaufgabe in einer bestimmen
@@ -37,15 +36,6 @@ public class Level {
 
   public LevelMap map;
 
-  /**
-   * Der Haupt-Kachelsatz. Die Figur muss auf diesen Kachelsatz Zugriff haben,
-   * um entscheiden zu können, ob sie sich vor einem Hindernis befindet oder
-   * nicht.
-   */
-  public TileMap tileMap;
-
-  public Robot actor;
-
   public Level(LevelData data, Task task) {
     this.data = data;
     this.task = task;
@@ -54,6 +44,13 @@ public class Level {
     rows = map.rows;
     difficulty = data.difficulty;
     testNo = data.testNo;
+  }
+
+  public LevelContext createContext() {
+    var context = new LevelContext();
+    context.level = this;
+    context.robot = new VirtualRobot(map);
+    return context;
   }
 
 }

@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform.robot;
+package rocks.friedrich.jwinf.platform.gui.robot;
 
 import java.util.ArrayList;
 import java.util.List;
