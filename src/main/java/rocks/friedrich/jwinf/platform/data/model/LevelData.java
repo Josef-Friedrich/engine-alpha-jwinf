@@ -44,4 +44,8 @@ public class LevelData {
   public int getRows() {
     return tiles.length;
   }
+
+  public InitItemData getInitItem() {
+    return initItems[0];
+  }
 }

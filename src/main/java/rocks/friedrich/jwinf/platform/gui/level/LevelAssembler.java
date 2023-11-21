@@ -90,7 +90,7 @@ public class LevelAssembler {
 
     try {
       assembledLevel.robot = createRobot();
-      Vector robotPosition = level.map.translateToVector(level.data.initItems[0].row, level.data.initItems[0].col);
+      Vector robotPosition = level.map.translateToVector(level.getInitItem().row, level.getInitItem().col);
       assembledLevel.robot.actor.setCenter(robotPosition.getX(), robotPosition.getY());
       scene.add(assembledLevel.robot.actor);
     } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException

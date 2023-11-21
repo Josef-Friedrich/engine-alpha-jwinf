@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static rocks.friedrich.jwinf.TestHelper.loadTask;
+import static rocks.friedrich.jwinf.TestHelper.loadLevel;
 
 class LevelTest {
 
@@ -13,7 +13,7 @@ class LevelTest {
 
   @BeforeAll
   static void getLevel() {
-    level = loadTask("20-DE-13-Kerzen-einfach").getLevel(0);
+    level = loadLevel("20-DE-13-Kerzen-einfach");
   }
 
   @Test
@@ -24,6 +24,11 @@ class LevelTest {
   @Test
   void attributeCols() {
     assertEquals(level.cols, 9);
+  }
+
+  @Test
+  void methodGetInitItem() {
+    assertEquals(level.getInitItem().row, 5);
   }
 
 }

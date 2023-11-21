@@ -1,7 +1,7 @@
 package rocks.friedrich.jwinf.platform.logic;
 
 /**
- * Himmelsrichtung
+ * Grobe Himmelsrichtung der vier Haupthimmelsrichtungen
  */
 public enum CompassDirection {
   /**

@@ -1,5 +1,6 @@
 package rocks.friedrich.jwinf.platform.logic.level;
 
+import rocks.friedrich.jwinf.platform.data.model.InitItemData;
 import rocks.friedrich.jwinf.platform.data.model.LevelData;
 import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
@@ -47,10 +48,16 @@ public class Level {
   }
 
   public LevelContext createContext() {
-    var context = new LevelContext();
-    context.level = this;
-    context.robot = new VirtualRobot(map);
-    return context;
+    var c = new LevelContext();
+    c.level = this;
+    c.robot = new VirtualRobot(map);
+    c.robot.addDefaultMovementListener();
+    c.robot.setInitPosition(getInitItem());
+    return c;
+  }
+
+  public InitItemData getInitItem() {
+    return data.getInitItem();
   }
 
 }
