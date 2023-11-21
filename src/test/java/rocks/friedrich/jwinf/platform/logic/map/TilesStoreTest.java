@@ -1,11 +1,10 @@
-package rocks.friedrich.jwinf.platform.task;
+package rocks.friedrich.jwinf.platform.logic.map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 import rocks.friedrich.jwinf.platform.logic.Task;
-import rocks.friedrich.jwinf.platform.logic.map.TilesStore;
 
 import org.junit.jupiter.api.BeforeEach;
 

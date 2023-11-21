@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform.task;
+package rocks.friedrich.jwinf.platform.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
-import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.menu.TaskList;
 
 class TaskTest {

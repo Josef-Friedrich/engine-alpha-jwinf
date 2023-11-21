@@ -1,11 +1,9 @@
-package rocks.friedrich.jwinf.platform.task;
+package rocks.friedrich.jwinf.platform.logic.level;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import rocks.friedrich.jwinf.platform.logic.level.Level;
 
 import static rocks.friedrich.jwinf.TestHelper.loadTask;
 
