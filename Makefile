@@ -27,4 +27,8 @@ json:
 test:
 	mvn test
 
+build:
+	mvn clean
+	mvn compile
+
 .PHONY: dependency
