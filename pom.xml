@@ -36,6 +36,14 @@
     </dependency>
 
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>this-local-git-repo</id>
+      <url>file://${project.basedir}/lib</url>
+    </repository>
+  </repositories>
+
   <distributionManagement>
     <snapshotRepository>
       <id>ossrh</id>

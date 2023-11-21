@@ -1,4 +1,4 @@
-# engine-alpha-jwinf
+# Die Trainingsaufgaben des Jugendwettbewerbs Informatik in Java
 
 Ein Versuch die
 [Trainingsaufgaben](https://jwinf.de/contest/?filter=open) auf
@@ -12,6 +12,9 @@ Die einzelnen Aufgaben sind mit den
 [bebras-modules](https://github.com/France-ioi/bebras-modules)
 umgesetzt, die von der [Association
 France-ioi](https://www.france-ioi.org) bereit gestellt wird.
+Die meiste Spiellogik ist in dem Javascript-Module
+[blocklyRobot_lib-1.1.js](https://github.com/France-ioi/bebras-modules/blob/master/pemFioi/blocklyRobot_lib-1.1.js)
+implementiert.
 
 # Build dependency
 
