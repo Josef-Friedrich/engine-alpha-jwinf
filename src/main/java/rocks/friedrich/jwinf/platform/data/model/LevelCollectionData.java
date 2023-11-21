@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import rocks.friedrich.jwinf.platform.level.Difficulty;
+import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 
 public class LevelCollectionData {
   public LevelData[] easy;

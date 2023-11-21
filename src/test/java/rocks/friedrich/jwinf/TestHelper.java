@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf;
 
-import rocks.friedrich.jwinf.platform.task.Task;
+import rocks.friedrich.jwinf.platform.logic.Task;
 
 public class TestHelper {
   public static Task loadTask(String taskId) {

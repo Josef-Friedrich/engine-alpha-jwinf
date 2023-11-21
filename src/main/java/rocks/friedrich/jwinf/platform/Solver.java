@@ -1,10 +1,11 @@
 package rocks.friedrich.jwinf.platform;
 
-import rocks.friedrich.jwinf.platform.engine_alpha.scenes.AllLevelsScene;
-import rocks.friedrich.jwinf.platform.engine_alpha.scenes.AssembledLevelScene;
-import rocks.friedrich.jwinf.platform.engine_alpha.scenes.LevelScene;
-import rocks.friedrich.jwinf.platform.engine_alpha.scenes.WindowScene;
-import rocks.friedrich.jwinf.platform.level.Difficulty;
+import rocks.friedrich.jwinf.platform.gui.Controller;
+import rocks.friedrich.jwinf.platform.gui.scenes.AllLevelsScene;
+import rocks.friedrich.jwinf.platform.gui.scenes.AssembledLevelScene;
+import rocks.friedrich.jwinf.platform.gui.scenes.LevelScene;
+import rocks.friedrich.jwinf.platform.gui.scenes.WindowScene;
+import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 
 /**
  * Klasse, die verschiedene Methoden beinhaltet, die die verschiedenen

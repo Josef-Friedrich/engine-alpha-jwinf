@@ -2,7 +2,7 @@ package rocks.friedrich.jwinf.platform.level;
 
 import ea.Scene;
 import ea.actor.TileContainer;
-import rocks.friedrich.jwinf.platform.map.Grid;
+import rocks.friedrich.jwinf.platform.gui.map.Grid;
 import rocks.friedrich.jwinf.platform.robot.RobotWrapper;
 
 /**

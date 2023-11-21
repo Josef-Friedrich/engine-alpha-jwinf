@@ -14,8 +14,8 @@ import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.platform.State;
 import rocks.friedrich.jwinf.platform.data.model.TileData;
-import rocks.friedrich.jwinf.platform.level.LevelMap;
-import rocks.friedrich.jwinf.platform.map.Point;
+import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
+import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 public class Robot extends Image {
 

@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.platform.data.model;
 
-import rocks.friedrich.jwinf.platform.level.Difficulty;
+import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 
 public class LevelData {
   public int[][] tiles;

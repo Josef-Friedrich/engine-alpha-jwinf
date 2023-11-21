@@ -6,11 +6,13 @@ import ea.Scene;
 import ea.Vector;
 import rocks.friedrich.jwinf.platform.data.model.LevelData;
 import rocks.friedrich.jwinf.platform.data.model.TileData;
-import rocks.friedrich.jwinf.platform.map.Grid;
-import rocks.friedrich.jwinf.platform.map.TileMap;
+import rocks.friedrich.jwinf.platform.gui.map.Grid;
+import rocks.friedrich.jwinf.platform.gui.map.TileMap;
+import rocks.friedrich.jwinf.platform.logic.Task;
+import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
+import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
 import rocks.friedrich.jwinf.platform.robot.Robot;
 import rocks.friedrich.jwinf.platform.robot.RobotWrapper;
-import rocks.friedrich.jwinf.platform.task.Task;
 
 /**
  * Ein Test bzw. eine Version einer Trainingsaufgabe in einer bestimmen
