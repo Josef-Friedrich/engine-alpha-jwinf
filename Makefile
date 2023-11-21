@@ -39,6 +39,7 @@ json:
 	./.scripts/convert-task-json.mjs
 
 test:
+	mvn clean
 	mvn test
 
 build:

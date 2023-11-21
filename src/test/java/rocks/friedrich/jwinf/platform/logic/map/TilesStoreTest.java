@@ -2,11 +2,10 @@ package rocks.friedrich.jwinf.platform.logic.map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import rocks.friedrich.jwinf.platform.logic.Task;
-
-import org.junit.jupiter.api.BeforeEach;
 
 public class TilesStoreTest {
 
