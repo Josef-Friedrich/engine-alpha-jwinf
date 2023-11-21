@@ -184,7 +184,7 @@ public class VirtualRobot {
 
   /**
    * @see <a href=
-   *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3360-L3372>blocklyRobot_lib-1.1.js
+   *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3360-L3372">blocklyRobot_lib-1.1.js
    *      L3360-L3372</a>
    */
   public DirectionalPoint west() {
