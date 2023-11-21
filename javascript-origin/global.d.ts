@@ -1,5 +1,7 @@
 declare const modulesPath: string | undefined
 
+declare function quickAlgoContext(display: any, infos: any): any
+
 interface Window {
   modulesPath?: string
   languageStrings: {

@@ -8,9 +8,25 @@ interface Item {
   isWritable?: boolean
   isWithdrawable?: boolean
   isPushable?: boolean
+  isObstacle?: boolean
   zOrder: number
   row: number
   col: number
+  side: number
+  offsetX: number
+  offsetY: number
+  nbStates: number
+  type: string
+}
+
+interface Context {
+  items: Item[]
+  multicell_items: Item[]
+  last_connect: any
+  wires: any
+  nbMoves: number
+  time: any
+  bag: any
 }
 
 /*blocklyRoboy_lib-1.0.0 by Arthur Léonard*/
@@ -2351,7 +2367,7 @@ var getContext = function(display, infos, curLevel) {
             throw(window.languageStrings.messages.failureNotEnoughPlatform);
 
          var coords = {row: this.getRobot().row - 1, col: this.getRobot().col};
-         if(this.getItemsOn(coords.row, coords.col, function(item) { return item.isObstacle === true; }).length != 0) {
+         if(this.getItemsOn(coords.row, coords.col, function(item: Item) { return item.isObstacle === true; }).length != 0) {
             throw(window.languageStrings.messages.failureDropPlatform);
          }
          this.nbPlatforms -= 1;
@@ -2425,7 +2441,7 @@ var getContext = function(display, infos, curLevel) {
       infos.bottomMargin += infos.cellSide;
    }
 
-   var innerState = {};
+   var innerState: Partial<Context> = {};
 
    switch(infos.blocklyColourTheme) {
       case "bwinf":
@@ -2474,7 +2490,7 @@ var getContext = function(display, infos, curLevel) {
 
       if(infos.bagInit != undefined) {
          for(var i = 0;i < infos.bagInit.count;i++) {
-            var item = {};
+            var item: Partial<Item> = {};
 
             var initItem = infos.itemTypes[infos.bagInit.type];
 
@@ -2620,7 +2636,7 @@ var getContext = function(display, infos, curLevel) {
    var resetItem = function(initItem, redisplay) {
       if(redisplay === undefined)
          redisplay = true;
-      var item = {};
+      var item: Partial<Item> = {};
       context.items.push(item);
       for(var property in initItem) {
          item[property] = initItem[property];
