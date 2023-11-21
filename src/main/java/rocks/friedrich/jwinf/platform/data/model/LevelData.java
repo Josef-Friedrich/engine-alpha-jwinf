@@ -3,7 +3,9 @@ package rocks.friedrich.jwinf.platform.data.model;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 
 /**
- * Repräsentation in einer JSON-Datei:
+ * Die Daten einer Version einer Trainingsaufgabe.
+ *
+ * <p>In der JSON-Datei sind die Daten beispielsweise repräsentiert:
  *
  * <pre>{@code
  *   {
