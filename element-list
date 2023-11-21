@@ -7,12 +7,13 @@ rocks.friedrich.jwinf.platform.data.model
 rocks.friedrich.jwinf.platform.gui
 rocks.friedrich.jwinf.platform.gui.level
 rocks.friedrich.jwinf.platform.gui.map
+rocks.friedrich.jwinf.platform.gui.robot
 rocks.friedrich.jwinf.platform.gui.scenes
 rocks.friedrich.jwinf.platform.logic
 rocks.friedrich.jwinf.platform.logic.level
 rocks.friedrich.jwinf.platform.logic.map
 rocks.friedrich.jwinf.platform.logic.menu
-rocks.friedrich.jwinf.platform.robot
+rocks.friedrich.jwinf.platform.logic.robot
 rocks.friedrich.jwinf.tasks
 rocks.friedrich.jwinf.tasks.conditionals
 rocks.friedrich.jwinf.tasks.conditionals.candle
