@@ -59,7 +59,7 @@
     },
     "blocklyColourTheme": "bwinf",
     "checkEndEveryTurn": true,
-    "tiles": {
+    "itemTypes": {
       "robot": {
         "img": "pink_robot.png",
         "side": 80,

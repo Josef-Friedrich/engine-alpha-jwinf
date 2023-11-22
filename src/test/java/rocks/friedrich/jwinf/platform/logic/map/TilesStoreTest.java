@@ -9,11 +9,11 @@ import rocks.friedrich.jwinf.platform.logic.Task;
 
 public class TilesStoreTest {
 
-  TilesStore store;
+  ItemStore store;
 
-  private static TilesStore loadByTaskId(String taskId) {
+  private static ItemStore loadByTaskId(String taskId) {
     Task task = Task.loadById(taskId);
-    return new TilesStore(task.data.grid.tiles);
+    return new ItemStore(task.data.grid.itemTypes);
   }
 
   @BeforeEach

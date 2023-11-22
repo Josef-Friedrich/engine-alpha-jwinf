@@ -25,7 +25,7 @@
       "medium": 20,
       "hard": 20
     },
-    "tiles": {
+    "itemTypes": {
       "robot": {
         "img": "castle_robot.png",
         "side": 80,

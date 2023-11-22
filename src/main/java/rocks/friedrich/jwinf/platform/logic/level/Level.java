@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.platform.logic.level;
 
-import rocks.friedrich.jwinf.platform.data.model.InitItemData;
+import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.data.model.LevelData;
 import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
@@ -40,7 +40,7 @@ public class Level {
   public Level(LevelData data, Task task) {
     this.data = data;
     this.task = task;
-    map = new LevelMap(data.tiles, task.tiles);
+    map = new LevelMap(data.tiles, task.items);
     cols = map.cols;
     rows = map.rows;
     difficulty = data.difficulty;
@@ -56,7 +56,7 @@ public class Level {
     return c;
   }
 
-  public InitItemData getInitItem() {
+  public ItemData getInitItem() {
     return data.getInitItem();
   }
 

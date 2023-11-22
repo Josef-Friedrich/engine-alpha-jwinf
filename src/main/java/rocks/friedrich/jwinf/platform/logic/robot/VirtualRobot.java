@@ -8,7 +8,7 @@ import static rocks.friedrich.jwinf.platform.logic.CompassDirection.WEST;
 import java.util.ArrayList;
 import java.util.List;
 
-import rocks.friedrich.jwinf.platform.data.model.InitItemData;
+import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.CompassDirection;
 import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
@@ -53,7 +53,7 @@ public class VirtualRobot {
     this.map = map;
   }
 
-  public void setInitPosition(InitItemData init) {
+  public void setInitPosition(ItemData init) {
     row = init.row;
     col = init.col;
     dir = CompassDirection.fromNo(init.dir);

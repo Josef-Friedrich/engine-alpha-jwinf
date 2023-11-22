@@ -57,7 +57,7 @@
     "checkEndEveryTurn": true,
     "backgroundColor": "#c5b6af",
     "gridColor": "#888888",
-    "tiles": {
+    "itemTypes": {
       "robot": {
         "img": "pink_robot.png",
         "side": 80,

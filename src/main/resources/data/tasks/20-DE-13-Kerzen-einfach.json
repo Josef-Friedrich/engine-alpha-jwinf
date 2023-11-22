@@ -14,7 +14,7 @@
   "grid": {
     "backgroundColor": "#c5e2dd",
     "gridColor": "#b4ccc7",
-    "tiles": {
+    "itemTypes": {
       "robot": {
         "img": "blue_robot.png",
         "side": 85,

@@ -17,7 +17,7 @@
   "grid": {
     "backgroundColor": "",
     "gridColor": "",
-    "tiles": {
+    "itemTypes": {
       "xxx": {
         "relPath": "",
         "name": "",

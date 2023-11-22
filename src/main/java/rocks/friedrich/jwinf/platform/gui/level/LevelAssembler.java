@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import ea.Scene;
 import ea.Vector;
-import rocks.friedrich.jwinf.platform.data.model.TileData;
+import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.gui.map.Grid;
 import rocks.friedrich.jwinf.platform.gui.map.TileMap;
 import rocks.friedrich.jwinf.platform.gui.robot.Robot;
@@ -25,7 +25,7 @@ public class LevelAssembler {
   public TileMap createTileMap() {
     TileMap tileMap = new TileMap(level.cols, level.rows, "images");
 
-    for (TileData tile : level.task.tiles.all()) {
+    for (ItemData tile : level.task.items.all()) {
       if (tile.relPath != null) {
         tileMap.registerImage(tile.letter, tile.relPath, tile.name);
       }
@@ -34,7 +34,7 @@ public class LevelAssembler {
     for (int row = 0; row < level.map.rows; row++) {
       for (int col = 0; col < level.map.cols; col++) {
         int num = level.data.tiles[row][col];
-        TileData tile = level.task.tiles.get(num);
+        ItemData tile = level.task.items.get(num);
         if (tile != null) {
           tileMap.setTile(col, row, tile.letter);
         }

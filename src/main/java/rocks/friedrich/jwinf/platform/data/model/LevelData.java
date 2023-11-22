@@ -28,7 +28,7 @@ import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
  */
 public class LevelData {
   public int[][] tiles;
-  public InitItemData[] initItems;
+  public ItemData[] initItems;
 
   public Difficulty difficulty;
 
@@ -45,7 +45,7 @@ public class LevelData {
     return tiles.length;
   }
 
-  public InitItemData getInitItem() {
+  public ItemData getInitItem() {
     return initItems[0];
   }
 }

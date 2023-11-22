@@ -4,18 +4,18 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import rocks.friedrich.jwinf.platform.data.model.TileData;
+import rocks.friedrich.jwinf.platform.data.model.ItemData;
 
 /**
- * Ein Speicher für Kacheln (Tile). Eine Trainingsaufgabe (Task) bedient sich
- * eines Kachelspeichers (TilesStore).
+ * Ein Speicher für Dinge (Item). Eine Trainingsaufgabe (Task) bedient sich
+ * eines Kachelspeichers (ItemStore).
  */
-public class TilesStore {
-  private HashMap<String, TileData> tilesByName;
+public class ItemStore {
+  private HashMap<String, ItemData> tilesByName;
 
-  private HashMap<Integer, TileData> tilesByNumber;
+  private HashMap<Integer, ItemData> tilesByNumber;
 
-  public TilesStore(Map<String, TileData> tiles) {
+  public ItemStore(Map<String, ItemData> tiles) {
     tilesByName = new HashMap<>();
     tilesByNumber = new HashMap<>();
     tiles.forEach((name, tile) -> {
@@ -24,7 +24,7 @@ public class TilesStore {
       }
     });
 
-    for (TileData tile : tiles.values()) {
+    for (ItemData tile : tiles.values()) {
       if (tile.name != null) {
         tilesByName.put(tile.name, tile);
       }
@@ -34,19 +34,19 @@ public class TilesStore {
     }
   }
 
-  public TilesStore() {
-    this(new HashMap<String, TileData>());
+  public ItemStore() {
+    this(new HashMap<String, ItemData>());
   }
 
-  public TileData get(int num) {
+  public ItemData get(int num) {
     return tilesByNumber.get(num);
   }
 
-  public TileData get(String name) {
+  public ItemData get(String name) {
     return tilesByName.get(name);
   }
 
-  public Collection<TileData> all() {
+  public Collection<ItemData> all() {
     return tilesByName.values();
   }
 

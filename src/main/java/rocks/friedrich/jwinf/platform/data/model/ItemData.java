@@ -1,6 +1,46 @@
 package rocks.friedrich.jwinf.platform.data.model;
 
-public class TileData {
+import rocks.friedrich.jwinf.platform.logic.CompassDirection;
+
+/**
+ * Die Daten eines Dings (Item).
+ *
+ * <p>
+ * In der JSON-Datei sind die Daten beispielsweise repräsentiert:
+ *
+ * <pre>{@code
+ *   {
+ *     "row": 2,
+ *     "col": 1,
+ *     "dir": 0,
+ *     "type": "robot"
+ *   }
+ * }</pre>
+ */
+public class ItemData {
+
+  /**
+   * Die Zeilennummer, in der das Element anfangs plaziert ist.
+   */
+  public int row;
+
+  /**
+   * Die Spaltennummer, in der das Element anfangs plaziert ist.
+   */
+  public int col;
+
+  /**
+   * <code>0</code> steht für Osten, <code>1</code> steht für Süden,
+   * <code>2</code> steht für Westen, <code>3</code> steht für Norden.
+   *
+   * @see rocks.friedrich.jwinf.platform.logic.CompassDirection
+   */
+  public int dir;
+
+  /**
+   * Hat meistens den Wert <code>robot</code>.
+   */
+  public String type;
 
   /**
    * Relativer Pfad zu <code>src/main/resources/images</code>. Zum Beispiel:
@@ -94,5 +134,9 @@ public class TileData {
   public boolean isWithdrawable;
 
   public int nbStates;
+
+  public CompassDirection getCompassDirection() {
+    return CompassDirection.fromNo(dir);
+  }
 
 }

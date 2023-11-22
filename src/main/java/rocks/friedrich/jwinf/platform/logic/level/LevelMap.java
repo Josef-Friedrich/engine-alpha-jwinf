@@ -1,9 +1,9 @@
 package rocks.friedrich.jwinf.platform.logic.level;
 
 import ea.Vector;
-import rocks.friedrich.jwinf.platform.data.model.TileData;
+import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
-import rocks.friedrich.jwinf.platform.logic.map.TilesStore;
+import rocks.friedrich.jwinf.platform.logic.map.ItemStore;
 
 /**
  * Die mit Kacheln (Tile) ausgefüllte Karte (Map) einer Trainingsaufgabeversion (Level).
@@ -11,7 +11,7 @@ import rocks.friedrich.jwinf.platform.logic.map.TilesStore;
 public class LevelMap {
   private int[][] map;
 
-  private TilesStore tiles;
+  private ItemStore tiles;
 
   /**
    * Anzahl an Reihen (y-Richtung bzw. Höhe)
@@ -37,7 +37,7 @@ public class LevelMap {
    */
   public int y;
 
-  public LevelMap(int[][] map, TilesStore tiles) {
+  public LevelMap(int[][] map, ItemStore tiles) {
     this.map = map;
     rows = map.length;
     cols = map[0].length;
@@ -48,14 +48,14 @@ public class LevelMap {
     this.map = map;
     rows = map.length;
     cols = map[0].length;
-    tiles = new TilesStore();
+    tiles = new ItemStore();
   }
 
   public LevelMap(int rows, int cols) {
     this(new int[rows][cols]);
   }
 
-  public TileData get(int row, int col) {
+  public ItemData get(int row, int col) {
     int num = map[row][col];
     return tiles.get(num);
   }
@@ -64,7 +64,7 @@ public class LevelMap {
    * Überprüfe, ob die Kachel eine Hindernis darstellt.
    */
   public boolean isObstacle(int row, int col) {
-    TileData tile = get(row, col);
+    ItemData tile = get(row, col);
     if (tile != null) {
       return tile.isObstacle;
     }

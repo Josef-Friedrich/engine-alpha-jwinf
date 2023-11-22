@@ -13,7 +13,7 @@ import ea.animation.Interpolator;
 import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.platform.State;
-import rocks.friedrich.jwinf.platform.data.model.TileData;
+import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 
@@ -36,7 +36,7 @@ public class Robot extends Image {
    *
    * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2458-L2478
    */
-  public List<TileData> bag = new ArrayList<>();
+  public List<ItemData> bag = new ArrayList<>();
 
   public Robot(String filepath, LevelMap map) {
     super(filepath, 1, 1);

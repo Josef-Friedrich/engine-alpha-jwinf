@@ -10,7 +10,7 @@ import rocks.friedrich.jwinf.platform.gui.Color;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.level.LevelCollection;
-import rocks.friedrich.jwinf.platform.logic.map.TilesStore;
+import rocks.friedrich.jwinf.platform.logic.map.ItemStore;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren (in der Regel 3)
@@ -33,7 +33,7 @@ public class Task {
 
   public LevelCollection levels;
 
-  public TilesStore tiles;
+  public ItemStore items;
 
   public Color backgroundColor;
 
@@ -56,7 +56,7 @@ public class Task {
     backgroundColor = new Color(data.grid.backgroundColor);
     gridColor = new Color(data.grid.gridColor);
 
-    tiles = new TilesStore(data.grid.tiles);
+    items = new ItemStore(data.grid.itemTypes);
     levels = new LevelCollection(data.levels, this);
   }
 
