@@ -65,8 +65,6 @@ public class LevelAssembler {
     var context = level.createContext();
 
     robot.actor = new ImageRobot("images/candle/robot.png", context.robot);
-    robot.actor.addGridEdgesMovementListener();
-    robot.actor.addObstaclesMovementListener();
     return robot;
   }
 

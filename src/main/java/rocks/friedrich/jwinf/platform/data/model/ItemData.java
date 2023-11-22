@@ -147,7 +147,7 @@ public class ItemData {
   public int nbStates;
 
   public Compass getCompassDirection() {
-    return Compass.fromNo(dir);
+    return Compass.fromNumber(dir);
   }
 
 }

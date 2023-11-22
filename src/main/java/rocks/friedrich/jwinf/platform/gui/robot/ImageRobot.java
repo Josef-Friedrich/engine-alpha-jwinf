@@ -14,6 +14,7 @@ import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.platform.State;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
+import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.map.Movement;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 import rocks.friedrich.jwinf.platform.logic.robot.Robot;
@@ -22,8 +23,6 @@ import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 public class ImageRobot extends Image implements Robot {
 
   private VirtualRobot virtual;
-
-  private List<MovementListener> movementListeners = new ArrayList<>();
 
   /**
    * Damit keine neue Bewegung gestartet werden kann, bevor nicht die alte
@@ -47,71 +46,13 @@ public class ImageRobot extends Image implements Robot {
     this.virtual = virtual;
   }
 
-  public void addMovementListener(MovementListener listener) {
-    movementListeners.add(listener);
-  }
-
-  public void addGridEdgesMovementListener() {
-    addMovementListener((int row, int col, Direction direction) -> {
-      switch (direction) {
-        case RIGHT:
-          return col < virtual.map.cols - 1;
-
-        case UP:
-          return row > 0;
-
-        case LEFT:
-          return col > 0;
-
-        case DOWN:
-          return row < virtual.map.rows - 1;
-
-        default:
-          return true;
-      }
-    });
-  }
-
-  protected boolean isInFrontOfObstacle(int row, int col, Direction direction) {
-    int rowMovement = 0;
-    int colMovement = 0;
-
-    switch (direction) {
-      case RIGHT:
-        colMovement = 1;
-        break;
-
-      case UP:
-        rowMovement = -1;
-        break;
-
-      case LEFT:
-        colMovement = -1;
-        break;
-
-      case DOWN:
-        rowMovement = 1;
-        break;
-
-      default:
-    }
-
-    return virtual.map.isObstacle(row + rowMovement, col + colMovement);
-  }
-
-  public boolean isInFrontOfObstacle() {
-    return isInFrontOfObstacle(row(), col(), getDirection());
-  }
-
-  public void addObstaclesMovementListener() {
-    addMovementListener((int row, int col, Direction direction) -> {
-      return !isInFrontOfObstacle(row, col, direction);
-    });
-  }
-
   public boolean isOnExit() {
     var tile = virtual.map.get(row(), col());
     return tile != null && tile.isExit;
+  }
+
+  public boolean obstacleInFront() {
+    return virtual.obstacleInFront();
   }
 
   public void setSpeed(float speed) {
@@ -146,17 +87,8 @@ public class ImageRobot extends Image implements Robot {
     inMotion = false;
   }
 
-  public boolean canMove(Direction direction) {
-    for (MovementListener listener : this.movementListeners) {
-      if (!listener.allowMovement(row(), col(), direction)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  public boolean canMoveAnimated(Direction direction) {
-    boolean result = canMove(direction);
+  public boolean canMoveAnimated(Compass direction) {
+    boolean result = virtual.tryToBeOn(direction);
     if (!result) {
       wiggle();
     }
@@ -180,26 +112,26 @@ public class ImageRobot extends Image implements Robot {
    * Gehe einen Pixelmeter in Richtung der aktuellen Rotation.
    */
   public void go() {
-    go(getDirection());
+    go(virtual.dir);
   }
 
-  public void go(Direction direction) {
+  public void go(Compass direction) {
     float degree = 90;
 
     switch (direction) {
-      case RIGHT:
+      case EAST:
         degree = 0;
         break;
 
-      case UP:
+      case NORTH:
         degree = 90;
         break;
 
-      case LEFT:
+      case WEST:
         degree = 180;
         break;
 
-      case DOWN:
+      case SOUTH:
         degree = 270;
         break;
 
@@ -217,7 +149,7 @@ public class ImageRobot extends Image implements Robot {
 
   public Movement east() {
     var movement = virtual.east();
-    go(movement.getDirection());
+    go(movement.dir);
     return movement;
   }
 
@@ -227,7 +159,7 @@ public class ImageRobot extends Image implements Robot {
 
   public Movement south() {
     var movement = virtual.south();
-    go(movement.getDirection());
+    go(movement.dir);
     return movement;
   }
 
@@ -237,7 +169,7 @@ public class ImageRobot extends Image implements Robot {
 
   public Movement west() {
     var movement = virtual.west();
-    go(movement.getDirection());
+    go(movement.dir);
     return movement;
   }
 
@@ -247,7 +179,7 @@ public class ImageRobot extends Image implements Robot {
 
   public Movement north() {
     var movement = virtual.north();
-    go(movement.getDirection());
+    go(movement.dir);
     return movement;
   }
 
@@ -339,15 +271,25 @@ public class ImageRobot extends Image implements Robot {
   /**
    * Drehe um 90 Grad nach links.
    */
-  public void rotateLeft() {
+  public Movement turnLeft() {
+    var movement = virtual.turnLeft();
     rotateByAnimated(90);
+    return movement;
   }
 
   /**
    * Drehe um 90 Grad nach rechts.
    */
-  public void rotateRight() {
+  public Movement turnRight() {
+    var movement = virtual.turnRight();
     rotateByAnimated(-90);
+    return movement;
+  }
+
+    public Movement turnAround() {
+    var movement = virtual.turnAround();
+    rotateByAnimated(180);
+    return movement;
   }
 
   /**

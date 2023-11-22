@@ -6,12 +6,13 @@ import rocks.friedrich.jwinf.platform.logic.map.Point;
 import rocks.friedrich.jwinf.platform.logic.map.ItemStore;
 
 /**
- * Die mit Kacheln (Tile) ausgefüllte Karte (Map) einer Trainingsaufgabeversion (Level).
+ * Die mit Dingen (Item) ausgefüllte Karte (Map) einer Trainingsaufgabeversion
+ * (Level).
  */
 public class LevelMap {
   private int[][] map;
 
-  private ItemStore tiles;
+  private ItemStore items;
 
   /**
    * Anzahl an Reihen (y-Richtung bzw. Höhe)
@@ -37,18 +38,18 @@ public class LevelMap {
    */
   public int y;
 
-  public LevelMap(int[][] map, ItemStore tiles) {
+  public LevelMap(int[][] map, ItemStore items) {
     this.map = map;
     rows = map.length;
     cols = map[0].length;
-    this.tiles = tiles;
+    this.items = items;
   }
 
   public LevelMap(int[][] map) {
     this.map = map;
     rows = map.length;
     cols = map[0].length;
-    tiles = new ItemStore();
+    items = new ItemStore();
   }
 
   public LevelMap(int rows, int cols) {
@@ -57,7 +58,11 @@ public class LevelMap {
 
   public ItemData get(int row, int col) {
     int num = map[row][col];
-    return tiles.get(num);
+    return items.get(num);
+  }
+
+  public ItemData get(Point point) {
+    return get(point.row, point.col);
   }
 
   /**

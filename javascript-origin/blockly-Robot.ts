@@ -3349,7 +3349,7 @@ var getContext = function (display, infos, curLevel) {
     return true;
   };
 
-  context.coordsInFront = function (dDir, mult) {
+  context.coordsInFront = function (dDir: number, mult: number) {
     if (dDir === undefined) dDir = 0;
     if (mult === undefined) mult = 1;
     var item = context.getRobot();
@@ -3878,27 +3878,27 @@ var getContext = function (display, infos, curLevel) {
   };
 
   context.obstacleInFront = function () {
-    return context.isInFront(function (obj) {
+    return context.isInFront(function (obj: Item) {
       return obj.isObstacle === true;
     });
   };
 
   context.platformInFront = function () {
     var coords = context.coordsInFront();
-    return context.hasOn(coords.row + 1, coords.col, function (obj) {
+    return context.hasOn(coords.row + 1, coords.col, function (obj: Item) {
       return obj.isObstacle === true;
     });
   };
 
   context.platformAbove = function () {
     var robot = context.getRobot();
-    return context.hasOn(robot.row - 1, robot.col, function (obj) {
+    return context.hasOn(robot.row - 1, robot.col, function (obj: Item) {
       return obj.isObstacle === true;
     });
   };
 
   context.writeNumber = function (row, col, value) {
-    var numbers = context.getItemsOn(row, col, function (obj) {
+    var numbers = context.getItemsOn(row, col, function (obj: Item) {
       return obj.isWritable === true;
     });
 
@@ -3914,7 +3914,7 @@ var getContext = function (display, infos, curLevel) {
   };
 
   context.readNumber = function (row, col) {
-    var numbers = context.getItemsOn(row, col, function (obj) {
+    var numbers = context.getItemsOn(row, col, function (obj: Item) {
       return obj.value !== undefined;
     });
 
@@ -3929,7 +3929,7 @@ var getContext = function (display, infos, curLevel) {
     var robot = context.getRobot();
     var coords = context.coordsInFront();
 
-    var items = context.getItemsOn(coords.row, coords.col, function (obj) {
+    var items = context.getItemsOn(coords.row, coords.col, function (obj: Item) {
       return obj.isPushable === true;
     });
 
@@ -3942,7 +3942,7 @@ var getContext = function (display, infos, curLevel) {
     if (!context.isInGrid(coordsAfter.row, coordsAfter.col))
       throw strings.messages.failureWhilePushing;
     if (
-      context.hasOn(coordsAfter.row, coordsAfter.col, function (obj) {
+      context.hasOn(coordsAfter.row, coordsAfter.col, function (obj: Item) {
         return obj.isObstacle === true;
       })
     )

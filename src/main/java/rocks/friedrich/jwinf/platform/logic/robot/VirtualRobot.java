@@ -13,6 +13,7 @@ import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
 import rocks.friedrich.jwinf.platform.logic.map.Movement;
+import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 /**
  * Ein Roboter der nicht grafisch dargestellt ist, sondern der sich nur im
@@ -56,7 +57,7 @@ public class VirtualRobot implements Robot {
   public void setInitPosition(ItemData init) {
     row = init.row;
     col = init.col;
-    dir = Compass.fromNo(init.dir);
+    dir = Compass.fromNumber(init.dir);
 
     initPosition = new DirectionalPoint(row, col, dir);
   }
@@ -149,6 +150,53 @@ public class VirtualRobot implements Robot {
     }
     movementSuccessful = result;
     return result;
+  }
+
+  /**
+   * @param dir  Die Himmelsrichtung
+   * @param mult Multiplikation
+   *
+   * @see <a href=
+   *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2946-L2958">blocklyRobot_lib-1.1.js
+   *      L2946-L2958</a>
+   */
+  public Point coordsInFront(Compass dir, int mult) {
+    int[][] delta = new int[][] {
+        new int[] { 0, 1 },
+        new int[] { 1, 0 },
+        new int[] { 0, -1 },
+        new int[] { -1, 0 }
+    };
+    return new Point(row + delta[dir.getNumber()][0] * mult, col + delta[dir.getNumber()][1] * mult);
+  }
+
+  public Point coordsInFront(Compass dir) {
+    return coordsInFront(dir, 1);
+  }
+
+  /**
+   * @see <a href=
+   *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3374-L3376">blocklyRobot_lib-1.1.js
+   *      L3374-L3376</a>
+   */
+  public boolean obstacleInFront() {
+    ItemData item = map.get(coordsInFront(dir));
+    return item.isObstacle;
+  }
+
+  public Movement turnLeft() {
+    dir = dir.rotate(3);
+    return reportMovement();
+  }
+
+  public Movement turnRight() {
+    dir = dir.rotate(1);
+    return reportMovement();
+  }
+
+  public Movement turnAround() {
+    dir = dir.rotate(2);
+    return reportMovement();
   }
 
   /**

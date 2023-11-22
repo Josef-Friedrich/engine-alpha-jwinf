@@ -4,16 +4,16 @@ import rocks.friedrich.jwinf.platform.gui.robot.RobotWrapper;
 
 public class Robot extends RobotWrapper {
 
-  public boolean isInFrontOfObstacle() {
-    return actor.isInFrontOfObstacle();
+  public boolean obstacleInFront() {
+    return actor.obstacleInFront();
   }
 
-  public void rotateLeft() {
-    actor.rotateLeft();
+  public void turnLeft() {
+    actor.turnLeft();
   }
 
-  public void rotateRight() {
-    actor.rotateRight();
+  public void turnRight() {
+    actor.turnRight();
   }
 
   public void go() {

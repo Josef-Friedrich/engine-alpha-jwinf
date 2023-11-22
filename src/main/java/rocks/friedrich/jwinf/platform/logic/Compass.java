@@ -12,31 +12,41 @@ public enum Compass {
    * 0 in <a href=
    * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3355">blocklyRobot_lib-1.1.js</a>
    */
-  EAST,
+  EAST(0),
 
   /**
    * 1 in <a href=
    * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3341">blocklyRobot_lib-1.1.js</a>
    */
-  SOUTH,
+  SOUTH(1),
 
   /**
    * 2 in <a href=
    * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3369">blocklyRobot_lib-1.1.js</a>
    */
-  WEST,
+  WEST(2),
 
   /**
    * 3 in <a href=
    * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3327">blocklyRobot_lib-1.1.js</a>
    */
-  NORTH;
+  NORTH(3);
+
+  private int number;
+
+  private Compass(int number) {
+    this.number = number;
+  }
+
+  public int getNumber() {
+    return number;
+  }
 
   /**
    * Konvertiere eine Himmelrichtungsnummer in den Aufzählungstyp.
    */
-  public static Compass fromNo(int directionNumber) {
-    switch (directionNumber) {
+  public static Compass fromNumber(int number) {
+    switch (number) {
       case 0:
         return EAST;
 
@@ -52,6 +62,16 @@ public enum Compass {
       default:
         throw new Error("Unknown direction number");
     }
+  }
+
+  /**
+   * @param diff Positive Werte im Uhrzeigersinn.
+   */
+  public Compass rotate(int diff) {
+    if (diff < 0) {
+      throw new Error("Specify only positive value to specify the rotation.");
+    }
+    return Compass.fromNumber((number + diff) % 4);
   }
 
   /**

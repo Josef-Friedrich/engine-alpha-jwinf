@@ -12,8 +12,8 @@ public class TaskSolver extends Solver<Robot> {
   public void easy(Robot robot) {
     for (int i = 0; i < 17; i++) {
       robot.go();
-      if (robot.isInFrontOfObstacle()) {
-        robot.rotateLeft();
+      if (robot.obstacleInFront()) {
+        robot.turnLeft();
       }
     }
   }
@@ -22,11 +22,11 @@ public class TaskSolver extends Solver<Robot> {
   public void medium(Robot robot) {
     for (int i = 0; i < 20; i++) {
       robot.go();
-      if (robot.isInFrontOfObstacle()) {
-        robot.rotateRight();
-        if (robot.isInFrontOfObstacle()) {
-          robot.rotateLeft();
-          robot.rotateLeft();
+      if (robot.obstacleInFront()) {
+        robot.turnRight();
+        if (robot.obstacleInFront()) {
+          robot.turnLeft();
+          robot.turnLeft();
         }
       }
     }
@@ -36,18 +36,18 @@ public class TaskSolver extends Solver<Robot> {
   public void hard(Robot robot) {
     for (int i = 0; i < 20; i++) {
       robot.go();
-      if (robot.isInFrontOfObstacle()) {
-        robot.rotateRight();
-        if (robot.isInFrontOfObstacle()) {
-          robot.rotateLeft();
-          robot.rotateLeft();
+      if (robot.obstacleInFront()) {
+        robot.turnRight();
+        if (robot.obstacleInFront()) {
+          robot.turnLeft();
+          robot.turnLeft();
         }
       } else {
-        robot.rotateLeft();
-        if (!robot.isInFrontOfObstacle()) {
+        robot.turnLeft();
+        if (!robot.obstacleInFront()) {
           robot.go();
         } else {
-          robot.rotateRight();
+          robot.turnRight();
         }
       }
     }
