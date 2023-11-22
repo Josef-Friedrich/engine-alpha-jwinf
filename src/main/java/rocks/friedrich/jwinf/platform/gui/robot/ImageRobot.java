@@ -112,6 +112,7 @@ public class ImageRobot extends Image implements Robot {
    * Gehe einen Pixelmeter in Richtung der aktuellen Rotation.
    */
   public void go() {
+    virtual.forward();
     go(virtual.dir);
   }
 

@@ -54,7 +54,7 @@ public class VirtualRobotTest {
     assertEquals(robot.col, 2);
   }
 
-    @Test
+  @Test
   public void methodSouth() {
     assertMovement(robot.south(), 8, 1, EAST, false);
   }
@@ -66,7 +66,7 @@ public class VirtualRobotTest {
     assertEquals(robot.col, 0);
   }
 
-    @Test
+  @Test
   public void methodNorth() {
     assertMovement(robot.north(), 8, 1, EAST, false);
   }
@@ -87,6 +87,17 @@ public class VirtualRobotTest {
 
     robot.west();
     assertFalse(robot.movementSuccessful);
+  }
+
+  @Test
+  public void methodObstacleInFront() {
+    assertFalse(robot.obstacleInFront());
+    robot.turnLeft();
+    assertTrue(robot.obstacleInFront());
+    robot.turnLeft();
+    assertFalse(robot.obstacleInFront());
+    robot.turnLeft();
+    assertTrue(robot.obstacleInFront());
   }
 
 }

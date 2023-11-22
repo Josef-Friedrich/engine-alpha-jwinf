@@ -13,6 +13,7 @@ public class TaskSolver extends Solver<Robot> {
     for (int i = 0; i < 17; i++) {
       robot.go();
       if (robot.obstacleInFront()) {
+        System.out.println("turn");
         robot.turnLeft();
       }
     }
