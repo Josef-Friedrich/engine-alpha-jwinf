@@ -20,12 +20,23 @@ import rocks.friedrich.jwinf.platform.logic.CompassDirection;
 public class ItemData {
 
   /**
-   * Die Zeilennummer, in der das Element anfangs plaziert ist.
+   * Die Nummer (ID) des Dings.
+   */
+  public int num;
+
+  /**
+   * Ein eindeutiger Name, dar das Ding identifiziert. Zum Beispiel:
+   * <code>candle</code>
+   */
+  public String name;
+
+  /**
+   * Die Zeilennummer, in der das Ding plaziert ist.
    */
   public int row;
 
   /**
-   * Die Spaltennummer, in der das Element anfangs plaziert ist.
+   * Die Spaltennummer, in der das Ding plaziert ist.
    */
   public int col;
 
@@ -54,84 +65,84 @@ public class ItemData {
   public char letter;
 
   /**
-   * Zum Beispiel: <code>candle</code>
-   */
-  public String name;
-
-  /**
-   * Kachelnummer. Siehe levels.easy.titles. Importiert aus Javascript-Datei.
-   */
-  public int num;
-
-  /**
    * Dateiname. Zum Beispiel: <code>kerze.png</code>. Importiert aus
    * Javascript-Datei.
    */
   public String img;
 
   /**
-   * Größe in Pixel. Importiert aus Javascript-Datei.
+   * Größe in Pixel.
    */
   public int side;
 
   /**
-   * Importiert aus Javascript-Datei.
-   */
-  public boolean isRobot;
-
-  /**
-   * Importiert aus Javascript-Datei.
+   *
    */
   public int offsetX;
 
   /**
-   * Importiert aus Javascript-Datei.
+   *
    */
   public int offsetY;
 
   /**
-   * Importiert aus Javascript-Datei.
+   *
    */
   public int zOrder;
 
   /**
-   * Importiert aus Javascript-Datei.
+   *
    */
   public String color;
 
   /**
-   * Importiert aus Javascript-Datei.
-   */
-  public boolean isObstacle;
-
-  /**
-   * Importiert aus Javascript-Datei.
-   */
-  public boolean isExit;
-
-  /**
-   * Importiert aus Javascript-Datei.
+   * Gibt an, ob das Ding eine Kiste darstellt.
    */
   public boolean isContainer;
 
   /**
-   * Importiert aus Javascript-Datei.
+   *
+   */
+  public boolean isExit;
+
+  /**
+   * Gibt an, ob das Ding einen Laser darstellt.
+   */
+  public boolean isLaser;
+
+  /**
+   * Gibt an, ob das Ding ein Hindernis darstellt.
+   */
+  public boolean isObstacle;
+
+  /**
+   *
    */
   public boolean isPaint;
 
   /**
-   * Importiert aus Javascript-Datei.
+   * Gibt an, ob das Ding einen Wurfkörper darstellt.
    */
-  public boolean isWritable;
+  public boolean isProjectile;
+
+  public boolean isPushable;
 
   /**
-   * Gibt an ob eine Kachel eingesammelt werden kann.
+   * Gibt an, ob das Ding einen Roboter darstellt.
+   */
+  public boolean isRobot;
+
+  /**
+   * Gibt an, ob das Ding eingesammelt werden kann.
    *
    * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3001-L3023
-   *
-   * Importiert aus Javascript-Datei.
    */
   public boolean isWithdrawable;
+
+  /**
+   * Gibt an, ob das Ding eine Tafel darstellt.
+   */
+  public boolean isWritable;
 
   public int nbStates;
 

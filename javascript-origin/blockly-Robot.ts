@@ -6,14 +6,17 @@ import type { RaphaelBaseElement } from "./raphael";
 type Filter = (item: Item) => boolean
 
 interface Item {
-  isContainer?: boolean;
   value?: any;
+  isContainer?: boolean;
+  isExit?: boolean;
   isLaser?: boolean;
-  isWritable?: boolean;
-  isWithdrawable?: boolean;
-  isPushable?: boolean;
   isObstacle?: boolean;
+  isPaint?: boolean;
   isProjectile?: boolean;
+  isPushable?: boolean;
+  isRobot?: boolean;
+  isWithdrawable?: boolean;
+  isWritable?: boolean;
   zOrder: number;
   row: number;
   col: number;
@@ -23,7 +26,6 @@ interface Item {
   nbStates: number;
   type: "paint" | "robot";
   element: RaphaelBaseElement;
-  isRobot?: boolean;
   num?: number;
   color?: string;
   fontColor?: string;

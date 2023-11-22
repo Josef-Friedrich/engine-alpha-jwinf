@@ -18,7 +18,7 @@ import rocks.friedrich.jwinf.platform.logic.map.Movement;
  * Ein Roboter der nicht grafisch dargestellt ist, sondern der sich nur im
  * Speicher befindet. Er kann durch Unit-Tests getestet werden.
  */
-public class VirtualRobot {
+public class VirtualRobot implements Robot {
   private List<MovementListener> movementListeners = new ArrayList<>();
 
   public LevelMap map;
