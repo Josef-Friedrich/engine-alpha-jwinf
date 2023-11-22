@@ -4,12 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static rocks.friedrich.jwinf.TestHelper.loadVirtualRobot;
+import static rocks.friedrich.jwinf.platform.logic.CompassDirection.EAST;
+import static rocks.friedrich.jwinf.platform.logic.CompassDirection.WEST;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import rocks.friedrich.jwinf.platform.logic.CompassDirection;
+import rocks.friedrich.jwinf.platform.logic.map.Movement;
 
+/**
+ * https://jwinf.de/task/1158
+ */
 public class VirtualRobotTest {
 
   VirtualRobot robot;
@@ -17,6 +23,13 @@ public class VirtualRobotTest {
   @BeforeEach
   public void setUp() {
     robot = loadVirtualRobot("19-DE-12-stay-on-the-road");
+  }
+
+  private void assertMovement(Movement movement, int row, int col, CompassDirection dir, boolean successful) {
+    assertEquals(movement.row, row);
+    assertEquals(movement.col, col);
+    assertEquals(movement.dir, dir);
+    assertEquals(movement.successful, successful);
   }
 
   @Test
@@ -31,25 +44,49 @@ public class VirtualRobotTest {
 
   @Test
   public void attributeDir() {
-    assertEquals(robot.dir, CompassDirection.EAST);
+    assertEquals(robot.dir, EAST);
+  }
+
+  @Test
+  public void methodEast() {
+    assertMovement(robot.east(), 8, 2, EAST, true);
+    assertEquals(robot.row, 8);
+    assertEquals(robot.col, 2);
+  }
+
+    @Test
+  public void methodSouth() {
+    assertMovement(robot.south(), 8, 1, EAST, false);
+  }
+
+  @Test
+  public void methodWest() {
+    assertMovement(robot.west(), 8, 0, WEST, true);
+    assertEquals(robot.row, 8);
+    assertEquals(robot.col, 0);
+  }
+
+    @Test
+  public void methodNorth() {
+    assertMovement(robot.north(), 8, 1, EAST, false);
   }
 
   @Test
   public void cantMoveInFrontOfObstacles() {
     robot.east();
-    assertTrue(robot.lastMovementSuccessful);
+    assertTrue(robot.movementSuccessful);
 
     robot.north();
-    assertFalse(robot.lastMovementSuccessful);
+    assertFalse(robot.movementSuccessful);
   }
 
   @Test
   public void cantMoveOnTheEdge() {
     robot.west();
-    assertTrue(robot.lastMovementSuccessful);
+    assertTrue(robot.movementSuccessful);
 
     robot.west();
-    assertFalse(robot.lastMovementSuccessful);
+    assertFalse(robot.movementSuccessful);
   }
 
 }

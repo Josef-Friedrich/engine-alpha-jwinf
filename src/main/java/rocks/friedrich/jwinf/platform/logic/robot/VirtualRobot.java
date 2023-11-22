@@ -12,6 +12,7 @@ import rocks.friedrich.jwinf.platform.data.model.InitItemData;
 import rocks.friedrich.jwinf.platform.logic.CompassDirection;
 import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
+import rocks.friedrich.jwinf.platform.logic.map.Movement;
 
 /**
  * Ein Roboter der nicht grafisch dargestellt ist, sondern der sich nur im
@@ -43,7 +44,10 @@ public class VirtualRobot {
    */
   public int numberOfMovements;
 
-  public boolean lastMovementSuccessful;
+  /**
+   * Gibt an, ob die letzte Bewegung erfolgreich war.
+   */
+  public boolean movementSuccessful;
 
   public VirtualRobot(LevelMap map) {
     this.map = map;
@@ -143,15 +147,15 @@ public class VirtualRobot {
         break;
       }
     }
-    lastMovementSuccessful = result;
+    movementSuccessful = result;
     return result;
   }
 
   /**
    * Gib den aktuellen gerichteten Punkt, an dem sich der Robot aktuell befindet.
    */
-  public DirectionalPoint getDirectionalPoint() {
-    return new DirectionalPoint(row, col, dir);
+  public Movement reportMovement() {
+    return new Movement(row, col, dir, movementSuccessful);
   }
 
   /**
@@ -159,13 +163,13 @@ public class VirtualRobot {
    *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3346-L3358">blocklyRobot_lib-1.1.js
    *      L3346-L3358</a>
    */
-  public DirectionalPoint east() {
+  public Movement east() {
     if (tryToBeOn(EAST)) {
       col++;
       dir = EAST;
       numberOfMovements++;
     }
-    return getDirectionalPoint();
+    return reportMovement();
   }
 
   /**
@@ -173,13 +177,13 @@ public class VirtualRobot {
    *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3318-L3330">blocklyRobot_lib-1.1.js
    *      L3318-L3330</a>
    */
-  public DirectionalPoint north() {
+  public Movement north() {
     if (tryToBeOn(NORTH)) {
       row--;
       dir = NORTH;
       numberOfMovements++;
     }
-    return getDirectionalPoint();
+    return reportMovement();
   }
 
   /**
@@ -187,13 +191,13 @@ public class VirtualRobot {
    *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3360-L3372">blocklyRobot_lib-1.1.js
    *      L3360-L3372</a>
    */
-  public DirectionalPoint west() {
+  public Movement west() {
     if (tryToBeOn(WEST)) {
       col--;
       dir = WEST;
       numberOfMovements++;
     }
-    return getDirectionalPoint();
+    return reportMovement();
   }
 
   /**
@@ -201,13 +205,13 @@ public class VirtualRobot {
    *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3332-L3344">blocklyRobot_lib-1.1.js
    *      L3332-L3344</a>
    */
-  public DirectionalPoint south() {
+  public Movement south() {
     if (tryToBeOn(SOUTH)) {
       row++;
       dir = SOUTH;
       numberOfMovements++;
     }
-    return getDirectionalPoint();
+    return reportMovement();
   }
 
 }
