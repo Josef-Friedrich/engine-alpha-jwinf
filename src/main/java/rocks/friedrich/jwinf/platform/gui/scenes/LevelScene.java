@@ -10,7 +10,7 @@ import ea.internal.Bounds;
 import rocks.friedrich.jwinf.platform.gui.Controller;
 import rocks.friedrich.jwinf.platform.gui.level.AssembledLevel;
 import rocks.friedrich.jwinf.platform.gui.level.LevelAssembler;
-import rocks.friedrich.jwinf.platform.gui.robot.Robot;
+import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
 import rocks.friedrich.jwinf.platform.gui.robot.RobotAction;
 import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
@@ -22,7 +22,7 @@ public class LevelScene extends Scene implements WindowScene, KeyListener, Assem
   public Task task;
   public Level level;
 
-  private final Robot robot;
+  private final ImageRobot robot;
 
   private RobotAction action;
 

@@ -8,6 +8,6 @@ package rocks.friedrich.jwinf.platform.gui.robot;
  */
 public class RobotWrapper {
 
-  public Robot actor;
+  public ImageRobot actor;
 
 }

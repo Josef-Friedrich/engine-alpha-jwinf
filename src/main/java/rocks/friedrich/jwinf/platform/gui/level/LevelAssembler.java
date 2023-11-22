@@ -7,7 +7,7 @@ import ea.Vector;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.gui.map.Grid;
 import rocks.friedrich.jwinf.platform.gui.map.TileMap;
-import rocks.friedrich.jwinf.platform.gui.robot.Robot;
+import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
 import rocks.friedrich.jwinf.platform.gui.robot.RobotWrapper;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 
@@ -62,7 +62,9 @@ public class LevelAssembler {
         .asSubclass(RobotWrapper.class).getDeclaredConstructor()
         .newInstance();
 
-    robot.actor = new Robot("images/candle/robot.png", level.map);
+    var context = level.createContext();
+
+    robot.actor = new ImageRobot("images/candle/robot.png", context.robot);
     robot.actor.addGridEdgesMovementListener();
     robot.actor.addObstaclesMovementListener();
     return robot;

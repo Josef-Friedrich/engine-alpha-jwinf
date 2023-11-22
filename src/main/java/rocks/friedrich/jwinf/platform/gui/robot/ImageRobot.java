@@ -14,10 +14,14 @@ import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.platform.State;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
-import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
+import rocks.friedrich.jwinf.platform.logic.map.Movement;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.robot.Robot;
+import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
-public class Robot extends Image {
+public class ImageRobot extends Image implements Robot {
+
+  private VirtualRobot virtual;
 
   private List<MovementListener> movementListeners = new ArrayList<>();
 
@@ -27,7 +31,7 @@ public class Robot extends Image {
    */
   private boolean inMotion = false;
 
-  private LevelMap map;
+  // private LevelMap map;
 
   protected float speed = 1;
 
@@ -38,9 +42,9 @@ public class Robot extends Image {
    */
   public List<ItemData> bag = new ArrayList<>();
 
-  public Robot(String filepath, LevelMap map) {
+  public ImageRobot(String filepath, VirtualRobot virtual) {
     super(filepath, 1, 1);
-    this.map = map;
+    this.virtual = virtual;
   }
 
   public void addMovementListener(MovementListener listener) {
@@ -51,7 +55,7 @@ public class Robot extends Image {
     addMovementListener((int row, int col, Direction direction) -> {
       switch (direction) {
         case RIGHT:
-          return col < map.cols - 1;
+          return col < virtual.map.cols - 1;
 
         case UP:
           return row > 0;
@@ -60,7 +64,7 @@ public class Robot extends Image {
           return col > 0;
 
         case DOWN:
-          return row < map.rows - 1;
+          return row < virtual.map.rows - 1;
 
         default:
           return true;
@@ -92,7 +96,7 @@ public class Robot extends Image {
       default:
     }
 
-    return map.isObstacle(row + rowMovement, col + colMovement);
+    return virtual.map.isObstacle(row + rowMovement, col + colMovement);
   }
 
   public boolean isInFrontOfObstacle() {
@@ -106,7 +110,7 @@ public class Robot extends Image {
   }
 
   public boolean isOnExit() {
-    var tile = map.get(row(), col());
+    var tile = virtual.map.get(row(), col());
     return tile != null && tile.isExit;
   }
 
@@ -211,40 +215,48 @@ public class Robot extends Image {
     go(1);
   }
 
-  public void goRight() {
-    go(Direction.RIGHT);
+  public Movement east() {
+    var movement = virtual.east();
+    go(movement.getDirection());
+    return movement;
   }
 
   public void goRightNonBlocking() {
-    new Thread(this::goRight).start();
+    new Thread(this::east).start();
   }
 
-  public void goUp() {
-    go(Direction.UP);
+  public Movement north() {
+    var movement = virtual.north();
+    go(movement.getDirection());
+    return movement;
   }
 
   public void goUpNonBlocking() {
-    new Thread(this::goUp).start();
+    new Thread(this::north).start();
   }
 
-  public void goLeft() {
-    go(Direction.LEFT);
+  public Movement west() {
+    var movement = virtual.south();
+    go(movement.getDirection());
+    return movement;
   }
 
   public void goLeftNonBlocking() {
-    new Thread(this::goLeft).start();
+    new Thread(this::west).start();
   }
 
-  public void goDown() {
-    go(Direction.DOWN);
+  public Movement south() {
+    var movement = virtual.south();
+    go(movement.getDirection());
+    return movement;
   }
 
   public void goDownNonBlocking() {
-    new Thread(this::goDown).start();
+    new Thread(this::south).start();
   }
 
   public Point point() {
-    return map.translateToPoint(getCenter());
+    return virtual.map.translateToPoint(getCenter());
   }
 
   /**

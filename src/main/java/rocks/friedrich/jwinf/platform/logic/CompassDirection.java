@@ -1,5 +1,9 @@
 package rocks.friedrich.jwinf.platform.logic;
 
+import static ea.Direction.*;
+
+import ea.Direction;
+
 /**
  * Grobe Himmelsrichtung der vier Haupthimmelsrichtungen
  */
@@ -33,6 +37,9 @@ public enum CompassDirection {
    */
   public static CompassDirection fromNo(int directionNumber) {
     switch (directionNumber) {
+      case 0:
+        return EAST;
+
       case 1:
         return SOUTH;
 
@@ -42,9 +49,31 @@ public enum CompassDirection {
       case 3:
         return NORTH;
 
-      case 0:
       default:
-        return EAST;
+        throw new Error("Unknown direction number");
+    }
+  }
+
+  /**
+   * Konvertiere eine Himmelrichtungsnummer in den Aufzählungstyp.
+   */
+  public static Direction toDirection(CompassDirection compass) {
+    switch (compass) {
+      case EAST:
+        return RIGHT;
+
+      case SOUTH:
+        return DOWN;
+
+      case NORTH:
+        return UP;
+
+      case WEST:
+
+        return LEFT;
+
+      default:
+        throw new Error("Unknown compass direction");
     }
   }
 }

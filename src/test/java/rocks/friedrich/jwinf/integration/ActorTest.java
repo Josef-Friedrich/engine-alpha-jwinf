@@ -5,7 +5,7 @@ import ea.Scene;
 import ea.event.KeyListener;
 import rocks.friedrich.jwinf.platform.State;
 import rocks.friedrich.jwinf.platform.gui.map.TileMap;
-import rocks.friedrich.jwinf.platform.gui.robot.Robot;
+import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -22,7 +22,7 @@ public class ActorTest extends Scene implements KeyListener {
 
   public int height;
 
-  private Robot robot;
+  private ImageRobot robot;
 
   public ActorTest() {
     width = 5;
