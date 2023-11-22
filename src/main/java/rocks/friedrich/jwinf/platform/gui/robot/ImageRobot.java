@@ -221,28 +221,8 @@ public class ImageRobot extends Image implements Robot {
     return movement;
   }
 
-  public void goRightNonBlocking() {
+  public void eastNonBlocking() {
     new Thread(this::east).start();
-  }
-
-  public Movement north() {
-    var movement = virtual.north();
-    go(movement.getDirection());
-    return movement;
-  }
-
-  public void goUpNonBlocking() {
-    new Thread(this::north).start();
-  }
-
-  public Movement west() {
-    var movement = virtual.south();
-    go(movement.getDirection());
-    return movement;
-  }
-
-  public void goLeftNonBlocking() {
-    new Thread(this::west).start();
   }
 
   public Movement south() {
@@ -251,8 +231,28 @@ public class ImageRobot extends Image implements Robot {
     return movement;
   }
 
-  public void goDownNonBlocking() {
+  public void southNonBlocking() {
     new Thread(this::south).start();
+  }
+
+  public Movement west() {
+    var movement = virtual.west();
+    go(movement.getDirection());
+    return movement;
+  }
+
+  public void westNonBlocking() {
+    new Thread(this::west).start();
+  }
+
+  public Movement north() {
+    var movement = virtual.north();
+    go(movement.getDirection());
+    return movement;
+  }
+
+  public void northNonBlocking() {
+    new Thread(this::north).start();
   }
 
   public Point point() {

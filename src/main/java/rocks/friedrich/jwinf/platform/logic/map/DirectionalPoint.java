@@ -1,17 +1,17 @@
 package rocks.friedrich.jwinf.platform.logic.map;
 
 import ea.Direction;
-import rocks.friedrich.jwinf.platform.logic.CompassDirection;
+import rocks.friedrich.jwinf.platform.logic.Compass;
 
 public class DirectionalPoint extends Point {
-  public CompassDirection dir;
+  public Compass dir;
 
-  public DirectionalPoint(int row, int col, CompassDirection dir) {
+  public DirectionalPoint(int row, int col, Compass dir) {
     super(row, col);
     this.dir = dir;
   }
 
   public Direction getDirection() {
-    return CompassDirection.toDirection(dir);
+    return Compass.toDirection(dir);
   }
 }

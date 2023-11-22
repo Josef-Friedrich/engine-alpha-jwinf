@@ -65,19 +65,19 @@ public class ActorTest extends Scene implements KeyListener {
   public void onKeyDown(KeyEvent keyEvent) {
     switch (keyEvent.getKeyCode()) {
       case KeyEvent.VK_RIGHT:
-        robot.goRightNonBlocking();
+        robot.eastNonBlocking();
         break;
 
       case KeyEvent.VK_UP:
-        robot.goUpNonBlocking();
+        robot.northNonBlocking();
         break;
 
       case KeyEvent.VK_LEFT:
-        robot.goLeftNonBlocking();
+        robot.westNonBlocking();
         break;
 
       case KeyEvent.VK_DOWN:
-        robot.goDownNonBlocking();
+        robot.southNonBlocking();
         break;
     }
   }

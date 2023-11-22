@@ -100,19 +100,19 @@ public class LevelScene extends Scene implements WindowScene, KeyListener, Assem
         break;
 
       case KeyEvent.VK_RIGHT:
-        robot.goRightNonBlocking();
+        robot.eastNonBlocking();
         break;
 
       case KeyEvent.VK_UP:
-        robot.goUpNonBlocking();
+        robot.northNonBlocking();
         break;
 
       case KeyEvent.VK_LEFT:
-        robot.goLeftNonBlocking();
+        robot.westNonBlocking();
         break;
 
       case KeyEvent.VK_DOWN:
-        robot.goDownNonBlocking();
+        robot.southNonBlocking();
         break;
     }
   }

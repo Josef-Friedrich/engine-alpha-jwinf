@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.platform.data.model;
 
-import rocks.friedrich.jwinf.platform.logic.CompassDirection;
+import rocks.friedrich.jwinf.platform.logic.Compass;
 
 /**
  * Die Daten eines Dings (Item).
@@ -44,7 +44,7 @@ public class ItemData {
    * <code>0</code> steht für Osten, <code>1</code> steht für Süden,
    * <code>2</code> steht für Westen, <code>3</code> steht für Norden.
    *
-   * @see rocks.friedrich.jwinf.platform.logic.CompassDirection
+   * @see rocks.friedrich.jwinf.platform.logic.Compass
    */
   public int dir;
 
@@ -146,8 +146,8 @@ public class ItemData {
 
   public int nbStates;
 
-  public CompassDirection getCompassDirection() {
-    return CompassDirection.fromNo(dir);
+  public Compass getCompassDirection() {
+    return Compass.fromNo(dir);
   }
 
 }

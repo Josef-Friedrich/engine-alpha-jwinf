@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static rocks.friedrich.jwinf.TestHelper.loadVirtualRobot;
-import static rocks.friedrich.jwinf.platform.logic.CompassDirection.EAST;
-import static rocks.friedrich.jwinf.platform.logic.CompassDirection.WEST;
+import static rocks.friedrich.jwinf.platform.logic.Compass.EAST;
+import static rocks.friedrich.jwinf.platform.logic.Compass.WEST;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import rocks.friedrich.jwinf.platform.logic.CompassDirection;
+import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.map.Movement;
 
 /**
@@ -25,7 +25,7 @@ public class VirtualRobotTest {
     robot = loadVirtualRobot("19-DE-12-stay-on-the-road");
   }
 
-  private void assertMovement(Movement movement, int row, int col, CompassDirection dir, boolean successful) {
+  private void assertMovement(Movement movement, int row, int col, Compass dir, boolean successful) {
     assertEquals(movement.row, row);
     assertEquals(movement.col, col);
     assertEquals(movement.dir, dir);

@@ -7,7 +7,7 @@ import ea.Direction;
 /**
  * Grobe Himmelsrichtung der vier Haupthimmelsrichtungen
  */
-public enum CompassDirection {
+public enum Compass {
   /**
    * 0 in <a href=
    * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3355">blocklyRobot_lib-1.1.js</a>
@@ -35,7 +35,7 @@ public enum CompassDirection {
   /**
    * Konvertiere eine Himmelrichtungsnummer in den Aufzählungstyp.
    */
-  public static CompassDirection fromNo(int directionNumber) {
+  public static Compass fromNo(int directionNumber) {
     switch (directionNumber) {
       case 0:
         return EAST;
@@ -57,7 +57,7 @@ public enum CompassDirection {
   /**
    * Konvertiere eine Himmelrichtungsnummer in den Aufzählungstyp.
    */
-  public static Direction toDirection(CompassDirection compass) {
+  public static Direction toDirection(Compass compass) {
     switch (compass) {
       case EAST:
         return RIGHT;

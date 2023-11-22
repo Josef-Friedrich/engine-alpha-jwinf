@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
-import rocks.friedrich.jwinf.platform.logic.CompassDirection;
+import rocks.friedrich.jwinf.platform.logic.Compass;
 
 interface MovementListener {
   /**
@@ -8,5 +8,5 @@ interface MovementListener {
    *
    * @return Wahr, wenn sich die Figur bewegen darf, sonst falsch.
    */
-  boolean allowMovement(CompassDirection dir);
+  boolean allowMovement(Compass dir);
 }

@@ -1,15 +1,15 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
-import static rocks.friedrich.jwinf.platform.logic.CompassDirection.EAST;
-import static rocks.friedrich.jwinf.platform.logic.CompassDirection.NORTH;
-import static rocks.friedrich.jwinf.platform.logic.CompassDirection.SOUTH;
-import static rocks.friedrich.jwinf.platform.logic.CompassDirection.WEST;
+import static rocks.friedrich.jwinf.platform.logic.Compass.EAST;
+import static rocks.friedrich.jwinf.platform.logic.Compass.NORTH;
+import static rocks.friedrich.jwinf.platform.logic.Compass.SOUTH;
+import static rocks.friedrich.jwinf.platform.logic.Compass.WEST;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
-import rocks.friedrich.jwinf.platform.logic.CompassDirection;
+import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
 import rocks.friedrich.jwinf.platform.logic.map.Movement;
@@ -33,7 +33,7 @@ public class VirtualRobot implements Robot {
    */
   public int col;
 
-  public CompassDirection dir;
+  public Compass dir;
 
   public DirectionalPoint initPosition;
 
@@ -56,7 +56,7 @@ public class VirtualRobot implements Robot {
   public void setInitPosition(ItemData init) {
     row = init.row;
     col = init.col;
-    dir = CompassDirection.fromNo(init.dir);
+    dir = Compass.fromNo(init.dir);
 
     initPosition = new DirectionalPoint(row, col, dir);
   }
@@ -72,7 +72,7 @@ public class VirtualRobot implements Robot {
   }
 
   public void addGridEdgesMovementListener() {
-    addMovementListener((CompassDirection direction) -> {
+    addMovementListener((Compass direction) -> {
       switch (direction) {
         case EAST:
           return col < map.cols - 1;
@@ -92,7 +92,7 @@ public class VirtualRobot implements Robot {
     });
   }
 
-  protected boolean isInFrontOfObstacle(CompassDirection direction) {
+  protected boolean isInFrontOfObstacle(Compass direction) {
     int rowMovement = 0;
     int colMovement = 0;
 
@@ -124,7 +124,7 @@ public class VirtualRobot implements Robot {
   }
 
   public void addObstaclesMovementListener() {
-    addMovementListener((CompassDirection direction) -> {
+    addMovementListener((Compass direction) -> {
       return !isInFrontOfObstacle(direction);
     });
   }
@@ -139,7 +139,7 @@ public class VirtualRobot implements Robot {
    *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2923-L2944">blocklyRobot_lib-1.1.js
    *      L2923-L2944</a>
    */
-  public boolean tryToBeOn(CompassDirection direction) {
+  public boolean tryToBeOn(Compass direction) {
     boolean result = true;
     for (MovementListener listener : this.movementListeners) {
       if (!listener.allowMovement(direction)) {
