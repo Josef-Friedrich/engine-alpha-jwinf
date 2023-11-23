@@ -7,4 +7,4 @@
  *
  * https://jwinf.de/task/1156
  */
-package rocks.friedrich.jwinf.tasks.conditionals.candle;
+package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.candle;

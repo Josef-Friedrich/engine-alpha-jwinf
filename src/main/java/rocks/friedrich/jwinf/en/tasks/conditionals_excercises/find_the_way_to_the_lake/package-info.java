@@ -11,4 +11,4 @@
  *
  * Hinweis: Der Roboter erkennt Gras, Bäume, Büsche, Blumen und Mauern als Hindernis.
  */
-package rocks.friedrich.jwinf.tasks.conditionals.sea;
+package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_way_to_the_lake;

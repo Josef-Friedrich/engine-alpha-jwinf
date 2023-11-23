@@ -15,8 +15,11 @@ public abstract class Solver<T> {
 
   protected String taskId;
 
+  public String taskPath;
+
   public Solver(String taskId) {
     this.taskId = taskId;
+    taskPath = getRelPath();
   }
 
   public void easy(T robot) {
@@ -41,6 +44,15 @@ public abstract class Solver<T> {
 
   public void solve(String difficutly) {
     solve(difficutly, 0);
+  }
+
+  private String getClassResource(Class<?> clazz) {
+    return clazz.getClassLoader().getResource(
+        clazz.getName().replace('.', '/') + ".class").toString();
+  }
+
+  private String getRelPath() {
+    return getClassResource(getClass()).replaceAll(".*en/tasks/", "").replaceAll("/\\w+\\.class", "");
   }
 
   @SuppressWarnings("unchecked")

@@ -3,4 +3,4 @@
  *
  * https://jwinf.de/contest/?filter=open
  */
-package rocks.friedrich.jwinf.tasks;
+package rocks.friedrich.jwinf.en.tasks;

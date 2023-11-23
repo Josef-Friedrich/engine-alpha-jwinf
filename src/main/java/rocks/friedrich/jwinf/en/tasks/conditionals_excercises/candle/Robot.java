@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.tasks.conditionals.candle;
+package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.candle;
 
 import rocks.friedrich.jwinf.platform.gui.robot.RobotWrapper;
 

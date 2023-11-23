@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.tasks.conditionals.red_flag;
+package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.red_flag;
 
 import rocks.friedrich.jwinf.platform.gui.robot.RobotWrapper;
 
