@@ -20,20 +20,15 @@ public class TileMap extends Map {
 
   public TileContainer container;
 
-  public TileMap(int width, int height) {
-    this(width, height, "", null);
-  }
-
   public TileMap(int width, int height, String pathPrefix) {
     this(width, height, pathPrefix, null);
   }
 
   /**
-   * @param width      Die Breite des Kachelsatz bzw. die Anzahl an Kacheln in
+   * @param width      Die Breite des Kachelsatzes bzw. die Anzahl an Kacheln in
    *                   x-Richtung.
-   * @param height     Die Höhe des Kachelsatz bzw. die Anzahl an Kacheln in
+   * @param height     Die Höhe des Kachelsatzes bzw. die Anzahl an Kacheln in
    *                   y-Richtung.
-   * @param pathPrefix
    * @param extension  Die Dateiendung der Bild-Dateien, die als Kacheln verwendet
    *                   werden.
    */

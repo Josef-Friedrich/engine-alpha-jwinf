@@ -93,7 +93,7 @@ public abstract class Map {
       extension = "";
     }
 
-    if (pathPrefix.length() > 0) {
+    if (!pathPrefix.isEmpty()) {
       char last = pathPrefix.charAt(pathPrefix.length() - 1);
       if (last != '/') {
         pathPrefix = pathPrefix + "/";

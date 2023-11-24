@@ -6,7 +6,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 
-import ea.Direction;
 import ea.Vector;
 import ea.actor.Image;
 import ea.animation.Interpolator;
@@ -59,10 +58,6 @@ public class ImageRobot extends Image implements Robot {
     return virtual.obstacleInFront();
   }
 
-  public void setSpeed(float speed) {
-    this.speed = speed;
-  }
-
   public void wait(double seconds) {
     try {
       Thread.sleep((long) (1000 * seconds));
@@ -84,10 +79,6 @@ public class ImageRobot extends Image implements Robot {
     animate(duration, progress -> {
       setCenter(initial.add(move.multiply(progress)));
     });
-    // Falls die animierte Navigation nicht zu einem exakten Punkt im Kachelgitter
-    // führt, wird die Figur auf die nächst gelegene exakte Koordinate gezwungen.
-    // Möglicherweiße sprint die Figur dann.
-    // setCenter(Math.round(getX()), Math.round(getY()));
     inMotion = false;
   }
 
@@ -97,19 +88,6 @@ public class ImageRobot extends Image implements Robot {
       wiggle();
     }
     return result;
-  }
-
-  public Direction getDirection() {
-    int rotation = (int) getRotation();
-    if (rotation == 0) {
-      return Direction.RIGHT;
-    } else if (rotation == 90) {
-      return Direction.UP;
-    } else if (rotation == 180) {
-      return Direction.LEFT;
-    } else {
-      return Direction.DOWN;
-    }
   }
 
   /**
@@ -298,33 +276,15 @@ public class ImageRobot extends Image implements Robot {
     return movement;
   }
 
-  /**
-   *
-   * @param duration
-   * @param setter
-   * @param interpolator
-   * @param block        Wenn wahr, dann blockiere diese Methode
-   *                     solange, bis die Animation vollendet ist.
-   */
-  protected void animate(float duration, Consumer<Float> setter, Interpolator<Float> interpolator, boolean block,
-      Runnable onCompletion) {
+  protected void animate(float duration, Consumer<Float> setter, Interpolator<Float> interpolator) {
     CompletableFuture<Void> future = new CompletableFuture<>();
 
     ValueAnimator<Float> animator = new ValueAnimator<>(duration, setter, interpolator, this);
 
     animator.addCompletionListener(value -> {
       setter.accept(value);
-      if (onCompletion != null && block) {
-        onCompletion.run();
-        future.complete(null);
-      } else if (onCompletion == null && block) {
-        future.complete(null);
-      }
-    });
-
-    if (!block) {
       future.complete(null);
-    }
+    });
 
     addFrameUpdateListener(animator);
 
@@ -335,16 +295,8 @@ public class ImageRobot extends Image implements Robot {
     }
   }
 
-  protected void animate(float duration, Consumer<Float> setter, Interpolator<Float> interpolator) {
-    animate(duration, setter, interpolator, true, null);
-  }
-
-  protected void animate(float duration, Consumer<Float> setter, boolean block) {
-    animate(duration, setter, State.interpolator, block, null);
-  }
-
   protected void animate(float duration, Consumer<Float> setter) {
-    animate(duration, setter, State.interpolator, true, null);
+    animate(duration, setter, State.interpolator);
   }
 
   public void placeInMap(int x, int y) {
