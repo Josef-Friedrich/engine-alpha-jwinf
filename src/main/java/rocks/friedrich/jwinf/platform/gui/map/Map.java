@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform.logic.map;
+package rocks.friedrich.jwinf.platform.gui.map;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -235,18 +235,6 @@ public abstract class Map {
   }
 
   /**
-   * Setzt die Kacheln in einer Spalte von oben nach unten.
-   *
-   * @param x Die x-Position im Kachelgitter. 0 adressiert die erste,
-   *          (ganz am linken Rand gelegene) Spalte.
-   */
-  public final void setColumn(int x, String column) {
-    for (int y = 0; y < column.length(); y++) {
-      setTile(x, y, column.charAt(y));
-    }
-  }
-
-  /**
    * Definiert welche Kacheln als Hindernisse gelten.
    *
    * @param obstacles Die Buchstaben der Kacheln, die als Hindernis gelten.
@@ -255,23 +243,5 @@ public abstract class Map {
     for (char c : obstacles) {
       this.obstacles.add(c);
     }
-  }
-
-  /**
-   * Gibt wahr zurück, wenn die Kachel auf der angegeben Gitterposition ein
-   * Hindernis darstellt.
-   *
-   * @param x Die x-Position im Kachelgitter. 0 adressiert die erste,
-   *          (ganz am linken Rand gelegene) Spalte.
-   * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
-   *          (oberste) Zeile.
-   */
-  public final boolean isObstacle(int x, int y) {
-    return obstacles.contains(getLetter(x, y));
-  }
-
-  public void setPosition(int x, int y) {
-    this.x = x;
-    this.y = y;
   }
 }

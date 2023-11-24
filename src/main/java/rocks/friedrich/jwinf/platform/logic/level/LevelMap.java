@@ -66,7 +66,7 @@ public class LevelMap {
   }
 
   /**
-   * Überprüfe, ob die Kachel eine Hindernis darstellt.
+   * Überprüfe, ob die Kachel ein Hindernis darstellt.
    */
   public boolean isObstacle(int row, int col) {
     ItemData tile = get(row, col);

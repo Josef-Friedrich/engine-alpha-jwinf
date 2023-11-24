@@ -1,7 +1,6 @@
 package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_destination;
 
 import rocks.friedrich.jwinf.platform.Solver;
-import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 
 public class TaskSolver extends Solver<Robot> {
 

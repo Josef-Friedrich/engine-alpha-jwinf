@@ -129,9 +129,7 @@ public class VirtualRobot implements Robot {
   }
 
   public void addObstaclesMovementListener() {
-    addMovementListener((Compass direction) -> {
-      return !isInFrontOfObstacle(direction);
-    });
+    addMovementListener((Compass direction) -> !isInFrontOfObstacle(direction));
   }
 
   public void addDefaultMovementListener() {

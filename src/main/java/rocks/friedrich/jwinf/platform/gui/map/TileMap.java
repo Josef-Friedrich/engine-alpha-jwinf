@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import ea.actor.Tile;
 import ea.actor.TileContainer;
-import rocks.friedrich.jwinf.platform.logic.map.Map;
 
 /**
  * Ein Kachelsatz (tile map), bei dem die einzelnen Kacheln (tile) durch

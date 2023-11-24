@@ -73,26 +73,26 @@ public class LevelAssembler {
    * @param y - y-Koordinate der linken unteren Ecke
    */
   public AssembledLevel placeActorsInScene(Scene scene, float x, float y) {
-    AssembledLevel assembledLevel = new AssembledLevel();
-    assembledLevel.level = level;
-    assembledLevel.x = x;
-    assembledLevel.y = y;
-    assembledLevel.scene = scene;
-    assembledLevel.grid = createGrid();
-    assembledLevel.grid.setPosition(x - 0.5f, y - 0.5f);
-    scene.add(assembledLevel.grid);
+    AssembledLevel l = new AssembledLevel();
+    l.level = level;
+    l.x = x;
+    l.y = y;
+    l.scene = scene;
+    l.grid = createGrid();
+    l.grid.setPosition(x - 0.5f, y - 0.5f);
+    scene.add(l.grid);
 
-    assembledLevel.tileMap = createTileMap().container;
-    assembledLevel.tileMap.setPosition(x - 0.5f, y - 0.5f);
-    scene.add(assembledLevel.tileMap);
+    l.tileMap = createTileMap().container;
+    l.tileMap.setPosition(x - 0.5f, y - 0.5f);
+    scene.add(l.tileMap);
 
     level.map.setPosition(x, y);
 
     try {
-      assembledLevel.robot = createRobot();
+      l.robot = createRobot();
       Vector robotPosition = level.map.translateToVector(level.getInitItem().row, level.getInitItem().col);
 
-      ImageRobot robot = (ImageRobot) assembledLevel.robot.actor;
+      ImageRobot robot = (ImageRobot) l.robot.actor;
       robot.setCenter(robotPosition.getX(), robotPosition.getY());
       scene.add(robot);
     } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
@@ -100,7 +100,7 @@ public class LevelAssembler {
       e.printStackTrace();
     }
 
-    return assembledLevel;
+    return l;
   }
 
 }
