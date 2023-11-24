@@ -292,7 +292,7 @@ public class ImageRobot extends Image implements Robot {
     return movement;
   }
 
-    public Movement turnAround() {
+  public Movement turnAround() {
     var movement = virtual.turnAround();
     rotateByAnimated(180);
     return movement;
