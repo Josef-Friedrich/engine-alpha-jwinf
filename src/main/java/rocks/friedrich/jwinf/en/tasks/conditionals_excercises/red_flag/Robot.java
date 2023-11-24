@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.red_flag;
 
-import rocks.friedrich.jwinf.platform.gui.robot.RobotWrapper;
+import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
 
 public class Robot extends RobotWrapper {
 
@@ -17,7 +17,7 @@ public class Robot extends RobotWrapper {
   }
 
   public void go() {
-    actor.go();
+    actor.forward();
   }
 
   public Boolean reachedRedFlag() {

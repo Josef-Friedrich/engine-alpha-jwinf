@@ -1,11 +1,16 @@
 package rocks.friedrich.jwinf.platform;
 
+import java.lang.reflect.InvocationTargetException;
+
 import rocks.friedrich.jwinf.platform.gui.Controller;
 import rocks.friedrich.jwinf.platform.gui.scenes.AllLevelsScene;
 import rocks.friedrich.jwinf.platform.gui.scenes.AssembledLevelScene;
 import rocks.friedrich.jwinf.platform.gui.scenes.LevelScene;
 import rocks.friedrich.jwinf.platform.gui.scenes.WindowScene;
+import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
+import rocks.friedrich.jwinf.platform.logic.level.Level;
+import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
 
 /**
  * Klasse, die verschiedene Methoden beinhaltet, die die verschiedenen
@@ -20,6 +25,15 @@ public abstract class Solver<T> {
   public Solver(String taskId) {
     this.taskId = taskId;
     taskPath = getRelPath();
+  }
+
+  private String getClassResource(Class<?> clazz) {
+    return clazz.getClassLoader().getResource(
+        clazz.getName().replace('.', '/') + ".class").toString();
+  }
+
+  private String getRelPath() {
+    return getClassResource(getClass()).replaceAll(".*en/tasks/", "").replaceAll("/\\w+\\.class", "");
   }
 
   public void easy(T robot) {
@@ -44,15 +58,6 @@ public abstract class Solver<T> {
 
   public void solve(String difficutly) {
     solve(difficutly, 0);
-  }
-
-  private String getClassResource(Class<?> clazz) {
-    return clazz.getClassLoader().getResource(
-        clazz.getName().replace('.', '/') + ".class").toString();
-  }
-
-  private String getRelPath() {
-    return getClassResource(getClass()).replaceAll(".*en/tasks/", "").replaceAll("/\\w+\\.class", "");
   }
 
   @SuppressWarnings("unchecked")
@@ -88,4 +93,53 @@ public abstract class Solver<T> {
 
     });
   }
+
+  @SuppressWarnings("unchecked")
+  public RobotWrapper solveVirtual(Difficulty difficulty, int test)
+      throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException,
+      NoSuchMethodException, SecurityException, ClassNotFoundException {
+    Task task = Task.loadById(taskId);
+
+    Level level = task.getLevel(difficulty, test);
+
+    // LevelContext context = level.createContext();
+
+    RobotWrapper robot = createRobot(level);
+
+    switch (difficulty) {
+      case EASY:
+        easy((T) robot);
+        break;
+
+      case MEDIUM:
+        medium((T) robot);
+        break;
+
+      case HARD:
+        hard((T) robot);
+        break;
+
+      default:
+        break;
+    }
+
+    return robot;
+  }
+
+  public RobotWrapper createRobot(Level level)
+      throws InstantiationException, IllegalAccessException, IllegalArgumentException,
+      InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
+
+    String className = "rocks.friedrich.jwinf.en.tasks.%s.Robot".formatted(taskPath.replace("/", "."));
+
+    RobotWrapper robot = RobotWrapper.class.getClassLoader()
+        .loadClass(className)
+        .asSubclass(RobotWrapper.class).getDeclaredConstructor()
+        .newInstance();
+
+    var context = level.createContext();
+    robot.actor = context.robot;
+    return robot;
+  }
+
 }

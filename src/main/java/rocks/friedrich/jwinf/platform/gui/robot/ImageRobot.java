@@ -46,6 +46,10 @@ public class ImageRobot extends Image implements Robot {
     this.virtual = virtual;
   }
 
+  public Point getPoint() {
+    return virtual.getPoint();
+  }
+
   public boolean isOnExit() {
     var tile = virtual.map.get(row(), col());
     return tile != null && tile.isExit;
@@ -111,9 +115,10 @@ public class ImageRobot extends Image implements Robot {
   /**
    * Gehe einen Pixelmeter in Richtung der aktuellen Rotation.
    */
-  public void go() {
-    virtual.forward();
+  public Movement forward() {
+    var movement = virtual.forward();
     go(virtual.dir);
+    return movement;
   }
 
   public void go(Compass direction) {

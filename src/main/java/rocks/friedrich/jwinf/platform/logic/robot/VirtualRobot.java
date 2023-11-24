@@ -54,6 +54,10 @@ public class VirtualRobot implements Robot {
     this.map = map;
   }
 
+  public Point getPoint() {
+    return new Point(row, col);
+  }
+
   public void setInitPosition(ItemData init) {
     row = init.row;
     col = init.col;
@@ -252,6 +256,21 @@ public class VirtualRobot implements Robot {
       numberOfMovements++;
     }
     return reportMovement();
+  }
+
+  /**
+   * Gib das Ding zurück, auf dem sich der Roboter gerade befindet.
+   */
+  private ItemData getOnItem() {
+    return map.get(row, col);
+  }
+
+  public boolean isOnExit() {
+    ItemData item = getOnItem();
+    if (item == null) {
+      return false;
+    }
+    return item.isExit;
   }
 
 }

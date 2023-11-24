@@ -8,8 +8,8 @@ import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.gui.map.Grid;
 import rocks.friedrich.jwinf.platform.gui.map.TileMap;
 import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
-import rocks.friedrich.jwinf.platform.gui.robot.RobotWrapper;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
+import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
 
 /**
  * Klasse, die eine Version einer Trainingsaufgabe zusammenbaut.
@@ -91,8 +91,10 @@ public class LevelAssembler {
     try {
       assembledLevel.robot = createRobot();
       Vector robotPosition = level.map.translateToVector(level.getInitItem().row, level.getInitItem().col);
-      assembledLevel.robot.actor.setCenter(robotPosition.getX(), robotPosition.getY());
-      scene.add(assembledLevel.robot.actor);
+
+      ImageRobot robot = (ImageRobot) assembledLevel.robot.actor;
+      robot.setCenter(robotPosition.getX(), robotPosition.getY());
+      scene.add(robot);
     } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
         | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
       e.printStackTrace();

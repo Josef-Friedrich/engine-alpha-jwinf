@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform.gui.robot;
+package rocks.friedrich.jwinf.platform.logic.robot;
 
 /**
  * Klasse, die den Roboter, einpackt und umhüllt, damit alle Methoden des
@@ -8,6 +8,6 @@ package rocks.friedrich.jwinf.platform.gui.robot;
  */
 public class RobotWrapper {
 
-  public ImageRobot actor;
+  public Robot actor;
 
 }

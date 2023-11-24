@@ -1,8 +1,11 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
 import rocks.friedrich.jwinf.platform.logic.map.Movement;
+import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 public interface Robot {
+
+  public Point getPoint();
 
   /**
    * @see <a href=
@@ -67,5 +70,9 @@ public interface Robot {
    *      L3332-L3344</a>
    */
   public Movement south();
+
+  public Movement forward();
+
+  public boolean isOnExit();
 
 }
