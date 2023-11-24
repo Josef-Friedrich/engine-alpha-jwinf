@@ -1,55 +1,53 @@
-package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_way_to_the_lake;
+package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_destination;
 
 import rocks.friedrich.jwinf.platform.Solver;
+import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 
 public class TaskSolver extends Solver<Robot> {
 
   public TaskSolver() {
-    super("19-DE-12-stay-on-the-road");
+    super("17-FR-07-platforms-marbles");
   }
 
   @Override
   public void easy(Robot robot) {
-    for (int i = 0; i < 17; i++) {
-      robot.forward();
+    while (!robot.reachedRedFlag()) {
+      robot.turnLeft();
       if (robot.obstacleInFront()) {
-        System.out.println("turn");
-        robot.turnLeft();
+        robot.turnRight();
       }
+      robot.forward();
     }
   }
 
   @Override
   public void medium(Robot robot) {
-    for (int i = 0; i < 20; i++) {
-      robot.forward();
+    while (!robot.reachedRedFlag()) {
+      robot.turnLeft();
       if (robot.obstacleInFront()) {
+        robot.turnRight();
         robot.turnRight();
         if (robot.obstacleInFront()) {
           robot.turnLeft();
-          robot.turnLeft();
         }
       }
+      robot.forward();
     }
   }
 
   @Override
   public void hard(Robot robot) {
-    for (int i = 0; i < 20; i++) {
-      robot.forward();
+    while (!robot.reachedRedFlag()) {
+      robot.turnRight();
       if (robot.obstacleInFront()) {
-        robot.turnRight();
-        if (robot.obstacleInFront()) {
-          robot.turnLeft();
-          robot.turnLeft();
-        }
-      } else {
         robot.turnLeft();
         if (!robot.obstacleInFront()) {
           robot.forward();
         } else {
-          robot.turnRight();
+          robot.turnLeft();
         }
+      } else {
+        robot.forward();
       }
     }
   }
@@ -60,6 +58,6 @@ public class TaskSolver extends Solver<Robot> {
   }
 
   public static void main(String[] args) {
-    new TaskSolver().solve();
+    new TaskSolver().solve("hard", 0);
   }
 }

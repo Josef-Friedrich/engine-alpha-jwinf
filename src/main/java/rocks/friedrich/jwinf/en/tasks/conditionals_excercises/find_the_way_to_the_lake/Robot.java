@@ -16,7 +16,7 @@ public class Robot extends RobotWrapper {
     actor.turnRight();
   }
 
-  public void go() {
+  public void forward() {
     actor.forward();
   }
 

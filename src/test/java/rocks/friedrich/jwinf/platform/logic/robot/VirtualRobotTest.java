@@ -93,11 +93,15 @@ public class VirtualRobotTest {
   public void methodObstacleInFront() {
     assertFalse(robot.obstacleInFront());
     robot.turnLeft();
+    assertEquals(robot.col, 1);
+    assertEquals(robot.row, 8);
     assertTrue(robot.obstacleInFront());
     robot.turnLeft();
     assertFalse(robot.obstacleInFront());
     robot.turnLeft();
     assertTrue(robot.obstacleInFront());
+    assertEquals(robot.col, 1);
+    assertEquals(robot.row, 8);
   }
 
 }

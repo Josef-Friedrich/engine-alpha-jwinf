@@ -24,7 +24,6 @@ public class TaskSolverTest {
     var point = robot.actor.getPoint();
     assertEquals(point.col, 2);
     assertEquals(point.row, 2);
-
   }
 
 }

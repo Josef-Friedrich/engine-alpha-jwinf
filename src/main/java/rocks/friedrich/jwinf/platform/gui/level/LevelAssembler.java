@@ -53,9 +53,9 @@ public class LevelAssembler {
   public RobotWrapper createRobot() throws InstantiationException, IllegalAccessException, IllegalArgumentException,
       InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
 
-    String className = "rocks.friedrich.jwinf.tasks.conditionals.candle.Robot";
+    String className = "rocks.friedrich.jwinf.tasks.en.conditionals.candle.Robot";
     if (level.task.data.packagePath != null) {
-      className = "rocks.friedrich.jwinf.tasks.%s.Robot".formatted(level.task.data.packagePath.replace("/", "."));
+      className = "rocks.friedrich.jwinf.en.tasks.%s.Robot".formatted(level.task.data.packagePath.replace("/", "."));
     }
     RobotWrapper robot = RobotWrapper.class.getClassLoader()
         .loadClass(className)
