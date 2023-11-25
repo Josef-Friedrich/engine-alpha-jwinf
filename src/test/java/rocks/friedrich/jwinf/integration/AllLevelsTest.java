@@ -15,7 +15,8 @@ public class AllLevelsTest extends Scene
 
     public AllLevelsTest()
     {
-        var task = Task.loadByRelPath("conditionals_excercises/find_the_destination");
+        var task = Task
+                .loadByRelPath("conditionals_excercises/find_the_destination");
         var levels = new AllLevelsScene(task);
         levels.getCamera().setPosition(new Vector(15, 5));
         Controller.launchScene(1200, 600, levels);

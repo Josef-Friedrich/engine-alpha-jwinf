@@ -9,8 +9,8 @@ import com.fasterxml.jackson.databind.DatabindException;
 import rocks.friedrich.jwinf.platform.data.JsonLoader;
 
 /**
- * Represents a menu that contains main and sub menus.
- * The menu data is loaded from a JSON file.
+ * Represents a menu that contains main and sub menus. The menu data is loaded
+ * from a JSON file.
  */
 public class Menu
 {
@@ -19,14 +19,19 @@ public class Menu
     /**
      * Constructs a Menu object and loads the menu data from a JSON file.
      */
-    public Menu() {
-        try {
+    public Menu()
+    {
+        try
+        {
             data = JsonLoader.loadMenu();
-        } catch (StreamReadException e) {
+        } catch (StreamReadException e)
+        {
             e.printStackTrace();
-        } catch (DatabindException e) {
+        } catch (DatabindException e)
+        {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
@@ -36,7 +41,8 @@ public class Menu
      *
      * @return the main menu as a LinkedHashMap
      */
-    public LinkedHashMap<String, LinkedHashMap<String, String>> getMain() {
+    public LinkedHashMap<String, LinkedHashMap<String, String>> getMain()
+    {
         return data;
     }
 
@@ -46,7 +52,8 @@ public class Menu
      * @param menu the main menu
      * @return the sub menu as a LinkedHashMap
      */
-    public LinkedHashMap<String, String> getSub(String menu) {
+    public LinkedHashMap<String, String> getSub(String menu)
+    {
         return data.get(menu);
     }
 
@@ -57,7 +64,8 @@ public class Menu
      * @param submenu the submenu
      * @return the ID of the submenu as a String
      */
-    public String getId(String menu, String submenu) {
+    public String getId(String menu, String submenu)
+    {
         return data.get(menu).get(submenu);
     }
 }

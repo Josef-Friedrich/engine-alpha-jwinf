@@ -15,7 +15,8 @@ public class JsonToTileMapTest extends Scene
     public JsonToTileMapTest()
     {
         Controller.launchScene(this);
-        var task = Task.loadByRelPath("conditionals_excercises/light_all_candles");
+        var task = Task
+                .loadByRelPath("conditionals_excercises/light_all_candles");
         var map = new LevelAssembler(task.getLevel(0)).createTileMap();
         add(map.container);
     }

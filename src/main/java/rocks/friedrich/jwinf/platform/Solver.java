@@ -30,29 +30,29 @@ public abstract class Solver<T>
 
     public RobotWrapper createRobot(Level level) throws Exception
     {
-        String className = "rocks.friedrich.jwinf.en.tasks.%s.Robot"
-                .formatted(taskPath.replace("/", "."));
-        RobotWrapper robot = RobotWrapper.class.getClassLoader()
-                .loadClass(className).asSubclass(RobotWrapper.class)
-                .getDeclaredConstructor().newInstance();
+        RobotWrapper robot = instantiateClass(
+                "en.tasks.%s.Robot".formatted(taskPath));
         var context = level.createContext();
         robot.actor = context.robot;
         return robot;
     }
 
     /**
-        * Instantiates a class based on the given relative class path.
-        *
-        * @param <O> the type of the object to be instantiated
-        * @param relClassPath the relative class path (relative to the package rocks.friedrich.jwinf)
-        * @return an instance of the specified class
-        * @throws ReflectiveOperationException if the class cannot be found or instantiated
-        */
+     * Instantiates a class based on the given relative class path.
+     *
+     * @param <O>          the type of the object to be instantiated
+     * @param relClassPath the relative class path (relative to the package
+     *                     rocks.friedrich.jwinf)
+     * @return an instance of the specified class
+     * @throws ReflectiveOperationException if the class cannot be found or
+     *                                      instantiated
+     */
     @SuppressWarnings("unchecked")
-    public static <O> O instantiateClass(String relClassPath)
+    public <O> O instantiateClass(String relClassPath)
             throws ReflectiveOperationException
     {
-        Class<?> cls = Class.forName("rocks.friedrich.jwinf." + relClassPath);
+        Class<?> cls = Class.forName(
+                "rocks.friedrich.jwinf." + relClassPath.replace("/", "."));
         O object = (O) cls.getDeclaredConstructor().newInstance();
         return object;
     }

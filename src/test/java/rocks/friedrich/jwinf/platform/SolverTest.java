@@ -8,7 +8,6 @@ import rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_way_to_th
 
 public class SolverTest
 {
-
     TaskSolver solver = new TaskSolver();
 
     @Test

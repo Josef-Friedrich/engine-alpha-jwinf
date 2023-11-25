@@ -140,7 +140,8 @@ public class LevelScene extends Scene
 
     public static void main(String[] args)
     {
-        launch("conditionals_excercises/find_the_way_to_the_lake", Difficulty.HARD);
+        launch("conditionals_excercises/find_the_way_to_the_lake",
+                Difficulty.HARD);
         // launch("conditionals_excercises/light_all_candles", Difficulty.HARD);
     }
 }
