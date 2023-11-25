@@ -6,7 +6,6 @@ import java.util.Map;
 
 import rocks.friedrich.jwinf.platform.data.JsonLoader;
 import rocks.friedrich.jwinf.platform.data.model.TaskData;
-import rocks.friedrich.jwinf.platform.gui.Color;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.level.LevelCollection;
@@ -19,6 +18,25 @@ import rocks.friedrich.jwinf.platform.logic.map.ItemStore;
  */
 public class Task
 {
+    /**
+     * @param taskPath Der relative Pfad zu resources/data/tasks
+     */
+    public static Task loadByRelPath(String taskPath)
+    {
+        return new Task("data/tasks/%s.json".formatted(taskPath));
+    }
+
+    public static String extractTaskPath(String path)
+    {
+        path = path.replace(".json", "").replace(".class", "").replace(".", "/")
+                .replaceAll(".*/tasks/", "").replaceAll("^/", "")
+                .replaceAll("/$", "");
+        String[] segments = path.split("/");
+        return "%s/%s".formatted(segments[0], segments[1]);
+    }
+
+    String taskPath;
+
     public TaskData data;
 
     /**
@@ -35,10 +53,6 @@ public class Task
 
     public ItemStore items;
 
-    public Color backgroundColor;
-
-    public Color gridColor;
-
     /**
      * Die Anzahl an Tests (Level) der Schwierigkeitsstufe mit den meisten
      * Tests.
@@ -50,41 +64,104 @@ public class Task
         try
         {
             data = JsonLoader.loadTask(filePath);
+            taskPath = extractTaskPath(filePath);
         } catch (IOException e)
         {
             e.printStackTrace();
         }
         title = data.title;
         intro = data.intro;
-        backgroundColor = new Color(data.grid.backgroundColor);
-        gridColor = new Color(data.grid.gridColor);
         items = new ItemStore(data.grid.itemTypes);
         levels = new LevelCollection(data.levels, this);
     }
 
-    /**
-     * @param relPath Der relative Pfad zu resources/data/tasks
-     */
-    public static Task loadByRelPath(String relPath)
+    public String getTaskPath()
     {
-        return new Task("data/tasks/%s.json".formatted(relPath));
+        return taskPath;
     }
 
+    public TaskData getData()
+    {
+        return data;
+    }
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public String getIntro()
+    {
+        return intro;
+    }
+
+    public ItemStore getItems()
+    {
+        return items;
+    }
+
+    /**
+     * Returns the grid color.
+     *
+     * @return the grid color as a String.
+     */
+    public String getGridColor()
+    {
+        return data.grid.gridColor;
+    }
+
+    /**
+     * Returns the background color.
+     *
+     * @return the background color as a String.
+     */
+    public String getBackgroundColor()
+    {
+        return data.grid.backgroundColor;
+    }
+
+    /**
+     * Returns a map of difficulty levels and their corresponding list of
+     * levels.
+     *
+     * @return the map of difficulty levels and their corresponding list of
+     *         levels
+     */
     public Map<Difficulty, List<Level>> getLevels()
     {
         return levels.levels;
     }
 
+    /**
+     * Retrieves the level for a given difficulty and test.
+     *
+     * @param difficulty the difficulty of the task
+     * @param test       the test index (0 is the first test)
+     * @return the level corresponding to the given difficulty and test
+     */
     public Level getLevel(Difficulty difficulty, int test)
     {
         return levels.getLevel(difficulty, test);
     }
 
+    /**
+     * Returns the level associated with the given difficulty.
+     *
+     * @param difficulty the difficulty of the task
+     * @return the level associated with the difficulty
+     */
     public Level getLevel(Difficulty difficulty)
     {
         return getLevel(difficulty, 0);
     }
 
+    /**
+     * Retrieves the level based on the given difficulty.
+     *
+     * @param difficulty the difficulty level as an integer (0 is easy, 1 is
+     *                   medium, 2 is hard)
+     * @return the corresponding level
+     */
     public Level getLevel(int difficulty)
     {
         return getLevel(Difficulty.indexOf(difficulty), 0);

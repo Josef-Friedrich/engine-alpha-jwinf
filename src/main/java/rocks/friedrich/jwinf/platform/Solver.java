@@ -129,8 +129,9 @@ public abstract class Solver<T>
 
     private String getClassResource(Class<?> clazz)
     {
+        var resource = clazz.getName().replace('.', '/') + ".class";
         return clazz.getClassLoader()
-                .getResource(clazz.getName().replace('.', '/') + ".class")
+                .getResource(resource)
                 .toString();
     }
 

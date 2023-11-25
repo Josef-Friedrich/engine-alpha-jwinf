@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import ea.Scene;
 import ea.Vector;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
+import rocks.friedrich.jwinf.platform.gui.Color;
 import rocks.friedrich.jwinf.platform.gui.map.Grid;
 import rocks.friedrich.jwinf.platform.gui.map.TileMap;
 import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
@@ -51,8 +52,8 @@ public class LevelAssembler
     public Grid createGrid()
     {
         Grid grid = new Grid(level.cols, level.rows);
-        grid.setColor(level.task.gridColor);
-        grid.setBackground(level.task.backgroundColor);
+        grid.setColor(new Color(level.getGridColor()));
+        grid.setBackground(new Color(level.task.getBackgroundColor()));
         return grid;
     }
 

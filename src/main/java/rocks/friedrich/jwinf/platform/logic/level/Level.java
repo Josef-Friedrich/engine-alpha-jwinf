@@ -61,4 +61,14 @@ public class Level
     {
         return data.getInitItem();
     }
+
+    public String getGridColor()
+    {
+        return task.getGridColor();
+    }
+
+    public String getBackgroundColor()
+    {
+        return task.getBackgroundColor();
+    }
 }
