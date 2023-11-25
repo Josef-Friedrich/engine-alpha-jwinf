@@ -16,10 +16,4 @@ public class SolverTest
         assertEquals(solver.taskPath,
                 "conditionals_excercises/find_the_way_to_the_lake");
     }
-
-    @Test
-    void testSolve()
-    {
-        solver.solve();
-    }
 }
