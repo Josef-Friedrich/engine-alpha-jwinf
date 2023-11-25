@@ -49,6 +49,14 @@ public class ImageRobot extends Image implements Robot {
     return virtual.getPoint();
   }
 
+  public String[] reportRoute() {
+    return virtual.reportRoute();
+  }
+
+  public void printRoute() {
+    virtual.printRoute();
+  }
+
   public boolean isOnExit() {
     var tile = virtual.map.get(row(), col());
     return tile != null && tile.isExit;

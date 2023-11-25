@@ -21,6 +21,8 @@ import rocks.friedrich.jwinf.platform.logic.map.Point;
 public class VirtualRobot implements Robot {
   private List<MovementListener> movementListeners = new ArrayList<>();
 
+  public Route route;
+
   public LevelMap map;
 
   /**
@@ -51,6 +53,7 @@ public class VirtualRobot implements Robot {
 
   public VirtualRobot(LevelMap map) {
     this.map = map;
+    route = new Route();
   }
 
   public Point getPoint() {
@@ -204,10 +207,20 @@ public class VirtualRobot implements Robot {
   }
 
   /**
-   * Gib den aktuellen gerichteten Punkt, an dem sich der Robot aktuell befindet.
+   * Zeichne die Bewegung auf, die der Roboter macht.
    */
   public Movement reportMovement(String name) {
-    return new Movement(name, this);
+    var mov = new Movement(name, this);
+    route.add(mov);
+    return mov;
+  }
+
+  public String[] reportRoute() {
+    return route.toArray();
+  }
+
+  public void printRoute() {
+    route.printRoute();
   }
 
   // https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3280-L3297
