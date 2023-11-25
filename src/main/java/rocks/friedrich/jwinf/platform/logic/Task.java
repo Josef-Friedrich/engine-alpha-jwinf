@@ -14,7 +14,7 @@ import rocks.friedrich.jwinf.platform.logic.map.ItemStore;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren (in der Regel 3)
- * Schwierigkeitsgraden (Difficulty). Ein Schwierigkeitsgrad kann einen oder<
+ * Schwierigkeitsgraden (Difficulty). Ein Schwierigkeitsgrad kann einen oder
  * mehrere Tests (Level) haben.
  */
 public class Task
