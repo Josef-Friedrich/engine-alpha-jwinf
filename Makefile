@@ -46,6 +46,13 @@ build:
 	mvn clean
 	mvn compile
 
+bluej: package
+	mkdir -p target/bluej/+libs
+	cp target/jwinf-0.0.1-jar-with-dependencies.jar target/bluej/+libs/jwinf.jar
+	cp BluejSolver.java target/bluej/Solver.java
+	cp package.bluej target/bluej/package.bluej
+	jar -cvf target/bluej.bjar target/bluej
+
 format:
 	mvn formatter:format
 

@@ -4,6 +4,16 @@ import rocks.friedrich.jwinf.platform.Solver;
 
 public class TaskSolver extends Solver<Robot>
 {
+    public TaskSolver(String taskPath)
+    {
+        super(taskPath);
+    }
+
+    public TaskSolver()
+    {
+        super("conditionals_excercises/find_the_way_to_the_lake");
+    }
+
     @Override
     public void easy(Robot robot)
     {
