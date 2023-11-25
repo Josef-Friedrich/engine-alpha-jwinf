@@ -4,10 +4,10 @@ import ea.Game;
 import ea.Scene;
 import ea.actor.Text;
 import ea.internal.Bounds;
-import rocks.friedrich.jwinf.platform.State;
 import rocks.friedrich.jwinf.platform.gui.Color;
 import rocks.friedrich.jwinf.platform.gui.Controller;
 import rocks.friedrich.jwinf.platform.gui.Fonts;
+import rocks.friedrich.jwinf.platform.gui.State;
 
 public class SubMenuScene extends Scene implements WindowScene {
 

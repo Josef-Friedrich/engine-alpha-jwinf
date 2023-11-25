@@ -1,7 +1,5 @@
 package rocks.friedrich.jwinf.platform;
 
-import java.lang.reflect.InvocationTargetException;
-
 import rocks.friedrich.jwinf.platform.gui.Controller;
 import rocks.friedrich.jwinf.platform.gui.scenes.AllLevelsScene;
 import rocks.friedrich.jwinf.platform.gui.scenes.AssembledLevelScene;
@@ -34,6 +32,21 @@ public abstract class Solver<T> {
 
   private String getRelPath() {
     return getClassResource(getClass()).replaceAll(".*en/tasks/", "").replaceAll("/\\w+\\.class", "");
+  }
+
+  public RobotWrapper createRobot(Level level)
+      throws Exception {
+
+    String className = "rocks.friedrich.jwinf.en.tasks.%s.Robot".formatted(taskPath.replace("/", "."));
+
+    RobotWrapper robot = RobotWrapper.class.getClassLoader()
+        .loadClass(className)
+        .asSubclass(RobotWrapper.class).getDeclaredConstructor()
+        .newInstance();
+
+    var context = level.createContext();
+    robot.actor = context.robot;
+    return robot;
   }
 
   public void easy(T robot) {
@@ -96,13 +109,10 @@ public abstract class Solver<T> {
 
   @SuppressWarnings("unchecked")
   public RobotWrapper solveVirtual(Difficulty difficulty, int test)
-      throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException,
-      NoSuchMethodException, SecurityException, ClassNotFoundException {
+      throws Exception {
     Task task = Task.loadById(taskId);
 
     Level level = task.getLevel(difficulty, test);
-
-    // LevelContext context = level.createContext();
 
     RobotWrapper robot = createRobot(level);
 
@@ -123,22 +133,6 @@ public abstract class Solver<T> {
         break;
     }
 
-    return robot;
-  }
-
-  public RobotWrapper createRobot(Level level)
-      throws InstantiationException, IllegalAccessException, IllegalArgumentException,
-      InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
-
-    String className = "rocks.friedrich.jwinf.en.tasks.%s.Robot".formatted(taskPath.replace("/", "."));
-
-    RobotWrapper robot = RobotWrapper.class.getClassLoader()
-        .loadClass(className)
-        .asSubclass(RobotWrapper.class).getDeclaredConstructor()
-        .newInstance();
-
-    var context = level.createContext();
-    robot.actor = context.robot;
     return robot;
   }
 

@@ -3,7 +3,7 @@ package rocks.friedrich.jwinf.integration;
 import ea.Game;
 import ea.Scene;
 import ea.event.KeyListener;
-import rocks.friedrich.jwinf.platform.State;
+import rocks.friedrich.jwinf.platform.gui.State;
 import rocks.friedrich.jwinf.platform.gui.map.TileMap;
 import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
 
@@ -30,7 +30,6 @@ public class ActorTest extends Scene implements KeyListener {
 
     if (!Game.isRunning()) {
       Game.start(pixelPerMeter * width, pixelPerMeter * height, this);
-      // Game.setDebug(true);
     } else {
       Game.transitionToScene(this);
     }
@@ -53,7 +52,6 @@ public class ActorTest extends Scene implements KeyListener {
 
     add(map.container);
 
-    // robot = new Actor("images/candle/robot.png");
     robot.placeInMap(0, 4);
     add(robot);
 

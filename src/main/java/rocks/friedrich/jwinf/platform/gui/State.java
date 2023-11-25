@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform;
+package rocks.friedrich.jwinf.platform.gui;
 
 import ea.animation.Interpolator;
 import ea.animation.interpolation.EaseInOutFloat;

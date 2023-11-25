@@ -7,7 +7,6 @@ import ea.Vector;
 import ea.animation.interpolation.EaseInOutFloat;
 import ea.animation.interpolation.LinearFloat;
 import ea.internal.Bounds;
-import rocks.friedrich.jwinf.platform.State;
 import rocks.friedrich.jwinf.platform.gui.scenes.WindowScene;
 
 public class Controller {
