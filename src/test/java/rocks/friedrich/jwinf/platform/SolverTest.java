@@ -18,46 +18,6 @@ public class SolverTest
     }
 
     @Test
-    void testAll()
-    {
-    }
-
-    @Test
-    void testCreateRobot()
-    {
-    }
-
-    @Test
-    void testEasy()
-    {
-    }
-
-    @Test
-    void testHard()
-    {
-    }
-
-    @Test
-    void testMedium()
-    {
-    }
-
-    @Test
-    void testSolve2()
-    {
-    }
-
-    @Test
-    void testSolve3()
-    {
-    }
-
-    @Test
-    void testSolveVirtual()
-    {
-    }
-
-    @Test
     void testSolve()
     {
         solver.solve();
