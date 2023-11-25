@@ -39,19 +39,19 @@ public class TaskListTest
     @Test
     public void methodGet()
     {
-        assertEquals(list.getId(0), "conditionals_excercises/light_all_candles");
+        assertEquals(list.getId(0), "conditionals_excercises/find_the_destination");
     }
 
     @Test
     public void methodNext()
     {
-        assertEquals(list.next(), "conditionals_excercises/platforms");
+        assertEquals(list.next(), "conditionals_excercises/find_the_way_to_the_lake");
     }
 
     @Test
     public void methodPrevious()
     {
         assertEquals(list.previous(),
-                "conditionals_excercises/find_the_destination");
+                "conditionals_excercises/platforms");
     }
 }

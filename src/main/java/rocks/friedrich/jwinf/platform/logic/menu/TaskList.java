@@ -35,7 +35,8 @@ public class TaskList
             }).map(Path::toAbsolutePath).map(Path::toString)
                     .map((String fileName) -> fileName.replace(".json", ""))
                     .map((absPath) -> absPath.replaceAll(".*data/tasks/", ""))
-                    .collect(Collectors.toList());;
+                    .collect(Collectors.toList());
+            ids.sort(String::compareTo);
             return new TaskList(ids);
         }
     }
