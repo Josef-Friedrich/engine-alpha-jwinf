@@ -8,24 +8,24 @@ import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 public class TestHelper
 {
-    public static Task loadTask(String taskId)
+    public static Task loadTask(String taskPath)
     {
-        return Task.loadByRelPath(taskId);
+        return Task.loadByRelPath(taskPath);
     }
 
-    public static Level loadLevel(String taskId)
+    public static Level loadLevel(String taskPath)
     {
-        var task = Task.loadByRelPath(taskId);
+        var task = Task.loadByRelPath(taskPath);
         return task.getLevel(Difficulty.EASY);
     }
 
-    public static LevelContext loadLevelContext(String taskId)
+    public static LevelContext loadLevelContext(String taskPath)
     {
-        return loadLevel(taskId).createContext();
+        return loadLevel(taskPath).createContext();
     }
 
-    public static VirtualRobot loadVirtualRobot(String taskId)
+    public static VirtualRobot loadVirtualRobot(String taskPath)
     {
-        return loadLevelContext(taskId).robot;
+        return loadLevelContext(taskPath).robot;
     }
 }

@@ -11,9 +11,9 @@ public class TilesStoreTest
 {
     ItemStore store;
 
-    private static ItemStore loadByTaskId(String taskId)
+    private static ItemStore loadByTaskId(String taskPath)
     {
-        Task task = Task.loadByRelPath(taskId);
+        Task task = Task.loadByRelPath(taskPath);
         return new ItemStore(task.data.grid.itemTypes);
     }
 

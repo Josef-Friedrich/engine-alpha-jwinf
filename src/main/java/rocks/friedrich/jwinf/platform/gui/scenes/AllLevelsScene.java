@@ -47,9 +47,9 @@ public class AllLevelsScene extends Scene
         paintLevels();
     }
 
-    public AllLevelsScene(String taskId)
+    public AllLevelsScene(String taskPath)
     {
-        this(Task.loadByRelPath(taskId));
+        this(Task.loadByRelPath(taskPath));
     }
 
     public float getWidth()
@@ -95,9 +95,9 @@ public class AllLevelsScene extends Scene
         });
     }
 
-    public static void launch(String taskId)
+    public static void launch(String taskPath)
     {
-        var scene = new AllLevelsScene(taskId);
+        var scene = new AllLevelsScene(taskPath);
         Controller.launchScene((WindowScene) scene);
     }
 

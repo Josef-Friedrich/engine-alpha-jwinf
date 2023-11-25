@@ -29,14 +29,14 @@ public class LevelScene extends Scene
 
     private RobotAction action;
 
-    public LevelScene(String taskId, Difficulty difficulty)
+    public LevelScene(String taskPath, Difficulty difficulty)
     {
-        this(taskId, difficulty, 0);
+        this(taskPath, difficulty, 0);
     }
 
-    public LevelScene(String taskId, Difficulty difficulty, int test)
+    public LevelScene(String taskPath, Difficulty difficulty, int test)
     {
-        this(Task.loadByRelPath(taskId), difficulty, test);
+        this(Task.loadByRelPath(taskPath), difficulty, test);
     }
 
     public LevelScene(Task task, Difficulty difficulty, int test)
@@ -77,25 +77,25 @@ public class LevelScene extends Scene
         }
     }
 
-    public static void launch(String taskId, Difficulty difficulty)
+    public static void launch(String taskPath, Difficulty difficulty)
     {
-        launch(taskId, difficulty, 0);
+        launch(taskPath, difficulty, 0);
     }
 
-    public static void launch(String taskId, Difficulty difficulty, int test)
+    public static void launch(String taskPath, Difficulty difficulty, int test)
     {
-        launch(taskId, difficulty, test, null);
+        launch(taskPath, difficulty, test, null);
     }
 
-    public static void launch(String taskId, RobotAction action)
+    public static void launch(String taskPath, RobotAction action)
     {
-        launch(taskId, Difficulty.EASY, 0, action);
+        launch(taskPath, Difficulty.EASY, 0, action);
     }
 
-    public static void launch(String taskId, Difficulty difficulty, int test,
+    public static void launch(String taskPath, Difficulty difficulty, int test,
             RobotAction action)
     {
-        LevelScene scene = new LevelScene(taskId, difficulty, test);
+        LevelScene scene = new LevelScene(taskPath, difficulty, test);
         if (action != null)
         {
             scene.setAction(action);
