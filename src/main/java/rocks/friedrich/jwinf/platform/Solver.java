@@ -16,14 +16,16 @@ import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
  */
 public abstract class Solver<T>
 {
-    protected String taskId;
-
     public String taskPath;
 
-    public Solver(String taskId)
+    public Solver(String taskPath)
     {
-        this.taskId = taskId;
-        taskPath = getRelPath();
+        this.taskPath = taskPath;
+    }
+
+    public Solver()
+    {
+        taskPath = findTaskPathInClassPath();
     }
 
     public RobotWrapper createRobot(Level level) throws Exception
@@ -36,6 +38,23 @@ public abstract class Solver<T>
         var context = level.createContext();
         robot.actor = context.robot;
         return robot;
+    }
+
+    /**
+        * Instantiates a class based on the given relative class path.
+        *
+        * @param <O> the type of the object to be instantiated
+        * @param relClassPath the relative class path (relative to the package rocks.friedrich.jwinf)
+        * @return an instance of the specified class
+        * @throws ReflectiveOperationException if the class cannot be found or instantiated
+        */
+    @SuppressWarnings("unchecked")
+    public static <O> O instantiateClass(String relClassPath)
+            throws ReflectiveOperationException
+    {
+        Class<?> cls = Class.forName("rocks.friedrich.jwinf." + relClassPath);
+        O object = (O) cls.getDeclaredConstructor().newInstance();
+        return object;
     }
 
     public void easy(T robot)
@@ -70,10 +89,10 @@ public abstract class Solver<T>
         AssembledLevelScene scene;
         if (difficutly == null)
         {
-            scene = new AllLevelsScene(taskId);
+            scene = new AllLevelsScene(taskPath);
         } else
         {
-            scene = new LevelScene(taskId, Difficulty.indexOf(difficutly),
+            scene = new LevelScene(taskPath, Difficulty.indexOf(difficutly),
                     test);
         }
         Controller.launchScene((WindowScene) scene);
@@ -104,7 +123,7 @@ public abstract class Solver<T>
     public RobotWrapper solveVirtual(Difficulty difficulty, int test)
             throws Exception
     {
-        Task task = Task.loadByRelPath(taskId);
+        Task task = Task.loadByRelPath(taskPath);
         Level level = task.getLevel(difficulty, test);
         RobotWrapper robot = createRobot(level);
         switch (difficulty)
@@ -127,17 +146,10 @@ public abstract class Solver<T>
         return robot;
     }
 
-    private String getClassResource(Class<?> clazz)
+    private String findTaskPathInClassPath()
     {
-        var resource = clazz.getName().replace('.', '/') + ".class";
-        return clazz.getClassLoader()
-                .getResource(resource)
-                .toString();
-    }
-
-    private String getRelPath()
-    {
-        return getClassResource(getClass()).replaceAll(".*en/tasks/", "")
-                .replaceAll("/\\w+\\.class", "");
+        // .getName():
+        // rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_way_to_the_lake.TaskSolver
+        return Task.extractTaskPath(getClass().getName());
     }
 }
