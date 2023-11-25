@@ -1,6 +1,5 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
-import rocks.friedrich.jwinf.platform.logic.map.Movement;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 public interface Robot {

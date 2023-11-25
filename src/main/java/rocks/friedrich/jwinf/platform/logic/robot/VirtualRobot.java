@@ -12,7 +12,6 @@ import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
-import rocks.friedrich.jwinf.platform.logic.map.Movement;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 /**
@@ -187,73 +186,81 @@ public class VirtualRobot implements Robot {
   }
 
   public Movement turnLeft() {
+    var mov = reportMovement("turnLeft");
     dir = dir.rotate(3);
-    return reportMovement();
+    return mov.setTo();
   }
 
   public Movement turnRight() {
+    var mov = reportMovement("turnRight");
     dir = dir.rotate(1);
-    return reportMovement();
+    return mov.setTo();
   }
 
   public Movement turnAround() {
+    var mov = reportMovement("turnAround");
     dir = dir.rotate(2);
-    return reportMovement();
+    return mov.setTo();
   }
 
   /**
    * Gib den aktuellen gerichteten Punkt, an dem sich der Robot aktuell befindet.
    */
-  public Movement reportMovement() {
-    return new Movement(row, col, dir, movementSuccessful);
+  public Movement reportMovement(String name) {
+    return new Movement(name, this);
   }
 
   // https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3280-L3297
 
   public Movement forward() {
+    var mov = reportMovement("forward");
     if (tryToBeOn(dir)) {
       Point point = coordsInFront(dir);
       row = point.row;
       col = point.col;
       numberOfMovements++;
     }
-    return reportMovement();
+    return mov.setTo();
   }
 
   public Movement east() {
+    var mov = reportMovement("east");
     if (tryToBeOn(EAST)) {
       col++;
       dir = EAST;
       numberOfMovements++;
     }
-    return reportMovement();
+    return mov.setTo();
   }
 
   public Movement north() {
+    var mov = reportMovement("north");
     if (tryToBeOn(NORTH)) {
       row--;
       dir = NORTH;
       numberOfMovements++;
     }
-    return reportMovement();
+    return mov.setTo();
   }
 
   public Movement west() {
+    var mov = reportMovement("west");
     if (tryToBeOn(WEST)) {
       col--;
       dir = WEST;
       numberOfMovements++;
     }
-    return reportMovement();
+    return mov.setTo();
   }
 
   public Movement south() {
+    var mov = reportMovement("south");
     if (tryToBeOn(SOUTH)) {
       row++;
       dir = SOUTH;
       numberOfMovements++;
     }
-    return reportMovement();
+    return mov.setTo();
   }
 
   /**

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import rocks.friedrich.jwinf.platform.logic.Compass;
-import rocks.friedrich.jwinf.platform.logic.map.Movement;
 
 /**
  * https://jwinf.de/task/1158
@@ -26,9 +25,9 @@ public class VirtualRobotTest {
   }
 
   private void assertMovement(Movement movement, int row, int col, Compass dir, boolean successful) {
-    assertEquals(movement.row, row);
-    assertEquals(movement.col, col);
-    assertEquals(movement.dir, dir);
+    assertEquals(movement.to.row, row);
+    assertEquals(movement.to.col, col);
+    assertEquals(movement.to.dir, dir);
     assertEquals(movement.successful, successful);
   }
 

@@ -14,8 +14,8 @@ import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.platform.State;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.Compass;
-import rocks.friedrich.jwinf.platform.logic.map.Movement;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.robot.Movement;
 import rocks.friedrich.jwinf.platform.logic.robot.Robot;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
@@ -133,7 +133,7 @@ public class ImageRobot extends Image implements Robot {
 
   public Movement east() {
     var movement = virtual.east();
-    go(movement.dir);
+    go(movement.to.dir);
     return movement;
   }
 
@@ -143,7 +143,7 @@ public class ImageRobot extends Image implements Robot {
 
   public Movement south() {
     var movement = virtual.south();
-    go(movement.dir);
+    go(movement.to.dir);
     return movement;
   }
 
@@ -153,7 +153,7 @@ public class ImageRobot extends Image implements Robot {
 
   public Movement west() {
     var movement = virtual.west();
-    go(movement.dir);
+    go(movement.to.dir);
     return movement;
   }
 
@@ -163,7 +163,7 @@ public class ImageRobot extends Image implements Robot {
 
   public Movement north() {
     var movement = virtual.north();
-    go(movement.dir);
+    go(movement.to.dir);
     return movement;
   }
 
