@@ -36,7 +36,7 @@ public class LevelScene extends Scene
 
     public LevelScene(String taskId, Difficulty difficulty, int test)
     {
-        this(Task.loadById(taskId), difficulty, test);
+        this(Task.loadByRelPath(taskId), difficulty, test);
     }
 
     public LevelScene(Task task, Difficulty difficulty, int test)
@@ -140,7 +140,7 @@ public class LevelScene extends Scene
 
     public static void main(String[] args)
     {
-        launch("19-DE-12-stay-on-the-road", Difficulty.HARD);
-        // launch("20-DE-13-Kerzen-einfach", Difficulty.HARD);
+        launch("conditionals_excercises/find_the_way_to_the_lake", Difficulty.HARD);
+        // launch("conditionals_excercises/light_all_candles", Difficulty.HARD);
     }
 }

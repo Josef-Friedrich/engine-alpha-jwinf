@@ -6,7 +6,7 @@ public class TaskSolver extends Solver<Robot>
 {
     public TaskSolver()
     {
-        super("17-FR-07-platforms-marbles");
+        super("conditionals_excercises/find_the_destination");
     }
 
     @Override

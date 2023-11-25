@@ -14,7 +14,7 @@ import rocks.friedrich.jwinf.platform.logic.map.ItemStore;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren (in der Regel 3)
- * Schwierigkeitsgraden (Difficulty). Ein Schwierigkeitsgrad kann einen oder
+ * Schwierigkeitsgraden (Difficulty). Ein Schwierigkeitsgrad kann einen oder<
  * mehrere Tests (Level) haben.
  */
 public class Task
@@ -62,9 +62,12 @@ public class Task
         levels = new LevelCollection(data.levels, this);
     }
 
-    public static Task loadById(String id)
+    /**
+     * @param relPath Der relative Pfad zu resources/data/tasks
+     */
+    public static Task loadByRelPath(String relPath)
     {
-        return new Task("data/tasks/%s.json".formatted(id));
+        return new Task("data/tasks/%s.json".formatted(relPath));
     }
 
     public Map<Difficulty, List<Level>> getLevels()

@@ -26,19 +26,6 @@ public abstract class Solver<T>
         taskPath = getRelPath();
     }
 
-    private String getClassResource(Class<?> clazz)
-    {
-        return clazz.getClassLoader()
-                .getResource(clazz.getName().replace('.', '/') + ".class")
-                .toString();
-    }
-
-    private String getRelPath()
-    {
-        return getClassResource(getClass()).replaceAll(".*en/tasks/", "")
-                .replaceAll("/\\w+\\.class", "");
-    }
-
     public RobotWrapper createRobot(Level level) throws Exception
     {
         String className = "rocks.friedrich.jwinf.en.tasks.%s.Robot"
@@ -117,7 +104,7 @@ public abstract class Solver<T>
     public RobotWrapper solveVirtual(Difficulty difficulty, int test)
             throws Exception
     {
-        Task task = Task.loadById(taskId);
+        Task task = Task.loadByRelPath(taskId);
         Level level = task.getLevel(difficulty, test);
         RobotWrapper robot = createRobot(level);
         switch (difficulty)
@@ -138,5 +125,18 @@ public abstract class Solver<T>
             break;
         }
         return robot;
+    }
+
+    private String getClassResource(Class<?> clazz)
+    {
+        return clazz.getClassLoader()
+                .getResource(clazz.getName().replace('.', '/') + ".class")
+                .toString();
+    }
+
+    private String getRelPath()
+    {
+        return getClassResource(getClass()).replaceAll(".*en/tasks/", "")
+                .replaceAll("/\\w+\\.class", "");
     }
 }

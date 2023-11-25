@@ -39,19 +39,19 @@ public class TaskListTest
     @Test
     public void methodGet()
     {
-        assertEquals(list.getId(0), "17-FR-07-platforms-marbles");
+        assertEquals(list.getId(0), "conditionals_excercises/light_all_candles");
     }
 
     @Test
     public void methodNext()
     {
-        assertEquals(list.next(), "19-DE-12-stay-on-the-road");
+        assertEquals(list.next(), "conditionals_excercises/platforms");
     }
 
     @Test
     public void methodPrevious()
     {
         assertEquals(list.previous(),
-                "castor-informatique.fr__questions__algorea_training_2__01_sequence_02_gems");
+                "conditionals_excercises/find_the_destination");
     }
 }

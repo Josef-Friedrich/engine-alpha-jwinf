@@ -49,7 +49,7 @@ public class AllLevelsScene extends Scene
 
     public AllLevelsScene(String taskId)
     {
-        this(Task.loadById(taskId));
+        this(Task.loadByRelPath(taskId));
     }
 
     public float getWidth()
@@ -120,7 +120,7 @@ public class AllLevelsScene extends Scene
 
     public static void main(String[] args)
     {
-        // launch("20-DE-13-Kerzen-einfach");
-        launch("17-FR-07-platforms-marbles");
+        // launch("conditionals_excercises/light_all_candles");
+        launch("conditionals_excercises/find_the_destination");
     }
 }

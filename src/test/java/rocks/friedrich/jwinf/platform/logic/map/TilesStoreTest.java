@@ -13,14 +13,14 @@ public class TilesStoreTest
 
     private static ItemStore loadByTaskId(String taskId)
     {
-        Task task = Task.loadById(taskId);
+        Task task = Task.loadByRelPath(taskId);
         return new ItemStore(task.data.grid.itemTypes);
     }
 
     @BeforeEach
     void load()
     {
-        store = loadByTaskId("17-FR-07-platforms-marbles");
+        store = loadByTaskId("conditionals_excercises/find_the_destination");
     }
 
     @Test

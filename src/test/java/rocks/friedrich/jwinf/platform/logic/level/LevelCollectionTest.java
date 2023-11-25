@@ -13,7 +13,7 @@ class LevelCollectionTest
     @BeforeAll
     static void getLevel()
     {
-        levels = loadTask("20-DE-13-Kerzen-einfach").levels;
+        levels = loadTask("conditionals_excercises/light_all_candles").levels;
     }
 
     @Test

@@ -14,7 +14,7 @@ class LevelTest
     @BeforeAll
     static void getLevel()
     {
-        level = loadLevel("20-DE-13-Kerzen-einfach");
+        level = loadLevel("conditionals_excercises/light_all_candles");
     }
 
     @Test

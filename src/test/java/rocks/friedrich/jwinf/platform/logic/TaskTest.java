@@ -11,7 +11,7 @@ import rocks.friedrich.jwinf.platform.logic.menu.TaskList;
 
 class TaskTest
 {
-    Task task = Task.loadById("20-DE-13-Kerzen-einfach");
+    Task task = Task.loadByRelPath("conditionals_excercises/light_all_candles");
 
     @Test
     void attributeTitle()
@@ -48,9 +48,9 @@ class TaskTest
     void all() throws IOException
     {
         TaskList list = TaskList.readFromResources();
-        for (String id : list.getIds())
+        for (String id : list.getRelPaths())
         {
-            Task task = Task.loadById(id);
+            Task task = Task.loadByRelPath(id);
             assertTrue(task.title != null);
         }
     }

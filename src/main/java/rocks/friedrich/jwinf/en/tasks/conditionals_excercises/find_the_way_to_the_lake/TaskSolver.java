@@ -6,7 +6,7 @@ public class TaskSolver extends Solver<Robot>
 {
     public TaskSolver()
     {
-        super("19-DE-12-stay-on-the-road");
+        super("conditionals_excercises/find_the_way_to_the_lake");
     }
 
     @Override
