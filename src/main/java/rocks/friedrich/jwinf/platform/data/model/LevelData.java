@@ -5,7 +5,8 @@ import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 /**
  * Die Daten einer Version einer Trainingsaufgabe.
  *
- * <p>In der JSON-Datei sind die Daten beispielsweise repräsentiert:
+ * <p>
+ * In der JSON-Datei sind die Daten beispielsweise repräsentiert:
  *
  * <pre>{@code
  *   {
@@ -26,26 +27,31 @@ import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
  *   }
  * }</pre>
  */
-public class LevelData {
-  public int[][] tiles;
-  public ItemData[] initItems;
+public class LevelData
+{
+    public int[][] tiles;
 
-  public Difficulty difficulty;
+    public ItemData[] initItems;
 
-  /**
-   * 0 no other test 1: first test of x 2: second test of x. x > 2
-   */
-  public int testNo;
+    public Difficulty difficulty;
 
-  public int getCols() {
-    return tiles[0].length;
-  }
+    /**
+     * 0 no other test 1: first test of x 2: second test of x. x > 2
+     */
+    public int testNo;
 
-  public int getRows() {
-    return tiles.length;
-  }
+    public int getCols()
+    {
+        return tiles[0].length;
+    }
 
-  public ItemData getInitItem() {
-    return initItems[0];
-  }
+    public int getRows()
+    {
+        return tiles.length;
+    }
+
+    public ItemData getInitItem()
+    {
+        return initItems[0];
+    }
 }

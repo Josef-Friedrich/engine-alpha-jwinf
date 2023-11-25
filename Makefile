@@ -46,4 +46,7 @@ build:
 	mvn clean
 	mvn compile
 
+format:
+	mvn formatter:format
+
 .PHONY: dependency

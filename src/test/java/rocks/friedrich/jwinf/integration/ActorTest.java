@@ -10,73 +10,65 @@ import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-public class ActorTest extends Scene implements KeyListener {
-
-  public static void main(String[] args) {
-    new ActorTest();
-  }
-
-  private int pixelPerMeter = 60;
-
-  public int width;
-
-  public int height;
-
-  private ImageRobot robot;
-
-  public ActorTest() {
-    width = 5;
-    height = 5;
-
-    if (!Game.isRunning()) {
-      Game.start(pixelPerMeter * width, pixelPerMeter * height, this);
-    } else {
-      Game.transitionToScene(this);
+public class ActorTest extends Scene implements KeyListener
+{
+    public static void main(String[] args)
+    {
+        new ActorTest();
     }
 
-    setBackgroundColor(new Color(212, 232, 196));
+    private int pixelPerMeter = 60;
 
-    TileMap map = new TileMap(width, height, "images/sea/", "png");
+    public int width;
 
-    map.registerImage('r', "road");
+    public int height;
 
-    map.parseMap(new String[] {
-        "",
-        "",
-        "  r",
-      });
+    private ImageRobot robot;
 
-    map.setObstacles('r');
-
-    State.map = map;
-
-    add(map.container);
-
-    robot.placeInMap(0, 4);
-    add(robot);
-
-    getCamera().setFocus(map.container);
-    getCamera().setZoom(pixelPerMeter);
-  }
-
-  @Override
-  public void onKeyDown(KeyEvent keyEvent) {
-    switch (keyEvent.getKeyCode()) {
-      case KeyEvent.VK_RIGHT:
-        robot.eastNonBlocking();
-        break;
-
-      case KeyEvent.VK_UP:
-        robot.northNonBlocking();
-        break;
-
-      case KeyEvent.VK_LEFT:
-        robot.westNonBlocking();
-        break;
-
-      case KeyEvent.VK_DOWN:
-        robot.southNonBlocking();
-        break;
+    public ActorTest()
+    {
+        width = 5;
+        height = 5;
+        if (!Game.isRunning())
+        {
+            Game.start(pixelPerMeter * width, pixelPerMeter * height, this);
+        } else
+        {
+            Game.transitionToScene(this);
+        }
+        setBackgroundColor(new Color(212, 232, 196));
+        TileMap map = new TileMap(width, height, "images/sea/", "png");
+        map.registerImage('r', "road");
+        map.parseMap(new String[] { "", "", "  r", });
+        map.setObstacles('r');
+        State.map = map;
+        add(map.container);
+        robot.placeInMap(0, 4);
+        add(robot);
+        getCamera().setFocus(map.container);
+        getCamera().setZoom(pixelPerMeter);
     }
-  }
+
+    @Override
+    public void onKeyDown(KeyEvent keyEvent)
+    {
+        switch (keyEvent.getKeyCode())
+        {
+        case KeyEvent.VK_RIGHT:
+            robot.eastNonBlocking();
+            break;
+
+        case KeyEvent.VK_UP:
+            robot.northNonBlocking();
+            break;
+
+        case KeyEvent.VK_LEFT:
+            robot.westNonBlocking();
+            break;
+
+        case KeyEvent.VK_DOWN:
+            robot.southNonBlocking();
+            break;
+        }
+    }
 }

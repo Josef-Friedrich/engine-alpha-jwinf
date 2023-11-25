@@ -12,64 +12,73 @@ import rocks.friedrich.jwinf.platform.logic.Task;
 /**
  * Die Tests (Level) nach Schwierigkeitsgraden geordnet.
  */
-public class LevelCollection {
-  public Task task;
+public class LevelCollection
+{
+    public Task task;
 
-  public Map<Difficulty, List<Level>> levels;
+    public Map<Difficulty, List<Level>> levels;
 
-  public List<Level> list;
+    public List<Level> list;
 
-  public int numberOfLevels;
+    public int numberOfLevels;
 
-  public int maxCols;
+    public int maxCols;
 
-  public int maxRows;
+    public int maxRows;
 
-  private void setMaxRowsAndCols() {
-    for (Level level : list) {
-      if (level.cols > maxCols) {
-        maxCols = level.cols;
-      }
-      if (level.rows > maxRows) {
-        maxRows = level.rows;
-      }
-    }
-  }
-
-  public LevelCollection(LevelCollectionData data, Task task) {
-    this.task = task;
-    list = new ArrayList<>();
-    levels = new EnumMap<>(Difficulty.class);
-    for (LevelData levelData : data.getLevelList()) {
-      Difficulty difficulty = levelData.difficulty;
-      List<Level> levelList = levels.get(difficulty);
-      if (levelList == null) {
-        levelList = new ArrayList<Level>();
-        levels.put(difficulty, levelList);
-      }
-      Level level = new Level(levelData, task);
-      levelList.add(level);
-      list.add(level);
+    private void setMaxRowsAndCols()
+    {
+        for (Level level : list)
+        {
+            if (level.cols > maxCols)
+            {
+                maxCols = level.cols;
+            }
+            if (level.rows > maxRows)
+            {
+                maxRows = level.rows;
+            }
+        }
     }
 
-    numberOfLevels = list.size();
-
-    setMaxRowsAndCols();
-  }
-
-  public Level getLevel(Difficulty difficulty, int test) {
-    if (test < 1) {
-      test = 1;
+    public LevelCollection(LevelCollectionData data, Task task)
+    {
+        this.task = task;
+        list = new ArrayList<>();
+        levels = new EnumMap<>(Difficulty.class);
+        for (LevelData levelData : data.getLevelList())
+        {
+            Difficulty difficulty = levelData.difficulty;
+            List<Level> levelList = levels.get(difficulty);
+            if (levelList == null)
+            {
+                levelList = new ArrayList<Level>();
+                levels.put(difficulty, levelList);
+            }
+            Level level = new Level(levelData, task);
+            levelList.add(level);
+            list.add(level);
+        }
+        numberOfLevels = list.size();
+        setMaxRowsAndCols();
     }
-    return levels.get(difficulty).get(test - 1);
-  }
 
-  public Level getLevel(Difficulty difficulty) {
-    return getLevel(difficulty, 0);
-  }
+    public Level getLevel(Difficulty difficulty, int test)
+    {
+        if (test < 1)
+        {
+            test = 1;
+        }
+        return levels.get(difficulty).get(test - 1);
+    }
 
-  public Level getLevel(int difficulty) {
-    return getLevel(Difficulty.indexOf(difficulty), 0);
-  }
+    public Level getLevel(Difficulty difficulty)
+    {
+        return getLevel(difficulty, 0);
+    }
 
+    public Level getLevel(int difficulty)
+    {
+        return getLevel(Difficulty.indexOf(difficulty), 0);
+    }
 }

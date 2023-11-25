@@ -8,32 +8,39 @@ import com.fasterxml.jackson.databind.DatabindException;
 
 import rocks.friedrich.jwinf.platform.data.JsonLoader;
 
-public class Menu {
+public class Menu
+{
+    private LinkedHashMap<String, LinkedHashMap<String, String>> data;
 
-  private LinkedHashMap<String, LinkedHashMap<String, String>> data;
-
-  public Menu() {
-    try {
-      data = JsonLoader.loadMenu();
-    } catch (StreamReadException e) {
-      e.printStackTrace();
-    } catch (DatabindException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
+    public Menu()
+    {
+        try
+        {
+            data = JsonLoader.loadMenu();
+        } catch (StreamReadException e)
+        {
+            e.printStackTrace();
+        } catch (DatabindException e)
+        {
+            e.printStackTrace();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
-  }
 
-  public LinkedHashMap<String, LinkedHashMap<String, String>> getMain() {
-    return data;
-  }
+    public LinkedHashMap<String, LinkedHashMap<String, String>> getMain()
+    {
+        return data;
+    }
 
-  public LinkedHashMap<String, String> getSub(String menu) {
-    return data.get(menu);
-  }
+    public LinkedHashMap<String, String> getSub(String menu)
+    {
+        return data.get(menu);
+    }
 
-  public String getId(String menu, String submenu) {
-    return data.get(menu).get(submenu);
-  }
-
+    public String getId(String menu, String submenu)
+    {
+        return data.get(menu).get(submenu);
+    }
 }

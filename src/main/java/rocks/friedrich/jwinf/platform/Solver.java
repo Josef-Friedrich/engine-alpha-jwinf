@@ -11,129 +11,132 @@ import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
 
 /**
- * Klasse, die verschiedene Methoden beinhaltet, die die verschiedenen
- * Versionen einer Trainingsaufgabe löst.
+ * Klasse, die verschiedene Methoden beinhaltet, die die verschiedenen Versionen
+ * einer Trainingsaufgabe löst.
  */
-public abstract class Solver<T> {
+public abstract class Solver<T>
+{
+    protected String taskId;
 
-  protected String taskId;
+    public String taskPath;
 
-  public String taskPath;
-
-  public Solver(String taskId) {
-    this.taskId = taskId;
-    taskPath = getRelPath();
-  }
-
-  private String getClassResource(Class<?> clazz) {
-    return clazz.getClassLoader().getResource(
-        clazz.getName().replace('.', '/') + ".class").toString();
-  }
-
-  private String getRelPath() {
-    return getClassResource(getClass()).replaceAll(".*en/tasks/", "").replaceAll("/\\w+\\.class", "");
-  }
-
-  public RobotWrapper createRobot(Level level)
-      throws Exception {
-
-    String className = "rocks.friedrich.jwinf.en.tasks.%s.Robot".formatted(taskPath.replace("/", "."));
-
-    RobotWrapper robot = RobotWrapper.class.getClassLoader()
-        .loadClass(className)
-        .asSubclass(RobotWrapper.class).getDeclaredConstructor()
-        .newInstance();
-
-    var context = level.createContext();
-    robot.actor = context.robot;
-    return robot;
-  }
-
-  public void easy(T robot) {
-
-  }
-
-  public void medium(T robot) {
-
-  }
-
-  public void hard(T robot) {
-
-  }
-
-  public void all(T robot) {
-
-  }
-
-  public void solve() {
-    solve(null, 0);
-  }
-
-  public void solve(String difficutly) {
-    solve(difficutly, 0);
-  }
-
-  @SuppressWarnings("unchecked")
-  public void solve(String difficutly, int test) {
-    AssembledLevelScene scene;
-    if (difficutly == null) {
-      scene = new AllLevelsScene(taskId);
-    } else {
-      scene = new LevelScene(taskId, Difficulty.indexOf(difficutly), test);
+    public Solver(String taskId)
+    {
+        this.taskId = taskId;
+        taskPath = getRelPath();
     }
 
-    Controller.launchScene((WindowScene) scene);
+    private String getClassResource(Class<?> clazz)
+    {
+        return clazz.getClassLoader()
+                .getResource(clazz.getName().replace('.', '/') + ".class")
+                .toString();
+    }
 
-    scene.getAssembledLevels().forEach((level) -> {
-      new Thread(() -> {
-        switch (level.level.difficulty) {
-          case EASY:
-            easy((T) level.robot);
+    private String getRelPath()
+    {
+        return getClassResource(getClass()).replaceAll(".*en/tasks/", "")
+                .replaceAll("/\\w+\\.class", "");
+    }
+
+    public RobotWrapper createRobot(Level level) throws Exception
+    {
+        String className = "rocks.friedrich.jwinf.en.tasks.%s.Robot"
+                .formatted(taskPath.replace("/", "."));
+        RobotWrapper robot = RobotWrapper.class.getClassLoader()
+                .loadClass(className).asSubclass(RobotWrapper.class)
+                .getDeclaredConstructor().newInstance();
+        var context = level.createContext();
+        robot.actor = context.robot;
+        return robot;
+    }
+
+    public void easy(T robot)
+    {
+    }
+
+    public void medium(T robot)
+    {
+    }
+
+    public void hard(T robot)
+    {
+    }
+
+    public void all(T robot)
+    {
+    }
+
+    public void solve()
+    {
+        solve(null, 0);
+    }
+
+    public void solve(String difficutly)
+    {
+        solve(difficutly, 0);
+    }
+
+    @SuppressWarnings("unchecked")
+    public void solve(String difficutly, int test)
+    {
+        AssembledLevelScene scene;
+        if (difficutly == null)
+        {
+            scene = new AllLevelsScene(taskId);
+        } else
+        {
+            scene = new LevelScene(taskId, Difficulty.indexOf(difficutly),
+                    test);
+        }
+        Controller.launchScene((WindowScene) scene);
+        scene.getAssembledLevels().forEach((level) -> {
+            new Thread(() -> {
+                switch (level.level.difficulty)
+                {
+                case EASY:
+                    easy((T) level.robot);
+                    break;
+
+                case MEDIUM:
+                    medium((T) level.robot);
+                    break;
+
+                case HARD:
+                    hard((T) level.robot);
+                    break;
+
+                default:
+                    break;
+                }
+            }).start();
+        });
+    }
+
+    @SuppressWarnings("unchecked")
+    public RobotWrapper solveVirtual(Difficulty difficulty, int test)
+            throws Exception
+    {
+        Task task = Task.loadById(taskId);
+        Level level = task.getLevel(difficulty, test);
+        RobotWrapper robot = createRobot(level);
+        switch (difficulty)
+        {
+        case EASY:
+            easy((T) robot);
             break;
 
-          case MEDIUM:
-            medium((T) level.robot);
+        case MEDIUM:
+            medium((T) robot);
             break;
 
-          case HARD:
-            hard((T) level.robot);
+        case HARD:
+            hard((T) robot);
             break;
 
-          default:
+        default:
             break;
         }
-      }).start();
-
-    });
-  }
-
-  @SuppressWarnings("unchecked")
-  public RobotWrapper solveVirtual(Difficulty difficulty, int test)
-      throws Exception {
-    Task task = Task.loadById(taskId);
-
-    Level level = task.getLevel(difficulty, test);
-
-    RobotWrapper robot = createRobot(level);
-
-    switch (difficulty) {
-      case EASY:
-        easy((T) robot);
-        break;
-
-      case MEDIUM:
-        medium((T) robot);
-        break;
-
-      case HARD:
-        hard((T) robot);
-        break;
-
-      default:
-        break;
+        return robot;
     }
-
-    return robot;
-  }
-
 }

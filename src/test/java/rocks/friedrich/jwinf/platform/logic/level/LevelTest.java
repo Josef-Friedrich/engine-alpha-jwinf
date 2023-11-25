@@ -7,28 +7,31 @@ import org.junit.jupiter.api.Test;
 
 import static rocks.friedrich.jwinf.TestHelper.loadLevel;
 
-class LevelTest {
+class LevelTest
+{
+    static Level level;
 
-  static Level level;
+    @BeforeAll
+    static void getLevel()
+    {
+        level = loadLevel("20-DE-13-Kerzen-einfach");
+    }
 
-  @BeforeAll
-  static void getLevel() {
-    level = loadLevel("20-DE-13-Kerzen-einfach");
-  }
+    @Test
+    void attributeRows()
+    {
+        assertEquals(level.rows, 6);
+    }
 
-  @Test
-  void attributeRows() {
-    assertEquals(level.rows, 6);
-  }
+    @Test
+    void attributeCols()
+    {
+        assertEquals(level.cols, 9);
+    }
 
-  @Test
-  void attributeCols() {
-    assertEquals(level.cols, 9);
-  }
-
-  @Test
-  void methodGetInitItem() {
-    assertEquals(level.getInitItem().row, 5);
-  }
-
+    @Test
+    void methodGetInitItem()
+    {
+        assertEquals(level.getInitItem().row, 5);
+    }
 }
