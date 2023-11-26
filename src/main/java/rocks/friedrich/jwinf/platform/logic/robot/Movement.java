@@ -30,4 +30,10 @@ public class Movement
         this.successful = robot.movementSuccessful;
         return this;
     }
+
+    public String toString()
+    {
+        return "Movement [from=%s, to=%s, name=%s, successful=%s]".formatted(
+                from.getSummary(), to.getSummary(), name, successful);
+    }
 }

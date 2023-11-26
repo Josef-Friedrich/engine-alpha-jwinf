@@ -28,9 +28,8 @@ public class ImageRobot extends Image implements Robot
      * fertig abgelaufen ist.
      */
     private boolean inMotion = false;
-    // private LevelMap map;
 
-    protected float speed = 1;
+    protected float speed = 1f;
 
     /**
      * Behälter in dem Objekte eingesammelt (withdraw) werden können.
@@ -98,23 +97,19 @@ public class ImageRobot extends Image implements Robot
         inMotion = false;
     }
 
-    public boolean canMoveAnimated(Compass direction)
-    {
-        boolean result = virtual.tryToBeOn(direction);
-        if (!result)
-        {
-            wiggle();
-        }
-        return result;
-    }
-
     /**
      * Gehe einen Pixelmeter in Richtung der aktuellen Rotation.
      */
     public Movement forward()
     {
         var movement = virtual.forward();
-        go(virtual.dir);
+        if (movement.successful)
+        {
+            go(virtual.dir);
+        } else
+        {
+            wiggle();
+        }
         return movement;
     }
 
@@ -141,10 +136,6 @@ public class ImageRobot extends Image implements Robot
 
         default:
             System.out.println("Not supported direction");
-        }
-        if (!canMoveAnimated(direction))
-        {
-            return;
         }
         rotateAnimated(degree);
         go(1);

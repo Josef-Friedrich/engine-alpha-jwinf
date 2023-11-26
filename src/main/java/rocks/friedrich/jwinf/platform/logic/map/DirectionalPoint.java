@@ -17,4 +17,15 @@ public class DirectionalPoint extends Point
     {
         return Compass.toDirection(dir);
     }
+
+    public String toString()
+    {
+        return "DirectionalPoint [row=%s, col=%s, dir=%s]".formatted(row, col,
+                dir);
+    }
+
+    public String getSummary()
+    {
+        return "(%s,%s;%s)".formatted(row, col, dir);
+    }
 }
