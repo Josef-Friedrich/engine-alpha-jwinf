@@ -18,14 +18,14 @@ public class TaskTester<T>
 
     /**
      * Asserts the route of an actor in a specific difficulty and test case.
-     * Compares the actor's reported route with the provided arguments.
-     * Also checks if the actor's end position matches the specified row and column.
+     * Compares the actor's reported route with the provided arguments. Also
+     * checks if the actor's end position matches the specified row and column.
      *
      * @param difficulty the difficulty level of the test case
-     * @param test the test case number
-     * @param row the expected row of the actor's end position
-     * @param col the expected column of the actor's end position
-     * @param args the expected route of the actor
+     * @param test       the test case number
+     * @param row        the expected row of the actor's end position
+     * @param col        the expected column of the actor's end position
+     * @param args       the expected route of the actor
      * @throws Exception if an error occurs during the assertion
      */
     public void assertRoute(Difficulty difficulty, int test, int row, int col,

@@ -1,0 +1,8 @@
+{
+  "German translation": {
+    "prefix": ["de", "deutsch"],
+    "body": [" | DE: <i>$1</i>"],
+    "description": "Inserts a German translation of the given text",
+    "language": "java",
+  }
+}

@@ -63,6 +63,16 @@ public class VirtualRobot implements Robot
         route = new Route();
     }
 
+    public int getRow()
+    {
+        return row;
+    }
+
+    public int getCol()
+    {
+        return col;
+    }
+
     public Point getPoint()
     {
         return new Point(row, col);

@@ -61,7 +61,7 @@ public class ImageRobot extends Image implements Robot
 
     public boolean isOnExit()
     {
-        var tile = virtual.map.get(row(), col());
+        var tile = virtual.map.get(getRow(), getCol());
         return tile != null && tile.isExit;
     }
 
@@ -163,20 +163,14 @@ public class ImageRobot extends Image implements Robot
         return virtual.map.translateToPoint(getCenter());
     }
 
-    /**
-     * Die Spalte, in der sich die Figur im Kachelgitter befindet.
-     */
-    public int col()
+    public int getRow()
     {
-        return point().col;
+        return virtual.getRow();
     }
 
-    /**
-     * Die Reihe, in der sich die Figur im Kachelgitter befindet.
-     */
-    public int row()
+    public int getCol()
     {
-        return point().row;
+        return virtual.getCol();
     }
 
     protected void wait(double seconds)

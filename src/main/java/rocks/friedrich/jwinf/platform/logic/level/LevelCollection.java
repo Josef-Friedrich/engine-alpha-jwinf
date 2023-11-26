@@ -69,7 +69,7 @@ public class LevelCollection
      * Retrieves the level for the given difficulty and test index.
      *
      * @param difficulty the difficulty of the level
-     * @param test the test index of the level (0 is the first test)
+     * @param test       the test index of the level (0 is the first test)
      * @return the level corresponding to the given difficulty and test index
      */
     public Level getLevel(Difficulty difficulty, int test)

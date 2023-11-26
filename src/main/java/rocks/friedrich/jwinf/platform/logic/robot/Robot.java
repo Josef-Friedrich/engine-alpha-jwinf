@@ -4,6 +4,27 @@ import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 public interface Robot
 {
+    /**
+     * Returns the row number of the robot's current position. Die Reihe, in der
+     * sich die Figur im Kachelgitter befindet.
+     *
+     * @return the row number of the robot's current position
+     */
+    public int getRow();
+
+    /**
+     * Returns the column of the robot's current position. Die Spalte, in der
+     * sich die Figur im Kachelgitter befindet.
+     *
+     * @return the column of the robot's current position
+     */
+    public int getCol();
+
+    /**
+     * Returns the current position of the robot as a Point object. deutsch
+     *
+     * @return the current position of the robot
+     */
     public Point getPoint();
 
     public String[] reportRoute();

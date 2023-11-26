@@ -4,7 +4,6 @@ import rocks.friedrich.jwinf.platform.Solver;
 
 public class TaskSolver extends Solver<Robot>
 {
-
     @Override
     public void easy(Robot robot)
     {
