@@ -10,6 +10,7 @@ import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.level.LevelCollection;
 import rocks.friedrich.jwinf.platform.logic.map.ItemStore;
+import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren (in der Regel 3)
@@ -168,7 +169,33 @@ public class Task
     }
 
     /**
-     * Die Anzahl der Kacheln einer Zeile, des Tests (Level) mit der größten
+     * Returns the first version of a training task with the easiest difficulty.
+     * /
+     *
+     * <i>Gibt die erste Version einer Trainingsaufgabe mit dem leichtesten
+     * Schwierigkeitsgrad zurück.</i>
+     */
+    public Level getLevel()
+    {
+        return getLevel(Difficulty.EASY, 0);
+    }
+
+    /**
+     * Returns the virtual robot of the first version of a training task with
+     * the easiest difficulty. /
+     *
+     * <i>Gibt einen virtuellen Roboter der erste Version einer Trainingsaufgabe
+     * mit dem leichtesten Schwierigkeitsgrad zurück.</i>
+     */
+    public VirtualRobot getVirtualRobot()
+    {
+        Level level = getLevel();
+        var context = level.createContext();
+        return context.robot;
+    }
+
+    /**
+     * Die Anzahl der Kacheln einer Spalte, des Tests (Level) mit der größten
      * horizontalen Ausdehnung.
      */
     public int getMaxCols()
