@@ -20,7 +20,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testEasy() throws Exception
     {
-        assertRoute(EASY, 0, "forward", "forward", "forward", "forward",
+        assertRoute(EASY, 0, 2, 2,"forward", "forward", "forward", "forward",
                 "forward", "forward", "turnLeft",
                 //
                 "forward", "forward", "forward", "forward", "forward",
@@ -28,13 +28,12 @@ public class TaskSolverTest extends TaskTester<Robot>
                 //
                 "forward", "forward", "forward", "forward", "forward",
                 "turnLeft");
-        assertEndPoint(EASY, 0, 2, 2);
     }
 
     @Test
     void testHard() throws Exception
     {
-        assertRoute(HARD, 0, "forward", "turnRight", "turnLeft", "turnLeft",
+        assertRoute(HARD, 0, 2, 2,"forward", "turnRight", "turnLeft", "turnLeft",
                 "forward", "turnLeft", "turnRight", "forward", "turnLeft",
                 "turnRight", "forward", "turnRight", "forward", "turnLeft",
                 "turnRight", "forward", "turnLeft", "turnRight", "forward",
@@ -46,6 +45,6 @@ public class TaskSolverTest extends TaskTester<Robot>
                 "forward", "forward", "turnLeft", "turnRight", "forward",
                 "turnLeft", "turnRight", "forward", "turnLeft", "turnRight",
                 "forward", "turnRight", "turnLeft", "turnLeft");
-        assertEndPoint(HARD, 0, 2, 2);
+
     }
 }
