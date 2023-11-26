@@ -119,22 +119,6 @@ public class LevelScene extends Scene
         case KeyEvent.VK_A:
             new Thread(this::act).start();
             break;
-
-        case KeyEvent.VK_RIGHT:
-            robot.eastNonBlocking();
-            break;
-
-        case KeyEvent.VK_UP:
-            robot.northNonBlocking();
-            break;
-
-        case KeyEvent.VK_LEFT:
-            robot.westNonBlocking();
-            break;
-
-        case KeyEvent.VK_DOWN:
-            robot.southNonBlocking();
-            break;
         }
     }
 

@@ -70,17 +70,6 @@ public class ImageRobot extends Image implements Robot
         return virtual.obstacleInFront();
     }
 
-    public void wait(double seconds)
-    {
-        try
-        {
-            Thread.sleep((long) (1000 * seconds));
-        } catch (InterruptedException e)
-        {
-            Thread.currentThread().interrupt();
-        }
-    }
-
     protected void go(double meter)
     {
         if (inMotion)
@@ -148,21 +137,11 @@ public class ImageRobot extends Image implements Robot
         return movement;
     }
 
-    public void eastNonBlocking()
-    {
-        new Thread(this::east).start();
-    }
-
     public Movement south()
     {
         var movement = virtual.south();
         go(movement.to.dir);
         return movement;
-    }
-
-    public void southNonBlocking()
-    {
-        new Thread(this::south).start();
     }
 
     public Movement west()
@@ -172,21 +151,11 @@ public class ImageRobot extends Image implements Robot
         return movement;
     }
 
-    public void westNonBlocking()
-    {
-        new Thread(this::west).start();
-    }
-
     public Movement north()
     {
         var movement = virtual.north();
         go(movement.to.dir);
         return movement;
-    }
-
-    public void northNonBlocking()
-    {
-        new Thread(this::north).start();
     }
 
     public Point point()
@@ -208,6 +177,17 @@ public class ImageRobot extends Image implements Robot
     public int row()
     {
         return point().row;
+    }
+
+    protected void wait(double seconds)
+    {
+        try
+        {
+            Thread.sleep((long) (1000 * seconds));
+        } catch (InterruptedException e)
+        {
+            Thread.currentThread().interrupt();
+        }
     }
 
     public void wiggle()
