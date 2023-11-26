@@ -4,11 +4,6 @@ import rocks.friedrich.jwinf.platform.Solver;
 
 public class TaskSolver extends Solver<Robot>
 {
-    public TaskSolver()
-    {
-        super("conditionals_excercises/find_the_destination");
-    }
-
     @Override
     public void easy(Robot robot)
     {

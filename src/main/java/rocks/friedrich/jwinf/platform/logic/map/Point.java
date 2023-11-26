@@ -15,4 +15,10 @@ public class Point
         this.row = row;
         this.col = col;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Point [row=" + row + ", col=" + col + "]";
+    }
 }

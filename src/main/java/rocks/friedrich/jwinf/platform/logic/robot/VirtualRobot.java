@@ -14,6 +14,11 @@ import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 
+interface Filter
+{
+    public boolean check(ItemData item);
+}
+
 /**
  * Ein Roboter der nicht grafisch dargestellt ist, sondern der sich nur im
  * Speicher befindet. Er kann durch Unit-Tests getestet werden.
@@ -194,13 +199,47 @@ public class VirtualRobot implements Robot
 
     /**
      * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2872-L2880">blocklyRobot_lib-1.1.js
+     *      L2872-L2880</a>
+     */
+    private boolean hasOn(int row, int col, Filter filter)
+    {
+        ItemData item = map.get(row, col);
+        if (item == null)
+        {
+            return false;
+        }
+        return filter.check(item);
+    }
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2872-L2880">blocklyRobot_lib-1.1.js
+     *      L2872-L2880</a>
+     */
+    private boolean hasOn(Point point, Filter filter)
+    {
+        return hasOn(point.row, point.col, filter);
+    }
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2908-L2911">blocklyRobot_lib-1.1.js
+     *      L2908-L2911</a>
+     */
+    private boolean isInFront(Filter filter)
+    {
+        return hasOn(coordsInFront(dir), filter);
+    }
+
+    /**
+     * @see <a href=
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3374-L3376">blocklyRobot_lib-1.1.js
      *      L3374-L3376</a>
      */
     public boolean obstacleInFront()
     {
-        ItemData item = map.get(coordsInFront(dir));
-        return item.isObstacle;
+        return isInFront(item -> item.isObstacle);
     }
 
     public Movement turnLeft()

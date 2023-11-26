@@ -8,6 +8,7 @@ import static rocks.friedrich.jwinf.platform.logic.Compass.EAST;
 import static rocks.friedrich.jwinf.platform.logic.Compass.WEST;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import rocks.friedrich.jwinf.platform.logic.Compass;
@@ -36,25 +37,25 @@ public class VirtualRobotTest
     }
 
     @Test
-    public void attributeRow()
+    public void testRow()
     {
         assertEquals(robot.row, 8);
     }
 
     @Test
-    public void attributeCol()
+    public void testCol()
     {
         assertEquals(robot.col, 1);
     }
 
     @Test
-    public void attributeDir()
+    public void testDir()
     {
         assertEquals(robot.dir, EAST);
     }
 
     @Test
-    public void methodEast()
+    public void testEast()
     {
         assertMovement(robot.east(), 8, 2, EAST, true);
         assertEquals(robot.row, 8);
@@ -62,13 +63,13 @@ public class VirtualRobotTest
     }
 
     @Test
-    public void methodSouth()
+    public void testSouth()
     {
         assertMovement(robot.south(), 8, 1, EAST, false);
     }
 
     @Test
-    public void methodWest()
+    public void testWest()
     {
         assertMovement(robot.west(), 8, 0, WEST, true);
         assertEquals(robot.row, 8);
@@ -76,7 +77,7 @@ public class VirtualRobotTest
     }
 
     @Test
-    public void methodNorth()
+    public void testNorth()
     {
         assertMovement(robot.north(), 8, 1, EAST, false);
     }
@@ -91,7 +92,8 @@ public class VirtualRobotTest
     }
 
     @Test
-    public void cantMoveOnTheEdge()
+    @DisplayName("Can't move if on the edge")
+    public void testCantMoveOnTheEdge()
     {
         robot.west();
         assertTrue(robot.movementSuccessful);
@@ -100,7 +102,8 @@ public class VirtualRobotTest
     }
 
     @Test
-    public void methodObstacleInFront()
+    @DisplayName("Can't move if obstacle in front")
+    public void testObstacleInFront()
     {
         assertFalse(robot.obstacleInFront());
         robot.turnLeft();
