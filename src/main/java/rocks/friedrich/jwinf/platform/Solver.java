@@ -22,11 +22,27 @@ public abstract class Solver<T>
     public Solver(String taskPath)
     {
         this.taskPath = taskPath;
+        // findTaskPathInClassHierarchy();
     }
 
     public Solver()
     {
-        taskPath = findTaskPathInClassPath();
+        taskPath = findTaskPathInClassHierarchy();
+    }
+
+    public String findTaskPathInClassHierarchy()
+    {
+        Class<?> clazz = getClass();
+        while (clazz != null)
+        {
+            String classPath = clazz.getName();
+            if (classPath.indexOf("en.tasks") != -1)
+            {
+                return Task.extractTaskPath(classPath);
+            }
+            clazz = clazz.getSuperclass();
+        }
+        return null;
     }
 
     public RobotWrapper createRobot(Level level) throws Exception
@@ -125,12 +141,5 @@ public abstract class Solver<T>
             break;
         }
         return robot;
-    }
-
-    private String findTaskPathInClassPath()
-    {
-        // .getName():
-        // rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_way_to_the_lake.TaskSolver
-        return Task.extractTaskPath(getClass().getName());
     }
 }
