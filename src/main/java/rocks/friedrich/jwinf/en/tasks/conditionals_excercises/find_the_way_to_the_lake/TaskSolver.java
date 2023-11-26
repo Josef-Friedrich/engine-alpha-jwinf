@@ -48,7 +48,7 @@ public class TaskSolver extends Solver<Robot>
     @Override
     public void hard(Robot robot)
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 19; i++)
         {
             robot.forward();
             if (robot.obstacleInFront())

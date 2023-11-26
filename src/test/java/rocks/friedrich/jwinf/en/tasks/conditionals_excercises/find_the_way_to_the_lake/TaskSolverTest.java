@@ -1,41 +1,51 @@
 package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_way_to_the_lake;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static rocks.friedrich.jwinf.platform.logic.level.Difficulty.EASY;
+import static rocks.friedrich.jwinf.platform.logic.level.Difficulty.HARD;
 
 import org.junit.jupiter.api.Test;
+
+import rocks.friedrich.jwinf.en.tasks.TaskTester;
 
 /**
  * https://jwinf.de/task/1158
  */
-public class TaskSolverTest
+public class TaskSolverTest extends TaskTester<Robot>
 {
-    TaskSolver solver = new TaskSolver();
-
-    @Test
-    void testTaskPath()
+    public TaskSolverTest()
     {
-        assertEquals(solver.taskPath,
-                "conditionals_excercises/find_the_way_to_the_lake");
+        super(new TaskSolver());
     }
 
     @Test
     void testEasy() throws Exception
     {
-        var w = solver.solveVirtual(EASY, 0);
-        var point = w.actor.getPoint();
-        assertEquals(point.col, 2);
-        assertEquals(point.row, 2);
-        assertArrayEquals(w.actor.reportRoute(),
-                new String[]
-                { "forward", "forward", "forward", "forward", "forward",
-                        "forward", "turnLeft",
-                        //
-                        "forward", "forward", "forward", "forward", "forward",
-                        "forward", "turnLeft",
-                        //
-                        "forward", "forward", "forward", "forward", "forward",
-                        "turnLeft" });
+        assertRoute(EASY, 0, "forward", "forward", "forward", "forward",
+                "forward", "forward", "turnLeft",
+                //
+                "forward", "forward", "forward", "forward", "forward",
+                "forward", "turnLeft",
+                //
+                "forward", "forward", "forward", "forward", "forward",
+                "turnLeft");
+        assertEndPoint(EASY, 0, 2, 2);
+    }
+
+    @Test
+    void testHard() throws Exception
+    {
+        assertRoute(HARD, 0, "forward", "turnRight", "turnLeft", "turnLeft",
+                "forward", "turnLeft", "turnRight", "forward", "turnLeft",
+                "turnRight", "forward", "turnRight", "forward", "turnLeft",
+                "turnRight", "forward", "turnLeft", "turnRight", "forward",
+                "turnRight", "forward", "turnLeft", "turnRight", "forward",
+                "turnRight", "turnLeft", "turnLeft", "forward", "turnLeft",
+                "turnRight", "forward", "turnLeft", "forward", "forward",
+                "turnLeft", "turnRight", "forward", "turnLeft", "turnRight",
+                "forward", "turnLeft", "turnRight", "forward", "turnLeft",
+                "forward", "forward", "turnLeft", "turnRight", "forward",
+                "turnLeft", "turnRight", "forward", "turnLeft", "turnRight",
+                "forward", "turnRight", "turnLeft", "turnLeft");
+        assertEndPoint(HARD, 0, 2, 2);
     }
 }
