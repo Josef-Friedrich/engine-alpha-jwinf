@@ -10,12 +10,25 @@ public interface Robot
 
     public void printRoute();
 
-    /**
-     * @see <a href=
-     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3374-L3376">blocklyRobot_lib-1.1.js
-     *      L3374-L3376</a>
-     */
-    public boolean obstacleInFront();
+    public boolean isOnExit();
+    // public void hasOn();
+    // public void setIndexes();
+    // public void getItemsOn();
+    // public void isOn();
+    // public void isInFront();
+    // public void isInGrid();
+    // public void tryToBeOn();
+    // public void coordsInFront();
+    // public void isCrossing();
+    // public void moveItem();
+    // public void moveProjectile();
+    // public void destroy();
+    // public void fall();
+    // public void jump();
+    // public void withdraw();
+    // public void checkContainer();
+    // public void drop();
+    // public void dropObject();
 
     /**
      * @see <a href=
@@ -37,6 +50,15 @@ public interface Robot
      *      L3275-L3278</a>
      */
     public Movement turnAround();
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3280-L3297">
+     *      blocklyRobot_lib-1.1.js L3280-L3297</a>
+     *
+     */
+    public Movement forward();
+    // public Movement backwards();
 
     /**
      * Gehe nach rechts in Richtung Osten.
@@ -76,11 +98,15 @@ public interface Robot
 
     /**
      * @see <a href=
-     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3280-L3297">
-     *      blocklyRobot_lib-1.1.js L3280-L3297</a>
-     *
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3374-L3376">blocklyRobot_lib-1.1.js
+     *      L3374-L3376</a>
      */
-    public Movement forward();
-
-    public boolean isOnExit();
+    public boolean obstacleInFront();
+    // public boolean platformInFront();
+    // public boolean platformAbove();
+    // public void writeNumber();
+    // public void readNumber();
+    // public void pushObject();
+    // public void shoot();
+    // public void connect();
 }
