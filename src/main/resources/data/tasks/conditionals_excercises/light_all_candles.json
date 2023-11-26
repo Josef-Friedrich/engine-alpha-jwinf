@@ -12,6 +12,10 @@
   ],
   "packagePath": "conditionals_excercises/light_all_candles",
   "gridInfos": {
+    "hideSaveOrLoad": true,
+    "conceptViewer": false,
+    "contextType": "paint",
+    "actionDelay": 200,
     "languageStrings": {
       "blocklyRobot_lib": {
         "label": {

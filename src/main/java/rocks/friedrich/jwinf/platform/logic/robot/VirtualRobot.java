@@ -252,6 +252,14 @@ public class VirtualRobot implements Robot
         return isInFront(item -> item.isObstacle);
     }
 
+    public ItemData dropObject(int itemNum)
+    {
+        ItemData item = map.get(itemNum);
+        item.row = getRow();
+        item.col = getCol();
+        return item;
+    }
+
     public Movement turnLeft()
     {
         var mov = reportMovement("turnLeft");

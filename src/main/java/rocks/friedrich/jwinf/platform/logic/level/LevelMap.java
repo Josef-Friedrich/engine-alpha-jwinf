@@ -58,6 +58,18 @@ public class LevelMap
         this(new int[rows][cols]);
     }
 
+    /**
+     * Retrieves the item data by the specified item number.
+     *
+     * @param itemNum the number of the item data to retrieve
+     * @return the item data at the item number
+     */
+
+    public ItemData get(int itemNum)
+    {
+        return items.get(itemNum);
+    }
+
     public ItemData get(int row, int col)
     {
         int num = map[row][col];

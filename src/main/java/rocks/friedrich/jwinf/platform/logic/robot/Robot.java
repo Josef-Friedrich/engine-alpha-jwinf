@@ -1,6 +1,97 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
+import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
+// EN
+//   row: "robot's row",
+//   col: "robot's column",
+//   wait: "wait",
+//   north: "move up",
+//   south: "move down",
+//   east: "move right",
+//   west: "move left",
+//   left: "turn left",
+//   right: "turn right",
+//   turnAround: "turn around",
+//   forward: "move forward",
+//   backwards: "move backwards",
+//   jump: "jump",
+//   obstacleInFront: "obstacle ahead",
+//   obstacleEast: "obstacle on the right",
+//   obstacleWest: "obstacle on the left",
+//   obstacleNorth: "obstacle above",
+//   obstacleSouth: "obstacle below",
+//   obstacleRight: "obstacle on the right",
+//   obstacleLeft: "obstacle on the left",
+//   gridEdgeEast: "grid edge on the right",
+//   gridEdgeWest: "grid edge on the left",
+//   gridEdgeNorth: "grid edge above",
+//   gridEdgeSouth: "grid edge below",
+//   platformInFront: "platform ahead",
+//   platformAbove: "platform above",
+//   withdrawObject: "pick the object",
+//   dropObject: "drop the object",
+//   onObject: "on an object",
+//   onContainer: "on a container",
+//   onNumber: "on a number",
+//   onWritable: "on a blackboard",
+//   onLauncher: "on a laser emitter",
+//   writeNumber: "write the number",
+//   readNumber: "number in the cell",
+//   pushObject: "push the object",
+//   pushableInFront: "pushable object ahead",
+//   shoot: "shoot a laser in direction %1",
+//   shoot_noShadow: "shoot a laser in direction %1",
+//   shootCondition:
+//     "laser shot returning to starting point in direction %1",
+//   shootCondition_noShadow:
+//     "laser shot returning to starting point in direction %1",
+//   connect: "plug a wire",
+//   onMale: "to a male plug",
+//   onFemale: "to a female plug",
+//   dropPlatformInFront: "drop platform in front",
+//   dropPlatformAbove: "drop platform above",
+// DE
+//   row: "Zeile des Roboters",
+//   col: "Spalte des Roboters",
+//   north: "gehe nach oben",
+//   south: "gehe nach unten",
+//   east: "gehe nach rechts",
+//   west: "gehe nach links",
+//   left: "drehe nach links",
+//   right: "drehe nach rechts",
+//   turnAround: "drehe um",
+//   forward: "gehe",
+//   backwards: "gehe rückwärts",
+//   jump: "springe",
+//   obstacleInFront: "vor Hindernis",
+//   obstacleEast: "Hindernis rechts",
+//   obstacleWest: "Hindernis links",
+//   obstacleNorth: "Hindernis oben",
+//   obstacleSouth: "Hindernis unten",
+//   obstacleRight: "Hindernis rechts",
+//   obstacleLeft: "Hindernis links",
+//   gridEdgeAbove: "unter Rand des Gitters",
+//   gridEdgeBelow: "über Rand des Gitters",
+//   gridEdgeEast: "links vom Gitterrand",
+//   gridEdgeWest: "rechts vom Gitterrand",
+//   platformInFront: "vor Plattform",
+//   platformAbove: "Plattform darüber",
+//   withdrawObject: "hebe Objekt auf",
+//   dropObject: "lege Objekt ab",
+//   onObject: "auf Objekt",
+//   onContainer: "auf Kiste",
+//   onNumber: "auf Zahl",
+//   onWritable: "auf Tafel",
+//   onLauncher: "sur un lanceur laser", // TODO :: translate
+//   writeNumber: "schreibe Zahl",
+//   readNumber: "Zahl auf dem Feld",
+//   pushObject: "schiebe Kiste",
+//   pushableInFront: "vor Kiste",
+//   shoot: "schieße Laser in Richtung %1",
+//   shoot_noShadow: "schieße Laser in Richtung %1",
+//   shootCondition: "Rückkehr von der Schießrichtung %1",
+//   shootCondition_noShadow: "Rückkehr von der Schießrichtung %1",
 
 public interface Robot
 {
@@ -51,7 +142,13 @@ public interface Robot
     // public void withdraw();
     // public void checkContainer();
     // public void drop();
-    // public void dropObject();
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3235-L3263">blocklyRobot_lib-1.1.js
+     *      L3235-L3263</a>
+     */
+    public ItemData dropObject(int itemNum);
 
     /**
      * @see <a href=

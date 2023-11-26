@@ -246,6 +246,12 @@ public class ImageRobot extends Image implements Robot
         setCenter(center);
     }
 
+    public ItemData dropObject(int itemNum)
+    {
+        ItemData item = virtual.dropObject(itemNum);
+        return item;
+    }
+
     /**
      * Drehe um 90 Grad nach links.
      */
