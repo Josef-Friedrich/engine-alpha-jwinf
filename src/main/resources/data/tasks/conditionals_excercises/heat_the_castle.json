@@ -15,7 +15,7 @@
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/training/training-plattformen-if/task.js",
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/training/training-plattformen-if/index.html?channelId=task"
   ],
-  "grid": {
+  "gridInfos": {
     "backgroundColor": "#1f003c",
     "gridColor": "#888888",
     "conceptViewer": false,

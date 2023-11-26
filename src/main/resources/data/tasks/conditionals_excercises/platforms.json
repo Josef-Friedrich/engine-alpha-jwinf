@@ -12,7 +12,7 @@
   },
   "menu": ["Bedingte Anweisungen – Übungen", "Plattformen"],
   "sources": ["https://jwinf.de/task/1160", "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2017/17-FR-07-platforms-marbles/task_new.js", "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2017/17-FR-07-platforms-marbles/index_new.html?channelId=task"],
-  "grid": {
+  "gridInfos": {
     "backgroundColor": "#1f003c",
     "gridColor": "#888888",
     "hideSaveOrLoad": true,

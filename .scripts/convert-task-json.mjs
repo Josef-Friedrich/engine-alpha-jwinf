@@ -7,18 +7,13 @@ const dataDir = './.scripts/data'
 
 function convertToJson(baseName, input) {
   const result = {
-    grid: input.gridInfos,
+    gridInfos: input.gridInfos,
     levels: input.data
   }
 
-  if (result.grid.itemTypes != null) {
-    result.grid.tiles = result.grid.itemTypes
-    delete result.grid.itemTypes
-  }
-
-  if (result.grid.borderColor != null) {
-    result.grid.gridColor = result.grid.borderColor
-    delete result.grid.borderColor
+  if (result.gridInfos.borderColor != null) {
+    result.gridInfos.gridColor = result.gridInfos.borderColor
+    delete result.gridInfos.borderColor
   }
   const json = JSON.stringify(result, null, 2)
   fs.writeFileSync(path.join(dataDir, baseName + '.json'), json)

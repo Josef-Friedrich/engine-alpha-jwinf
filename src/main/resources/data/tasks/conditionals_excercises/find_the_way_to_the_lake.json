@@ -11,7 +11,7 @@
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2019/19-DE-12-stay-on-the-road/index_new.html?channelId=task"
   ],
   "packagePath": "conditionals_excercises/find_the_way_to_the_lake",
-  "grid": {
+  "gridInfos": {
     "hideSaveOrLoad": true,
     "conceptViewer": false,
     "contextType": "labyrinth",

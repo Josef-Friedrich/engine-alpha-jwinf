@@ -11,7 +11,23 @@
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2020/20-DE-13-Kerzen-einfach/task_new.js"
   ],
   "packagePath": "conditionals_excercises/light_all_candles",
-  "grid": {
+  "gridInfos": {
+    "languageStrings": {
+      "blocklyRobot_lib": {
+        "label": {
+          "onPaint": "auf Kerze",
+          "dropObject": "zünde Kerze an"
+        },
+        "code": {
+          "onPaint": "aufKerze",
+          "dropObject": "zuendeKerzeAn"
+        },
+        "messages": {
+          "successContainersFilled": "Bravo, der Roboter hat alle Kerzen angezÃ¼ndet!",
+          "failureContainersFilled": "Der Roboter hat die Kerzen nicht korrekt angezÃ¼ndet."
+        }
+      }
+    },
     "backgroundColor": "#c5e2dd",
     "gridColor": "#b4ccc7",
     "itemTypes": {

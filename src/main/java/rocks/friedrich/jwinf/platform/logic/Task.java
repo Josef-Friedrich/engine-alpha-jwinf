@@ -73,7 +73,7 @@ public class Task
         }
         title = data.title;
         intro = data.intro;
-        items = new ItemStore(data.grid.itemTypes);
+        items = new ItemStore(data.gridInfos.itemTypes);
         levels = new LevelCollection(data.levels, this);
     }
 
@@ -109,7 +109,7 @@ public class Task
      */
     public String getGridColor()
     {
-        return data.grid.gridColor;
+        return data.gridInfos.gridColor;
     }
 
     /**
@@ -119,7 +119,7 @@ public class Task
      */
     public String getBackgroundColor()
     {
-        return data.grid.backgroundColor;
+        return data.gridInfos.backgroundColor;
     }
 
     /**
