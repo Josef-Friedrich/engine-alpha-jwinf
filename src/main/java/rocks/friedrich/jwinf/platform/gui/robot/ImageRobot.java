@@ -92,7 +92,7 @@ public class ImageRobot extends Image implements Robot
     public Movement forward()
     {
         var movement = virtual.forward();
-        if (movement.successful)
+        if (movement.relocated)
         {
             go(virtual.dir);
         } else

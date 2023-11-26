@@ -5,7 +5,9 @@ import static ea.Direction.*;
 import ea.Direction;
 
 /**
- * Grobe Himmelsrichtung der vier Haupthimmelsrichtungen
+ * Rough direction of the four main cardinal points /
+ *
+ * <i>Grobe Himmelsrichtung der vier Haupthimmelsrichtungen</i>
  */
 public enum Compass
 {
@@ -37,6 +39,12 @@ public enum Compass
         this.number = number;
     }
 
+    /**
+     * Returns the number associated with the cardinal point (0: EAST, 1: SOUTH,
+     * 2: WEST; 3: NORTH).
+     *
+     * @return the number associated with the cardinal point
+     */
     public int getNumber()
     {
         return number;

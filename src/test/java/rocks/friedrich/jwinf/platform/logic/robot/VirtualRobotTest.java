@@ -33,7 +33,7 @@ public class VirtualRobotTest
         assertEquals(movement.to.row, row);
         assertEquals(movement.to.col, col);
         assertEquals(movement.to.dir, dir);
-        assertEquals(movement.successful, successful);
+        assertEquals(movement.relocated, successful);
     }
 
     @Test

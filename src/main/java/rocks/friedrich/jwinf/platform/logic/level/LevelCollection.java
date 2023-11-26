@@ -11,6 +11,8 @@ import rocks.friedrich.jwinf.platform.logic.Task;
 
 /**
  * Die Tests (Level) nach Schwierigkeitsgraden geordnet.
+ *
+ * Represents a collection of levels categorized by difficulty.
  */
 public class LevelCollection
 {
@@ -63,20 +65,35 @@ public class LevelCollection
         setMaxRowsAndCols();
     }
 
+    /**
+     * Retrieves the level for the given difficulty and test index.
+     *
+     * @param difficulty the difficulty of the level
+     * @param test the test index of the level (0 is the first test)
+     * @return the level corresponding to the given difficulty and test index
+     */
     public Level getLevel(Difficulty difficulty, int test)
     {
-        if (test < 1)
-        {
-            test = 1;
-        }
-        return levels.get(difficulty).get(test - 1);
+        return levels.get(difficulty).get(test);
     }
 
+    /**
+     * Retrieves the level for the specified difficulty.
+     *
+     * @param difficulty the difficulty of the level to retrieve
+     * @return the level for the specified difficulty
+     */
     public Level getLevel(Difficulty difficulty)
     {
         return getLevel(difficulty, 0);
     }
 
+    /**
+     * Retrieves the level with the specified difficulty.
+     *
+     * @param difficulty the difficulty level of the level to retrieve
+     * @return the level with the specified difficulty
+     */
     public Level getLevel(int difficulty)
     {
         return getLevel(Difficulty.indexOf(difficulty), 0);

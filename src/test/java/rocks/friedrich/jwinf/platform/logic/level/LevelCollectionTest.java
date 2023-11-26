@@ -17,32 +17,32 @@ class LevelCollectionTest
     }
 
     @Test
-    void attributeNumberOfLevels()
+    void testNumberOfLevels()
     {
         assertEquals(levels.numberOfLevels, 3);
     }
 
     @Test
-    void attributeMaxCols()
+    void testMaxCols()
     {
         assertEquals(levels.maxCols, 10);
     }
 
     @Test
-    void attributeMaxRows()
+    void testMaxRows()
     {
         assertEquals(levels.maxRows, 6);
     }
 
     @Test
-    void methodGetLevel()
+    void testGetLevel()
     {
-        assertEquals(levels.getLevel(Difficulty.EASY, 1).testNo, 0);
+        assertEquals(levels.getLevel(Difficulty.EASY, 0).testIndex, 0);
     }
 
     @Test
-    void methodGetLevelNoTest()
+    void testGetLevelNoTest()
     {
-        assertEquals(levels.getLevel(Difficulty.EASY).testNo, 0);
+        assertEquals(levels.getLevel(Difficulty.EASY).testIndex, 0);
     }
 }

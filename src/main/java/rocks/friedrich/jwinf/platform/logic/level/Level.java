@@ -22,7 +22,7 @@ public class Level
 
     public Difficulty difficulty;
 
-    public int testNo;
+    public int testIndex;
 
     /**
      * Zum Beispiel „Der Roboter soll den Edelstein einsammeln. Sobald er das
@@ -44,7 +44,7 @@ public class Level
         cols = map.cols;
         rows = map.rows;
         difficulty = data.difficulty;
-        testNo = data.testNo;
+        testIndex = data.testNo;
     }
 
     public LevelContext createContext()

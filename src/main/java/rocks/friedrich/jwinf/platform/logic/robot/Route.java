@@ -29,7 +29,9 @@ public class Route
         {
             var mov = movements.get(i);
             String prefix = "";
-            if (!mov.successful)
+            if (!mov.relocated && !mov.name.equals("turnLeft")
+                    && !mov.name.equals("turnRight")
+                    && !mov.name.equals("turnAround"))
             {
                 prefix = "!";
             }

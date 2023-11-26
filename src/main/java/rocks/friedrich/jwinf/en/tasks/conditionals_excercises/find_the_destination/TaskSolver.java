@@ -2,6 +2,9 @@ package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_destinat
 
 import rocks.friedrich.jwinf.platform.Solver;
 
+/**
+ * https://jwinf.de/task/1157
+ */
 public class TaskSolver extends Solver<Robot>
 {
     @Override
