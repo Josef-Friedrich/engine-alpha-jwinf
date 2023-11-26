@@ -17,7 +17,8 @@ public class GridTest extends Scene
         {
             Game.start(1000, 1000, this);
             Game.setDebug(true);
-        } else
+        }
+        else
         {
             Game.transitionToScene(this);
         }

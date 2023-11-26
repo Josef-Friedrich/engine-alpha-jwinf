@@ -96,7 +96,8 @@ public abstract class Map
         if (this.extension != null)
         {
             extension = "." + this.extension;
-        } else
+        }
+        else
         {
             extension = "";
         }

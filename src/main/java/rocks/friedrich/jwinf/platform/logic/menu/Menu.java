@@ -24,13 +24,16 @@ public class Menu
         try
         {
             data = JsonLoader.loadMenu();
-        } catch (StreamReadException e)
+        }
+        catch (StreamReadException e)
         {
             e.printStackTrace();
-        } catch (DatabindException e)
+        }
+        catch (DatabindException e)
         {
             e.printStackTrace();
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }

@@ -86,7 +86,8 @@ public class TaskList
         if (current == 0)
         {
             current = relPaths.size() - 1;
-        } else
+        }
+        else
         {
             current--;
         }
@@ -98,7 +99,8 @@ public class TaskList
         if (current == relPaths.size() - 1)
         {
             current = 0;
-        } else
+        }
+        else
         {
             current++;
         }

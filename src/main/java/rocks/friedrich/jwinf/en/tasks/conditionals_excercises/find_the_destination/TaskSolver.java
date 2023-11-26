@@ -52,11 +52,13 @@ public class TaskSolver extends Solver<Robot>
                 if (!robot.obstacleInFront())
                 {
                     robot.forward();
-                } else
+                }
+                else
                 {
                     robot.turnLeft();
                 }
-            } else
+            }
+            else
             {
                 robot.forward();
             }

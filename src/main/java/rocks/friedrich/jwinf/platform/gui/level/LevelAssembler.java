@@ -102,7 +102,8 @@ public class LevelAssembler
             ImageRobot robot = (ImageRobot) l.robot.actor;
             robot.setCenter(robotPosition.getX(), robotPosition.getY());
             scene.add(robot);
-        } catch (InstantiationException | IllegalAccessException
+        }
+        catch (InstantiationException | IllegalAccessException
                 | IllegalArgumentException | InvocationTargetException
                 | NoSuchMethodException | SecurityException
                 | ClassNotFoundException e)

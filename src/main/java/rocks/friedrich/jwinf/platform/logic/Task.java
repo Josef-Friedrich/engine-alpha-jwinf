@@ -66,7 +66,8 @@ public class Task
         {
             data = JsonLoader.loadTask(filePath);
             taskPath = extractTaskPath(filePath);
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }

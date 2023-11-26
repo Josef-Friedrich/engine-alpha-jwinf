@@ -105,7 +105,8 @@ public class ImageRobot extends Image implements Robot
         if (movement.relocated)
         {
             go(virtual.dir);
-        } else
+        }
+        else
         {
             wiggle();
         }
@@ -173,7 +174,8 @@ public class ImageRobot extends Image implements Robot
         try
         {
             Thread.sleep((long) (1000 * seconds));
-        } catch (InterruptedException e)
+        }
+        catch (InterruptedException e)
         {
             Thread.currentThread().interrupt();
         }
@@ -285,7 +287,8 @@ public class ImageRobot extends Image implements Robot
         try
         {
             future.get();
-        } catch (InterruptedException | ExecutionException e)
+        }
+        catch (InterruptedException | ExecutionException e)
         {
             throw new RuntimeException(e);
         }

@@ -63,7 +63,8 @@ public class MainMenuScene extends Scene implements WindowScene
                 if (rectangle.contains(Game.getMousePositionInCurrentScene()))
                 {
                     rectangle.setOpacity(0.5f);
-                } else
+                }
+                else
                 {
                     rectangle.setOpacity(1f);
                 }

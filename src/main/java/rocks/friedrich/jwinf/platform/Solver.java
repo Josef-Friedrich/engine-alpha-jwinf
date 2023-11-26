@@ -87,7 +87,8 @@ public abstract class Solver<T>
         if (difficutly == null)
         {
             scene = new AllLevelsScene(taskPath);
-        } else
+        }
+        else
         {
             scene = new LevelScene(taskPath, Difficulty.indexOf(difficutly),
                     test);

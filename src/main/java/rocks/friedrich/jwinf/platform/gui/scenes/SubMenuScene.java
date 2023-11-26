@@ -48,12 +48,14 @@ public class SubMenuScene extends Scene implements WindowScene
                     if (text.contains(Game.getMousePositionInCurrentScene()))
                     {
                         text.setOpacity(0.5f);
-                    } else
+                    }
+                    else
                     {
                         text.setOpacity(1f);
                     }
                 });
-            } else
+            }
+            else
             {
                 text.setColor(Color.GRAY);
             }

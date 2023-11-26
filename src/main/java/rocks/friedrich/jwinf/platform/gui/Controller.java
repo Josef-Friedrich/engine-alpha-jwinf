@@ -16,7 +16,8 @@ public class Controller
         if (!(State.interpolator instanceof EaseInOutFloat))
         {
             State.interpolator = new EaseInOutFloat(0, 1);
-        } else
+        }
+        else
         {
             State.interpolator = new LinearFloat(0, 1);
         }
@@ -33,7 +34,8 @@ public class Controller
             {
                 Game.setDebug(true);
             }
-        } else
+        }
+        else
         {
             Game.transitionToScene(scene);
             Game.setFrameSize(width, height);

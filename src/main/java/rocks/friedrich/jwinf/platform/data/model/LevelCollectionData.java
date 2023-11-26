@@ -41,7 +41,8 @@ public class LevelCollectionData
                 level.difficulty = difficulty;
                 collection.add(level);
             }
-        } else
+        }
+        else
         {
             LevelData level = levels[0];
             level.difficulty = difficulty;

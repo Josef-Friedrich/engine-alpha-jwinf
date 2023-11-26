@@ -16,16 +16,15 @@ public interface Robot
     /**
      * Returns the column of the robot's current position. |
      *
-     * DE: <i>Die Spalte, in der
-     * sich die Figur im Kachelgitter befindet.</i>
+     * DE: <i>Die Spalte, in der sich die Figur im Kachelgitter befindet.</i>
      *
      * @return the column of the robot's current position
      */
     public int getCol();
 
     /**
-     * Returns the current position of the robot as a Point object. deutsch
-     *u
+     * Returns the current position of the robot as a Point object. deutsch u
+     *
      * @return the current position of the robot
      */
     public Point getPoint();
