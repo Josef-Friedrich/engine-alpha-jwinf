@@ -63,11 +63,6 @@ public class TaskSolver extends Solver<Robot>
         }
     }
 
-    @Override
-    public void all(Robot robot)
-    {
-    }
-
     public static void main(String[] args)
     {
         new TaskSolver().solve();

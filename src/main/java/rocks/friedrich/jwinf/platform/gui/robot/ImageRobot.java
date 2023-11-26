@@ -44,6 +44,16 @@ public class ImageRobot extends Image implements Robot
         this.virtual = virtual;
     }
 
+    public int getRow()
+    {
+        return virtual.getRow();
+    }
+
+    public int getCol()
+    {
+        return virtual.getCol();
+    }
+
     public Point getPoint()
     {
         return virtual.getPoint();
@@ -156,21 +166,6 @@ public class ImageRobot extends Image implements Robot
         var movement = virtual.north();
         go(movement.to.dir);
         return movement;
-    }
-
-    public Point point()
-    {
-        return virtual.map.translateToPoint(getCenter());
-    }
-
-    public int getRow()
-    {
-        return virtual.getRow();
-    }
-
-    public int getCol()
-    {
-        return virtual.getCol();
     }
 
     protected void wait(double seconds)
