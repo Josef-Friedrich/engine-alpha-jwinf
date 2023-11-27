@@ -39,8 +39,8 @@
 
     <repositories>
         <repository>
-            <id>this-local-git-repo</id>
-            <url>file://${project.basedir}/lib</url>
+            <id>project-repository</id>
+            <url>file://${project.basedir}/repository</url>
         </repository>
     </repositories>
 
