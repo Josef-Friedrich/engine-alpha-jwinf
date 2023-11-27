@@ -22,7 +22,7 @@ public class LevelMapTest
     }
 
     @Test
-    public void attributeRowsAndCols()
+    public void testRowsAndCols()
     {
         LevelMap map = create(4, 5);
         assertEquals(map.rows, 4);
@@ -36,7 +36,7 @@ public class LevelMapTest
     }
 
     @Test
-    public void methodTranslateToPoint()
+    public void testTranslateToPoint()
     {
         Point point = create(3, 4, 3, 2).translateToPoint(5, 3);
         assertPoint(point, 1, 2);
@@ -57,7 +57,7 @@ public class LevelMapTest
     }
 
     @Test
-    public void methodTranslateToVector()
+    public void testTranslateToVector()
     {
         Vector vector = create(3, 4, 3, 2).translateToVector(2, 0);
         assertVector(vector, 3, 2);

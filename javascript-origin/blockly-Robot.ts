@@ -191,7 +191,7 @@ var getContext = function (display, infos, curLevel) {
           pushObject: "pousserObjet",
           pushableInFront: "poussableDevant",
           dropNum: "deposer",
-          dropNum_noShadow: "deposer",
+          dropNum_noShadow: "deposer",Paint
           containerSize: "nbObjetsADeposer",
           nbInBag: "nbObjetsDansSac",
           nbWithdrawables: "nbObjetsSur",

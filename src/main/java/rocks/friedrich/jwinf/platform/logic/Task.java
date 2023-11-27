@@ -9,7 +9,7 @@ import rocks.friedrich.jwinf.platform.data.model.TaskData;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.level.LevelCollection;
-import rocks.friedrich.jwinf.platform.logic.map.ItemStore;
+import rocks.friedrich.jwinf.platform.logic.map.ItemDataStore;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 /**
@@ -52,7 +52,7 @@ public class Task
 
     public LevelCollection levels;
 
-    public ItemStore items;
+    public ItemDataStore items;
 
     /**
      * Die Anzahl an Tests (Level) der Schwierigkeitsstufe mit den meisten
@@ -73,7 +73,7 @@ public class Task
         }
         title = data.title;
         intro = data.intro;
-        items = new ItemStore(data.gridInfos.itemTypes);
+        items = new ItemDataStore(data.gridInfos.itemTypes);
         levels = new LevelCollection(data.levels, this);
     }
 
@@ -97,7 +97,7 @@ public class Task
         return intro;
     }
 
-    public ItemStore getItems()
+    public ItemDataStore getItems()
     {
         return items;
     }

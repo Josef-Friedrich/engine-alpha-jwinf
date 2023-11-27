@@ -3,17 +3,21 @@ package rocks.friedrich.jwinf.platform.logic.level;
 import ea.Vector;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
-import rocks.friedrich.jwinf.platform.logic.map.ItemStore;
+import rocks.friedrich.jwinf.platform.logic.map.StackedItems;
+import rocks.friedrich.jwinf.platform.logic.map.Item;
+import rocks.friedrich.jwinf.platform.logic.map.ItemDataStore;
 
 /**
- * Die mit Dingen (Item) ausgefüllte Karte (Map) einer Trainingsaufgabeversion
- * (Level).
+ * Die mit Gegenständen (Item) ausgefüllte Karte (Map) einer
+ * Trainingsaufgabeversion (Level).
  */
 public class LevelMap
 {
     private int[][] map;
 
-    private ItemStore items;
+    private StackedItems[][] stackedItems;
+
+    private ItemDataStore items;
 
     /**
      * Anzahl an Reihen (y-Richtung bzw. Höhe)
@@ -37,20 +41,35 @@ public class LevelMap
      */
     public int y;
 
-    public LevelMap(int[][] map, ItemStore items)
+    public LevelMap(int[][] map, ItemDataStore items)
     {
         this.map = map;
         rows = map.length;
         cols = map[0].length;
+        stackedItems = new StackedItems[rows][cols];
+        for (int row = 0; row < rows; row++)
+        {
+            int[] rowMap = map[row];
+            for (int col = 0; col < cols; col++)
+            {
+                int itemNum = rowMap[col];
+                ItemData itemData = items.get(itemNum);
+                if (itemData != null)
+                {
+                    stackedItems[row][col] = new StackedItems(itemData);
+                }
+                else
+                {
+                    stackedItems[row][col] = new StackedItems();
+                }
+            }
+        }
         this.items = items;
     }
 
     public LevelMap(int[][] map)
     {
-        this.map = map;
-        rows = map.length;
-        cols = map[0].length;
-        items = new ItemStore();
+        this(map, new ItemDataStore());
     }
 
     public LevelMap(int rows, int cols)
@@ -64,7 +83,6 @@ public class LevelMap
      * @param itemNum the number of the item data to retrieve
      * @return the item data at the item number
      */
-
     public ItemData get(int itemNum)
     {
         return items.get(itemNum);
@@ -76,9 +94,19 @@ public class LevelMap
         return items.get(num);
     }
 
+    public StackedItems getStacked(int row, int col)
+    {
+        return stackedItems[row][col];
+    }
+
     public ItemData get(Point point)
     {
         return get(point.row, point.col);
+    }
+
+    public Item bottom(int row, int col)
+    {
+        return stackedItems[row][col].bottom();
     }
 
     /**
@@ -86,12 +114,21 @@ public class LevelMap
      */
     public boolean isObstacle(int row, int col)
     {
-        ItemData tile = get(row, col);
-        if (tile != null)
+        ItemData item = get(row, col);
+        if (item != null)
         {
-            return tile.isObstacle;
+            return item.isObstacle;
         }
         return false;
+    }
+
+    /**
+     * Überprüfe, ob sich auf einer Kachel ein Gegenstand gefindet, der ein
+     * Hindernis darstellt.
+     */
+    public boolean isObstacleNg(int row, int col)
+    {
+        return getStacked(row, col).isObstacle();
     }
 
     public void setPosition(float x, float y)

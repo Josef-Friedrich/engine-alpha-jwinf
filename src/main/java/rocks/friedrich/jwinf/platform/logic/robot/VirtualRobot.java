@@ -145,7 +145,7 @@ public class VirtualRobot implements Robot
 
         default:
         }
-        return map.isObstacle(row + rowMovement, col + colMovement);
+        return map.isObstacleNg(row + rowMovement, col + colMovement);
     }
 
     public boolean isInFrontOfObstacle()

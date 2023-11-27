@@ -25,18 +25,18 @@ public class ItemData
     public int num;
 
     /**
-     * Ein eindeutiger Name, dar das Ding identifiziert. Zum Beispiel:
+     * Ein eindeutiger Name, dar der Gegenstand identifiziert. Zum Beispiel:
      * <code>candle</code>
      */
     public String name;
 
     /**
-     * Die Zeilennummer, in der das Ding plaziert ist.
+     * Die Zeilennummer, in der der Gegenstand plaziert ist.
      */
     public int row;
 
     /**
-     * Die Spaltennummer, in der das Ding plaziert ist.
+     * Die Spaltennummer, in der der Gegenstand plaziert ist.
      */
     public int col;
 
@@ -96,51 +96,49 @@ public class ItemData
     public String color;
 
     /**
-     * Gibt an, ob das Ding eine Kiste darstellt.
+     * Gibt an, ob der Gegenstand eine Kiste darstellt.
      */
     public boolean isContainer;
 
     /**
-     *
+     * Gibt an, ob der Gegenstand einen Ausgang darstellt.
      */
     public boolean isExit;
 
     /**
-     * Gibt an, ob das Ding einen Laser darstellt.
+     * Gibt an, ob der Gegenstand einen Laser darstellt.
      */
     public boolean isLaser;
 
     /**
-     * Gibt an, ob das Ding ein Hindernis darstellt.
+     * Gibt an, ob der Gegenstand ein Hindernis darstellt.
      */
     public boolean isObstacle;
 
-    /**
-     *
-     */
     public boolean isPaint;
 
     /**
-     * Gibt an, ob das Ding einen Wurfkörper darstellt.
+     * Gibt an, ob der Gegenstand einen Wurfkörper darstellt.
      */
     public boolean isProjectile;
 
+    /**
+     * Gibt an, ob der Gegenstand eine Kiste darstellt.
+     */
     public boolean isPushable;
 
     /**
-     * Gibt an, ob das Ding einen Roboter darstellt.
+     * Gibt an, ob der Gegenstand einen Roboter darstellt.
      */
     public boolean isRobot;
 
     /**
-     * Gibt an, ob das Ding eingesammelt werden kann.
-     *
-     * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3001-L3023
+     * Gibt an, ob der Gegenstand eingesammelt werden kann.
      */
     public boolean isWithdrawable;
 
     /**
-     * Gibt an, ob das Ding eine Tafel darstellt.
+     * Gibt an, ob der Gegenstand eine Tafel darstellt.
      */
     public boolean isWritable;
 

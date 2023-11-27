@@ -7,16 +7,16 @@ import java.util.Map;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 
 /**
- * Ein Speicher für Dinge (Item). Eine Trainingsaufgabe (Task) bedient sich
- * eines Kachelspeichers (ItemStore).
+ * Ein Speicher für Daten der Gegenstände (ItemData). Eine Trainingsaufgabe
+ * (Task) bedient sich eines Gegenständedatenspeichers (ItemDataStore).
  */
-public class ItemStore
+public class ItemDataStore
 {
     private HashMap<String, ItemData> tilesByName;
 
     private HashMap<Integer, ItemData> tilesByNumber;
 
-    public ItemStore(Map<String, ItemData> tiles)
+    public ItemDataStore(Map<String, ItemData> tiles)
     {
         tilesByName = new HashMap<>();
         tilesByNumber = new HashMap<>();
@@ -39,7 +39,7 @@ public class ItemStore
         }
     }
 
-    public ItemStore()
+    public ItemDataStore()
     {
         this(new HashMap<String, ItemData>());
     }
