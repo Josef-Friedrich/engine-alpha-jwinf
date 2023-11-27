@@ -4,7 +4,6 @@ import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
 
 public class Robot extends RobotWrapper
 {
-
     public void east()
     {
         actor.east();
@@ -25,8 +24,9 @@ public class Robot extends RobotWrapper
         actor.west();
     }
 
-    public void onPaint() {
-        //actor.onPaint();
+    public void onPaint()
+    {
+        // actor.onPaint();
     }
 
     public void dropObject()

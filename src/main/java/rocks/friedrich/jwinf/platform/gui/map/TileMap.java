@@ -9,7 +9,7 @@ import ea.actor.TileContainer;
  * Ein Kachelsatz (tile map), bei dem die einzelnen Kacheln (tile) durch
  * Buchstaben (letter) repräsentiert sind.
  *
- * Die Größe der Kachel wird auf 1 x 1 Pixelmeter und die linke oberen Ecke an
+ * Die Größe der Kachel wird auf 1 x 1 Pixelmeter und die linke obere Ecke an
  * die Position -0.5 x 0.5 im Engine-Alpha-Koordinatensystem gesetzt, sodass zum
  * Beispiel (0,0) die Mitte der ersten Kachel (links oben) adressiert.
  */
