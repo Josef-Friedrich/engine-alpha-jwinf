@@ -13,11 +13,7 @@ import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
 import rocks.friedrich.jwinf.platform.logic.map.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
-
-interface Filter
-{
-    public boolean check(ItemData item);
-}
+import rocks.friedrich.jwinf.platform.logic.map.StackedItems;
 
 /**
  * Ein Roboter der nicht grafisch dargestellt ist, sondern der sich nur im
@@ -145,7 +141,7 @@ public class VirtualRobot implements Robot
 
         default:
         }
-        return map.isObstacleNg(row + rowMovement, col + colMovement);
+        return map.isObstacle(row + rowMovement, col + colMovement);
     }
 
     public boolean isInFrontOfObstacle()
@@ -214,12 +210,7 @@ public class VirtualRobot implements Robot
      */
     private boolean hasOn(int row, int col, Filter filter)
     {
-        ItemData item = map.get(row, col);
-        if (item == null)
-        {
-            return false;
-        }
-        return filter.check(item);
+        return map.get(row, col).has(filter);
     }
 
     /**
@@ -249,7 +240,7 @@ public class VirtualRobot implements Robot
      */
     public boolean obstacleInFront()
     {
-        return isInFront(item -> item.isObstacle);
+        return isInFront(item -> item.isObstacle());
     }
 
     public ItemData dropObject(int itemNum)
@@ -365,19 +356,14 @@ public class VirtualRobot implements Robot
     /**
      * Gib das Ding zurück, auf dem sich der Roboter gerade befindet.
      */
-    private ItemData getOnItem()
+    private StackedItems getOnItems()
     {
         return map.get(row, col);
     }
 
     public boolean isOnExit()
     {
-        ItemData item = getOnItem();
-        if (item == null)
-        {
-            return false;
-        }
-        return item.isExit;
+        return getOnItems().isExit();
     }
 
     public String toString()

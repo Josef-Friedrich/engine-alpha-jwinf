@@ -25,7 +25,7 @@ public class ItemMapPainter
         {
             for (int col = 0; col < map.getCols(); col++)
             {
-                paintStackedItems(scene, col, row, map.getStacked(row, col));
+                paintStackedItems(scene, col, row, map.get(row, col));
             }
         }
     }

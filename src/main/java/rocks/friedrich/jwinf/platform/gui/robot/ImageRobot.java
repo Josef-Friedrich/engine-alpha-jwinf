@@ -71,8 +71,7 @@ public class ImageRobot extends Image implements Robot
 
     public boolean isOnExit()
     {
-        var tile = virtual.map.get(getRow(), getCol());
-        return tile != null && tile.isExit;
+        return virtual.isOnExit();
     }
 
     public boolean obstacleInFront()

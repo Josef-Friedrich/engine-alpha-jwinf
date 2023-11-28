@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Iterator;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
+import rocks.friedrich.jwinf.platform.logic.robot.Filter;
 
 /**
  * Aufeinander gestapelte Gegenstände.
@@ -52,16 +53,26 @@ public class StackedItems implements Iterable<Item>
         }
     }
 
-    public boolean isObstacle()
+    public boolean has(Filter filter)
     {
         for (Item item : items)
         {
-            if (item.isObstacle())
+            if (filter.check(item))
             {
                 return true;
             }
         }
         return false;
+    }
+
+    public boolean isExit()
+    {
+        return has(item -> item.isExit());
+    }
+
+    public boolean isObstacle()
+    {
+        return has(item -> item.isObstacle());
     }
 
     public Item bottom()

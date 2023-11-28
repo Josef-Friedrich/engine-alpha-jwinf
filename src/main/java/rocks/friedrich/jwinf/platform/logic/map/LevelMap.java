@@ -8,8 +8,6 @@ import rocks.friedrich.jwinf.platform.data.model.ItemData;
  */
 public class LevelMap
 {
-    private int[][] map;
-
     private StackedItems[][] stackedItems;
 
     private ItemDataStore items;
@@ -38,7 +36,6 @@ public class LevelMap
 
     public LevelMap(int[][] map, ItemDataStore items)
     {
-        this.map = map;
         rows = map.length;
         cols = map[0].length;
         stackedItems = new StackedItems[rows][cols];
@@ -93,18 +90,12 @@ public class LevelMap
         return items.get(itemNum);
     }
 
-    public ItemData get(int row, int col)
-    {
-        int num = map[row][col];
-        return items.get(num);
-    }
-
-    public StackedItems getStacked(int row, int col)
+    public StackedItems get(int row, int col)
     {
         return stackedItems[row][col];
     }
 
-    public ItemData get(Point point)
+    public StackedItems get(Point point)
     {
         return get(point.row, point.col);
     }
@@ -115,24 +106,11 @@ public class LevelMap
     }
 
     /**
-     * Überprüfe, ob die Kachel ein Hindernis darstellt.
-     */
-    public boolean isObstacle(int row, int col)
-    {
-        ItemData item = get(row, col);
-        if (item != null)
-        {
-            return item.isObstacle;
-        }
-        return false;
-    }
-
-    /**
      * Überprüfe, ob sich auf einer Kachel ein Gegenstand gefindet, der ein
      * Hindernis darstellt.
      */
-    public boolean isObstacleNg(int row, int col)
+    public boolean isObstacle(int row, int col)
     {
-        return getStacked(row, col).isObstacle();
+        return get(row, col).isObstacle();
     }
 }
