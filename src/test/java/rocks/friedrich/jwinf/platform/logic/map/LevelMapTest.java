@@ -1,11 +1,10 @@
-package rocks.friedrich.jwinf.platform.logic.level;
+package rocks.friedrich.jwinf.platform.logic.map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 import ea.Vector;
-import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 public class LevelMapTest
 {

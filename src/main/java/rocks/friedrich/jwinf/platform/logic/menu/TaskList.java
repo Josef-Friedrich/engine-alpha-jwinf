@@ -73,7 +73,7 @@ public class TaskList
 
     public Task get(int index)
     {
-        return Task.loadByRelPath(getId(index));
+        return Task.loadByTaskPath(getId(index));
     }
 
     public void reset()

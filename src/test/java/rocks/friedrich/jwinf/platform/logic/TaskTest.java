@@ -17,7 +17,7 @@ import rocks.friedrich.jwinf.platform.logic.menu.TaskList;
 
 class TaskTest
 {
-    Task task = Task.loadByRelPath("conditionals_excercises/light_all_candles");
+    Task task = Task.loadByTaskPath("conditionals_excercises/light_all_candles");
 
     @Test
     void testLoadByRelPath()
@@ -25,7 +25,7 @@ class TaskTest
         // Assuming that the relative path
         // "conditionals_excercises/light_all_candles" is valid
         final Task loadedTask = Task
-                .loadByRelPath("conditionals_excercises/light_all_candles");
+                .loadByTaskPath("conditionals_excercises/light_all_candles");
         assertNotNull(loadedTask);
         assertEquals(loadedTask.title, "Kerzen anzünden");
     }
@@ -100,7 +100,7 @@ class TaskTest
         final TaskList list = TaskList.readFromResources();
         for (final String id : list.getRelPaths())
         {
-            final Task task = Task.loadByRelPath(id);
+            final Task task = Task.loadByTaskPath(id);
             assertTrue(task.title != null);
         }
     }

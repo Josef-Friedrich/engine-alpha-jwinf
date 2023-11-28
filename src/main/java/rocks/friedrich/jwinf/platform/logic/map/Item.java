@@ -4,6 +4,8 @@ import rocks.friedrich.jwinf.platform.data.model.ItemData;
 
 /**
  * Ein Gegenstand auf dem Kachelgitter.
+ * 
+ * @see ItemData
  */
 public class Item
 {
@@ -11,7 +13,31 @@ public class Item
 
     public Item(ItemData data)
     {
-        this.data = data;
+        try
+        {
+            this.data = (ItemData) data.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Gibt die Nummer (ID) des Gegenstands.
+     */
+    public int getNum()
+    {
+        return data.num;
+    }
+
+    /**
+     * Gibt den eindeutigen Namen, der den Gegenstand identifiziert. Zum
+     * Beispiel: <code>candle</code>
+     */
+    public String getName()
+    {
+        return data.name;
     }
 
     /**

@@ -10,8 +10,8 @@ import java.util.List;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.Compass;
-import rocks.friedrich.jwinf.platform.logic.level.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
+import rocks.friedrich.jwinf.platform.logic.map.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 interface Filter

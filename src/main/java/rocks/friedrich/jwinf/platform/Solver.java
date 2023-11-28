@@ -121,7 +121,7 @@ public abstract class Solver<T>
     public RobotWrapper solveVirtual(Difficulty difficulty, int test)
             throws Exception
     {
-        Task task = Task.loadByRelPath(taskPath);
+        Task task = Task.loadByTaskPath(taskPath);
         Level level = task.getLevel(difficulty, test);
         RobotWrapper robot = createRobot(level);
         switch (difficulty)

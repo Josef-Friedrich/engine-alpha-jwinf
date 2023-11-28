@@ -22,7 +22,7 @@ public class Task
     /**
      * @param taskPath Der relative Pfad zu resources/data/tasks
      */
-    public static Task loadByRelPath(String taskPath)
+    public static Task loadByTaskPath(String taskPath)
     {
         return new Task("data/tasks/%s.json".formatted(taskPath));
     }
@@ -52,7 +52,7 @@ public class Task
 
     public LevelCollection levels;
 
-    public ItemDataStore items;
+    private ItemDataStore itemsData;
 
     /**
      * Die Anzahl an Tests (Level) der Schwierigkeitsstufe mit den meisten
@@ -73,7 +73,7 @@ public class Task
         }
         title = data.title;
         intro = data.intro;
-        items = new ItemDataStore(data.gridInfos.itemTypes);
+        itemsData = new ItemDataStore(data.gridInfos.itemTypes);
         levels = new LevelCollection(data.levels, this);
     }
 
@@ -97,9 +97,9 @@ public class Task
         return intro;
     }
 
-    public ItemDataStore getItems()
+    public ItemDataStore getItemsData()
     {
-        return items;
+        return itemsData;
     }
 
     /**

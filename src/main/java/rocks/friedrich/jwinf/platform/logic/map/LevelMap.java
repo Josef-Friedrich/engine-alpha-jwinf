@@ -1,11 +1,7 @@
-package rocks.friedrich.jwinf.platform.logic.level;
+package rocks.friedrich.jwinf.platform.logic.map;
 
 import ea.Vector;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
-import rocks.friedrich.jwinf.platform.logic.map.Point;
-import rocks.friedrich.jwinf.platform.logic.map.StackedItems;
-import rocks.friedrich.jwinf.platform.logic.map.Item;
-import rocks.friedrich.jwinf.platform.logic.map.ItemDataStore;
 
 /**
  * Die mit Gegenständen (Item) ausgefüllte Karte (Map) einer

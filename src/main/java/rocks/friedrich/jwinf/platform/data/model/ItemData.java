@@ -3,10 +3,10 @@ package rocks.friedrich.jwinf.platform.data.model;
 import rocks.friedrich.jwinf.platform.logic.Compass;
 
 /**
- * Die Daten eines Dings (Item).
+ * Die Daten eines Gegenstands (Item).
  *
  * <p>
- * In der JSON-Datei sind die Daten beispielsweise repräsentiert:
+ * In der JSON-Datei sind die Daten beispielsweise so repräsentiert:
  *
  * <pre>{@code
  *   {
@@ -17,15 +17,15 @@ import rocks.friedrich.jwinf.platform.logic.Compass;
  *   }
  * }</pre>
  */
-public class ItemData
+public class ItemData implements Cloneable
 {
     /**
-     * Die Nummer (ID) des Dings.
+     * Die Nummer (ID) des Gegenstands.
      */
     public int num;
 
     /**
-     * Ein eindeutiger Name, dar der Gegenstand identifiziert. Zum Beispiel:
+     * Ein eindeutiger Name, der den Gegenstand identifiziert. Zum Beispiel:
      * <code>candle</code>
      */
     public String name;
@@ -148,4 +148,9 @@ public class ItemData
     {
         return Compass.fromNumber(dir);
     }
+
+    @Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 }

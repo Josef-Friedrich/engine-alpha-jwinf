@@ -49,7 +49,7 @@ public class AllLevelsScene extends Scene
 
     public AllLevelsScene(String taskPath)
     {
-        this(Task.loadByRelPath(taskPath));
+        this(Task.loadByTaskPath(taskPath));
     }
 
     public float getWidth()

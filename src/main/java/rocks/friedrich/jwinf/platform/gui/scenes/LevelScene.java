@@ -36,7 +36,7 @@ public class LevelScene extends Scene
 
     public LevelScene(String taskPath, Difficulty difficulty, int test)
     {
-        this(Task.loadByRelPath(taskPath), difficulty, test);
+        this(Task.loadByTaskPath(taskPath), difficulty, test);
     }
 
     public LevelScene(Task task, Difficulty difficulty, int test)

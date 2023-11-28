@@ -10,12 +10,12 @@ public class TestHelper
 {
     public static Task loadTask(String taskPath)
     {
-        return Task.loadByRelPath(taskPath);
+        return Task.loadByTaskPath(taskPath);
     }
 
     public static Level loadLevel(String taskPath)
     {
-        var task = Task.loadByRelPath(taskPath);
+        var task = Task.loadByTaskPath(taskPath);
         return task.getLevel(Difficulty.EASY);
     }
 

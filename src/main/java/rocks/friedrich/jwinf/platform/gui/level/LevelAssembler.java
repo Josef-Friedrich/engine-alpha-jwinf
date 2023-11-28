@@ -27,7 +27,7 @@ public class LevelAssembler
     public TileMap createTileMap()
     {
         TileMap tileMap = new TileMap(level.cols, level.rows, "images");
-        for (ItemData tile : level.task.items.all())
+        for (ItemData tile : level.task.getItemsData().all())
         {
             if (tile.relPath != null)
             {
@@ -39,7 +39,7 @@ public class LevelAssembler
             for (int col = 0; col < level.map.cols; col++)
             {
                 int num = level.data.tiles[row][col];
-                ItemData tile = level.task.items.get(num);
+                ItemData tile = level.task.getItemsData().get(num);
                 if (tile != null)
                 {
                     tileMap.setTile(col, row, tile.letter);
