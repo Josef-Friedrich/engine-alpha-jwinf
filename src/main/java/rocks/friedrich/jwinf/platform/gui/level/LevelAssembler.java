@@ -1,12 +1,11 @@
 package rocks.friedrich.jwinf.platform.gui.level;
 
-import java.lang.reflect.InvocationTargetException;
-
 import ea.Scene;
 import ea.Vector;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.gui.Color;
 import rocks.friedrich.jwinf.platform.gui.map.Grid;
+import rocks.friedrich.jwinf.platform.gui.map.ItemMapPainter;
 import rocks.friedrich.jwinf.platform.gui.map.TileMap;
 import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
@@ -57,10 +56,7 @@ public class LevelAssembler
         return grid;
     }
 
-    public RobotWrapper createRobot()
-            throws InstantiationException, IllegalAccessException,
-            IllegalArgumentException, InvocationTargetException,
-            NoSuchMethodException, SecurityException, ClassNotFoundException
+    public RobotWrapper createRobot() throws Exception
     {
         String className = "rocks.friedrich.jwinf.tasks.en.conditionals.candle.Robot";
         if (level.task.data.packagePath != null)
@@ -87,13 +83,18 @@ public class LevelAssembler
         l.x = x;
         l.y = y;
         l.scene = scene;
+        // Grid
         l.grid = createGrid();
         l.grid.setPosition(x - 0.5f, y - 0.5f);
         scene.add(l.grid);
-        l.tileMap = createTileMap().container;
-        l.tileMap.setPosition(x - 0.5f, y - 0.5f);
-        scene.add(l.tileMap);
+        // TileMap (old)
+        // l.tileMap = createTileMap().container;
+        // l.tileMap.setPosition(x - 0.5f, y - 0.5f);
+        // scene.add(l.tileMap);
+        // Set map position
         level.map.setPosition(x, y);
+        // ItemGrid
+        new ItemMapPainter(level.getMap()).paint(scene, x - 0.5f, y - 0.5f);
         try
         {
             l.robot = createRobot();
@@ -103,10 +104,7 @@ public class LevelAssembler
             robot.setCenter(robotPosition.getX(), robotPosition.getY());
             scene.add(robot);
         }
-        catch (InstantiationException | IllegalAccessException
-                | IllegalArgumentException | InvocationTargetException
-                | NoSuchMethodException | SecurityException
-                | ClassNotFoundException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }

@@ -19,15 +19,15 @@ public class CoordinateSystemTranslator
      * Die x-Koordinate des linken unteren Ecks, an dem das Gitter im
      * Engine-Alpha-Koordinatensystem verankert ist.
      */
-    public int x;
+    public float x;
 
     /**
      * Die y-Koordinate des linken unteren Ecks, an dem das Gitter im
      * Engine-Alpha-Koordinatensystem verankert ist.
      */
-    public int y;
+    public float y;
 
-    public CoordinateSystemTranslator(int rows, int cols, int x, int y)
+    public CoordinateSystemTranslator(int rows, int cols, float x, float y)
     {
         this.rows = rows;
         this.cols = cols;
@@ -43,34 +43,34 @@ public class CoordinateSystemTranslator
 
     public void setPosition(float x, float y)
     {
-        this.x = Math.round(x);
-        this.y = Math.round(y);
+        this.x = x;
+        this.y = y;
     }
 
     /**
      * y-Koordinate des Ursprungs des Gitters (links oben)
      */
-    public int row0y()
+    public float row0y()
     {
         return y + rows - 1;
     }
 
     public int toRow(float y)
     {
-        return row0y() - Math.round(y);
+        return Math.round(row0y() - y);
     }
 
     public int toCol(float x)
     {
-        return Math.round(x) - this.x;
+        return Math.round(x - this.x);
     }
 
-    public int toX(int col)
+    public float toX(int col)
     {
         return col + x;
     }
 
-    public int toY(int row)
+    public float toY(int row)
     {
         return row0y() - row;
     }
