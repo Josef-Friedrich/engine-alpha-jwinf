@@ -58,6 +58,11 @@ public class Level
         return c;
     }
 
+    public LevelMap getMap()
+    {
+        return map;
+    }
+
     public ItemData getInitItem()
     {
         return data.getInitItem();

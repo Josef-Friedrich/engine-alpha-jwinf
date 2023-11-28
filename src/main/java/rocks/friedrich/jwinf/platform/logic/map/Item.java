@@ -49,6 +49,16 @@ public class Item
     }
 
     /**
+     * Returns the file path of the item.
+     *
+     * @return The file path in the format "images/{relPath}".
+     */
+    public String getFilePath()
+    {
+        return "images/%s".formatted(data.relPath);
+    }
+
+    /**
      * Gibt an, ob der Gegenstand einen Ausgang darstellt.
      */
     public boolean isExit()

@@ -2,13 +2,14 @@ package rocks.friedrich.jwinf.platform.logic.map;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 
 /**
  * Aufeinander gestapelte Gegenstände.
  */
-public class StackedItems
+public class StackedItems implements Iterable<Item>
 {
     private List<Item> items;
 
@@ -27,6 +28,12 @@ public class StackedItems
     {
         this();
         add(itemData);
+    }
+
+    @Override
+    public Iterator<Item> iterator()
+    {
+        return items.iterator();
     }
 
     public void add(Item item)

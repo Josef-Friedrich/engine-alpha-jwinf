@@ -10,6 +10,7 @@ import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.level.LevelCollection;
 import rocks.friedrich.jwinf.platform.logic.map.ItemDataStore;
+import rocks.friedrich.jwinf.platform.logic.map.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 /**
@@ -179,6 +180,11 @@ public class Task
     public Level getLevel()
     {
         return getLevel(Difficulty.EASY, 0);
+    }
+
+    public LevelMap getMap()
+    {
+        return getLevel().getMap();
     }
 
     /**

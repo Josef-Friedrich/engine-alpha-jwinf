@@ -63,6 +63,16 @@ public class LevelMap
         this.items = items;
     }
 
+    public int getRows()
+    {
+        return rows;
+    }
+
+    public int getCols()
+    {
+        return cols;
+    }
+
     public LevelMap(int[][] map)
     {
         this(map, new ItemDataStore());
