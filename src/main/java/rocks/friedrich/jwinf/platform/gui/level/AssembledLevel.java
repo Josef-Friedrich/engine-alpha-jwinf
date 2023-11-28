@@ -2,7 +2,9 @@ package rocks.friedrich.jwinf.platform.gui.level;
 
 import ea.Scene;
 import rocks.friedrich.jwinf.platform.gui.map.CoordinateSystemTranslator;
+import rocks.friedrich.jwinf.platform.gui.map.GraphicalItemController;
 import rocks.friedrich.jwinf.platform.gui.map.Grid;
+import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
 
@@ -35,5 +37,10 @@ public class AssembledLevel
         var map = level.getMap();
         translate = new CoordinateSystemTranslator(map.getRows(), map.getCols(),
                 x, y);
+    }
+
+    public GraphicalItemController getItemController(Item item)
+    {
+        return new GraphicalItemController(item, translate, scene);
     }
 }

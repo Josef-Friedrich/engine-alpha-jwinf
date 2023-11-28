@@ -26,6 +26,6 @@ public class Robot extends RobotWrapper
 
     public Boolean reachedRedFlag()
     {
-        return actor.isOnExit();
+        return actor.onExit();
     }
 }

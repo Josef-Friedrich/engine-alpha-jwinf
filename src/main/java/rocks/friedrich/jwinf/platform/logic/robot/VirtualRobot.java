@@ -10,6 +10,7 @@ import java.util.List;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.Compass;
+import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
 import rocks.friedrich.jwinf.platform.logic.map.LevelMap;
@@ -243,12 +244,14 @@ public class VirtualRobot implements Robot
         return isInFront(item -> item.isObstacle());
     }
 
-    public ItemData dropObject(int itemNum)
+    public Item dropObject(int itemNum)
     {
-        ItemData item = map.get(itemNum);
-        item.row = getRow();
-        item.col = getCol();
-        return item;
+        if (onContainer())
+        {
+            Item item = map.add(getRow(), getCol(), itemNum);
+            return item;
+        }
+        return null;
     }
 
     public Movement turnLeft()
@@ -361,9 +364,19 @@ public class VirtualRobot implements Robot
         return map.get(row, col);
     }
 
-    public boolean isOnExit()
+    public boolean onContainer()
+    {
+        return getOnItems().isContainer();
+    }
+
+    public boolean onExit()
     {
         return getOnItems().isExit();
+    }
+
+    public boolean onPaint()
+    {
+        return getOnItems().isPaint();
     }
 
     public String toString()

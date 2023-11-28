@@ -65,6 +65,11 @@ public class StackedItems implements Iterable<Item>
         return false;
     }
 
+    public boolean isContainer()
+    {
+        return has(item -> item.isContainer());
+    }
+
     public boolean isExit()
     {
         return has(item -> item.isExit());
@@ -73,6 +78,11 @@ public class StackedItems implements Iterable<Item>
     public boolean isObstacle()
     {
         return has(item -> item.isObstacle());
+    }
+
+    public boolean isPaint()
+    {
+        return has(item -> item.isPaint());
     }
 
     public Item bottom()

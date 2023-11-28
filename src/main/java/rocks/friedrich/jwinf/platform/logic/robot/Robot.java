@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
-import rocks.friedrich.jwinf.platform.data.model.ItemData;
+import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 // EN
 //   row: "robot's row",
@@ -124,7 +124,14 @@ public interface Robot
 
     public void printRoute();
 
-    public boolean isOnExit();
+    public boolean onExit();
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L4477-L4502">blocklyRobot_lib-1.1.js
+     *      L4477-L4502</a>
+     */
+    public boolean onPaint();
     // public void hasOn();
     // public void setIndexes();
     // public void getItemsOn();
@@ -148,7 +155,7 @@ public interface Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3235-L3263">blocklyRobot_lib-1.1.js
      *      L3235-L3263</a>
      */
-    public ItemData dropObject(int itemNum);
+    public Item dropObject(int itemNum);
 
     /**
      * @see <a href=

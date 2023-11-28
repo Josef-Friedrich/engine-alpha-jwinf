@@ -47,15 +47,16 @@ public class ItemMapPainter
 
     private void paintItem(Scene scene, float x, float y, Item item)
     {
-        Image image = createImage(item);
+        Image image = createImage(item, scene);
         image.setPosition(x, y);
         scene.add(image);
     }
 
-    private Image createImage(Item item)
+    private Image createImage(Item item, Scene scene)
     {
         Image image = new Image(item.getFilePath(), 1, 1);
-        item.setController(new GraphicalItemController(item, image, translate));
+        item.setController(
+                new GraphicalItemController(item, image, translate, scene));
         return image;
     }
 }

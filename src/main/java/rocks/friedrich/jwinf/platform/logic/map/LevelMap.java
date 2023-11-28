@@ -7,7 +7,7 @@ import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
 
 /**
  * Die mit Gegenständen (Item) ausgefüllte Karte (Map) einer
- * Trainingsaufgabeversion (Level).
+ * Trainingsaufgabenversion (Level).
  */
 public class LevelMap
 {
@@ -91,6 +91,18 @@ public class LevelMap
     public ItemData get(int itemNum)
     {
         return items.get(itemNum);
+    }
+
+    /**
+     * Adds an item on top to the specified position.
+     */
+    public Item add(int row, int col, int itemNum)
+    {
+        ItemData itemData = get(itemNum);
+        Item item = new Item(itemData);
+        item.setPosition(row, col);
+        get(row, col).add(item);
+        return item;
     }
 
     public StackedItems get(int row, int col)

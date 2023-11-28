@@ -14,6 +14,8 @@ import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
  */
 public class LevelAssembler
 {
+    public static final float SHIFT = 0.5f;
+
     Level level;
 
     public LevelAssembler(Level level)
@@ -29,7 +31,7 @@ public class LevelAssembler
         return grid;
     }
 
-    public RobotWrapper createRobot() throws Exception
+    public RobotWrapper createRobot(AssembledLevel l) throws Exception
     {
         String className = "rocks.friedrich.jwinf.tasks.en.conditionals.candle.Robot";
         if (level.task.data.packagePath != null)
@@ -41,7 +43,8 @@ public class LevelAssembler
                 .loadClass(className).asSubclass(RobotWrapper.class)
                 .getDeclaredConstructor().newInstance();
         var context = level.createContext();
-        robot.actor = new ImageRobot("images/candle/robot.png", context.robot);
+        robot.actor = new ImageRobot("images/candle/robot.png", context.robot,
+                l);
         return robot;
     }
 
@@ -54,13 +57,13 @@ public class LevelAssembler
         AssembledLevel l = new AssembledLevel(level, scene, x, y);
         // Grid
         l.grid = createGrid();
-        l.grid.setPosition(x - 0.5f, y - 0.5f);
+        l.grid.setPosition(x - SHIFT, y - SHIFT);
         scene.add(l.grid);
         // ItemGrid
-        new ItemMapPainter(level.getMap()).paint(scene, x - 0.5f, y - 0.5f);
+        new ItemMapPainter(level.getMap()).paint(scene, x - SHIFT, y - SHIFT);
         try
         {
-            l.robot = createRobot();
+            l.robot = createRobot(l);
             Vector robotPosition = l.translate.toVector(level.getInitItem().row,
                     level.getInitItem().col);
             ImageRobot robot = (ImageRobot) l.robot.actor;

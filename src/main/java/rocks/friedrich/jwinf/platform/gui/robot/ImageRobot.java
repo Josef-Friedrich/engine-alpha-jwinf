@@ -13,7 +13,9 @@ import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.gui.State;
+import rocks.friedrich.jwinf.platform.gui.level.AssembledLevel;
 import rocks.friedrich.jwinf.platform.logic.Compass;
+import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 import rocks.friedrich.jwinf.platform.logic.robot.Movement;
 import rocks.friedrich.jwinf.platform.logic.robot.Robot;
@@ -22,6 +24,8 @@ import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 public class ImageRobot extends Image implements Robot
 {
     private VirtualRobot virtual;
+
+    private AssembledLevel level;
 
     /**
      * Damit keine neue Bewegung gestartet werden kann, bevor nicht die alte
@@ -38,10 +42,12 @@ public class ImageRobot extends Image implements Robot
      */
     public List<ItemData> bag = new ArrayList<>();
 
-    public ImageRobot(String filepath, VirtualRobot virtual)
+    public ImageRobot(String filepath, VirtualRobot virtual,
+            AssembledLevel level)
     {
         super(filepath, 1, 1);
         this.virtual = virtual;
+        this.level = level;
     }
 
     public int getRow()
@@ -69,9 +75,15 @@ public class ImageRobot extends Image implements Robot
         virtual.printRoute();
     }
 
-    public boolean isOnExit()
+    public boolean onExit()
     {
-        return virtual.isOnExit();
+        return virtual.onExit();
+    }
+
+    @Override
+    public boolean onPaint()
+    {
+        return virtual.onPaint();
     }
 
     public boolean obstacleInFront()
@@ -245,9 +257,14 @@ public class ImageRobot extends Image implements Robot
         setCenter(center);
     }
 
-    public ItemData dropObject(int itemNum)
+    public Item dropObject(int itemNum)
     {
-        ItemData item = virtual.dropObject(itemNum);
+        Item item = virtual.dropObject(itemNum);
+        if (item != null)
+        {
+            item.setController(level.getItemController(item));
+            item.add();
+        }
         return item;
     }
 

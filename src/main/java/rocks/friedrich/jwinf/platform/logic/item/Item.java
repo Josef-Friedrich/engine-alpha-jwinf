@@ -13,6 +13,10 @@ public class Item
 
     private ItemController controller;
 
+    private int row;
+
+    private int col;
+
     public Item(ItemData data)
     {
         try
@@ -23,6 +27,12 @@ public class Item
         {
             e.printStackTrace();
         }
+    }
+
+    public void setPosition(int row, int col)
+    {
+        this.row = row;
+        this.col = col;
     }
 
     /**
@@ -124,6 +134,22 @@ public class Item
     public boolean isWithdrawable()
     {
         return data.isWithdrawable;
+    }
+
+    public void add(int row, int col)
+    {
+        if (controller != null)
+        {
+            controller.add(row, col);
+        }
+    }
+
+    public void add()
+    {
+        if (controller != null)
+        {
+            controller.add(row, col);
+        }
     }
 
     public void move(int row, int col)
