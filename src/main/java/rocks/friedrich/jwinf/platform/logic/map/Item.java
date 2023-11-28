@@ -3,7 +3,7 @@ package rocks.friedrich.jwinf.platform.logic.map;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 
 /**
- * Ein Gegenstand auf dem Kachelgitter.
+ * Ein Gegenstand auf dem Gitter.
  * 
  * @see ItemData
  */

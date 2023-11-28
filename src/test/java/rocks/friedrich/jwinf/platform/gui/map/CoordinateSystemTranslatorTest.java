@@ -2,6 +2,8 @@ package rocks.friedrich.jwinf.platform.gui.map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import ea.Vector;
@@ -9,7 +11,8 @@ import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 public class CoordinateSystemTranslatorTest
 {
-    private CoordinateSystemTranslator translate(int rows, int cols, int x, int y)
+    private CoordinateSystemTranslator translate(int rows, int cols, int x,
+            int y)
     {
         return new CoordinateSystemTranslator(rows, cols, x, y);
     }
@@ -39,29 +42,61 @@ public class CoordinateSystemTranslatorTest
         assertEquals(translator.cols, 5);
     }
 
-    @Test
-    public void testTranslateToPoint()
+    @Nested
+    @DisplayName("Translate Engine-Alpha Coordinate to Point")
+    class TranslateToPoint
     {
-        Point point = translate(3, 4, 3, 2).toPoint(5, 3);
-        assertPoint(point, 1, 2);
-        point = translate(3, 4, -3, -2).toPoint(-1, -1);
-        assertPoint(point, 1, 2);
-        point = translate(3, 4, 5, -5).toPoint(7, -4);
-        assertPoint(point, 1, 2);
-        point = translate(3, 4, 0, 0).toPoint(2, 1);
-        assertPoint(point, 1, 2);
-        point = translate(10, 10, -5, -5).toPoint(4, 4);
-        assertPoint(point, 0, 9);
+        @Test
+        void testAllPositive()
+        {
+            assertPoint(translate(3, 4, 3, 2).toPoint(5, 3), 1, 2);
+        }
+
+        @Test
+        void testXYnegative()
+        {
+            assertPoint(translate(3, 4, -3, -2).toPoint(-1, -1), 1, 2);
+        }
+
+        @Test
+        void testYNegative()
+        {
+            assertPoint(translate(3, 4, 5, -5).toPoint(7, -4), 1, 2);
+        }
+
+        @Test
+        void testXY0()
+        {
+            assertPoint(translate(3, 4, 0, 0).toPoint(2, 1), 1, 2);
+        }
+
+        @Test
+        void testDifferentRowsCols()
+        {
+            assertPoint(translate(10, 10, -5, -5).toPoint(4, 4), 0, 9);
+        }
     }
 
-    @Test
-    public void testTranslateToVector()
+    @Nested
+    @DisplayName("Translate a Blockly Robot Point to a Engine Alpha Vector.")
+    class TranslateToVector
     {
-        Vector vector = translate(3, 4, 3, 2).toVector(2, 0);
-        assertVector(vector, 3, 2);
-        vector = translate(3, 4, -3, -2).toVector(2, 0);
-        assertVector(vector, -3, -2);
-        vector = translate(3, 4, 0, 0).toVector(0, 0);
-        assertVector(vector, 0, 2);
+        @Test
+        void testAllPositive()
+        {
+            assertVector(translate(3, 4, 3, 2).toVector(2, 0), 3, 2);
+        }
+
+        @Test
+        void testXYnegative()
+        {
+            assertVector(translate(3, 4, -3, -2).toVector(2, 0), -3, -2);
+        }
+
+        @Test
+        void testXY0()
+        {
+            assertVector(translate(3, 4, 0, 0).toVector(0, 0), 0, 2);
+        }
     }
 }

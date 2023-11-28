@@ -26,13 +26,13 @@ public class LevelMap
     public int cols;
 
     /**
-     * Die x-Koordinate des linken unteren Ecks, an dem das Kachelgitter im
+     * Die x-Koordinate des linken unteren Ecks, an dem das Gitter im
      * Engine-Alpha-Koordinatensystem verankert ist.
      */
     public int x;
 
     /**
-     * Die y-Koordinate des linken unteren Ecks, an dem das Kachelgitter im
+     * Die y-Koordinate des linken unteren Ecks, an dem das Gitter im
      * Engine-Alpha-Koordinatensystem verankert ist.
      */
     public int y;
@@ -144,7 +144,7 @@ public class LevelMap
     }
 
     /**
-     * y-Koordinate des Ursprungs des Kachelgitters (links oben)
+     * y-Koordinate des Ursprungs des Gitters (links oben)
      */
     public int row0y()
     {

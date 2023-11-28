@@ -1,8 +1,7 @@
 package rocks.friedrich.jwinf.platform.logic.map;
 
 /**
- * Ein Punkt auf dem Kachelgitter. Der Ursprung ist links oben (Reihe 0 und
- * Spalte 0).
+ * Ein Punkt auf dem Gitter. Der Ursprung ist links oben (Reihe 0 und Spalte 0).
  */
 public class Point
 {
@@ -14,6 +13,16 @@ public class Point
     {
         this.row = row;
         this.col = col;
+    }
+
+    public int getRow()
+    {
+        return row;
+    }
+
+    public int getCol()
+    {
+        return col;
     }
 
     @Override

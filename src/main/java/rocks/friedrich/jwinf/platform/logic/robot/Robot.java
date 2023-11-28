@@ -98,7 +98,7 @@ public interface Robot
     /**
      * Returns the row number of the robot's current position. |
      *
-     * DE: <i>Die Reihe, in der sich die Figur im Kachelgitter befindet.</i>
+     * DE: <i>Die Reihe, in der sich die Figur im Gitter befindet.</i>
      *
      * @return the row number of the robot's current position
      */
@@ -107,7 +107,7 @@ public interface Robot
     /**
      * Returns the column of the robot's current position. |
      *
-     * DE: <i>Die Spalte, in der sich die Figur im Kachelgitter befindet.</i>
+     * DE: <i>Die Spalte, in der sich die Figur im Gitter befindet.</i>
      *
      * @return the column of the robot's current position
      */

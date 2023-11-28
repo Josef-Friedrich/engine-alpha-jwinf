@@ -16,13 +16,13 @@ public class CoordinateSystemTranslator
     public int cols;
 
     /**
-     * Die x-Koordinate des linken unteren Ecks, an dem das Kachelgitter im
+     * Die x-Koordinate des linken unteren Ecks, an dem das Gitter im
      * Engine-Alpha-Koordinatensystem verankert ist.
      */
     public int x;
 
     /**
-     * Die y-Koordinate des linken unteren Ecks, an dem das Kachelgitter im
+     * Die y-Koordinate des linken unteren Ecks, an dem das Gitter im
      * Engine-Alpha-Koordinatensystem verankert ist.
      */
     public int y;
@@ -48,11 +48,31 @@ public class CoordinateSystemTranslator
     }
 
     /**
-     * y-Koordinate des Ursprungs des Kachelgitters (links oben)
+     * y-Koordinate des Ursprungs des Gitters (links oben)
      */
     public int row0y()
     {
         return y + rows - 1;
+    }
+
+    public int toRow(float y)
+    {
+        return row0y() - Math.round(y);
+    }
+
+    public int toCol(float x)
+    {
+        return Math.round(x) - this.x;
+    }
+
+    public int toX(int col)
+    {
+        return col + x;
+    }
+
+    public int toY(int row)
+    {
+        return row0y() - row;
     }
 
     /**
@@ -60,9 +80,7 @@ public class CoordinateSystemTranslator
      */
     public Point toPoint(Vector vector)
     {
-        int xVector = Math.round(vector.getX());
-        int yVector = Math.round(vector.getY());
-        return new Point(row0y() - yVector, xVector - x);
+        return new Point(toRow(vector.getY()), toCol(vector.getX()));
     }
 
     public Point toPoint(float x, float y)
@@ -72,7 +90,7 @@ public class CoordinateSystemTranslator
 
     public Vector toVector(Point point)
     {
-        return new Vector(x + point.col, row0y() - point.row);
+        return new Vector(toX(point.getCol()), toY(point.getRow()));
     }
 
     public Vector toVector(int row, int col)

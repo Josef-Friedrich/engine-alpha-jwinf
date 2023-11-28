@@ -123,9 +123,9 @@ public abstract class Map
     }
 
     /**
-     * @param x Die x-Position im Kachelgitter. 0 adressiert die erste, (ganz am
+     * @param x Die x-Position im Gitter. 0 adressiert die erste, (ganz am
      *          linken Rand gelegene) Spalte.
-     * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
+     * @param y Die y-Position im Gitter. 0 adressiert die erste,
      *          (oberste) Zeile.
      */
     public final char getLetter(int x, int y)
@@ -162,9 +162,9 @@ public abstract class Map
     }
 
     /**
-     * @param x    Die x-Position im Kachelgitter. 0 adressiert die erste, (ganz
+     * @param x    Die x-Position im Gitter. 0 adressiert die erste, (ganz
      *             am linken Rand gelegene) Spalte.
-     * @param y    Die y-Position im Kachelgitter. 0 adressiert die erste,
+     * @param y    Die y-Position im Gitter. 0 adressiert die erste,
      *             (oberste) Zeile.
      * @param tile Der Buchstabe, der für ein bestimmtes Kachelbild registiert
      *             wurde.
