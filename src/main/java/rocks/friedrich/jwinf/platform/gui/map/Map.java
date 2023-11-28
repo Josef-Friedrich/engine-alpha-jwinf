@@ -64,7 +64,6 @@ public abstract class Map
         this.pathPrefix = pathPrefix;
         this.extension = extension;
     }
-
     protected String assembleFilePath(String filePath)
     {
         String extension;

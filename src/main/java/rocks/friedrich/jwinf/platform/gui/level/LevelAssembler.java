@@ -2,11 +2,9 @@ package rocks.friedrich.jwinf.platform.gui.level;
 
 import ea.Scene;
 import ea.Vector;
-import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.gui.Color;
 import rocks.friedrich.jwinf.platform.gui.map.Grid;
 import rocks.friedrich.jwinf.platform.gui.map.ItemMapPainter;
-import rocks.friedrich.jwinf.platform.gui.map.TileMap;
 import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
@@ -21,31 +19,6 @@ public class LevelAssembler
     public LevelAssembler(Level level)
     {
         this.level = level;
-    }
-
-    public TileMap createTileMap()
-    {
-        TileMap tileMap = new TileMap(level.cols, level.rows, "images");
-        for (ItemData tile : level.task.getItemsData().all())
-        {
-            if (tile.relPath != null)
-            {
-                tileMap.registerImage(tile.letter, tile.relPath, tile.name);
-            }
-        }
-        for (int row = 0; row < level.map.rows; row++)
-        {
-            for (int col = 0; col < level.map.cols; col++)
-            {
-                int num = level.data.tiles[row][col];
-                ItemData tile = level.task.getItemsData().get(num);
-                if (tile != null)
-                {
-                    tileMap.setTile(col, row, tile.letter);
-                }
-            }
-        }
-        return tileMap;
     }
 
     public Grid createGrid()
@@ -78,28 +51,18 @@ public class LevelAssembler
      */
     public AssembledLevel placeActorsInScene(Scene scene, float x, float y)
     {
-        AssembledLevel l = new AssembledLevel();
-        l.level = level;
-        l.x = x;
-        l.y = y;
-        l.scene = scene;
+        AssembledLevel l = new AssembledLevel(level, scene, x, y);
         // Grid
         l.grid = createGrid();
         l.grid.setPosition(x - 0.5f, y - 0.5f);
         scene.add(l.grid);
-        // TileMap (old)
-        // l.tileMap = createTileMap().container;
-        // l.tileMap.setPosition(x - 0.5f, y - 0.5f);
-        // scene.add(l.tileMap);
-        // Set map position
-        level.map.setPosition(x, y);
         // ItemGrid
         new ItemMapPainter(level.getMap()).paint(scene, x - 0.5f, y - 0.5f);
         try
         {
             l.robot = createRobot();
-            Vector robotPosition = level.map.translateToVector(
-                    level.getInitItem().row, level.getInitItem().col);
+            Vector robotPosition = l.translate.toVector(level.getInitItem().row,
+                    level.getInitItem().col);
             ImageRobot robot = (ImageRobot) l.robot.actor;
             robot.setCenter(robotPosition.getX(), robotPosition.getY());
             scene.add(robot);

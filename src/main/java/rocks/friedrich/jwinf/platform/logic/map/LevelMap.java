@@ -1,6 +1,5 @@
 package rocks.friedrich.jwinf.platform.logic.map;
 
-import ea.Vector;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 
 /**
@@ -135,44 +134,5 @@ public class LevelMap
     public boolean isObstacleNg(int row, int col)
     {
         return getStacked(row, col).isObstacle();
-    }
-
-    public void setPosition(float x, float y)
-    {
-        this.x = Math.round(x);
-        this.y = Math.round(y);
-    }
-
-    /**
-     * y-Koordinate des Ursprungs des Gitters (links oben)
-     */
-    public int row0y()
-    {
-        return y + rows - 1;
-    }
-
-    /**
-     * @param vector Ein Punkt im Engine-Alpha-Koordinatensystem.
-     */
-    public Point translateToPoint(Vector vector)
-    {
-        int xVector = Math.round(vector.getX());
-        int yVector = Math.round(vector.getY());
-        return new Point(row0y() - yVector, xVector - x);
-    }
-
-    public Point translateToPoint(float x, float y)
-    {
-        return translateToPoint(new Vector(x, y));
-    }
-
-    public Vector translateToVector(Point point)
-    {
-        return new Vector(x + point.col, row0y() - point.row);
-    }
-
-    public Vector translateToVector(int row, int col)
-    {
-        return translateToVector(new Point(row, col));
     }
 }
