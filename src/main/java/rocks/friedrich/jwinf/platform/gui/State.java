@@ -2,7 +2,6 @@ package rocks.friedrich.jwinf.platform.gui;
 
 import ea.animation.Interpolator;
 import ea.animation.interpolation.EaseInOutFloat;
-import rocks.friedrich.jwinf.platform.gui.map.TileMap;
 import rocks.friedrich.jwinf.platform.gui.robot.ImageRobot;
 import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
@@ -30,11 +29,6 @@ public class State
      * Die aktuelle Figur.
      */
     public static ImageRobot actor;
-
-    /**
-     * Der aktuelle Kachelsatz.
-     */
-    public static TileMap map;
 
     public static Menu menu = new Menu();
 }

@@ -2,9 +2,9 @@ package rocks.friedrich.jwinf.platform.gui.map;
 
 import ea.Scene;
 import ea.actor.Image;
-import rocks.friedrich.jwinf.platform.logic.map.Item;
+import rocks.friedrich.jwinf.platform.logic.item.Item;
+import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
 import rocks.friedrich.jwinf.platform.logic.map.LevelMap;
-import rocks.friedrich.jwinf.platform.logic.map.StackedItems;
 
 public class ItemMapPainter
 {
@@ -54,6 +54,8 @@ public class ItemMapPainter
 
     private Image createImage(Item item)
     {
-        return new Image(item.getFilePath(), 1, 1);
+        Image image = new Image(item.getFilePath(), 1, 1);
+        item.setController(new GraphicalItemController(item, image, translate));
+        return image;
     }
 }

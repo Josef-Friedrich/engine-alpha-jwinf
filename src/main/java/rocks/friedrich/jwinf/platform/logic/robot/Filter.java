@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
-import rocks.friedrich.jwinf.platform.logic.map.Item;
+import rocks.friedrich.jwinf.platform.logic.item.Item;
 
 public interface Filter
 {

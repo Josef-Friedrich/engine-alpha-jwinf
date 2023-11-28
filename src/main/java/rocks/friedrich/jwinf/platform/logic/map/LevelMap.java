@@ -1,6 +1,9 @@
 package rocks.friedrich.jwinf.platform.logic.map;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
+import rocks.friedrich.jwinf.platform.logic.item.Item;
+import rocks.friedrich.jwinf.platform.logic.item.ItemDataStore;
+import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
 
 /**
  * Die mit Gegenständen (Item) ausgefüllte Karte (Map) einer

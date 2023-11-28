@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform.logic.map;
+package rocks.friedrich.jwinf.platform.logic.item;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 
@@ -10,6 +10,8 @@ import rocks.friedrich.jwinf.platform.data.model.ItemData;
 public class Item
 {
     private ItemData data;
+
+    private ItemController controller;
 
     public Item(ItemData data)
     {
@@ -103,6 +105,11 @@ public class Item
         return data.isPushable;
     }
 
+    public void setController(ItemController controller)
+    {
+        this.controller = controller;
+    }
+
     /**
      * Gibt an, ob der Gegenstand einen Roboter darstellt.
      */
@@ -117,5 +124,13 @@ public class Item
     public boolean isWithdrawable()
     {
         return data.isWithdrawable;
+    }
+
+    public void move(int row, int col)
+    {
+        if (controller != null)
+        {
+            controller.move(row, col);
+        }
     }
 }
