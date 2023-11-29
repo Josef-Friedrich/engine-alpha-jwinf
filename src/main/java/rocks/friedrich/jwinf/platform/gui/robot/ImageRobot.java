@@ -107,12 +107,8 @@ public class ImageRobot extends Image implements Robot
         inMotion = false;
     }
 
-    /**
-     * Gehe einen Pixelmeter in Richtung der aktuellen Rotation.
-     */
-    public Movement forward()
+    private Movement performMovement(Movement movement)
     {
-        var movement = virtual.forward();
         if (movement.relocated)
         {
             go(virtual.dir);
@@ -122,6 +118,19 @@ public class ImageRobot extends Image implements Robot
             wiggle();
         }
         return movement;
+    }
+
+    /**
+     * Gehe einen Pixelmeter in Richtung der aktuellen Rotation.
+     */
+    public Movement forward()
+    {
+        return performMovement(virtual.forward());
+    }
+
+    public Movement backwards()
+    {
+        return performMovement(virtual.backwards());
     }
 
     public void go(Compass direction)

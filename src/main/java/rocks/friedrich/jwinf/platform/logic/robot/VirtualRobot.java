@@ -301,8 +301,21 @@ public class VirtualRobot implements Robot
         if (tryToBeOn(dir))
         {
             Point point = coordsInFront(dir);
-            row = point.row;
-            col = point.col;
+            row = point.getRow();
+            col = point.getCol();
+            numberOfMovements++;
+        }
+        return mov.setTo();
+    }
+
+    public Movement backwards()
+    {
+        var mov = reportMovement("backwards");
+        if (tryToBeOn(WEST))
+        {
+            Point point = coordsInFront(WEST);
+            row = point.getRow();
+            col = point.getCol();
             numberOfMovements++;
         }
         return mov.setTo();

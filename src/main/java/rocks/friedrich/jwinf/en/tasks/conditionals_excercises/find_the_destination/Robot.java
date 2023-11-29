@@ -2,29 +2,47 @@ package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_destinat
 
 import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
 
+/**
+ * https://jwinf.de/task/1157
+ */
 public class Robot extends RobotWrapper
 {
-    public boolean obstacleInFront()
-    {
-        return actor.obstacleInFront();
-    }
-
-    public void turnLeft()
-    {
-        actor.turnLeft();
-    }
-
-    public void turnRight()
-    {
-        actor.turnRight();
-    }
-
+    /**
+     * gehe vorwärts
+     */
     public void forward()
     {
         actor.forward();
     }
 
-    public Boolean reachedRedFlag()
+    /**
+     * drehe nach rechts
+     */
+    public void turnRight()
+    {
+        actor.turnRight();
+    }
+
+    /**
+     * drehe nach links
+     */
+    public void turnLeft()
+    {
+        actor.turnLeft();
+    }
+
+    /**
+     * vor Hindernis
+     */
+    public boolean obstacleInFront()
+    {
+        return actor.obstacleInFront();
+    }
+
+    /**
+     * Flagge erobert
+     */
+    public boolean reachedRedFlag()
     {
         return actor.onExit();
     }
