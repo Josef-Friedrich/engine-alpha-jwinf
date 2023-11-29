@@ -60,11 +60,6 @@ public class ItemData implements Cloneable
     public String relPath;
 
     /**
-     * Zum Beispiel: <code>c</code>
-     */
-    public char letter;
-
-    /**
      * Dateiname. Zum Beispiel: <code>kerze.png</code>. Importiert aus
      * Javascript-Datei.
      */
@@ -150,7 +145,8 @@ public class ItemData implements Cloneable
     }
 
     @Override
-	public Object clone() throws CloneNotSupportedException {
-		return super.clone();
-	}
+    public Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
+    }
 }

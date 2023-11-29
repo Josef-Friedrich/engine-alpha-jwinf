@@ -42,7 +42,6 @@
         "img": "platform.png",
         "relPath": "castle/platform.png",
         "name": "platform",
-        "letter": "p",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
@@ -52,7 +51,6 @@
         "img": "hearth.png",
         "relPath": "castle/hearth.png",
         "name": "hearth",
-        "letter": "h",
         "side": 60,
         "isContainer": true,
         "zOrder": 1
@@ -62,7 +60,6 @@
         "img": "firewood.png",
         "relPath": "castle/firewood.png",
         "name": "firewood",
-        "letter": "f",
         "side": 60,
         "isWithdrawable": true,
         "zOrder": 2

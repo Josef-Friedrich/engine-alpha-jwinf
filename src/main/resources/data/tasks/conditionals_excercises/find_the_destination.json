@@ -72,7 +72,6 @@
         "img": "grey_brick_wall.png",
         "relPath": "labyrinth/wall.png",
         "name": "wall",
-        "letter": "w",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
@@ -82,7 +81,6 @@
         "img": "flag.png",
         "relPath": "labyrinth/flag.png",
         "name": "flag",
-        "letter": "f",
         "side": 60,
         "isExit": true,
         "zOrder": 0
