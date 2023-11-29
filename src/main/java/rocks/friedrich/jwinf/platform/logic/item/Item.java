@@ -63,11 +63,11 @@ public class Item
     /**
      * Returns the file path of the item.
      *
-     * @return The file path in the format "images/{relPath}".
+     * @return The file path in the format "images/{img}".
      */
     public String getFilePath()
     {
-        return "images/%s".formatted(data.relPath);
+        return "images/%s".formatted(data.img);
     }
 
     /**

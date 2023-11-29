@@ -69,8 +69,7 @@
       },
       "obstacle": {
         "num": 2,
-        "img": "grey_brick_wall.png",
-        "relPath": "labyrinth/wall.png",
+        "img": "labyrinth/wall.png",
         "name": "wall",
         "side": 60,
         "isObstacle": true,
@@ -78,8 +77,7 @@
       },
       "flag": {
         "num": 3,
-        "img": "flag.png",
-        "relPath": "labyrinth/flag.png",
+        "img": "labyrinth/flag.png",
         "name": "flag",
         "side": 60,
         "isExit": true,

@@ -37,8 +37,7 @@
       },
       "platform": {
         "num": 2,
-        "img": "platform.png",
-        "relPath": "castle/platform.png",
+        "img": "castle/platform.png",
         "name": "platform",
         "side": 60,
         "isObstacle": true,
@@ -46,8 +45,7 @@
       },
       "hearth": {
         "num": 4,
-        "img": "hearth.png",
-        "relPath": "castle/hearth.png",
+        "img": "castle/hearth.png",
         "name": "hearth",
         "side": 60,
         "isContainer": true,
@@ -55,8 +53,7 @@
       },
       "wood": {
         "num": 5,
-        "img": "firewood.png",
-        "relPath": "castle/firewood.png",
+        "img": "castle/firewood.png",
         "name": "firewood",
         "side": 60,
         "isWithdrawable": true,
@@ -64,8 +61,7 @@
       },
       "wall": {
         "num": 6,
-        "img": "grey_brick_wall.png",
-        "relPath": "labyrinth/wall.png",
+        "img": "labyrinth/wall.png",
         "name": "wall",
         "side": 60,
         "isObstacle": true,

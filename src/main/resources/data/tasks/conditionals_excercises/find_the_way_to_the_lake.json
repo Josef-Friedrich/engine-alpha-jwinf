@@ -70,8 +70,7 @@
       },
       "road": {
         "num": 1,
-        "img": "road.png",
-        "relPath": "sea/road.png",
+        "img": "sea/road.png",
         "name": "road",
         "side": 60,
         "isObstacle": false,
@@ -79,8 +78,7 @@
       },
       "sand": {
         "num": 3,
-        "img": "sand.png",
-        "relPath": "sea/sand.png",
+        "img": "sea/sand.png",
         "name": "sand",
         "side": 60,
         "isObstacle": true,
@@ -88,8 +86,7 @@
       },
       "beach_tl": {
         "num": 6,
-        "img": "Beach_tl.png",
-        "relPath": "sea/sea_tl.png",
+        "img": "sea/sea_tl.png",
         "name": "sea_tl",
         "side": 60,
         "isObstacle": true,
@@ -97,8 +94,7 @@
       },
       "beach_tr": {
         "num": 7,
-        "img": "Beach_tr.png",
-        "relPath": "sea/sea_tr.png",
+        "img": "sea/sea_tr.png",
         "name": "sea_tr",
         "side": 60,
         "isObstacle": true,
@@ -106,8 +102,7 @@
       },
       "beach_bl": {
         "num": 8,
-        "img": "Beach_bl.png",
-        "relPath": "sea/sea_bl.png",
+        "img": "sea/sea_bl.png",
         "name": "sea_bl",
         "side": 60,
         "isObstacle": true,
@@ -115,8 +110,7 @@
       },
       "beach_br": {
         "num": 9,
-        "img": "Beach_br.png",
-        "relPath": "sea/sea_br.png",
+        "img": "sea/sea_br.png",
         "name": "sea_br",
         "side": 60,
         "isObstacle": false,
@@ -125,8 +119,7 @@
       },
       "bush": {
         "num": 2,
-        "img": "bush.png",
-        "relPath": "sea/bush.png",
+        "img": "sea/bush.png",
         "name": "bush",
         "side": 60,
         "isObstacle": true,
@@ -142,8 +135,7 @@
       },
       "gras": {
         "num": 5,
-        "img": "grass.png",
-        "relPath": "sea/grass.png",
+        "img": "sea/grass.png",
         "name": "grass",
         "side": 60,
         "isObstacle": true,
@@ -158,8 +150,7 @@
       },
       "tree": {
         "num": 15,
-        "img": "tree.png",
-        "relPath": "sea/tree.png",
+        "img": "sea/tree.png",
         "name": "tree",
         "side": 80,
         "isObstacle": true,
@@ -169,8 +160,7 @@
       },
       "flowers": {
         "num": 16,
-        "img": "flowers.png",
-        "relPath": "sea/flowers.png",
+        "img": "sea/flowers.png",
         "name": "flowers",
         "side": 50,
         "isObstacle": true,
@@ -179,8 +169,7 @@
       },
       "obstacle_small": {
         "num": 10,
-        "img": "grey_brick_wall_small.png",
-        "relPath": "sea/brick.png",
+        "img": "sea/brick.png",
         "name": "brick",
         "side": 60,
         "isObstacle": true,

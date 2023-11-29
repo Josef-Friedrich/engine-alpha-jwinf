@@ -53,15 +53,9 @@ public class ItemData implements Cloneable
      */
     public String type;
 
-    /**
+  /**
      * Relativer Pfad zu <code>src/main/resources/images</code>. Zum Beispiel:
      * <code>candle/candle.png</code>
-     */
-    public String relPath;
-
-    /**
-     * Dateiname. Zum Beispiel: <code>kerze.png</code>. Importiert aus
-     * Javascript-Datei.
      */
     public String img;
 

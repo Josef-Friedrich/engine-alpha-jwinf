@@ -45,8 +45,7 @@
       },
       "initial_paint": {
         "num": 3,
-        "img": "kerze.png",
-        "relPath": "candle/candle.png",
+        "img": "candle/candle.png",
         "name": "candle",
         "side": 60,
         "isPaint": true,
@@ -54,8 +53,7 @@
       },
       "paint": {
         "num": 2,
-        "img": "flamme.png",
-        "relPath": "candle/flame.png",
+        "img": "candle/flame.png",
         "name": "flame",
         "side": 60,
         "isWithdrawable": true,
@@ -63,8 +61,7 @@
       },
       "marker": {
         "num": 4,
-        "img": "docht.png",
-        "relPath": "candle/wick.png",
+        "img": "candle/wick.png",
         "name": "wick",
         "side": 60,
         "isContainer": true,
