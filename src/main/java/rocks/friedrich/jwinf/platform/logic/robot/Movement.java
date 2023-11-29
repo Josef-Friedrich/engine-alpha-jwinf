@@ -28,6 +28,8 @@ public class Movement
 
     public int rotation;
 
+    public ErrorMessages error;
+
     /**
      * Constructs a Movement object with the specified name and robot.
      *
@@ -52,6 +54,13 @@ public class Movement
         to = new DirectionalPoint(robot.row, robot.col, robot.dir);
         relocated = from.row != to.row || from.col != to.col;
         rotation = ((from.dir.getNumber() + to.dir.getNumber() + 1) % 4) - 1;
+        return this;
+    }
+
+    public Movement setError(ErrorMessages error)
+    {
+        setTo();
+        this.error = error;
         return this;
     }
 

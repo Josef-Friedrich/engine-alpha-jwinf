@@ -52,7 +52,7 @@ public class Level
     {
         var c = new LevelContext();
         c.level = this;
-        c.robot = new VirtualRobot(map);
+        c.robot = new VirtualRobot(this);
         c.robot.addDefaultMovementListener();
         c.robot.setInitPosition(getInitItem());
         return c;

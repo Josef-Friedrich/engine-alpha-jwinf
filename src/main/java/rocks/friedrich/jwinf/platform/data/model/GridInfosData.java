@@ -6,10 +6,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(value = { "hideSaveOrLoad", "conceptViewer",
         "languageStrings", "limitedUses", "includeBlocks", "blocklyColourTheme",
-        "checkEndEveryTurn", "hasGravity", "ignoreInvalidMoves", "nbPlatforms",
-        "actionDelay", "multiple_marbles" })
-public class GridData
+        "checkEndEveryTurn", "ignoreInvalidMoves", "nbPlatforms", "actionDelay",
+        "multiple_marbles" })
+public class GridInfosData
 {
+    public boolean hasGravity;
+
     /**
      * Ist in
      * https://jwinf.de/tasks/jwinf/_common/modules/pemFioi/blocklyRobot_lib-1.1.js

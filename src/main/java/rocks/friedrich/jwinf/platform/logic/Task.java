@@ -248,4 +248,9 @@ public class Task
     {
         return levels.numberOfLevels;
     }
+
+    public boolean hasGravity()
+    {
+        return data.gridInfos.hasGravity;
+    }
 }

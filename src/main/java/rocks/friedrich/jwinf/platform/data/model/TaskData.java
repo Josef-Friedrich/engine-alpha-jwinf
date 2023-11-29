@@ -57,7 +57,7 @@ public class TaskData
      */
     public String packagePath;
 
-    public GridData gridInfos;
+    public GridInfosData gridInfos;
 
     public LevelCollectionData levels;
 

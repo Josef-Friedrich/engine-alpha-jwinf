@@ -266,6 +266,12 @@ public class ImageRobot extends Image implements Robot
         setCenter(center);
     }
 
+    public Movement jump()
+    {
+        var movement = virtual.jump();
+        return movement;
+    }
+
     public Item dropObject(int itemNum)
     {
         Item item = virtual.dropObject(itemNum);

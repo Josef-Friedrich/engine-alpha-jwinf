@@ -12,6 +12,7 @@ import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
+import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
 import rocks.friedrich.jwinf.platform.logic.map.LevelMap;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
@@ -25,6 +26,8 @@ public class VirtualRobot implements Robot
     private List<MovementListener> movementListeners = new ArrayList<>();
 
     public Route route;
+
+    public Level level;
 
     public LevelMap map;
 
@@ -54,9 +57,10 @@ public class VirtualRobot implements Robot
      */
     public boolean movementSuccessful;
 
-    public VirtualRobot(LevelMap map)
+    public VirtualRobot(Level level)
     {
-        this.map = map;
+        this.level = level;
+        this.map = level.getMap();
         route = new Route();
     }
 
@@ -164,6 +168,17 @@ public class VirtualRobot implements Robot
 
     /**
      * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2913-L2921">blocklyRobot_lib-1.1.js
+     *      L2913-L2921</a>
+     */
+    public boolean isInGrid(int row, int col)
+    {
+        return row < 0 || col < 0 || row >= map.getRows()
+                || col >= map.getCols();
+    }
+
+    /**
+     * @see <a href=
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2923-L2944">blocklyRobot_lib-1.1.js
      *      L2923-L2944</a>
      */
@@ -242,6 +257,30 @@ public class VirtualRobot implements Robot
     public boolean obstacleInFront()
     {
         return isInFront(item -> item.isObstacle());
+    }
+
+    public Movement jump()
+    {
+        var mov = reportMovement("jump");
+        if (!level.task.hasGravity())
+        {
+            return mov.setError(ErrorMessages.JUMP_WITHOUT_GRAVITY);
+        }
+        if (!isInGrid(row - 1, col))
+        {
+            return mov.setError(ErrorMessages.JUMP_OUTSIDE_GRID);
+        }
+        if (hasOn(row - 2, col,
+                item -> item.isObstacle() || item.isProjectile()))
+        {
+            return mov.setError(ErrorMessages.JUMP_OBSTACLE_BLOCKING);
+        }
+        if (!hasOn(row - 1, col, item -> item.isObstacle()))
+        {
+            return mov.setError(ErrorMessages.JUMP_OBSTACLE_BLOCKING);
+        }
+        row -= 2;
+        return mov.setTo();
     }
 
     public Item dropObject(int itemNum)
