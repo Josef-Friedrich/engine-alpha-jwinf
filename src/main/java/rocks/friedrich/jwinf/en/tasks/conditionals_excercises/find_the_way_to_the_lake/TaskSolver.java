@@ -70,6 +70,6 @@ public class TaskSolver extends Solver<Robot>
 
     public static void main(String[] args)
     {
-        new TaskSolver().solve("easy");
+        new TaskSolver().solve();
     }
 }

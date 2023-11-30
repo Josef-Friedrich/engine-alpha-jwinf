@@ -26,6 +26,10 @@ public class Movement
      */
     public boolean relocated;
 
+    /**
+     * 1 ist 90 Grad nach rechts, -1 ist 90 Grad nach links, 2 ist 180 Grad nach
+     * rechts.
+     */
     public int rotation;
 
     public ErrorMessages error;
@@ -58,7 +62,7 @@ public class Movement
     {
         to = new DirectionalPoint(robot.row, robot.col, robot.dir);
         relocated = from.row != to.row || from.col != to.col;
-        rotation = ((from.dir.getNumber() + to.dir.getNumber() + 1) % 4) - 1;
+        rotation = ((to.dir.getNumber() - from.dir.getNumber() + 1) % 4) - 1;
         return this;
     }
 
@@ -77,6 +81,7 @@ public class Movement
     public String toString()
     {
         return "Movement [from=%s, to=%s, name=%s, relocated=%s, rotation=%s]"
-                .formatted(from.getSummary(), to.getSummary(), name, relocated, rotation);
+                .formatted(from.getSummary(), to.getSummary(), name, relocated,
+                        rotation);
     }
 }

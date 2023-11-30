@@ -108,6 +108,7 @@ public class ImageRobot extends Image implements Robot
 
     private Movement performMovement(Movement movement)
     {
+        System.out.println(movement);
         if (movement.rotation != 0)
         {
             rotateByAnimated(movement.rotation * -90);
