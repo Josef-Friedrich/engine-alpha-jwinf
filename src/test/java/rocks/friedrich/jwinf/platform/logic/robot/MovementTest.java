@@ -40,6 +40,30 @@ public class MovementTest
     }
 
     @Test
+    void testRotationEast()
+    {
+        assertEquals(robot.east().rotation, 0);
+    }
+
+    @Test
+    void testRotationWest()
+    {
+        assertEquals(robot.west().rotation, 0);
+    }
+
+    @Test
+    void testRotationSouth()
+    {
+        assertEquals(robot.south().rotation, 0);
+    }
+
+    @Test
+    void testRotationNorth()
+    {
+        assertEquals(robot.north().rotation, 0);
+    }
+
+    @Test
     void testRelocatedTrue()
     {
         assertTrue(robot.forward().relocated);

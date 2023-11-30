@@ -14,7 +14,6 @@ import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.gui.State;
 import rocks.friedrich.jwinf.platform.gui.level.AssembledLevel;
-import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 import rocks.friedrich.jwinf.platform.logic.robot.Movement;
@@ -91,31 +90,35 @@ public class ImageRobot extends Image implements Robot
         return virtual.obstacleInFront();
     }
 
-    protected void go(double meter)
+    private void relocateAnimated(Vector to)
     {
         if (inMotion)
         {
             return;
         }
         inMotion = true;
-        Vector move = Vector.ofAngle(getRotation()).multiply((float) meter);
-        Vector initial = getCenter();
-        float duration = (float) meter / speed / 2;
+        Vector from = getCenter();
+        Vector vector = new Vector(from, to);
+        float duration = (float) 1 / speed / 2;
         animate(duration, progress -> {
-            setCenter(initial.add(move.multiply(progress)));
+            setCenter(from.add(vector.multiply(progress)));
         });
         inMotion = false;
     }
 
     private Movement performMovement(Movement movement)
     {
+        if (movement.rotation != 0)
+        {
+            rotateByAnimated(movement.rotation * -90);
+        }
         if (movement.relocated)
         {
-            go(virtual.dir);
+            relocateAnimated(level.translate.toVector(movement.getTo()));
         }
-        else
+        if (movement.error != null)
         {
-            wiggle();
+            wiggleAnimated();
         }
         return movement;
     }
@@ -133,63 +136,27 @@ public class ImageRobot extends Image implements Robot
         return performMovement(virtual.backwards());
     }
 
-    public void go(Compass direction)
-    {
-        float degree = 90;
-        switch (direction)
-        {
-        case EAST:
-            degree = 0;
-            break;
-
-        case NORTH:
-            degree = 90;
-            break;
-
-        case WEST:
-            degree = 180;
-            break;
-
-        case SOUTH:
-            degree = 270;
-            break;
-
-        default:
-            System.out.println("Not supported direction");
-        }
-        rotateAnimated(degree);
-        go(1);
-    }
-
     public Movement east()
     {
-        var movement = virtual.east();
-        go(movement.to.dir);
-        return movement;
+        return performMovement(virtual.east());
     }
 
     public Movement south()
     {
-        var movement = virtual.south();
-        go(movement.to.dir);
-        return movement;
+        return performMovement(virtual.south());
     }
 
     public Movement west()
     {
-        var movement = virtual.west();
-        go(movement.to.dir);
-        return movement;
+        return performMovement(virtual.west());
     }
 
     public Movement north()
     {
-        var movement = virtual.north();
-        go(movement.to.dir);
-        return movement;
+        return performMovement(virtual.north());
     }
 
-    protected void wait(double seconds)
+    private void wait(double seconds)
     {
         try
         {
@@ -201,12 +168,12 @@ public class ImageRobot extends Image implements Robot
         }
     }
 
-    public void wiggle()
+    private void wiggleAnimated()
     {
-        this.wiggle(0.3f);
+        this.wiggleAnimated(0.3f);
     }
 
-    public void wiggle(float duration)
+    private void wiggleAnimated(float duration)
     {
         if (inMotion)
         {
@@ -224,7 +191,7 @@ public class ImageRobot extends Image implements Robot
         inMotion = false;
     }
 
-    public void rotateByAnimated(double degree)
+    private void rotateByAnimated(double degree)
     {
         if (inMotion)
         {
@@ -232,6 +199,10 @@ public class ImageRobot extends Image implements Robot
         }
         inMotion = true;
         Vector center = getCenter();
+        // case EAST: 0;
+        // case NORTH: 90;
+        // case WEST: 180;
+        // case SOUTH: 270;
         // To avoid high rotation numbers
         float start = getRotation() % 360;
         setRotation(start);
@@ -241,29 +212,6 @@ public class ImageRobot extends Image implements Robot
             setCenter(center);
         });
         inMotion = false;
-    }
-
-    public void rotateAnimated(double dest)
-    {
-        float src = getRotation();
-        Vector center = getCenter();
-        float diff = (float) dest - src;
-        diff %= 360;
-        if (diff == 0)
-        {
-            return;
-        }
-        // for example: dest 0 src 270
-        if (diff < -180)
-        {
-            diff += 360;
-        }
-        if (diff > 180)
-        {
-            diff -= 360;
-        }
-        rotateByAnimated(diff);
-        setCenter(center);
     }
 
     public Movement jump()
@@ -288,9 +236,7 @@ public class ImageRobot extends Image implements Robot
      */
     public Movement turnLeft()
     {
-        var movement = virtual.turnLeft();
-        rotateByAnimated(90);
-        return movement;
+        return performMovement(virtual.turnLeft());
     }
 
     /**
@@ -298,19 +244,15 @@ public class ImageRobot extends Image implements Robot
      */
     public Movement turnRight()
     {
-        var movement = virtual.turnRight();
-        rotateByAnimated(-90);
-        return movement;
+        return performMovement(virtual.turnRight());
     }
 
     public Movement turnAround()
     {
-        var movement = virtual.turnAround();
-        rotateByAnimated(180);
-        return movement;
+        return performMovement(virtual.turnAround());
     }
 
-    protected void animate(float duration, Consumer<Float> setter,
+    private void animate(float duration, Consumer<Float> setter,
             Interpolator<Float> interpolator)
     {
         CompletableFuture<Void> future = new CompletableFuture<>();
@@ -331,17 +273,8 @@ public class ImageRobot extends Image implements Robot
         }
     }
 
-    protected void animate(float duration, Consumer<Float> setter)
+    private void animate(float duration, Consumer<Float> setter)
     {
         animate(duration, setter, State.interpolator);
-    }
-
-    public void placeInMap(int x, int y)
-    {
-        if (y > 0)
-        {
-            y = y * -1;
-        }
-        setCenter(x, y);
     }
 }

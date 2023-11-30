@@ -43,6 +43,11 @@ public class Movement
         this.robot = robot;
     }
 
+    public DirectionalPoint getTo()
+    {
+        return to;
+    }
+
     /**
      * Sets the 'to' location of the movement and calculates the relocation and
      * rotation values.
@@ -71,7 +76,7 @@ public class Movement
      */
     public String toString()
     {
-        return "Movement [from=%s, to=%s, name=%s, relocated=%s]"
-                .formatted(from.getSummary(), to.getSummary(), name, relocated);
+        return "Movement [from=%s, to=%s, name=%s, relocated=%s, rotation=%s]"
+                .formatted(from.getSummary(), to.getSummary(), name, relocated, rotation);
     }
 }
