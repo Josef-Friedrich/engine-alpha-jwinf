@@ -34,6 +34,7 @@ public class Robot extends RobotWrapper
      */
     public void constructPlatformInFront()
     {
+        actor.dropPlatformInFront();
     }
 
     /**
@@ -41,6 +42,7 @@ public class Robot extends RobotWrapper
      */
     public void constructPlatformTop()
     {
+        actor.dropPlatformAbove();
     }
 
     /**

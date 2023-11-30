@@ -153,7 +153,6 @@ public interface Robot
      *      L3104-L3123</a>
      */
     public Movement jump();
-
     // public void withdraw();
     // public void checkContainer();
     // public void drop();
@@ -164,6 +163,20 @@ public interface Robot
      *      L3235-L3263</a>
      */
     public Item dropObject(int itemNum);
+
+    /**
+     * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2312-L2328
+     * 
+     * @return
+     */
+    public Item dropPlatformInFront();
+
+    /**
+     * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2330-L2346
+     * 
+     * @return
+     */
+    public Item dropPlatformAbove();
 
     /**
      * @see <a href=

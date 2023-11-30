@@ -293,6 +293,16 @@ public class VirtualRobot implements Robot
         return null;
     }
 
+    public Item dropPlatformInFront()
+    {
+        return null;
+    }
+
+    public Item dropPlatformAbove()
+    {
+        return null;
+    }
+
     public Movement turnLeft()
     {
         var mov = reportMovement("turnLeft");

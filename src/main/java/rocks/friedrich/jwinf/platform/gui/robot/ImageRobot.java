@@ -232,6 +232,16 @@ public class ImageRobot extends Image implements Robot
         return item;
     }
 
+    public Item dropPlatformInFront()
+    {
+        return virtual.dropPlatformInFront();
+    }
+
+    public Item dropPlatformAbove()
+    {
+        return virtual.dropPlatformAbove();
+    }
+
     /**
      * Drehe um 90 Grad nach links.
      */
