@@ -263,8 +263,20 @@ public interface Robot
      *      L3374-L3376</a>
      */
     public boolean obstacleInFront();
-    // public boolean platformInFront();
-    // public boolean platformAbove();
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3378-L3381">blocklyRobot_lib-1.1.js
+     *      L3378-L3381</a>
+     */
+    public boolean platformInFront();
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3383-L3386">blocklyRobot_lib-1.1.js
+     *      L3383-L3386</a>
+     */
+    public boolean platformAbove();
     // public void writeNumber();
     // public void readNumber();
     // public void pushObject();

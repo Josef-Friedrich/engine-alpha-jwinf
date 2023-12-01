@@ -70,7 +70,6 @@ public class ImageRobot extends Image implements Robot
         return virtual.onExit();
     }
 
-    @Override
     public boolean onPaint()
     {
         return virtual.onPaint();
@@ -79,6 +78,16 @@ public class ImageRobot extends Image implements Robot
     public boolean obstacleInFront()
     {
         return virtual.obstacleInFront();
+    }
+
+    public boolean platformInFront()
+    {
+        return virtual.platformInFront();
+    }
+
+    public boolean platformAbove()
+    {
+        return virtual.platformAbove();
     }
 
     private void relocateAnimated(Vector to)

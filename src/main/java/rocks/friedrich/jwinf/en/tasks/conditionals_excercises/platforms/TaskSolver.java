@@ -12,8 +12,14 @@ public class TaskSolver extends Solver<Robot>
     {
         robot.forward();
         robot.collectFirewood();
-        robot.forward();
-        robot.jump();
+        for (int i = 0; i < 15; i++)
+        {
+            robot.forward();
+            if (robot.platformAbove())
+            {
+                robot.jump();
+            }
+        }
     }
 
     @Override

@@ -27,6 +27,13 @@ public class GridInfosData
     public String gridColor;
 
     /**
+     * <a href=
+     * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3140C18-L3140C18">blocklyRobot_lib-1.1.js
+     * L3140C18</a>
+     */
+    public int bagSize;
+
+    /**
      * For example „labyrinth“.
      */
     public String contextType;

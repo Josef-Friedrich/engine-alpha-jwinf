@@ -53,4 +53,12 @@ public class Robot extends RobotWrapper
     {
         actor.backwards();
     }
+
+    /**
+     * Plattform oben
+     */
+    public boolean platformAbove()
+    {
+        return actor.platformAbove();
+    }
 }

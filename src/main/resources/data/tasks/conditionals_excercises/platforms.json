@@ -15,6 +15,7 @@
   "gridInfos": {
     "backgroundColor": "#1f003c",
     "gridColor": "#888888",
+    "bagSize": 1,
     "hideSaveOrLoad": true,
     "conceptViewer": false,
     "contextType": "castle",

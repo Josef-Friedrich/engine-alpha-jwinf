@@ -123,6 +123,11 @@ public class Task
         return data.gridInfos.backgroundColor;
     }
 
+    public int getBagSize()
+    {
+        return data.gridInfos.bagSize;
+    }
+
     /**
      * Returns a map of difficulty levels and their corresponding list of
      * levels.

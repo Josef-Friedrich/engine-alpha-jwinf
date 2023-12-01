@@ -259,6 +259,28 @@ public class VirtualRobot implements Robot
         return isInFront(item -> item.isObstacle());
     }
 
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3378-L3381">blocklyRobot_lib-1.1.js
+     *      L3378-L3381</a>
+     */
+    public boolean platformInFront()
+    {
+        Point point = coordsInFront(dir);
+        return hasOn(point.getRow() + 1, point.getCol(),
+                item -> item.isObstacle());
+    }
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3383-L3386">blocklyRobot_lib-1.1.js
+     *      L3383-L3386</a>
+     */
+    public boolean platformAbove()
+    {
+        return hasOn(row - 1, col, item -> item.isObstacle());
+    }
+
     public Movement jump()
     {
         var mov = reportMovement("jump");
@@ -296,6 +318,11 @@ public class VirtualRobot implements Robot
         {
             return (ItemRelocation) action
                     .setError(ErrorMessages.WITHDRAWABLES_NOTHING_TO_PICK_UP);
+        }
+        if (level.task.getBagSize() < context.bag.size() + 1)
+        {
+            return (ItemRelocation) action
+                    .setError(ErrorMessages.WITHDRAWABLES_TOO_MANY_OBJECTS);
         }
         item.withdraw();
         context.bag.add(item);
