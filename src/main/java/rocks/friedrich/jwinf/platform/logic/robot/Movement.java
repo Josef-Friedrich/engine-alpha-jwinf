@@ -80,7 +80,12 @@ public class Movement
      */
     public String toString()
     {
-        return "Movement [from=%s, to=%s, name=%s, relocated=%s, rotation=%s]"
+        if (error != null)
+        {
+            return "Movement [name=%s, error=%s]".formatted(from.getSummary(),
+                    error);
+        }
+        return "Movement [name=%s, from=%s, to=%s, relocated=%s, rotation=%s]"
                 .formatted(from.getSummary(), to.getSummary(), name, relocated,
                         rotation);
     }

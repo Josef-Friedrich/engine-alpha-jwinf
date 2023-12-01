@@ -173,8 +173,8 @@ public class VirtualRobot implements Robot
      */
     public boolean isInGrid(int row, int col)
     {
-        return row < 0 || col < 0 || row >= map.getRows()
-                || col >= map.getCols();
+        return row >= 0 && col >= 0 && row < map.getRows()
+                && col < map.getCols();
     }
 
     /**
