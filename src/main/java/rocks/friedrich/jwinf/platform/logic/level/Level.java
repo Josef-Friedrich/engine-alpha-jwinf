@@ -35,15 +35,15 @@ public class Level
 
     public int rows;
 
-    public Context map;
+    public Context context;
 
     public Level(LevelData data, Task task)
     {
         this.data = data;
         this.task = task;
-        map = new Context(data.tiles, task.getItemsData());
-        cols = map.cols;
-        rows = map.rows;
+        context = new Context(data.tiles, task.getItemsData());
+        cols = context.cols;
+        rows = context.rows;
         difficulty = data.difficulty;
         testIndex = data.testNo;
     }
@@ -58,9 +58,9 @@ public class Level
         return c;
     }
 
-    public Context getMap()
+    public Context getContext()
     {
-        return map;
+        return context;
     }
 
     public ItemData getInitItem()

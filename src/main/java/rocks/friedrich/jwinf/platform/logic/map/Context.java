@@ -1,5 +1,8 @@
 package rocks.friedrich.jwinf.platform.logic.map;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.ItemDataStore;
@@ -24,6 +27,13 @@ public class Context
      * Anzahl an Spalten (x-Richtung bzw. Breite)
      */
     public int cols;
+
+    /**
+     * Behälter in dem Objekte eingesammelt (withdraw) werden können.
+     *
+     * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2458-L2478
+     */
+    public List<Item> bag = new ArrayList<>();
 
     public Context(int[][] map, ItemDataStore items)
     {

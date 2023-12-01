@@ -1,7 +1,5 @@
 package rocks.friedrich.jwinf.platform.gui.robot;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
@@ -11,11 +9,11 @@ import ea.actor.Image;
 import ea.animation.Interpolator;
 import ea.animation.ValueAnimator;
 import ea.animation.interpolation.SinusFloat;
-import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.gui.State;
 import rocks.friedrich.jwinf.platform.gui.level.AssembledLevel;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.robot.ItemRelocation;
 import rocks.friedrich.jwinf.platform.logic.robot.Movement;
 import rocks.friedrich.jwinf.platform.logic.robot.Robot;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
@@ -33,13 +31,6 @@ public class ImageRobot extends Image implements Robot
     private boolean inMotion = false;
 
     protected float speed = 1f;
-
-    /**
-     * Behälter in dem Objekte eingesammelt (withdraw) werden können.
-     *
-     * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2458-L2478
-     */
-    public List<ItemData> bag = new ArrayList<>();
 
     public ImageRobot(String filepath, VirtualRobot virtual,
             AssembledLevel level)
@@ -220,7 +211,7 @@ public class ImageRobot extends Image implements Robot
         return performMovement(virtual.jump());
     }
 
-    public Item withdraw()
+    public ItemRelocation withdraw()
     {
         return virtual.withdraw();
     }

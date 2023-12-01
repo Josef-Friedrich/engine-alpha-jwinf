@@ -184,7 +184,7 @@ public class Task
 
     public Context getMap()
     {
-        return getLevel().getMap();
+        return getLevel().getContext();
     }
 
     /**

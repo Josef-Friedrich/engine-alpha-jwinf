@@ -34,7 +34,7 @@ public class AssembledLevel
         this.scene = scene;
         this.x = x;
         this.y = y;
-        var map = level.getMap();
+        var map = level.getContext();
         translate = new CoordinateSystemTranslator(map.getRows(), map.getCols(),
                 x, y);
     }

@@ -5,7 +5,7 @@ import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
 /**
  * Represents a movement made by a robot.
  */
-public class Movement
+public class Movement extends Action
 {
     private VirtualRobot robot;
 
@@ -19,8 +19,6 @@ public class Movement
      */
     public DirectionalPoint to;
 
-    public String name;
-
     /**
      * Indicates whether a change in location has occurred or not.
      */
@@ -32,8 +30,6 @@ public class Movement
      */
     public int rotation;
 
-    public ErrorMessages error;
-
     /**
      * Constructs a Movement object with the specified name and robot.
      *
@@ -42,7 +38,7 @@ public class Movement
      */
     public Movement(String name, VirtualRobot robot)
     {
-        this.name = name;
+        super(name);
         from = new DirectionalPoint(robot.row, robot.col, robot.dir);
         this.robot = robot;
     }

@@ -29,7 +29,7 @@ public class VirtualRobot implements Robot
 
     public Level level;
 
-    public Context map;
+    public Context context;
 
     /**
      * Die Zeile, in der sich der Roboter aktuell befindet.
@@ -60,7 +60,7 @@ public class VirtualRobot implements Robot
     public VirtualRobot(Level level)
     {
         this.level = level;
-        this.map = level.getMap();
+        this.context = level.getContext();
         route = new Route();
     }
 
@@ -105,10 +105,10 @@ public class VirtualRobot implements Robot
             switch (direction)
             {
             case EAST:
-                return col < map.cols - 1;
+                return col < context.cols - 1;
 
             case SOUTH:
-                return row < map.rows - 1;
+                return row < context.rows - 1;
 
             case WEST:
                 return col > 0;
@@ -146,7 +146,7 @@ public class VirtualRobot implements Robot
 
         default:
         }
-        return map.isObstacle(row + rowMovement, col + colMovement);
+        return context.isObstacle(row + rowMovement, col + colMovement);
     }
 
     public boolean isInFrontOfObstacle()
@@ -173,8 +173,8 @@ public class VirtualRobot implements Robot
      */
     public boolean isInGrid(int row, int col)
     {
-        return row >= 0 && col >= 0 && row < map.getRows()
-                && col < map.getCols();
+        return row >= 0 && col >= 0 && row < context.getRows()
+                && col < context.getCols();
     }
 
     /**
@@ -226,7 +226,7 @@ public class VirtualRobot implements Robot
      */
     private boolean hasOn(int row, int col, Filter filter)
     {
-        return map.get(row, col).has(filter);
+        return context.get(row, col).has(filter);
     }
 
     /**
@@ -283,18 +283,35 @@ public class VirtualRobot implements Robot
         return mov.setTo();
     }
 
-    public Item withdraw()
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3125-L3164">blocklyRobot_lib-1.1.js
+     *      L3125-L3164</a>
+     */
+    public ItemRelocation withdraw()
     {
         Item item = getOnItems().withdraw();
+        var action = reportItemRelocation("withdraw", item);
+        if (item == null)
+        {
+            return (ItemRelocation) action
+                    .setError(ErrorMessages.WITHDRAWABLES_NOTHING_TO_PICK_UP);
+        }
         item.withdraw();
-        return item;
+        context.bag.add(item);
+        return action;
+    }
+
+    private ItemRelocation reportItemRelocation(String name, Item item)
+    {
+        return new ItemRelocation(name, item);
     }
 
     public Item dropObject(int itemNum)
     {
         if (onContainer())
         {
-            Item item = map.add(getRow(), getCol(), itemNum);
+            Item item = context.add(getRow(), getCol(), itemNum);
             return item;
         }
         return null;
@@ -430,7 +447,7 @@ public class VirtualRobot implements Robot
      */
     private StackedItems getOnItems()
     {
-        return map.get(row, col);
+        return context.get(row, col);
     }
 
     public boolean onContainer()

@@ -56,7 +56,7 @@ public class LevelAssembler
         l.grid.setPosition(x - SHIFT, y - SHIFT);
         scene.add(l.grid);
         // ItemGrid
-        new ItemMapPainter(level.getMap()).paint(scene, x - SHIFT, y - SHIFT);
+        new ItemMapPainter(level.getContext()).paint(scene, x - SHIFT, y - SHIFT);
         try
         {
             l.robot = createRobot(l);
