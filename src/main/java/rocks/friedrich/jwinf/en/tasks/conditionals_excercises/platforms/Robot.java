@@ -20,7 +20,7 @@ public class Robot extends RobotWrapper
      */
     public void jump()
     {
-        // actor.jump();
+        actor.jump();
     }
 
     /**
@@ -28,6 +28,7 @@ public class Robot extends RobotWrapper
      */
     public void collectFirewood()
     {
+        actor.withdraw();
     }
 
     /**
@@ -49,7 +50,6 @@ public class Robot extends RobotWrapper
      * gehe rückwärts
      */
     public void backwards()
-    
     {
         actor.backwards();
     }

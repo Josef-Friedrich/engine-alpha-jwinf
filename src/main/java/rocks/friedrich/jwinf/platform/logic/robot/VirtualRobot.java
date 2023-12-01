@@ -283,6 +283,13 @@ public class VirtualRobot implements Robot
         return mov.setTo();
     }
 
+    public Item withdraw()
+    {
+        Item item = getOnItems().withdraw();
+        item.withdraw();
+        return item;
+    }
+
     public Item dropObject(int itemNum)
     {
         if (onContainer())

@@ -102,4 +102,19 @@ public class StackedItems implements Iterable<Item>
         }
         return null;
     }
+
+    public Item withdraw()
+    {
+        Iterator<Item> iterator = items.iterator();
+        while (iterator.hasNext())
+        {
+            Item item = iterator.next();
+            if (item.isWithdrawable())
+            {
+                iterator.remove();
+                return item;
+            }
+        }
+        return null;
+    }
 }

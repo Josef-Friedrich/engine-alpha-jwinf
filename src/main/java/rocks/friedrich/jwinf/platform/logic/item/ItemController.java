@@ -11,4 +11,6 @@ public interface ItemController
      *      L3025-L3052</a>
      */
     public void move(int row, int col);
+
+    public void withdraw();
 }

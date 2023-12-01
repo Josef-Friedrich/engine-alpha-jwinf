@@ -33,12 +33,8 @@ public class LevelAssembler
 
     public RobotWrapper createRobot(AssembledLevel l) throws Exception
     {
-        String className = "rocks.friedrich.jwinf.tasks.en.conditionals.candle.Robot";
-        if (level.task.data.packagePath != null)
-        {
-            className = "rocks.friedrich.jwinf.en.tasks.%s.Robot"
-                    .formatted(level.task.data.packagePath.replace("/", "."));
-        }
+        String className = "rocks.friedrich.jwinf.en.tasks.%s.Robot"
+                .formatted(level.task.getTaskPath().replace("/", "."));
         RobotWrapper robot = RobotWrapper.class.getClassLoader()
                 .loadClass(className).asSubclass(RobotWrapper.class)
                 .getDeclaredConstructor().newInstance();

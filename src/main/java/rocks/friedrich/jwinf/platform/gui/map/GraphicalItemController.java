@@ -56,4 +56,9 @@ public class GraphicalItemController implements ItemController
     {
         // TODO Auto-generated method stub
     }
+
+    public void withdraw()
+    {
+        image.remove();
+    }
 }

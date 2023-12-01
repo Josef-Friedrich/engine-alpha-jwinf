@@ -10,6 +10,10 @@ public class TaskSolver extends Solver<Robot>
     @Override
     public void easy(Robot robot)
     {
+        robot.forward();
+        robot.collectFirewood();
+        robot.forward();
+        robot.jump();
     }
 
     @Override
@@ -24,6 +28,6 @@ public class TaskSolver extends Solver<Robot>
 
     public static void main(String[] args)
     {
-        new TaskSolver().solve();
+        new TaskSolver().solve("easy");
     }
 }

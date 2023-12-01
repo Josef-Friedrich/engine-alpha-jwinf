@@ -159,4 +159,12 @@ public class Item
             controller.move(row, col);
         }
     }
+
+    public void withdraw()
+    {
+        if (controller != null)
+        {
+            controller.withdraw();
+        }
+    }
 }

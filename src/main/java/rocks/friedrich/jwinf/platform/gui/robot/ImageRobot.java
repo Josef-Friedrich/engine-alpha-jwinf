@@ -217,8 +217,12 @@ public class ImageRobot extends Image implements Robot
 
     public Movement jump()
     {
-        var movement = virtual.jump();
-        return movement;
+        return performMovement(virtual.jump());
+    }
+
+    public Item withdraw()
+    {
+        return virtual.withdraw();
     }
 
     public Item dropObject(int itemNum)
