@@ -50,13 +50,7 @@ public class TaskData
     public String authors;
 
     public String[] translators;
-
-    /**
-     * Relativer Pfad zu <code>rocks.friedrich.tasks</code> Trainingsaufgabe
-     * spezifischen Java-Paket, zum Beispiel <code>conditionals.candle</code>
-     */
-    public String packagePath;
-
+    
     public GridInfosData gridInfos;
 
     public LevelCollectionData levels;
