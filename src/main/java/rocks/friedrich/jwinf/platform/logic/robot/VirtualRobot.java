@@ -14,7 +14,7 @@ import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
-import rocks.friedrich.jwinf.platform.logic.map.LevelMap;
+import rocks.friedrich.jwinf.platform.logic.map.Context;
 import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 /**
@@ -29,7 +29,7 @@ public class VirtualRobot implements Robot
 
     public Level level;
 
-    public LevelMap map;
+    public Context map;
 
     /**
      * Die Zeile, in der sich der Roboter aktuell befindet.

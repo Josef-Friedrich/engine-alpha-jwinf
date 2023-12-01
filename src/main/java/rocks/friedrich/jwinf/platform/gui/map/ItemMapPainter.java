@@ -4,15 +4,15 @@ import ea.Scene;
 import ea.actor.Image;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
-import rocks.friedrich.jwinf.platform.logic.map.LevelMap;
+import rocks.friedrich.jwinf.platform.logic.map.Context;
 
 public class ItemMapPainter
 {
-    private LevelMap map;
+    private Context map;
 
     private CoordinateSystemTranslator translate;
 
-    public ItemMapPainter(LevelMap map)
+    public ItemMapPainter(Context map)
     {
         this.map = map;
         translate = new CoordinateSystemTranslator(map.rows, map.cols);

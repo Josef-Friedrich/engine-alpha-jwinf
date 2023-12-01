@@ -9,7 +9,7 @@ import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
  * Die mit Gegenständen (Item) ausgefüllte Karte (Map) einer
  * Trainingsaufgabenversion (Level).
  */
-public class LevelMap
+public class Context
 {
     private StackedItems[][] stackedItems;
 
@@ -25,19 +25,7 @@ public class LevelMap
      */
     public int cols;
 
-    /**
-     * Die x-Koordinate des linken unteren Ecks, an dem das Gitter im
-     * Engine-Alpha-Koordinatensystem verankert ist.
-     */
-    public int x;
-
-    /**
-     * Die y-Koordinate des linken unteren Ecks, an dem das Gitter im
-     * Engine-Alpha-Koordinatensystem verankert ist.
-     */
-    public int y;
-
-    public LevelMap(int[][] map, ItemDataStore items)
+    public Context(int[][] map, ItemDataStore items)
     {
         rows = map.length;
         cols = map[0].length;
@@ -72,12 +60,12 @@ public class LevelMap
         return cols;
     }
 
-    public LevelMap(int[][] map)
+    public Context(int[][] map)
     {
         this(map, new ItemDataStore());
     }
 
-    public LevelMap(int rows, int cols)
+    public Context(int rows, int cols)
     {
         this(new int[rows][cols]);
     }

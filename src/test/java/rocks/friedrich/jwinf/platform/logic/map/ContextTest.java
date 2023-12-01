@@ -4,17 +4,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class LevelMapTest
+public class ContextTest
 {
-    private LevelMap create(int rows, int cols)
+    private Context create(int rows, int cols)
     {
-        return new LevelMap(rows, cols);
+        return new Context(rows, cols);
     }
 
     @Test
     public void testRowsAndCols()
     {
-        LevelMap map = create(4, 5);
+        Context map = create(4, 5);
         assertEquals(map.rows, 4);
         assertEquals(map.cols, 5);
     }
