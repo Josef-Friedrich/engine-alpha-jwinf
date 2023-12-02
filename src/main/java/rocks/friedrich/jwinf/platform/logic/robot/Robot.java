@@ -120,9 +120,9 @@ public interface Robot
      */
     public Point getPoint();
 
-    public String[] reportRoute();
+    public String[] reportActions();
 
-    public void printRoute();
+    public void printActions();
 
     public boolean onExit();
 
@@ -187,7 +187,7 @@ public interface Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3235-L3263">blocklyRobot_lib-1.1.js
      *      L3235-L3263</a>
      */
-    public Item dropObject(int itemNum);
+    public Item dropWithdrawable(int itemNum);
 
     /**
      * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2312-L2328

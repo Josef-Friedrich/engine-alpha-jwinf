@@ -26,7 +26,7 @@ public class VirtualRobot implements Robot
 {
     private List<MovementListener> movementListeners = new ArrayList<>();
 
-    public Route route;
+    public ActionLog actionLog;
 
     public Level level;
 
@@ -62,7 +62,7 @@ public class VirtualRobot implements Robot
     {
         this.level = level;
         this.context = level.getContext();
-        route = new Route();
+        actionLog = new ActionLog();
     }
 
     public int getRow()
@@ -353,22 +353,28 @@ public class VirtualRobot implements Robot
 
     private ItemRelocation reportItemRelocation(String name, Item item)
     {
-        return new ItemRelocation(name, item);
+        var action = new ItemRelocation(name, item);
+        actionLog.add(action);
+        return action;
     }
 
-    public Item dropObject(int itemNum)
+    public Item dropWithdrawable(int itemNum)
     {
+        Item item = null;
+        var action = reportItemRelocation("dropWithdrawable", null);
         if (onContainer())
         {
-            Item item = context.add(row, col, itemNum);
-            return item;
+            item = context.add(row, col, itemNum);
         }
-        return null;
+        action.setItem(item);
+        return item;
     }
 
     public Item drop()
     {
-        return context.drop(row, col);
+        var item = context.drop(row, col);
+        reportItemRelocation("dropWithdrawable", item);
+        return item;
     }
 
     public Item dropPlatformInFront()
@@ -408,18 +414,18 @@ public class VirtualRobot implements Robot
     public Movement reportMovement(String name)
     {
         var mov = new Movement(name, this);
-        route.add(mov);
+        actionLog.add(mov);
         return mov;
     }
 
-    public String[] reportRoute()
+    public String[] reportActions()
     {
-        return route.toArray();
+        return actionLog.toArray();
     }
 
-    public void printRoute()
+    public void printActions()
     {
-        route.printRoute();
+        actionLog.printActions();
     }
 
     private Movement forOrBackwards(String name, Compass direction)
@@ -437,7 +443,7 @@ public class VirtualRobot implements Robot
                     mov.next = fallMov;
                     row = fallMov.getTo().getRow();
                     col = fallMov.getTo().getCol();
-                    return mov.setTo(inFront.getRow(), inFront.getCol(), dir);
+                    return mov.setTo(inFront);
                 }
             }
             row = inFront.getRow();

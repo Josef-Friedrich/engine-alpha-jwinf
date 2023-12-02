@@ -55,14 +55,14 @@ public class ImageRobot extends Image implements Robot
         return virtual.getPoint();
     }
 
-    public String[] reportRoute()
+    public String[] reportActions()
     {
-        return virtual.reportRoute();
+        return virtual.reportActions();
     }
 
-    public void printRoute()
+    public void printActions()
     {
-        virtual.printRoute();
+        virtual.printActions();
     }
 
     public boolean onExit()
@@ -238,9 +238,9 @@ public class ImageRobot extends Image implements Robot
         return virtual.withdraw();
     }
 
-    public Item dropObject(int itemNum)
+    public Item dropWithdrawable(int itemNum)
     {
-        Item item = virtual.dropObject(itemNum);
+        Item item = virtual.dropWithdrawable(itemNum);
         if (item != null)
         {
             item.setController(level.getItemController(item));

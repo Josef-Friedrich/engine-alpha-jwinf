@@ -32,8 +32,8 @@ public class TaskTester<T>
             String... args) throws Exception
     {
         var w = solver.solveVirtual(difficulty, test);
-        assertArrayEquals(w.actor.reportRoute(), args,
-                "\"" + String.join("\", \"", w.actor.reportRoute()) + "\"");
+        assertArrayEquals(w.actor.reportActions(), args,
+                "\"" + String.join("\", \"", w.actor.reportActions()) + "\"");
         Point p = w.actor.getPoint();
         assertEquals(p.row, row, "row");
         assertEquals(p.col, col, "col");

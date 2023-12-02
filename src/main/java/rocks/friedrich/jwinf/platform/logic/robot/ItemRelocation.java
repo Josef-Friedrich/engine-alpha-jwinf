@@ -14,4 +14,9 @@ public class ItemRelocation extends Action
         super(name);
         this.item = item;
     }
+
+    public void setItem(Item item)
+    {
+        this.item = item;
+    }
 }

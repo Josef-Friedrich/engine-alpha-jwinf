@@ -2,6 +2,7 @@ package rocks.friedrich.jwinf.platform.logic.robot;
 
 import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
+import rocks.friedrich.jwinf.platform.logic.map.Point;
 
 /**
  * Represents a movement made by a robot.
@@ -70,6 +71,16 @@ public class Movement extends Action
         return this;
     }
 
+    public Movement setTo(int toRow, int toCol)
+    {
+        return setTo(toRow, toCol, from.dir);
+    }
+
+    public Movement setTo(Point to)
+    {
+        return setTo(to.row, to.col);
+    }
+
     public Movement setError(ErrorMessages error)
     {
         setTo();
@@ -91,5 +102,16 @@ public class Movement extends Action
         return "Movement [name=%s, from=%s, to=%s, relocated=%s, rotation=%s]"
                 .formatted(name, from.getSummary(), to.getSummary(), relocated,
                         rotation);
+    }
+
+    @Override
+    public String getName()
+    {
+        if (!relocated && !name.equals("turnLeft") && !name.equals("turnRight")
+                && !name.equals("turnAround"))
+        {
+            return "!%s".formatted(name);
+        }
+        return name;
     }
 }

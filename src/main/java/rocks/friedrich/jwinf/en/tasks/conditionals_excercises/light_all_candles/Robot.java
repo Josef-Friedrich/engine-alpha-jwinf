@@ -52,6 +52,6 @@ public class Robot extends RobotWrapper
      */
     public void lightCandle()
     {
-        actor.dropObject(2);
+        actor.dropWithdrawable(2);
     }
 }
