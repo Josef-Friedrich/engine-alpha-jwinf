@@ -161,7 +161,13 @@ public interface Robot
      */
     public ItemRelocation withdraw();
     // public void checkContainer();
-    // public void drop();
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3197-L3233">blocklyRobot_lib-1.1.js
+     *      L3197-L3233</a>
+     */
+    public Item drop();
 
     /**
      * @see <a href=

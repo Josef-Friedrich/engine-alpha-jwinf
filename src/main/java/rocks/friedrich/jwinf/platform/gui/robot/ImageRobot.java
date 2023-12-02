@@ -236,6 +236,13 @@ public class ImageRobot extends Image implements Robot
         return item;
     }
 
+    public Item drop()
+    {
+        Item item = virtual.drop();
+        item.add();
+        return item;
+    }
+
     public Item dropPlatformInFront()
     {
         return virtual.dropPlatformInFront();

@@ -41,8 +41,8 @@ public class GraphicalItemController implements ItemController
         {
             image = new Image(item.getFilePath(), 1, 1);
         }
-        image.setPosition(vector.getX() - LevelAssembler.SHIFT,
-                vector.getY() - LevelAssembler.SHIFT);
+        image.setPosition(Math.round(vector.getX()) - LevelAssembler.SHIFT,
+                Math.round(vector.getY()) - LevelAssembler.SHIFT);
         scene.add(image);
     }
 

@@ -20,11 +20,31 @@ public class TaskSolver extends Solver<Robot>
                 robot.jump();
             }
         }
+        robot.dropFirewood();
+        robot.forward();
     }
 
     @Override
     public void medium(Robot robot)
     {
+        robot.forward();
+        robot.collectFirewood();
+        for (int i = 0; i < 40; i++)
+        {
+            if (robot.platformAbove())
+            {
+                robot.jump();
+            }
+            else
+            {
+                if (robot.obstacleInFront())
+                {
+                    robot.turnAround();
+                }
+                robot.forward();
+            }
+        }
+        robot.dropFirewood();
     }
 
     @Override
@@ -34,6 +54,6 @@ public class TaskSolver extends Solver<Robot>
 
     public static void main(String[] args)
     {
-        new TaskSolver().solve("easy");
+        new TaskSolver().solve("medium");
     }
 }

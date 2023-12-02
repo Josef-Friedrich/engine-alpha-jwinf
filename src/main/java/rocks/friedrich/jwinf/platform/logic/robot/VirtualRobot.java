@@ -338,10 +338,15 @@ public class VirtualRobot implements Robot
     {
         if (onContainer())
         {
-            Item item = context.add(getRow(), getCol(), itemNum);
+            Item item = context.add(row, col, itemNum);
             return item;
         }
         return null;
+    }
+
+    public Item drop()
+    {
+        return context.drop(row, col);
     }
 
     public Item dropPlatformInFront()

@@ -98,9 +98,28 @@ public class Context
     {
         ItemData itemData = get(itemNum);
         Item item = new Item(itemData);
+        return drop(row, col, item);
+    }
+
+    /**
+     * Adds an item on top to the specified position.
+     */
+    public Item drop(int row, int col, Item item)
+    {
         item.setPosition(row, col);
         get(row, col).add(item);
         return item;
+    }
+
+    public Item drop(int row, int col)
+    {
+        if (bag.size() > 0)
+        {
+            Item item = bag.remove(bag.size() - 1);
+            drop(row, col, item);
+            return item;
+        }
+        return null;
     }
 
     public StackedItems get(int row, int col)

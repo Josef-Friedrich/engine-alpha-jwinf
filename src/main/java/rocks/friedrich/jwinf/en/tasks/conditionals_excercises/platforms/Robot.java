@@ -36,6 +36,7 @@ public class Robot extends RobotWrapper
      */
     public void dropFirewood()
     {
+        actor.drop();
     }
 
     /**
@@ -60,5 +61,13 @@ public class Robot extends RobotWrapper
     public boolean platformAbove()
     {
         return actor.platformAbove();
+    }
+
+    /**
+     * vor Hindernis
+     */
+    public boolean obstacleInFront()
+    {
+        return actor.obstacleInFront();
     }
 }
