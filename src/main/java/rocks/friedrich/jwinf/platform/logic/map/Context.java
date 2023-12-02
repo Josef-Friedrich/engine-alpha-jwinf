@@ -145,4 +145,19 @@ public class Context
     {
         return get(row, col).isObstacle();
     }
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2913-L2921">blocklyRobot_lib-1.1.js
+     *      L2913-L2921</a>
+     */
+    public boolean isInGrid(int row, int col)
+    {
+        return row >= 0 && col >= 0 && row < rows && col < cols;
+    }
+
+    public boolean canFall(int row, int col)
+    {
+        return !isObstacle(row, col) && isInGrid(row, col);
+    }
 }

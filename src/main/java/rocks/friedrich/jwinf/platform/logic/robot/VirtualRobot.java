@@ -166,16 +166,6 @@ public class VirtualRobot implements Robot
         addObstaclesMovementListener();
     }
 
-    /**
-     * @see <a href=
-     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2913-L2921">blocklyRobot_lib-1.1.js
-     *      L2913-L2921</a>
-     */
-    public boolean isInGrid(int row, int col)
-    {
-        return row >= 0 && col >= 0 && row < context.getRows()
-                && col < context.getCols();
-    }
 
     /**
      * @see <a href=
@@ -281,6 +271,34 @@ public class VirtualRobot implements Robot
         return hasOn(row - 1, col, item -> item.isObstacle());
     }
 
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3084-L3102">blocklyRobot_lib-1.1.js
+     *      L3084-L3102</a>
+     */
+    private Movement fall()
+    {
+        var mov = reportMovement("fall");
+        int fallRow = row;
+        int startRow = row;
+        boolean canFall = context.canFall(fallRow + 1, col);
+        while (canFall)
+        {
+            fallRow++;
+            canFall = context.canFall(fallRow + 1, col);
+        }
+        if (!context.isInGrid(fallRow + 1, col))
+        {
+            return mov.setError(ErrorMessages.FALL_FALLS);
+        }
+        if (fallRow - startRow > 1)
+        {
+            return mov.setError(ErrorMessages.FALL_WILL_FALL_AND_CRASH);
+        }
+        row = fallRow;
+        return mov.setTo();
+    }
+
     public Movement jump()
     {
         var mov = reportMovement("jump");
@@ -288,7 +306,7 @@ public class VirtualRobot implements Robot
         {
             return mov.setError(ErrorMessages.JUMP_WITHOUT_GRAVITY);
         }
-        if (!isInGrid(row - 1, col))
+        if (!context.isInGrid(row - 1, col))
         {
             return mov.setError(ErrorMessages.JUMP_OUTSIDE_GRID);
         }
