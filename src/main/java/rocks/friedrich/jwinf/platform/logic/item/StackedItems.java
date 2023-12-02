@@ -85,6 +85,11 @@ public class StackedItems implements Iterable<Item>
         return has(item -> item.isPaint());
     }
 
+    public boolean isWithdrawable()
+    {
+        return has(item -> item.isWithdrawable());
+    }
+
     public Item bottom()
     {
         if (!items.isEmpty())

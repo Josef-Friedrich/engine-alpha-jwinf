@@ -128,6 +128,16 @@ public class Task
         return data.gridInfos.bagSize;
     }
 
+    public int getMaxFallAltitude()
+    {
+        int max = data.gridInfos.maxFallAltitude;
+        if (max == 0)
+        {
+            return 2;
+        }
+        return max;
+    }
+
     /**
      * Returns a map of difficulty levels and their corresponding list of
      * levels.

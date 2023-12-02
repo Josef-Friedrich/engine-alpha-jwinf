@@ -50,10 +50,34 @@ public class TaskSolver extends Solver<Robot>
     @Override
     public void hard(Robot robot)
     {
+        for (int i = 0; i < 11; i++)
+        {
+            robot.forward();
+            if (robot.onFirewood())
+            {
+                robot.collectFirewood();
+                for (int j = 0; j < 5; j++)
+                {
+                    robot.jump();
+                    if (robot.onHearth())
+                    {
+                        robot.dropFirewood();
+                    }
+                }
+                robot.forward();
+                for (int j = 0; j < 2; j++)
+                {
+                    robot.backwards();
+                    robot.backwards();
+                    robot.forward();
+                    robot.forward();
+                }
+            }
+        }
     }
 
     public static void main(String[] args)
     {
-        new TaskSolver().solve("medium");
+        new TaskSolver().solve("hard");
     }
 }

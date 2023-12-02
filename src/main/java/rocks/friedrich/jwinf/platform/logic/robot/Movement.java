@@ -1,5 +1,6 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
+import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
 
 /**
@@ -30,6 +31,8 @@ public class Movement extends Action
      */
     public int rotation;
 
+    public Movement next;
+
     /**
      * Constructs a Movement object with the specified name and robot.
      *
@@ -56,9 +59,14 @@ public class Movement extends Action
      */
     public Movement setTo()
     {
-        to = new DirectionalPoint(robot.row, robot.col, robot.dir);
-        relocated = from.row != to.row || from.col != to.col;
-        rotation = ((to.dir.getNumber() - from.dir.getNumber() + 1) % 4) - 1;
+        return setTo(robot.row, robot.col, robot.dir);
+    }
+
+    public Movement setTo(int toRow, int toCol, Compass toDir)
+    {
+        to = new DirectionalPoint(toRow, toCol, toDir);
+        relocated = from.row != toRow || from.col != toCol;
+        rotation = ((toDir.getNumber() - from.dir.getNumber() + 1) % 4) - 1;
         return this;
     }
 
@@ -78,11 +86,10 @@ public class Movement extends Action
     {
         if (error != null)
         {
-            return "Movement [name=%s, error=%s]".formatted(from.getSummary(),
-                    error);
+            return "Movement [name=%s, error=%s]".formatted(name, error);
         }
         return "Movement [name=%s, from=%s, to=%s, relocated=%s, rotation=%s]"
-                .formatted(from.getSummary(), to.getSummary(), name, relocated,
+                .formatted(name, from.getSummary(), to.getSummary(), relocated,
                         rotation);
     }
 }

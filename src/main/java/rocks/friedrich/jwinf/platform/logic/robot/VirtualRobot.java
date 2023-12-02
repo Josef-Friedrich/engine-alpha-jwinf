@@ -10,6 +10,7 @@ import java.util.List;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.Compass;
+import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
@@ -72,6 +73,11 @@ public class VirtualRobot implements Robot
     public int getCol()
     {
         return col;
+    }
+
+    public Task getTask()
+    {
+        return level.task;
     }
 
     public Point getPoint()
@@ -165,7 +171,6 @@ public class VirtualRobot implements Robot
         addGridEdgesMovementListener();
         addObstaclesMovementListener();
     }
-
 
     /**
      * @see <a href=
@@ -276,27 +281,26 @@ public class VirtualRobot implements Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3084-L3102">blocklyRobot_lib-1.1.js
      *      L3084-L3102</a>
      */
-    private Movement fall()
+    private Movement fall(Point from)
     {
         var mov = reportMovement("fall");
-        int fallRow = row;
-        int startRow = row;
-        boolean canFall = context.canFall(fallRow + 1, col);
+        int fallRow = from.getRow();
+        int startRow = from.getRow();
+        boolean canFall = context.canFall(fallRow + 1, from.getCol());
         while (canFall)
         {
             fallRow++;
-            canFall = context.canFall(fallRow + 1, col);
+            canFall = context.canFall(fallRow + 1, from.getCol());
         }
-        if (!context.isInGrid(fallRow + 1, col))
+        if (!context.isInGrid(fallRow + 1, from.getCol()))
         {
             return mov.setError(ErrorMessages.FALL_FALLS);
         }
-        if (fallRow - startRow > 1)
+        if (fallRow - startRow > getTask().getMaxFallAltitude())
         {
             return mov.setError(ErrorMessages.FALL_WILL_FALL_AND_CRASH);
         }
-        row = fallRow;
-        return mov.setTo();
+        return mov.setTo(fallRow, from.getCol(), dir);
     }
 
     public Movement jump()
@@ -418,30 +422,50 @@ public class VirtualRobot implements Robot
         route.printRoute();
     }
 
-    public Movement forward()
+    private Movement forOrBackwards(String name, Compass direction)
     {
-        var mov = reportMovement("forward");
+        var mov = reportMovement(name);
         if (tryToBeOn(dir))
         {
-            Point point = coordsInFront(dir);
-            row = point.getRow();
-            col = point.getCol();
+            Point inFront = coordsInFront(direction);
+            if (getTask().hasGravity())
+            {
+                Movement fallMov = fall(inFront);
+                if (fallMov.getTo() != null
+                        && fallMov.getTo().row != inFront.getRow())
+                {
+                    mov.next = fallMov;
+                    row = fallMov.getTo().getRow();
+                    col = fallMov.getTo().getCol();
+                    return mov.setTo(inFront.getRow(), inFront.getCol(), dir);
+                }
+            }
+            row = inFront.getRow();
+            col = inFront.getCol();
             numberOfMovements++;
         }
         return mov.setTo();
     }
 
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3280-L3297">
+     *      blocklyRobot_lib-1.1.js L3280-L3297</a>
+     */
+    public Movement forward()
+    {
+        return forOrBackwards("forward", dir);
+    }
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3299-L3316">
+     *      blocklyRobot_lib-1.1.js L3299-L3316</a>
+     *
+     */
     public Movement backwards()
     {
-        var mov = reportMovement("backwards");
-        if (tryToBeOn(WEST))
-        {
-            Point point = coordsInFront(WEST);
-            row = point.getRow();
-            col = point.getCol();
-            numberOfMovements++;
-        }
-        return mov.setTo();
+        return forOrBackwards("backwards", WEST);
     }
 
     public Movement east()
@@ -503,6 +527,11 @@ public class VirtualRobot implements Robot
     public boolean onContainer()
     {
         return getOnItems().isContainer();
+    }
+
+    public boolean onObject()
+    {
+        return getOnItems().isWithdrawable();
     }
 
     public boolean onExit()

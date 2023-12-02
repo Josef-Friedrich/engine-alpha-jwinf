@@ -145,7 +145,6 @@ public interface Robot
     // public void moveProjectile();
     // public void destroy();
 
-
     /**
      * 
      * @see <a href=
@@ -161,6 +160,20 @@ public interface Robot
      */
     public ItemRelocation withdraw();
     // public void checkContainer();
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L1927-L1934">blocklyRobot_lib-1.1.js
+     *      L1927-L1934</a>
+     */
+    public boolean onContainer();
+
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L1918-L1925">blocklyRobot_lib-1.1.js
+     *      L1918-L1925</a>
+     */
+    public boolean onObject();
 
     /**
      * @see <a href=

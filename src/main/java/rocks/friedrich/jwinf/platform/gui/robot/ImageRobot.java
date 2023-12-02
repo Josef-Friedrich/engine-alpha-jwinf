@@ -108,7 +108,6 @@ public class ImageRobot extends Image implements Robot
 
     private Movement performMovement(Movement movement)
     {
-        System.out.println(movement);
         if (movement.rotation != 0)
         {
             rotateByAnimated(movement.rotation * -90);
@@ -116,6 +115,10 @@ public class ImageRobot extends Image implements Robot
         if (movement.relocated)
         {
             relocateAnimated(level.translate.toVector(movement.getTo()));
+        }
+        if (movement.next != null)
+        {
+            performMovement(movement.next);
         }
         if (movement.error != null)
         {
@@ -155,6 +158,16 @@ public class ImageRobot extends Image implements Robot
     public Movement north()
     {
         return performMovement(virtual.north());
+    }
+
+    public boolean onContainer()
+    {
+        return virtual.onContainer();
+    }
+
+    public boolean onObject()
+    {
+        return virtual.onObject();
     }
 
     private void wait(double seconds)

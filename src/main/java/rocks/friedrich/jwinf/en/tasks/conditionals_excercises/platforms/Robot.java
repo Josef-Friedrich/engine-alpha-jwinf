@@ -70,4 +70,20 @@ public class Robot extends RobotWrapper
     {
         return actor.obstacleInFront();
     }
+
+    /**
+     * beim Kamin
+     */
+    public boolean onHearth()
+    {
+        return actor.onContainer();
+    }
+
+    /**
+     * auf Holz
+     */
+    public boolean onFirewood()
+    {
+        return actor.onObject();
+    }
 }

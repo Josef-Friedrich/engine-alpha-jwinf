@@ -13,6 +13,13 @@ public class GridInfosData
     public boolean hasGravity;
 
     /**
+     * <a href=
+     * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L1619-L1620">blocklyRobot_lib-1.1.js
+     * L1619-L1620"</a>
+     */
+    public int maxFallAltitude;
+
+    /**
      * Ist in
      * https://jwinf.de/tasks/jwinf/_common/modules/pemFioi/blocklyRobot_lib-1.1.js
      * definiert
@@ -28,8 +35,8 @@ public class GridInfosData
 
     /**
      * <a href=
-     * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3140C18-L3140C18">blocklyRobot_lib-1.1.js
-     * L3140C18</a>
+     * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3140-L3140">blocklyRobot_lib-1.1.js
+     * L3140</a>
      */
     public int bagSize;
 
