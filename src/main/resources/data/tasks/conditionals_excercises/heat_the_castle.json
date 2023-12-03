@@ -19,6 +19,7 @@
     "backgroundColor": "#1f003c",
     "gridColor": "#888888",
     "conceptViewer": false,
+    "hasGravity": true,
     "contextType": "castle",
     "bagSize": 1,
     "nbPlatforms": 100,
