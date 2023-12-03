@@ -238,15 +238,30 @@ public class ImageRobot extends Image implements Robot
         return virtual.withdraw();
     }
 
-    public Item dropWithdrawable(int itemNum)
+    private Item paintItem(Item item)
     {
-        Item item = virtual.dropWithdrawable(itemNum);
         if (item != null)
         {
             item.setController(level.getItemController(item));
             item.add();
         }
         return item;
+    }
+
+    private ItemRelocation performItemRelocation(ItemRelocation relocation)
+    {
+        if (relocation != null)
+        {
+            wait(0.5 / speed);
+            paintItem(relocation.getItem());
+            wait(0.5 / speed);
+        }
+        return relocation;
+    }
+
+    public Item dropWithdrawable(int itemNum)
+    {
+        return paintItem(virtual.dropWithdrawable(itemNum));
     }
 
     public Item drop()
@@ -258,12 +273,12 @@ public class ImageRobot extends Image implements Robot
 
     public ItemRelocation dropPlatformInFront()
     {
-        return virtual.dropPlatformInFront();
+        return performItemRelocation(virtual.dropPlatformInFront());
     }
 
     public ItemRelocation dropPlatformAbove()
     {
-        return virtual.dropPlatformAbove();
+        return performItemRelocation(virtual.dropPlatformAbove());
     }
 
     /**

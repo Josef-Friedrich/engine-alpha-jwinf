@@ -261,8 +261,8 @@ public class VirtualRobot implements Robot
      */
     public boolean platformInFront()
     {
-        Coords point = coordsInFront(dir);
-        return hasOn(point.getRow() + 1, point.getCol(),
+        Coords coords = coordsInFront(dir);
+        return hasOn(coords.getRow() + 1, coords.getCol(),
                 item -> item.isObstacle());
     }
 

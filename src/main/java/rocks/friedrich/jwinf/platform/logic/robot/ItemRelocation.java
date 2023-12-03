@@ -7,7 +7,7 @@ import rocks.friedrich.jwinf.platform.logic.item.Item;
  */
 public class ItemRelocation extends Action
 {
-    public Item item;
+    private Item item;
 
     public ItemRelocation(String name, Item item)
     {
@@ -24,5 +24,10 @@ public class ItemRelocation extends Action
     {
         this.item = item;
         return this;
+    }
+
+    public Item getItem()
+    {
+        return item;
     }
 }

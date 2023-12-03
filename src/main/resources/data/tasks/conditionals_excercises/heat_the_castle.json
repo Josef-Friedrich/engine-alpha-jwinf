@@ -20,6 +20,7 @@
     "gridColor": "#888888",
     "conceptViewer": false,
     "contextType": "castle",
+    "bagSize": 1,
     "nbPlatforms": 100,
     "maxInstructions": {
       "basic": 12,

@@ -42,7 +42,7 @@ public class Robot extends RobotWrapper
     /**
      * baue eine Plattform oben
      */
-    public void constructPlatformTop()
+    public void constructPlatformAbove()
     {
         actor.dropPlatformAbove();
     }
