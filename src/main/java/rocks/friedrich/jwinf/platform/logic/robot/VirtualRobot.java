@@ -77,7 +77,7 @@ public class VirtualRobot implements Robot
 
     public Task getTask()
     {
-        return level.task;
+        return level.getTask();
     }
 
     public Coords getPoint()
@@ -306,7 +306,7 @@ public class VirtualRobot implements Robot
     public Movement jump()
     {
         var mov = reportMovement("jump");
-        if (!level.task.hasGravity())
+        if (!level.getTask().hasGravity())
         {
             return mov.setError(ErrorMessages.JUMP_WITHOUT_GRAVITY);
         }
@@ -341,7 +341,7 @@ public class VirtualRobot implements Robot
             return (ItemRelocation) action
                     .setError(ErrorMessages.WITHDRAWABLES_NOTHING_TO_PICK_UP);
         }
-        if (level.task.getBagSize() < context.getBag().size() + 1)
+        if (level.getTask().getBagSize() < context.getBag().size() + 1)
         {
             return (ItemRelocation) action
                     .setError(ErrorMessages.WITHDRAWABLES_TOO_MANY_OBJECTS);

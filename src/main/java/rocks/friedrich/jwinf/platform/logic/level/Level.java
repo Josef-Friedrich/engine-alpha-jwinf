@@ -17,9 +17,9 @@ import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
  */
 public class Level
 {
-    public LevelData data;
+    private LevelData data;
 
-    public Task task;
+    private Task task;
 
     public Difficulty difficulty;
 
@@ -48,14 +48,17 @@ public class Level
         testIndex = data.testNo;
     }
 
-    public LevelContext createContext()
+    public LevelEnvironment createEnvironment()
     {
-        var c = new LevelContext();
-        c.level = this;
-        c.robot = new VirtualRobot(this);
-        c.robot.addDefaultMovementListener();
-        c.robot.setInitPosition(getInitItem());
-        return c;
+        var robot = new VirtualRobot(this);
+        robot.addDefaultMovementListener();
+        robot.setInitPosition(getInitItem());
+        return new LevelEnvironment(this, robot);
+    }
+
+    public Task getTask()
+    {
+        return task;
     }
 
     public Context getContext()

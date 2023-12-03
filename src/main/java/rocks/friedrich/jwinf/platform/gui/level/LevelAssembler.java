@@ -27,20 +27,20 @@ public class LevelAssembler
     {
         Grid grid = new Grid(level.cols, level.rows);
         grid.setColor(new Color(level.getGridColor()));
-        grid.setBackground(new Color(level.task.getBackgroundColor()));
+        grid.setBackground(new Color(level.getTask().getBackgroundColor()));
         return grid;
     }
 
     public RobotWrapper createRobot(AssembledLevel l) throws Exception
     {
         String className = "rocks.friedrich.jwinf.en.tasks.%s.Robot"
-                .formatted(level.task.getTaskPath().replace("/", "."));
+                .formatted(level.getTask().getTaskPath().replace("/", "."));
         RobotWrapper robot = RobotWrapper.class.getClassLoader()
                 .loadClass(className).asSubclass(RobotWrapper.class)
                 .getDeclaredConstructor().newInstance();
-        var context = level.createContext();
-        robot.actor = new ImageRobot("images/candle/robot.png", context.robot,
-                l);
+        var environment = level.createEnvironment();
+        robot.actor = new ImageRobot("images/candle/robot.png",
+                environment.getRobot(), l);
         return robot;
     }
 
@@ -56,7 +56,8 @@ public class LevelAssembler
         l.grid.setPosition(x - SHIFT, y - SHIFT);
         scene.add(l.grid);
         // ItemGrid
-        new ItemMapPainter(level.getContext()).paint(scene, x - SHIFT, y - SHIFT);
+        new ItemMapPainter(level.getContext()).paint(scene, x - SHIFT,
+                y - SHIFT);
         try
         {
             l.robot = createRobot(l);

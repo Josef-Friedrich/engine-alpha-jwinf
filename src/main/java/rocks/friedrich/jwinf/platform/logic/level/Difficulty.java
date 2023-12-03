@@ -24,9 +24,9 @@ public enum Difficulty
      */
     HARD(2);
 
-    private int index;
+    private final int index;
 
-    private static Map<Integer, Difficulty> map = new HashMap<>();
+    private static final Map<Integer, Difficulty> map = new HashMap<>();
 
     private Difficulty(int index)
     {
