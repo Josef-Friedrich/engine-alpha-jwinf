@@ -138,6 +138,11 @@ public class Task
         return max;
     }
 
+    public int getNbPlatforms()
+    {
+        return data.gridInfos.nbPlatforms;
+    }
+
     /**
      * Returns a map of difficulty levels and their corresponding list of
      * levels.

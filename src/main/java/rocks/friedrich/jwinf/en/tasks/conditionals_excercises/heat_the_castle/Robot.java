@@ -20,6 +20,7 @@ public class Robot extends RobotWrapper
      */
     public void collectFirewood()
     {
+        actor.withdraw();
     }
 
     /**
@@ -27,6 +28,7 @@ public class Robot extends RobotWrapper
      */
     public void dropFirewood()
     {
+        actor.drop();
     }
 
     /**
@@ -50,15 +52,15 @@ public class Robot extends RobotWrapper
      */
     public boolean platformInFront()
     {
-        return true;
+        return actor.platformInFront();
     }
 
     /**
      * Plattform oben
      */
-    public boolean platformTop()
+    public boolean platformAbove()
     {
-        return true;
+        return actor.platformAbove();
     }
 
     /**
@@ -66,15 +68,15 @@ public class Robot extends RobotWrapper
      */
     public boolean onFirewood()
     {
-        return true;
+        return actor.onWithdrawable();
     }
 
     /**
      * beim Kamin
      */
-    public boolean onFireplace()
+    public boolean onHearth()
     {
-        return true;
+        return actor.onContainer();
     }
 
     /**
@@ -90,5 +92,6 @@ public class Robot extends RobotWrapper
      */
     public void jump()
     {
+        actor.jump();
     }
 }

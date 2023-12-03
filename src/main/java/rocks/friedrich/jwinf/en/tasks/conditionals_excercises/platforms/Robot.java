@@ -84,6 +84,6 @@ public class Robot extends RobotWrapper
      */
     public boolean onFirewood()
     {
-        return actor.onObject();
+        return actor.onWithdrawable();
     }
 }

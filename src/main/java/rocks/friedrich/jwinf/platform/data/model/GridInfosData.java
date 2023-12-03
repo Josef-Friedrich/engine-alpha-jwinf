@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(value = { "hideSaveOrLoad", "conceptViewer",
         "languageStrings", "limitedUses", "includeBlocks", "blocklyColourTheme",
-        "checkEndEveryTurn", "ignoreInvalidMoves", "nbPlatforms", "actionDelay",
+        "checkEndEveryTurn", "ignoreInvalidMoves", "actionDelay",
         "multiple_marbles" })
 public class GridInfosData
 {
@@ -44,6 +44,8 @@ public class GridInfosData
      * For example „labyrinth“.
      */
     public String contextType;
+
+    public int nbPlatforms;
 
     public MaxInstructionsData maxInstructions;
 

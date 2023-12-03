@@ -165,9 +165,9 @@ public class ImageRobot extends Image implements Robot
         return virtual.onContainer();
     }
 
-    public boolean onObject()
+    public boolean onWithdrawable()
     {
-        return virtual.onObject();
+        return virtual.onWithdrawable();
     }
 
     private void wait(double seconds)
