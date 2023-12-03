@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ActionLog
 {
-    List<Action> actions;
+    private List<Action> actions;
 
     public ActionLog(List<Action> actions)
     {

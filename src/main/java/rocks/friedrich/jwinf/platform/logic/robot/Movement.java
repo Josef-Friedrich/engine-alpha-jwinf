@@ -14,25 +14,25 @@ public class Movement extends Action
     /**
      * Represented the point at which the robot is located before the movement.
      */
-    public DirectionalCoords from;
+    private DirectionalCoords from;
 
     /**
      * Represented the point at which the robot is located after the movement.
      */
-    public DirectionalCoords to;
+    private DirectionalCoords to;
 
     /**
      * Indicates whether a change in location has occurred or not.
      */
-    public boolean relocated;
+    private boolean relocated;
 
     /**
      * 1 ist 90 Grad nach rechts, -1 ist 90 Grad nach links, 2 ist 180 Grad nach
      * rechts.
      */
-    public int rotation;
+    private int rotation;
 
-    public Movement next;
+    private Movement next;
 
     /**
      * Constructs a Movement object with the specified name and robot.
@@ -72,6 +72,26 @@ public class Movement extends Action
         return this;
     }
 
+    public boolean hasNext()
+    {
+        return next != null;
+    }
+
+    public void setNext(Movement next)
+    {
+        this.next = next;
+    }
+
+    public Movement getNext()
+    {
+        return next;
+    }
+
+    public int getRotation()
+    {
+        return rotation;
+    }
+
     public Movement setTo(int toRow, int toCol)
     {
         return setTo(toRow, toCol, from.getDir());
@@ -80,6 +100,11 @@ public class Movement extends Action
     public Movement setTo(Coords to)
     {
         return setTo(to.getRow(), to.getCol());
+    }
+
+    public boolean isRelocated()
+    {
+        return relocated;
     }
 
     public Movement setError(ErrorMessages error)

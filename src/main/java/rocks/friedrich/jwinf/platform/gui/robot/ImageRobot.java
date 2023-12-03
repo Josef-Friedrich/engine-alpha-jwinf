@@ -108,19 +108,19 @@ public class ImageRobot extends Image implements Robot
 
     private Movement performMovement(Movement movement)
     {
-        if (movement.rotation != 0)
+        if (movement.getRotation() != 0)
         {
-            rotateByAnimated(movement.rotation * -90);
+            rotateByAnimated(movement.getRotation() * -90);
         }
-        if (movement.relocated)
+        if (movement.isRelocated())
         {
             relocateAnimated(level.translate.toVector(movement.getTo()));
         }
-        if (movement.next != null)
+        if (movement.hasNext())
         {
-            performMovement(movement.next);
+            performMovement(movement.getNext());
         }
-        if (movement.error != null)
+        if (movement.hasError())
         {
             wiggleAnimated();
         }

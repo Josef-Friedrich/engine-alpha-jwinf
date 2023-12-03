@@ -474,7 +474,7 @@ public class VirtualRobot implements Robot
                 if (fallMov.getTo() != null
                         && fallMov.getTo().getRow() != inFront.getRow())
                 {
-                    mov.next = fallMov;
+                    mov.setNext(fallMov);
                     row = fallMov.getTo().getRow();
                     col = fallMov.getTo().getCol();
                     return mov.setTo(inFront);
