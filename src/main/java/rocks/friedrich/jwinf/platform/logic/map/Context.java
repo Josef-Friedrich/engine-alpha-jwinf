@@ -105,11 +105,20 @@ public class Context
     /**
      * Adds an item on top to the specified position.
      */
-    public Item add(int row, int col, int itemNum)
+    public Item drop(int row, int col, int itemNum)
     {
-        ItemData itemData = get(itemNum);
-        Item item = new Item(itemData);
-        return drop(row, col, item);
+        return drop(row, col, items.createItem(itemNum));
+    }
+
+    public Item drop(int row, int col, String itemName)
+    {
+        return drop(row, col, items.createItem(itemName));
+    }
+
+    public Item drop(Coords coords, String itemName)
+    {
+        return drop(coords.getRow(), coords.getCol(),
+                items.createItem(itemName));
     }
 
     /**
@@ -138,7 +147,7 @@ public class Context
         return stackedItems[row][col];
     }
 
-    public StackedItems get(Point point)
+    public StackedItems get(Coords point)
     {
         return get(point.row, point.col);
     }
@@ -155,6 +164,11 @@ public class Context
     public boolean isObstacle(int row, int col)
     {
         return get(row, col).isObstacle();
+    }
+
+    public boolean isObstacle(Coords coords)
+    {
+        return isObstacle(coords.getRow(), coords.getCol());
     }
 
     /**

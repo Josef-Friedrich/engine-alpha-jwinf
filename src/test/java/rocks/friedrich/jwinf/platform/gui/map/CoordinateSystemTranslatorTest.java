@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import ea.Vector;
-import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.map.Coords;
 
 public class CoordinateSystemTranslatorTest
 {
@@ -22,7 +22,7 @@ public class CoordinateSystemTranslatorTest
         return translate(rows, cols, 0, 0);
     }
 
-    private void assertPoint(Point point, int row, int col)
+    private void assertPoint(Coords point, int row, int col)
     {
         assertEquals(point.getRow(), row);
         assertEquals(point.getCol(), col);

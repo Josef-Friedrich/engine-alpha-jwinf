@@ -1,7 +1,7 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
 import rocks.friedrich.jwinf.platform.logic.item.Item;
-import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.map.Coords;
 // EN
 //   row: "robot's row",
 //   col: "robot's column",
@@ -118,7 +118,7 @@ public interface Robot
      *
      * @return the current position of the robot
      */
-    public Point getPoint();
+    public Coords getPoint();
 
     public String[] reportActions();
 
@@ -194,14 +194,14 @@ public interface Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2312-L2328">blocklyRobot_lib-1.1.js
      *      L2312-L2328</a>
      */
-    public Item dropPlatformInFront();
+    public ItemRelocation dropPlatformInFront();
 
     /**
      * @see <a href=
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2330-L2346">blocklyRobot_lib-1.1.js
      *      L2330-L2346</a>
      */
-    public Item dropPlatformAbove();
+    public ItemRelocation dropPlatformAbove();
 
     /**
      * @see <a href=

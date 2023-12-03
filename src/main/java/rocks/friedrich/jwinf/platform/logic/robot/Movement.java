@@ -1,8 +1,8 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
 import rocks.friedrich.jwinf.platform.logic.Compass;
-import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
-import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.map.DirectionalCoords;
+import rocks.friedrich.jwinf.platform.logic.map.Coords;
 
 /**
  * Represents a movement made by a robot.
@@ -14,12 +14,12 @@ public class Movement extends Action
     /**
      * Represented the point at which the robot is located before the movement.
      */
-    public DirectionalPoint from;
+    public DirectionalCoords from;
 
     /**
      * Represented the point at which the robot is located after the movement.
      */
-    public DirectionalPoint to;
+    public DirectionalCoords to;
 
     /**
      * Indicates whether a change in location has occurred or not.
@@ -43,11 +43,11 @@ public class Movement extends Action
     public Movement(String name, VirtualRobot robot)
     {
         super(name);
-        from = new DirectionalPoint(robot.row, robot.col, robot.dir);
+        from = new DirectionalCoords(robot.row, robot.col, robot.dir);
         this.robot = robot;
     }
 
-    public DirectionalPoint getTo()
+    public DirectionalCoords getTo()
     {
         return to;
     }
@@ -65,7 +65,7 @@ public class Movement extends Action
 
     public Movement setTo(int toRow, int toCol, Compass toDir)
     {
-        to = new DirectionalPoint(toRow, toCol, toDir);
+        to = new DirectionalCoords(toRow, toCol, toDir);
         relocated = from.getRow() != toRow || from.getCol() != toCol;
         rotation = ((toDir.getNumber() - from.getDir().getNumber() + 1) % 4)
                 - 1;
@@ -77,7 +77,7 @@ public class Movement extends Action
         return setTo(toRow, toCol, from.getDir());
     }
 
-    public Movement setTo(Point to)
+    public Movement setTo(Coords to)
     {
         return setTo(to.getRow(), to.getCol());
     }

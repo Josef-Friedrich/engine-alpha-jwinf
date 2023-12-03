@@ -1,7 +1,7 @@
 package rocks.friedrich.jwinf.platform.gui.map;
 
 import ea.Vector;
-import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.map.Coords;
 
 public class CoordinateSystemTranslator
 {
@@ -78,23 +78,23 @@ public class CoordinateSystemTranslator
     /**
      * @param vector Ein Punkt im Engine-Alpha-Koordinatensystem.
      */
-    public Point toPoint(Vector vector)
+    public Coords toPoint(Vector vector)
     {
-        return new Point(toRow(vector.getY()), toCol(vector.getX()));
+        return new Coords(toRow(vector.getY()), toCol(vector.getX()));
     }
 
-    public Point toPoint(float x, float y)
+    public Coords toPoint(float x, float y)
     {
         return toPoint(new Vector(x, y));
     }
 
-    public Vector toVector(Point point)
+    public Vector toVector(Coords point)
     {
         return new Vector(toX(point.getCol()), toY(point.getRow()));
     }
 
     public Vector toVector(int row, int col)
     {
-        return toVector(new Point(row, col));
+        return toVector(new Coords(row, col));
     }
 }

@@ -12,7 +12,7 @@ import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.platform.gui.State;
 import rocks.friedrich.jwinf.platform.gui.level.AssembledLevel;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
-import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.map.Coords;
 import rocks.friedrich.jwinf.platform.logic.robot.ItemRelocation;
 import rocks.friedrich.jwinf.platform.logic.robot.Movement;
 import rocks.friedrich.jwinf.platform.logic.robot.Robot;
@@ -50,7 +50,7 @@ public class ImageRobot extends Image implements Robot
         return virtual.getCol();
     }
 
-    public Point getPoint()
+    public Coords getPoint()
     {
         return virtual.getPoint();
     }
@@ -256,12 +256,12 @@ public class ImageRobot extends Image implements Robot
         return item;
     }
 
-    public Item dropPlatformInFront()
+    public ItemRelocation dropPlatformInFront()
     {
         return virtual.dropPlatformInFront();
     }
 
-    public Item dropPlatformAbove()
+    public ItemRelocation dropPlatformAbove()
     {
         return virtual.dropPlatformAbove();
     }

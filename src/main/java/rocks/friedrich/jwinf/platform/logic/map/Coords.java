@@ -3,13 +3,13 @@ package rocks.friedrich.jwinf.platform.logic.map;
 /**
  * Ein Punkt auf dem Gitter. Der Ursprung ist links oben (Reihe 0 und Spalte 0).
  */
-public class Point
+public class Coords
 {
     protected int col;
 
     protected int row;
 
-    public Point(int row, int col)
+    public Coords(int row, int col)
     {
         this.row = row;
         this.col = col;
@@ -25,9 +25,33 @@ public class Point
         return col;
     }
 
+    public Coords east()
+    {
+        col++;
+        return this;
+    }
+
+    public Coords south()
+    {
+        row++;
+        return this;
+    }
+
+    public Coords west()
+    {
+        col--;
+        return this;
+    }
+
+    public Coords north()
+    {
+        row--;
+        return this;
+    }
+
     @Override
     public String toString()
     {
-        return "Point [row=" + row + ", col=" + col + "]";
+        return "Coords [row=" + row + ", col=" + col + "]";
     }
 }

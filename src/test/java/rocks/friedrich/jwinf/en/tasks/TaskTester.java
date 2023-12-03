@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import rocks.friedrich.jwinf.platform.Solver;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
-import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.map.Coords;
 
 public class TaskTester<T>
 {
@@ -34,7 +34,7 @@ public class TaskTester<T>
         var w = solver.solveVirtual(difficulty, test);
         assertArrayEquals(w.actor.reportActions(), args,
                 "\"" + String.join("\", \"", w.actor.reportActions()) + "\"");
-        Point p = w.actor.getPoint();
+        Coords p = w.actor.getPoint();
         assertEquals(p.getRow(), row, "row");
         assertEquals(p.getCol(), col, "col");
     }

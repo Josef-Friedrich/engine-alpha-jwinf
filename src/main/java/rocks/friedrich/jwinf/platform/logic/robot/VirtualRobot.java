@@ -14,9 +14,9 @@ import rocks.friedrich.jwinf.platform.logic.Task;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
-import rocks.friedrich.jwinf.platform.logic.map.DirectionalPoint;
+import rocks.friedrich.jwinf.platform.logic.map.DirectionalCoords;
 import rocks.friedrich.jwinf.platform.logic.map.Context;
-import rocks.friedrich.jwinf.platform.logic.map.Point;
+import rocks.friedrich.jwinf.platform.logic.map.Coords;
 
 /**
  * Ein Roboter der nicht grafisch dargestellt ist, sondern der sich nur im
@@ -44,7 +44,7 @@ public class VirtualRobot implements Robot
 
     public Compass dir;
 
-    public DirectionalPoint initPosition;
+    public DirectionalCoords initPosition;
 
     /**
      * @see <a href=
@@ -80,9 +80,9 @@ public class VirtualRobot implements Robot
         return level.task;
     }
 
-    public Point getPoint()
+    public Coords getPoint()
     {
-        return new Point(row, col);
+        return new Coords(row, col);
     }
 
     public void setInitPosition(ItemData init)
@@ -90,7 +90,7 @@ public class VirtualRobot implements Robot
         row = init.row;
         col = init.col;
         dir = Compass.fromNumber(init.dir);
-        initPosition = new DirectionalPoint(row, col, dir);
+        initPosition = new DirectionalCoords(row, col, dir);
     }
 
     public void resetInitPosition()
@@ -200,16 +200,16 @@ public class VirtualRobot implements Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2946-L2958">blocklyRobot_lib-1.1.js
      *      L2946-L2958</a>
      */
-    public Point coordsInFront(Compass dir, int mult)
+    public Coords coordsInFront(Compass dir, int mult)
     {
         int[][] delta = new int[][] { new int[] { 0, 1 }, new int[] { 1, 0 },
                 new int[]
                 { 0, -1 }, new int[] { -1, 0 } };
-        return new Point(row + delta[dir.getNumber()][0] * mult,
+        return new Coords(row + delta[dir.getNumber()][0] * mult,
                 col + delta[dir.getNumber()][1] * mult);
     }
 
-    public Point coordsInFront(Compass dir)
+    public Coords coordsInFront(Compass dir)
     {
         return coordsInFront(dir, 1);
     }
@@ -229,7 +229,7 @@ public class VirtualRobot implements Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2872-L2880">blocklyRobot_lib-1.1.js
      *      L2872-L2880</a>
      */
-    private boolean hasOn(Point point, Filter filter)
+    private boolean hasOn(Coords point, Filter filter)
     {
         return hasOn(point.getRow(), point.getCol(), filter);
     }
@@ -261,7 +261,7 @@ public class VirtualRobot implements Robot
      */
     public boolean platformInFront()
     {
-        Point point = coordsInFront(dir);
+        Coords point = coordsInFront(dir);
         return hasOn(point.getRow() + 1, point.getCol(),
                 item -> item.isObstacle());
     }
@@ -281,7 +281,7 @@ public class VirtualRobot implements Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3084-L3102">blocklyRobot_lib-1.1.js
      *      L3084-L3102</a>
      */
-    private Movement fall(Point from)
+    private Movement fall(Coords from)
     {
         var mov = reportMovement("fall");
         int fallRow = from.getRow();
@@ -358,13 +358,20 @@ public class VirtualRobot implements Robot
         return action;
     }
 
+    private ItemRelocation reportItemRelocation(String name)
+    {
+        var action = new ItemRelocation(name);
+        actionLog.add(action);
+        return action;
+    }
+
     public Item dropWithdrawable(int itemNum)
     {
         Item item = null;
         var action = reportItemRelocation("dropWithdrawable", null);
         if (onContainer())
         {
-            item = context.add(row, col, itemNum);
+            item = context.drop(row, col, itemNum);
         }
         action.setItem(item);
         return item;
@@ -377,19 +384,31 @@ public class VirtualRobot implements Robot
         return item;
     }
 
+    private ItemRelocation dropPlatform(Coords coords, String name)
+    {
+        ItemRelocation action = reportItemRelocation(name);
+        if (getTask().getNbPlatforms() == 0)
+        {
+            return (ItemRelocation) action.setError(
+                    ErrorMessages.PLATFORMS_FAILURE_NOT_ENOUGH_PLATFORM);
+        }
+        if (context.isObstacle(coords))
+        {
+            return (ItemRelocation) action
+                    .setError(ErrorMessages.PLATFORMS_FAILURE_DROP_PLATFORM);
+        }
+        Item platform = context.drop(coords, "platform");
+        return action.setItem(platform);
+    }
+
     /**
      * @see <a href=
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2312-L2328">blocklyRobot_lib-1.1.js
      *      L2312-L2328</a>
      */
-    public Item dropPlatformInFront()
+    public ItemRelocation dropPlatformInFront()
     {
-        reportItemRelocation("dropPlatformInFront", null);
-        if (getTask().getNbPlatforms() == 0)
-        {
-            return null;
-        }
-        return null;
+        return dropPlatform(coordsInFront(dir).south(), "dropPlatformInFront");
     }
 
     /**
@@ -397,9 +416,9 @@ public class VirtualRobot implements Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2330-L2346">blocklyRobot_lib-1.1.js
      *      L2330-L2346</a>
      */
-    public Item dropPlatformAbove()
+    public ItemRelocation dropPlatformAbove()
     {
-        return null;
+        return dropPlatform(getPoint().north(), "dropPlatformInFront");
     }
 
     public Movement turnLeft()
@@ -448,7 +467,7 @@ public class VirtualRobot implements Robot
         var mov = reportMovement(name);
         if (tryToBeOn(dir))
         {
-            Point inFront = coordsInFront(direction);
+            Coords inFront = coordsInFront(direction);
             if (getTask().hasGravity())
             {
                 Movement fallMov = fall(inFront);

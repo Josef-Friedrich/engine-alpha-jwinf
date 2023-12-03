@@ -11,12 +11,18 @@ public class ItemRelocation extends Action
 
     public ItemRelocation(String name, Item item)
     {
-        super(name);
+        this(name);
         this.item = item;
     }
 
-    public void setItem(Item item)
+    public ItemRelocation(String name)
+    {
+        super(name);
+    }
+
+    public ItemRelocation setItem(Item item)
     {
         this.item = item;
+        return this;
     }
 }

@@ -3,11 +3,11 @@ package rocks.friedrich.jwinf.platform.logic.map;
 import ea.Direction;
 import rocks.friedrich.jwinf.platform.logic.Compass;
 
-public class DirectionalPoint extends Point
+public class DirectionalCoords extends Coords
 {
     private Compass dir;
 
-    public DirectionalPoint(int row, int col, Compass dir)
+    public DirectionalCoords(int row, int col, Compass dir)
     {
         super(row, col);
         this.dir = dir;
