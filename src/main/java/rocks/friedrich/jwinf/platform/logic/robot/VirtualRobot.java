@@ -384,6 +384,11 @@ public class VirtualRobot implements Robot
      */
     public Item dropPlatformInFront()
     {
+        reportItemRelocation("dropPlatformInFront", null);
+        if (getTask().getNbPlatforms() == 0)
+        {
+            return null;
+        }
         return null;
     }
 
