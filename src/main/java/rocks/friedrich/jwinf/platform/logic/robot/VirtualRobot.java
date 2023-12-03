@@ -95,9 +95,9 @@ public class VirtualRobot implements Robot
 
     public void resetInitPosition()
     {
-        row = initPosition.row;
-        col = initPosition.col;
-        dir = initPosition.dir;
+        row = initPosition.getRow();
+        col = initPosition.getCol();
+        dir = initPosition.getDir();
     }
 
     public void addMovementListener(MovementListener listener)
@@ -111,10 +111,10 @@ public class VirtualRobot implements Robot
             switch (direction)
             {
             case EAST:
-                return col < context.cols - 1;
+                return col < context.getCols() - 1;
 
             case SOUTH:
-                return row < context.rows - 1;
+                return row < context.getRows() - 1;
 
             case WEST:
                 return col > 0;
@@ -231,7 +231,7 @@ public class VirtualRobot implements Robot
      */
     private boolean hasOn(Point point, Filter filter)
     {
-        return hasOn(point.row, point.col, filter);
+        return hasOn(point.getRow(), point.getCol(), filter);
     }
 
     /**
@@ -341,13 +341,13 @@ public class VirtualRobot implements Robot
             return (ItemRelocation) action
                     .setError(ErrorMessages.WITHDRAWABLES_NOTHING_TO_PICK_UP);
         }
-        if (level.task.getBagSize() < context.bag.size() + 1)
+        if (level.task.getBagSize() < context.getBag().size() + 1)
         {
             return (ItemRelocation) action
                     .setError(ErrorMessages.WITHDRAWABLES_TOO_MANY_OBJECTS);
         }
         item.withdraw();
-        context.bag.add(item);
+        context.getBag().add(item);
         return action;
     }
 
@@ -453,7 +453,7 @@ public class VirtualRobot implements Robot
             {
                 Movement fallMov = fall(inFront);
                 if (fallMov.getTo() != null
-                        && fallMov.getTo().row != inFront.getRow())
+                        && fallMov.getTo().getRow() != inFront.getRow())
                 {
                     mov.next = fallMov;
                     row = fallMov.getTo().getRow();

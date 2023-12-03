@@ -21,19 +21,19 @@ public class Context
     /**
      * Anzahl an Reihen (y-Richtung bzw. Höhe)
      */
-    public int rows;
+    private int rows;
 
     /**
      * Anzahl an Spalten (x-Richtung bzw. Breite)
      */
-    public int cols;
+    private int cols;
 
     /**
      * Behälter in dem Objekte eingesammelt (withdraw) werden können.
      *
      * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2458-L2478
      */
-    public List<Item> bag = new ArrayList<>();
+    private List<Item> bag = new ArrayList<>();
 
     public Context(int[][] map, ItemDataStore items)
     {
@@ -60,14 +60,25 @@ public class Context
         this.items = items;
     }
 
+    /**
+     * Anzahl an Reihen (y-Richtung bzw. Höhe)
+     */
     public int getRows()
     {
         return rows;
     }
 
+    /**
+     * Anzahl an Spalten (x-Richtung bzw. Breite)
+     */
     public int getCols()
     {
         return cols;
+    }
+
+    public List<Item> getBag()
+    {
+        return bag;
     }
 
     public Context(int[][] map)

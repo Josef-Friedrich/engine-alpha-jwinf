@@ -30,9 +30,9 @@ public class VirtualRobotTest
     private void assertMovement(Movement movement, int row, int col,
             Compass dir, boolean successful)
     {
-        assertEquals(movement.to.row, row);
-        assertEquals(movement.to.col, col);
-        assertEquals(movement.to.dir, dir);
+        assertEquals(movement.to.getRow(), row);
+        assertEquals(movement.to.getCol(), col);
+        assertEquals(movement.to.getDir(), dir);
         assertEquals(movement.relocated, successful);
     }
 

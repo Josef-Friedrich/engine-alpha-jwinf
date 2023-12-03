@@ -5,12 +5,17 @@ import rocks.friedrich.jwinf.platform.logic.Compass;
 
 public class DirectionalPoint extends Point
 {
-    public Compass dir;
+    private Compass dir;
 
     public DirectionalPoint(int row, int col, Compass dir)
     {
         super(row, col);
         this.dir = dir;
+    }
+
+    public Compass getDir()
+    {
+        return dir;
     }
 
     public Direction getDirection()

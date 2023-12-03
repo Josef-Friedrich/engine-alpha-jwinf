@@ -42,8 +42,8 @@ public class Level
         this.data = data;
         this.task = task;
         context = new Context(data.tiles, task.getItemsData());
-        cols = context.cols;
-        rows = context.rows;
+        cols = context.getCols();
+        rows = context.getRows();
         difficulty = data.difficulty;
         testIndex = data.testNo;
     }

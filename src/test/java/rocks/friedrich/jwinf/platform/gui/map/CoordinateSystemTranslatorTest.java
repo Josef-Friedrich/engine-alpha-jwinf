@@ -24,8 +24,8 @@ public class CoordinateSystemTranslatorTest
 
     private void assertPoint(Point point, int row, int col)
     {
-        assertEquals(point.row, row);
-        assertEquals(point.col, col);
+        assertEquals(point.getRow(), row);
+        assertEquals(point.getCol(), col);
     }
 
     private void assertVector(Vector vector, int x, int y)

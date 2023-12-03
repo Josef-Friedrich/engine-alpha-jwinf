@@ -15,7 +15,8 @@ public class ItemMapPainter
     public ItemMapPainter(Context map)
     {
         this.map = map;
-        translate = new CoordinateSystemTranslator(map.rows, map.cols);
+        translate = new CoordinateSystemTranslator(map.getRows(),
+                map.getCols());
     }
 
     public void paint(Scene scene, float x, float y)

@@ -66,19 +66,20 @@ public class Movement extends Action
     public Movement setTo(int toRow, int toCol, Compass toDir)
     {
         to = new DirectionalPoint(toRow, toCol, toDir);
-        relocated = from.row != toRow || from.col != toCol;
-        rotation = ((toDir.getNumber() - from.dir.getNumber() + 1) % 4) - 1;
+        relocated = from.getRow() != toRow || from.getCol() != toCol;
+        rotation = ((toDir.getNumber() - from.getDir().getNumber() + 1) % 4)
+                - 1;
         return this;
     }
 
     public Movement setTo(int toRow, int toCol)
     {
-        return setTo(toRow, toCol, from.dir);
+        return setTo(toRow, toCol, from.getDir());
     }
 
     public Movement setTo(Point to)
     {
-        return setTo(to.row, to.col);
+        return setTo(to.getRow(), to.getCol());
     }
 
     public Movement setError(ErrorMessages error)

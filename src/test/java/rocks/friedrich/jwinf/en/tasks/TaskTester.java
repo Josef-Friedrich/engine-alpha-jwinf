@@ -35,7 +35,7 @@ public class TaskTester<T>
         assertArrayEquals(w.actor.reportActions(), args,
                 "\"" + String.join("\", \"", w.actor.reportActions()) + "\"");
         Point p = w.actor.getPoint();
-        assertEquals(p.row, row, "row");
-        assertEquals(p.col, col, "col");
+        assertEquals(p.getRow(), row, "row");
+        assertEquals(p.getCol(), col, "col");
     }
 }

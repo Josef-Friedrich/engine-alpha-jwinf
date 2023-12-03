@@ -5,9 +5,9 @@ package rocks.friedrich.jwinf.platform.logic.map;
  */
 public class Point
 {
-    public int col;
+    protected int col;
 
-    public int row;
+    protected int row;
 
     public Point(int row, int col)
     {

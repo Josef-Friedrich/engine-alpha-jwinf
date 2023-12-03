@@ -14,8 +14,8 @@ public class ContextTest
     @Test
     public void testRowsAndCols()
     {
-        Context map = create(4, 5);
-        assertEquals(map.rows, 4);
-        assertEquals(map.cols, 5);
+        Context context = create(4, 5);
+        assertEquals(context.getRows(), 4);
+        assertEquals(context.getCols(), 5);
     }
 }
