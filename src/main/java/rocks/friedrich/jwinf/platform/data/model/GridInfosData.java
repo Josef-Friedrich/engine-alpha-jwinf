@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(value = { "hideSaveOrLoad", "conceptViewer",
         "languageStrings", "limitedUses", "includeBlocks", "blocklyColourTheme",
         "checkEndEveryTurn", "ignoreInvalidMoves", "actionDelay",
-        "multiple_marbles" })
+        "multiple_marbles", "additionalBlocksByLevel" })
 public class GridInfosData
 {
     public boolean hasGravity;

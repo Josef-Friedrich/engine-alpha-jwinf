@@ -126,6 +126,8 @@ public class ItemData implements Cloneable
      */
     public boolean isWithdrawable;
 
+    public boolean autoWithdraw;
+
     /**
      * Gibt an, ob der Gegenstand eine Tafel darstellt.
      */

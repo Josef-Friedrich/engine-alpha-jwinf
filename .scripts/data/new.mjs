@@ -2,102 +2,68 @@ const subTask = {};
 
 export default subTask;
 
+
+// var cellSide = 60;
+
 subTask.gridInfos = {
   hideSaveOrLoad: true,
+  // cellSide: cellSide,
   conceptViewer: false,
-  contextType: "castle",
-  //cellSide: cellSide,
+  contextType: "gems",
   actionDelay: 200,
-  hasGravity: true,
   // itemTypes: {
-  //    green_robot: { img: "green_robot.png", side: 80, nbStates: 9, offsetX: -14, category: "robot", team: 0, zOrder: 2 },
-  //    platform: { num: 2, img: "platform.png", side: cellSide, category: "platform", isObstacle: true, zOrder: 0 },
-  //    hole: { num: 3, img: "hole.png", side: cellSide, category: "hole", isHole: true, zOrder: 0 },
-  //    obstacle: { num: 4, img: "obstacle.png", side: cellSide, category: "obstacle", isObstacle: true, zOrder: 0 },
-  //    marble: { num: 5, img: "marble.png", side: cellSide, category: "marble", isTransportable: true, zOrder: 1 }
+  //    green_robot: { img: "green_robot.png", side: 80, nbStates: 9, isObstacle: true, dir: 1, offsetX: -14, category: "robot", team: 0, zOrder: 2 },
+  //    obstacle: { num: 2, img: "obstacle.png", side: cellSide, category: "obstacle", isObstacle: true, isHole: false, zOrder: 0 },
+  //    gem: { num: 3, img: "blue_gem.png", side: cellSide, category: "marble", isObstacle: false, isCollectible: true, zOrder: 1 },
   // },
   maxInstructions: {
-    easy: 12,
+    easy: 8,
     medium: 20,
-    hard: 20,
+    hard: 15,
   },
   includeBlocks: {
     groupByCategory: false,
     generatedBlocks: {
-      robot: {
-        easy: [
-          "forward",
-          "jump",
-          "withdrawObject",
-          "dropObject",
-          "platformAbove",
-        ],
-        medium: [
-          "forward",
-          "turnAround",
-          "jump",
-          "withdrawObject",
-          "dropObject",
-          "onContainer",
-          "platformAbove",
-          "obstacleInFront",
-        ],
-        hard: [
-          "forward",
-          "jump",
-          "backwards",
-          "turnAround",
-          "withdrawObject",
-          "dropObject",
-          "onContainer",
-          "onObject",
-        ],
-      },
+      robot: ["forward", "left", "right", "obstacleInFront"],
     },
     standardBlocks: {
       includeAll: false,
-      wholeCategories: {
-        easy: [],
-        medium: [],
-        hard: [],
-      },
+      wholeCategories: [],
       singleBlocks: {
-        easy: ["controls_repeat", "controls_if"],
-        medium: ["controls_repeat", "controls_if", "controls_if_else"],
-        hard: ["controls_repeat", "controls_if", "controls_if_else"],
-      },
+        easy: ["controls_if", "controls_repeat"],
+        medium: ["logic_negate", "controls_if", "controls_if_else", "controls_repeat"],
+        hard: ["logic_negate", "controls_if", "controls_if_else", "controls_repeat"]
+      }
     },
     pythonAdditionalFunctions: {
-      shared: ["range"],
+      shared: ["range"]
     },
   },
-  multiple_marbles: { easy: false, medium: false, hard: true },
   blocklyColourTheme: "bwinf",
+  additionalBlocksByLevel: {
+    easy: { generatedBlocks: {}, standardBlocks: {} },
+    medium: { standardBlocks: {}, },
+  },
+  ignoreInvalidMoves: false,
+  checkEndEveryTurn: false,
   // checkEndCondition: function(context, lastTurn) {
   //    var solved = true;
   //    for (var iRow = 0; iRow < context.tiles.length; iRow++) {
   //       var row = subTask.data[subTask.level][subTask.iTestCase].tiles[iRow];
   //       for (var iCol = 0; iCol < row.length; iCol++) {
-  //          var marbles = context.getItems(iRow, iCol, {category: "marble"});
-  //          var holes = context.getItems(iRow, iCol, {category: "hole"});
-  //          if (marbles.length != holes.length) {
+  //          var collectibles = context.getItems(iRow, iCol, {isCollectible: true});
+  //          if (collectibles.length != 0) {
   //             solved = false;
   //          }
   //       }
   //    }
   //    if (solved) {
   //       context.success = true;
-  //       if (context.infos.multiple_marbles) {
-  //         throw(window.languageStrings.messages.successAllMarblesInHoles);
-  //       }
-  //       throw(window.languageStrings.messages.successOneMarbleInHole);
+  //       throw(window.taskStrings.success);
   //    }
   //    if (lastTurn) {
   //       context.success = false;
-  //       if (context.infos.multiple_marbles) {
-  //         throw(window.languageStrings.messages.failureAllMarblesInHoles);
-  //       }
-  //       throw(window.languageStrings.messages.failureOneMarbleInHole);
+  //       throw(window.taskStrings.failure);
   //    }
   // },
   // computeGrade: function(context, message) {
@@ -116,70 +82,56 @@ subTask.data = {
   easy: [
     {
       tiles: [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 4, 1],
+        [1, 1, 4, 1, 1, 3, 1],
+        [1, 1, 4, 3, 4, 1, 1],
+        [4, 4, 4, 4, 4, 1, 4],
+        [1, 1, 1, 1, 1, 3, 1],
+        [1, 3, 1, 3, 1, 1, 4],
+        [1, 1, 1, 1, 1, 1, 1]
       ],
-      initItems: [{ row: 15, col: 0, dir: 0, type: "robot" }],
-    },
+      initItems: [
+        { row: 5, col: 0, dir: 0, type: "robot" },
+      ]
+    }
   ],
   medium: [
     {
       tiles: [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [6, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 6],
-        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1],
-        [1, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1],
-        [1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1],
-        [1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 4, 1, 1, 1, 4, 1],
+        [1, 1, 4, 1, 1, 3, 1, 3, 4],
+        [1, 1, 1, 3, 1, 1, 4, 1, 1],
+        [1, 1, 1, 1, 1, 4, 3, 1, 4],
+        [1, 1, 1, 1, 1, 1, 1, 4, 1],
+        [1, 1, 1, 1, 4, 4, 3, 1, 1],
+        [4, 4, 4, 1, 3, 4, 1, 1, 1],
+        [1, 1, 1, 4, 4, 4, 1, 1, 1],
+        [1, 1, 1, 3, 1, 1, 3, 4, 1],
+        [1, 1, 1, 1, 1, 1, 4, 1, 1],
       ],
-      initItems: [{ row: 15, col: 0, dir: 0, type: "robot" }],
-    },
+      initItems: [
+        { row: 8, col: 0, dir: 0, type: "robot" },
+      ]
+    }
   ],
   hard: [
     {
       tiles: [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1],
-        [1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2],
-        [1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1],
-        [1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1],
-        [1, 1, 5, 1, 1, 1, 5, 1, 1, 1, 5, 1, 1, 1, 5, 1],
-        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 4, 3, 1, 4, 1, 1, 1],
+        [1, 1, 1, 3, 4, 4, 4, 4, 4, 4, 3, 1],
+        [1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 1],
+        [1, 1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 1],
+        [1, 1, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1],
+        [1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1],
+        [1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 1, 1],
+        [1, 1, 1, 3, 1, 4, 4, 4, 4, 3, 1, 1],
+        [1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1]
       ],
-      initItems: [{ row: 12, col: 0, dir: 0, type: "robot" }],
-    },
-  ],
+      initItems: [
+        { row: 6, col: 1, dir: 3, type: "robot" },
+      ]
+    }
+  ]
 };
+
