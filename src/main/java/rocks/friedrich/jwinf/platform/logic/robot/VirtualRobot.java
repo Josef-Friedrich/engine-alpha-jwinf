@@ -323,7 +323,7 @@ public class VirtualRobot implements Robot
         {
             return mov.setError(ErrorMessages.JUMP_OBSTACLE_BLOCKING);
         }
-        row -= 2;
+        move(row - 2, col, dir);
         return mov.setTo();
     }
 
@@ -462,6 +462,18 @@ public class VirtualRobot implements Robot
         actionLog.printActions();
     }
 
+    /**
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2979-L3023">blocklyRobot_lib-1.1.js
+     *      L2979-L3023</a>
+     */
+    private void move(int newRow, int newCol, Compass newDir)
+    {
+        row = newRow;
+        col = newCol;
+        dir = newDir;
+    }
+
     private Movement forOrBackwards(String name, Compass direction)
     {
         var mov = reportMovement(name);
@@ -508,52 +520,35 @@ public class VirtualRobot implements Robot
         return forOrBackwards("backwards", WEST);
     }
 
-    public Movement east()
+    private Movement moveInDir(String name, Compass dir, int newRow, int newCol)
     {
-        var mov = reportMovement("east");
-        if (tryToBeOn(EAST))
+        var mov = reportMovement(name);
+        if (tryToBeOn(dir))
         {
-            col++;
-            dir = EAST;
+            move(newRow, newCol, dir);
             numberOfMovements++;
         }
         return mov.setTo();
+    }
+
+    public Movement east()
+    {
+        return moveInDir("east", EAST, row, col + 1);
     }
 
     public Movement north()
     {
-        var mov = reportMovement("north");
-        if (tryToBeOn(NORTH))
-        {
-            row--;
-            dir = NORTH;
-            numberOfMovements++;
-        }
-        return mov.setTo();
+        return moveInDir("north", NORTH, row - 1, col);
     }
 
     public Movement west()
     {
-        var mov = reportMovement("west");
-        if (tryToBeOn(WEST))
-        {
-            col--;
-            dir = WEST;
-            numberOfMovements++;
-        }
-        return mov.setTo();
+        return moveInDir("west", WEST, row, col - 1);
     }
 
     public Movement south()
     {
-        var mov = reportMovement("south");
-        if (tryToBeOn(SOUTH))
-        {
-            row++;
-            dir = SOUTH;
-            numberOfMovements++;
-        }
-        return mov.setTo();
+        return moveInDir("south", SOUTH, row + 1, col);
     }
 
     /**

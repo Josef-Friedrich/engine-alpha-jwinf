@@ -2,7 +2,6 @@ package rocks.friedrich.jwinf.platform.logic.item;
 
 public interface ItemController
 {
-
     public void add(int row, int col);
 
     /**

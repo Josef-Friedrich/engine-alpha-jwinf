@@ -17,7 +17,8 @@ import rocks.friedrich.jwinf.platform.logic.menu.TaskList;
 
 class TaskTest
 {
-    Task task = Task.loadByTaskPath("conditionals_excercises/light_all_candles");
+    Task task = Task
+            .loadByTaskPath("conditionals_excercises/light_all_candles");
 
     @Test
     void testLoadByRelPath()

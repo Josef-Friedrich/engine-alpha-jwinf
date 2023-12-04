@@ -23,19 +23,19 @@ public class TaskTester<T>
      *
      * @param difficulty the difficulty level of the test case
      * @param test       the test case number
-     * @param row        the expected row of the actor's end position
-     * @param col        the expected column of the actor's end position
+     * @param endRow     the expected row of the actor's end position
+     * @param endCol     the expected column of the actor's end position
      * @param args       the expected route of the actor
      * @throws Exception if an error occurs during the assertion
      */
-    public void assertRoute(Difficulty difficulty, int test, int row, int col,
-            String... args) throws Exception
+    public void assertRoute(Difficulty difficulty, int test, int endRow,
+            int endCol, String... args) throws Exception
     {
         var w = solver.solveVirtual(difficulty, test);
         assertArrayEquals(w.actor.reportActions(), args,
                 "\"" + String.join("\", \"", w.actor.reportActions()) + "\"");
         Coords p = w.actor.getPoint();
-        assertEquals(p.getRow(), row, "row");
-        assertEquals(p.getCol(), col, "col");
+        assertEquals(p.getRow(), endRow, "row");
+        assertEquals(p.getCol(), endCol, "col");
     }
 }

@@ -53,7 +53,7 @@ public class ItemData implements Cloneable
      */
     public String type;
 
-  /**
+    /**
      * Relativer Pfad zu <code>src/main/resources/images</code>. Zum Beispiel:
      * <code>candle/candle.png</code>
      */

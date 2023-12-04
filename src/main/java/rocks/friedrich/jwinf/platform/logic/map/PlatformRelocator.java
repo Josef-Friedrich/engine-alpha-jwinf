@@ -19,7 +19,7 @@ public class PlatformRelocator extends ItemRelocator
         reportItemRelocation("dropPlatformInFront", null);
         // if (getTask().getNbPlatforms() == 0)
         // {
-        //     return null;
+        // return null;
         // }
         return null;
     }

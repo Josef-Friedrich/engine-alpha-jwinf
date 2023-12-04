@@ -4,7 +4,7 @@ import rocks.friedrich.jwinf.platform.data.model.ItemData;
 
 /**
  * Ein Gegenstand auf dem Gitter.
- * 
+ *
  * @see ItemData
  */
 public class Item

@@ -50,7 +50,7 @@ public class TaskData
     public String authors;
 
     public String[] translators;
-    
+
     public GridInfosData gridInfos;
 
     public LevelCollectionData levels;
