@@ -23,35 +23,35 @@ public class TaskListTest
     }
 
     @Test
-    public void methodReadFromResources() throws IOException
+    public void testReadFromResources() throws IOException
     {
         TaskList list = TaskList.readFromResources();
-        assertEquals(list.size(), 5);
+        assertEquals(list.size(), 6);
     }
 
     @Test
-    public void methodReadFromMenu() throws IOException
+    public void testReadFromMenu() throws IOException
     {
         TaskList list = TaskList.readFromMenu();
-        assertEquals(list.size(), 5);
+        assertEquals(list.size(), 6);
     }
 
     @Test
-    public void methodGet()
+    public void testGetId()
     {
         assertEquals(list.getId(0),
                 "conditionals_excercises/find_the_destination");
     }
 
     @Test
-    public void methodNext()
+    public void testNext()
     {
         assertEquals(list.next(),
                 "conditionals_excercises/find_the_way_to_the_lake");
     }
 
     @Test
-    public void methodPrevious()
+    public void testPrevious()
     {
         assertEquals(list.previous(), "conditionals_excercises/platforms");
     }
