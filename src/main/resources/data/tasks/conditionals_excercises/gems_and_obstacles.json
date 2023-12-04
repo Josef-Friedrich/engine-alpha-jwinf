@@ -17,6 +17,8 @@
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2017/17-FR-04-collecting-gems-2/task_new.js"
   ],
   "gridInfos": {
+    "bagSize": 8,
+    "autoWithdraw": true,
     "backgroundColor": "#BF5E47",
     "gridColor": "#96413B",
     "itemTypes": {

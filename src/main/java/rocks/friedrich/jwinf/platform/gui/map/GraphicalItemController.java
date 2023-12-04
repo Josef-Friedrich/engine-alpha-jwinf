@@ -59,6 +59,6 @@ public class GraphicalItemController implements ItemController
 
     public void withdraw()
     {
-        image.remove();
+        remove();
     }
 }

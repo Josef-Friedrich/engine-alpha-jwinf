@@ -40,6 +40,8 @@ public class GridInfosData
      */
     public int bagSize;
 
+    public boolean autoWithdraw;
+
     /**
      * For example „labyrinth“.
      */

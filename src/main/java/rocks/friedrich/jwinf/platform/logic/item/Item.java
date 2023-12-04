@@ -136,6 +136,11 @@ public class Item
         return data.isWithdrawable;
     }
 
+    public boolean isAutoWithdrawable()
+    {
+        return isWithdrawable() && data.autoWithdraw;
+    }
+
     public void add(int row, int col)
     {
         if (controller != null)

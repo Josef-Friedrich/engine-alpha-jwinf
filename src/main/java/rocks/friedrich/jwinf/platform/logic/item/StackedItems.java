@@ -2,6 +2,7 @@ package rocks.friedrich.jwinf.platform.logic.item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.Iterator;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
@@ -108,18 +109,28 @@ public class StackedItems implements Iterable<Item>
         return null;
     }
 
-    public Item withdraw()
+    private Item withdrawUsingPredicate(Predicate<Item> predicate)
     {
         Iterator<Item> iterator = items.iterator();
         while (iterator.hasNext())
         {
             Item item = iterator.next();
-            if (item.isWithdrawable())
+            if (predicate.test(item))
             {
                 iterator.remove();
                 return item;
             }
         }
         return null;
+    }
+
+    public Item withdraw()
+    {
+        return withdrawUsingPredicate(item -> item.isWithdrawable());
+    }
+
+    public Item autoWithdraw()
+    {
+        return withdrawUsingPredicate(item -> item.isAutoWithdrawable());
     }
 }

@@ -271,4 +271,9 @@ public class Task
     {
         return data.gridInfos.hasGravity;
     }
+
+    public boolean doAutoWithdraw()
+    {
+        return data.gridInfos.autoWithdraw;
+    }
 }

@@ -332,10 +332,21 @@ public class VirtualRobot implements Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3125-L3164">blocklyRobot_lib-1.1.js
      *      L3125-L3164</a>
      */
-    public ItemRelocation withdraw()
+    public ItemRelocation withdraw(boolean auto)
     {
-        Item item = getOnItems().withdraw();
-        var action = reportItemRelocation("withdraw", item);
+        Item item;
+        String name;
+        if (auto)
+        {
+            item = getOnItems().autoWithdraw();
+            name = "autoWithdraw";
+        }
+        else
+        {
+            item = getOnItems().withdraw();
+            name = "withdraw";
+        }
+        var action = reportItemRelocation(name, item);
         if (item == null)
         {
             return (ItemRelocation) action
@@ -349,6 +360,16 @@ public class VirtualRobot implements Robot
         item.withdraw();
         context.getBag().add(item);
         return action;
+    }
+
+    public ItemRelocation autoWithdraw()
+    {
+        return withdraw(true);
+    }
+
+    public ItemRelocation withdraw()
+    {
+        return withdraw(false);
     }
 
     private ItemRelocation reportItemRelocation(String name, Item item)
@@ -472,6 +493,10 @@ public class VirtualRobot implements Robot
         row = newRow;
         col = newCol;
         dir = newDir;
+        if (getTask().doAutoWithdraw())
+        {
+            autoWithdraw();
+        }
     }
 
     private Movement forOrBackwards(String name, Compass direction)
@@ -487,13 +512,12 @@ public class VirtualRobot implements Robot
                         && fallMov.getTo().getRow() != inFront.getRow())
                 {
                     mov.setNext(fallMov);
-                    row = fallMov.getTo().getRow();
-                    col = fallMov.getTo().getCol();
+                    move(fallMov.getTo().getRow(), fallMov.getTo().getCol(),
+                            dir);
                     return mov.setTo(inFront);
                 }
             }
-            row = inFront.getRow();
-            col = inFront.getCol();
+            move(inFront.getRow(), inFront.getCol(), dir);
             numberOfMovements++;
         }
         return mov.setTo();
