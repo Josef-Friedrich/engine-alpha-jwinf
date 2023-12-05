@@ -1,9 +1,10 @@
-package rocks.friedrich.jwinf.platform.logic.context;
+package rocks.friedrich.jwinf.platform.logic.context.item_relocation;
 
+import rocks.friedrich.jwinf.platform.logic.context.Context;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.robot.ItemRelocation;
 
-public class ItemRelocator
+abstract class ItemRelocator
 {
     protected Context context;
 

@@ -39,13 +39,13 @@ public class VirtualRobotTest
     @Test
     public void testRow()
     {
-        assertEquals(robot.row, 8);
+        assertEquals(robot.getRow(), 8);
     }
 
     @Test
     public void testCol()
     {
-        assertEquals(robot.col, 1);
+        assertEquals(robot.getCol(), 1);
     }
 
     @Test
@@ -58,8 +58,8 @@ public class VirtualRobotTest
     public void testEast()
     {
         assertMovement(robot.east(), 8, 2, EAST, true);
-        assertEquals(robot.row, 8);
-        assertEquals(robot.col, 2);
+        assertEquals(robot.getRow(), 8);
+        assertEquals(robot.getCol(), 2);
     }
 
     @Test
@@ -72,8 +72,8 @@ public class VirtualRobotTest
     public void testWest()
     {
         assertMovement(robot.west(), 8, 0, WEST, true);
-        assertEquals(robot.row, 8);
-        assertEquals(robot.col, 0);
+        assertEquals(robot.getRow(), 8);
+        assertEquals(robot.getCol(), 0);
     }
 
     @Test
@@ -107,14 +107,14 @@ public class VirtualRobotTest
     {
         assertFalse(robot.obstacleInFront());
         robot.turnLeft();
-        assertEquals(robot.col, 1);
-        assertEquals(robot.row, 8);
+        assertEquals(robot.getCol(), 1);
+        assertEquals(robot.getRow(), 8);
         assertTrue(robot.obstacleInFront());
         robot.turnLeft();
         assertFalse(robot.obstacleInFront());
         robot.turnLeft();
         assertTrue(robot.obstacleInFront());
-        assertEquals(robot.col, 1);
-        assertEquals(robot.row, 8);
+        assertEquals(robot.getCol(), 1);
+        assertEquals(robot.getRow(), 8);
     }
 }

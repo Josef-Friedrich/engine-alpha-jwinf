@@ -10,13 +10,13 @@ import rocks.friedrich.jwinf.platform.data.model.ItemData;
  * Ein Speicher für die Daten der Gegenstände (ItemData). Eine Trainingsaufgabe
  * (Task) bedient sich eines Gegenständedatenspeichers (ItemDataStore).
  */
-public class ItemDataStore
+public class ItemCreator
 {
     private HashMap<String, ItemData> itemsByName;
 
     private HashMap<Integer, ItemData> itemsByNumber;
 
-    public ItemDataStore(Map<String, ItemData> items)
+    public ItemCreator(Map<String, ItemData> items)
     {
         itemsByName = new HashMap<>();
         itemsByNumber = new HashMap<>();
@@ -37,11 +37,6 @@ public class ItemDataStore
                 itemsByNumber.put(item.num, item);
             }
         }
-    }
-
-    public ItemDataStore()
-    {
-        this(new HashMap<String, ItemData>());
     }
 
     public ItemData get(int num)
@@ -66,7 +61,7 @@ public class ItemDataStore
      * @return The newly created Item object, or null if itemData is null or
      *         cloning is not supported.
      */
-    public Item createItem(ItemData itemData)
+    private Item createItem(ItemData itemData)
     {
         if (itemData == null)
         {

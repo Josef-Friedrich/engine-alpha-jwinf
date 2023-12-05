@@ -1,10 +1,11 @@
-package rocks.friedrich.jwinf.platform.logic.context;
+package rocks.friedrich.jwinf.platform.logic.context.item_relocation;
 
+import rocks.friedrich.jwinf.platform.logic.context.Context;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 
-public class PlatformRelocator extends ItemRelocator
+public class PlatformBuilder extends ItemRelocator
 {
-    public PlatformRelocator(Context context)
+    public PlatformBuilder(Context context)
     {
         super(context);
     }

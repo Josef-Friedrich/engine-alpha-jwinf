@@ -43,7 +43,7 @@ public class Movement extends Action
     public Movement(String name, VirtualRobot robot)
     {
         super(name);
-        from = new DirectionalCoords(robot.row, robot.col, robot.dir);
+        from = new DirectionalCoords(robot.getRow(), robot.getCol(), robot.dir);
         this.robot = robot;
     }
 
@@ -60,7 +60,7 @@ public class Movement extends Action
      */
     public Movement setTo()
     {
-        return setTo(robot.row, robot.col, robot.dir);
+        return setTo(robot.getRow(), robot.getCol(), robot.dir);
     }
 
     public Movement setTo(int toRow, int toCol, Compass toDir)

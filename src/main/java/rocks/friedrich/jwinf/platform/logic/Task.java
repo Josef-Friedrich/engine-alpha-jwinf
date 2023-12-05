@@ -7,7 +7,7 @@ import java.util.Map;
 import rocks.friedrich.jwinf.platform.data.JsonLoader;
 import rocks.friedrich.jwinf.platform.data.model.TaskData;
 import rocks.friedrich.jwinf.platform.logic.context.Context;
-import rocks.friedrich.jwinf.platform.logic.item.ItemDataStore;
+import rocks.friedrich.jwinf.platform.logic.item.ItemCreator;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.level.LevelCollection;
@@ -53,7 +53,7 @@ public class Task
 
     public LevelCollection levels;
 
-    private ItemDataStore itemsData;
+    private ItemCreator itemsData;
 
     /**
      * Die Anzahl an Tests (Level) der Schwierigkeitsstufe mit den meisten
@@ -74,7 +74,7 @@ public class Task
         }
         title = data.title;
         intro = data.intro;
-        itemsData = new ItemDataStore(data.gridInfos.itemTypes);
+        itemsData = new ItemCreator(data.gridInfos.itemTypes);
         levels = new LevelCollection(data.levels, this);
     }
 
@@ -98,7 +98,7 @@ public class Task
         return intro;
     }
 
-    public ItemDataStore getItemsData()
+    public ItemCreator getItemsData()
     {
         return itemsData;
     }

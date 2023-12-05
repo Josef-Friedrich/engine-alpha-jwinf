@@ -35,12 +35,12 @@ public class VirtualRobot implements Robot
     /**
      * Die Zeile, in der sich der Roboter aktuell befindet.
      */
-    public int row;
+    private int row;
 
     /**
      * Die Spalte, in der sich der Roboter aktuell befindet.
      */
-    public int col;
+    private int col;
 
     public Compass dir;
 

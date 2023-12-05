@@ -31,7 +31,7 @@ public class Level
     {
         this.data = data;
         this.task = task;
-        context = createContext();
+        context = createContext(task);
         difficulty = data.difficulty;
         testIndex = data.testNo;
     }
@@ -44,10 +44,11 @@ public class Level
         return robot;
     }
 
-    private Context createContext()
+    private Context createContext(Task task)
     {
         VirtualRobot robot = createRobot();
-        Context context = new Context(data.tiles, task.getItemsData(), robot);
+        Context context = new Context(data.tiles, task.getItemsData(), robot,
+                task, this);
         robot.setContext(context);
         return context;
     }

@@ -4,20 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
+import rocks.friedrich.jwinf.platform.logic.Task;
+import rocks.friedrich.jwinf.platform.logic.context.item_relocation.BagPacker;
+import rocks.friedrich.jwinf.platform.logic.context.item_relocation.PlatformBuilder;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
-import rocks.friedrich.jwinf.platform.logic.item.ItemDataStore;
+import rocks.friedrich.jwinf.platform.logic.item.ItemCreator;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
+import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 /**
- * Die mit Gegenständen (Item) ausgefüllte Karte (Map) einer
- * Trainingsaufgabenversion (Level).
+ * Sammlung aller wichtigen Objekte die zum Lösen einer Trainingsaufgabenversion
+ * nötig sind.
  */
 public class Context
 {
     private StackedItems[][] stackedItems;
 
-    private ItemDataStore items;
+    private ItemCreator items;
 
     /**
      * Anzahl an Reihen (y-Richtung bzw. Höhe)
@@ -31,6 +35,14 @@ public class Context
 
     private VirtualRobot robot;
 
+    private Task task;
+
+    private Level level;
+
+    private BagPacker bagPacker;
+
+    private PlatformBuilder platformBuilder;
+
     /**
      * Behälter in dem Objekte eingesammelt (withdraw) werden können.
      *
@@ -38,7 +50,7 @@ public class Context
      */
     private List<Item> bag = new ArrayList<>();
 
-    public Context(int[][] map, ItemDataStore items, VirtualRobot robot)
+    public Context(int[][] map, ItemCreator items, VirtualRobot robot, Task task, Level level)
     {
         rows = map.length;
         cols = map[0].length;
@@ -62,6 +74,10 @@ public class Context
         }
         this.items = items;
         this.robot = robot;
+        this.task = task;
+        this.level = level;
+        bagPacker = new BagPacker(this);
+        platformBuilder = new PlatformBuilder(this);
     }
 
     /**
@@ -83,6 +99,16 @@ public class Context
     public VirtualRobot getRobot()
     {
         return robot;
+    }
+
+    public Task getTask()
+    {
+        return task;
+    }
+
+    public Level getLevel()
+    {
+        return level;
     }
 
     public List<Item> getBag()

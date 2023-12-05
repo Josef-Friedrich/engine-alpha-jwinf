@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import rocks.friedrich.jwinf.platform.logic.Task;
 
-public class ItemDataStoreTest
+public class ItemCreatorTest
 {
-    ItemDataStore store;
+    ItemCreator store;
 
-    private static ItemDataStore loadByTaskId(String taskPath)
+    private static ItemCreator loadByTaskId(String taskPath)
     {
         Task task = Task.loadByTaskPath(taskPath);
         return task.getItemsData();
@@ -39,12 +39,6 @@ public class ItemDataStoreTest
     public void testAll()
     {
         assertEquals(store.all().size(), 3);
-    }
-
-    @Test
-    public void testCreateItemByItemData()
-    {
-        assertEquals(store.createItem(store.get("wall")).getNum(), 2);
     }
 
     @Test
