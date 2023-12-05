@@ -24,37 +24,25 @@ abstract class ItemRelocator
         return action;
     }
 
-    /**
-     * Adds an item on top to the specified position.
-     */
-    public Item drop(int row, int col, int itemNum)
+    protected Item createItem(int itemNum)
     {
-        return drop(row, col, itemCreator.create(itemNum));
+        return itemCreator.create(itemNum);
     }
 
-    public Item drop(int row, int col, String itemName)
+    protected Item drop(Coords coords, int itemNum)
     {
-        return drop(row, col, itemCreator.create(itemName));
+        return drop(coords, itemCreator.create(itemNum));
     }
 
-    public Item drop(Coords coords, String itemName)
+    protected Item drop(Coords coords, String itemName)
     {
-        return drop(coords.getRow(), coords.getCol(),
-                itemCreator.create(itemName));
+        return drop(coords, itemCreator.create(itemName));
     }
 
-    /**
-     * Adds an item on top to the specified position.
-     */
-    private Item drop(int row, int col, Item item)
+    protected Item drop(Coords coords, Item item)
     {
-        item.setPosition(row, col);
-        context.get(row, col).add(item);
+        item.setPosition(coords.getRow(), coords.getCol());
+        context.get(coords.getRow(), coords.getCol()).add(item);
         return item;
-    }
-
-    public Item withdraw()
-    {
-        return null;
     }
 }

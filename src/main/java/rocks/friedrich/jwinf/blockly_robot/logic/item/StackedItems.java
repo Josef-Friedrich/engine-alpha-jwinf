@@ -130,7 +130,7 @@ public class StackedItems implements Iterable<Item>
         return withdrawUsingPredicate(item -> item.isWithdrawable());
     }
 
-    public Item autoWithdraw()
+    public Item withdrawAuto()
     {
         return withdrawUsingPredicate(item -> item.isAutoWithdrawable());
     }

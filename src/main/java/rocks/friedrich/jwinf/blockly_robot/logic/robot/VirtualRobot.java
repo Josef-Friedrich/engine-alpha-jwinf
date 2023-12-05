@@ -331,49 +331,14 @@ public class VirtualRobot implements Robot
         return mov.setTo();
     }
 
-    /**
-     * @see <a href=
-     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3125-L3164">blocklyRobot_lib-1.1.js
-     *      L3125-L3164</a>
-     */
-    public ItemRelocation withdraw(boolean auto)
+    public ItemRelocation withdrawAuto()
     {
-        Item item;
-        String name;
-        if (auto)
-        {
-            item = getOnItems().autoWithdraw();
-            name = "autoWithdraw";
-        }
-        else
-        {
-            item = getOnItems().withdraw();
-            name = "withdraw";
-        }
-        var action = reportItemRelocation(name, item);
-        if (item == null)
-        {
-            return (ItemRelocation) action
-                    .setError(ErrorMessages.WITHDRAWABLES_NOTHING_TO_PICK_UP);
-        }
-        if (level.getTask().getBagSize() < context.getBag().size() + 1)
-        {
-            return (ItemRelocation) action
-                    .setError(ErrorMessages.WITHDRAWABLES_TOO_MANY_OBJECTS);
-        }
-        item.withdraw();
-        context.getBag().add(item);
-        return action;
-    }
-
-    public ItemRelocation autoWithdraw()
-    {
-        return withdraw(true);
+        return log(context.getBagPacker().withdrawAuto(getCoords()));
     }
 
     public ItemRelocation withdraw()
     {
-        return withdraw(false);
+        return log(context.getBagPacker().withdraw(getCoords()));
     }
 
     private ItemRelocation reportItemRelocation(String name, Item item)
@@ -426,8 +391,8 @@ public class VirtualRobot implements Robot
      */
     public ItemRelocation dropPlatformAbove()
     {
-        return log(context.getPlatformBuilder().dropPlatform(getCoords().north(),
-                "dropPlatformAbove"));
+        return log(context.getPlatformBuilder()
+                .dropPlatform(getCoords().north(), "dropPlatformAbove"));
     }
 
     public Movement turnLeft()
@@ -483,7 +448,7 @@ public class VirtualRobot implements Robot
         dir = newDir;
         if (getTask().doAutoWithdraw())
         {
-            autoWithdraw();
+            withdrawAuto();
         }
     }
 
