@@ -3,9 +3,9 @@ package rocks.friedrich.jwinf.en.tasks;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import rocks.friedrich.jwinf.platform.Solver;
-import rocks.friedrich.jwinf.platform.logic.context.Coords;
-import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
+import rocks.friedrich.jwinf.blockly_robot.Solver;
+import rocks.friedrich.jwinf.blockly_robot.logic.context.Coords;
+import rocks.friedrich.jwinf.blockly_robot.logic.level.Difficulty;
 
 public class TaskTester<T>
 {

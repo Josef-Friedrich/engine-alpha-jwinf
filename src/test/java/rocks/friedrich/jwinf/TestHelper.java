@@ -1,10 +1,10 @@
 package rocks.friedrich.jwinf;
 
-import rocks.friedrich.jwinf.platform.logic.Task;
-import rocks.friedrich.jwinf.platform.logic.context.Context;
-import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
-import rocks.friedrich.jwinf.platform.logic.level.Level;
-import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
+import rocks.friedrich.jwinf.blockly_robot.logic.Task;
+import rocks.friedrich.jwinf.blockly_robot.logic.context.Context;
+import rocks.friedrich.jwinf.blockly_robot.logic.level.Difficulty;
+import rocks.friedrich.jwinf.blockly_robot.logic.level.Level;
+import rocks.friedrich.jwinf.blockly_robot.logic.robot.VirtualRobot;
 
 public class TestHelper
 {

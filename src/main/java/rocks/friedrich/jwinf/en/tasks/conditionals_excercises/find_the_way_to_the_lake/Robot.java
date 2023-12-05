@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.find_the_way_to_the_lake;
 
-import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
+import rocks.friedrich.jwinf.blockly_robot.logic.robot.RobotWrapper;
 
 /**
  * https://jwinf.de/task/1158

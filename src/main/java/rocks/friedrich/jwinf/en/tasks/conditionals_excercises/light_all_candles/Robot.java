@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.light_all_candles;
 
-import rocks.friedrich.jwinf.platform.logic.robot.RobotWrapper;
+import rocks.friedrich.jwinf.blockly_robot.logic.robot.RobotWrapper;
 
 /**
  * https://jwinf.de/task/1156

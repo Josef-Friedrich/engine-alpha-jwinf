@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.platforms;
 
-import rocks.friedrich.jwinf.platform.Solver;
+import rocks.friedrich.jwinf.blockly_robot.Solver;
 
 /**
  * https://jwinf.de/task/1160

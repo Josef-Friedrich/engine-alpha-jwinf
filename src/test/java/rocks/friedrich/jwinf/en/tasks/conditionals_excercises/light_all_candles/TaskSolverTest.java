@@ -1,8 +1,8 @@
 package rocks.friedrich.jwinf.en.tasks.conditionals_excercises.light_all_candles;
 
-import static rocks.friedrich.jwinf.platform.logic.level.Difficulty.EASY;
-import static rocks.friedrich.jwinf.platform.logic.level.Difficulty.HARD;
-import static rocks.friedrich.jwinf.platform.logic.level.Difficulty.MEDIUM;
+import static rocks.friedrich.jwinf.blockly_robot.logic.level.Difficulty.EASY;
+import static rocks.friedrich.jwinf.blockly_robot.logic.level.Difficulty.HARD;
+import static rocks.friedrich.jwinf.blockly_robot.logic.level.Difficulty.MEDIUM;
 
 import org.junit.jupiter.api.Test;
 
