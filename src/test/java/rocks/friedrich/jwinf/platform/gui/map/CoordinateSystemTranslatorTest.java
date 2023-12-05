@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import ea.Vector;
-import rocks.friedrich.jwinf.platform.logic.map.Coords;
+import rocks.friedrich.jwinf.platform.logic.context.Coords;
 
 public class CoordinateSystemTranslatorTest
 {

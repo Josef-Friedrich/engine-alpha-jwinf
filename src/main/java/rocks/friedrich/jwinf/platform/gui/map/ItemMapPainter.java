@@ -2,9 +2,9 @@ package rocks.friedrich.jwinf.platform.gui.map;
 
 import ea.Scene;
 import ea.actor.Image;
+import rocks.friedrich.jwinf.platform.logic.context.Context;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
-import rocks.friedrich.jwinf.platform.logic.map.Context;
 
 public class ItemMapPainter
 {

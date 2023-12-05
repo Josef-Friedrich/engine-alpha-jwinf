@@ -11,12 +11,12 @@ import java.util.List;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.Compass;
 import rocks.friedrich.jwinf.platform.logic.Task;
+import rocks.friedrich.jwinf.platform.logic.context.Context;
+import rocks.friedrich.jwinf.platform.logic.context.Coords;
+import rocks.friedrich.jwinf.platform.logic.context.DirectionalCoords;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
-import rocks.friedrich.jwinf.platform.logic.map.DirectionalCoords;
-import rocks.friedrich.jwinf.platform.logic.map.Context;
-import rocks.friedrich.jwinf.platform.logic.map.Coords;
 
 /**
  * Ein Roboter der nicht grafisch dargestellt ist, sondern der sich nur im

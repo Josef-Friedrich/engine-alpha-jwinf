@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform.logic.map;
+package rocks.friedrich.jwinf.platform.logic.context;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

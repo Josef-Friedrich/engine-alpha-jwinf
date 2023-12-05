@@ -3,7 +3,7 @@ package rocks.friedrich.jwinf.platform.logic.level;
 import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.data.model.LevelData;
 import rocks.friedrich.jwinf.platform.logic.Task;
-import rocks.friedrich.jwinf.platform.logic.map.Context;
+import rocks.friedrich.jwinf.platform.logic.context.Context;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 /**

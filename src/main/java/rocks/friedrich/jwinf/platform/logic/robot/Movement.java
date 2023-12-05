@@ -1,8 +1,8 @@
 package rocks.friedrich.jwinf.platform.logic.robot;
 
 import rocks.friedrich.jwinf.platform.logic.Compass;
-import rocks.friedrich.jwinf.platform.logic.map.DirectionalCoords;
-import rocks.friedrich.jwinf.platform.logic.map.Coords;
+import rocks.friedrich.jwinf.platform.logic.context.Coords;
+import rocks.friedrich.jwinf.platform.logic.context.DirectionalCoords;
 
 /**
  * Represents a movement made by a robot.

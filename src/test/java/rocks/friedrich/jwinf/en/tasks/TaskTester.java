@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import rocks.friedrich.jwinf.platform.Solver;
+import rocks.friedrich.jwinf.platform.logic.context.Coords;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
-import rocks.friedrich.jwinf.platform.logic.map.Coords;
 
 public class TaskTester<T>
 {

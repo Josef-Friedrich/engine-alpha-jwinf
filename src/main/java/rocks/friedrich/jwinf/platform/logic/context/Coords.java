@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform.logic.map;
+package rocks.friedrich.jwinf.platform.logic.context;
 
 /**
  * Ein Punkt auf dem Gitter. Der Ursprung ist links oben (Reihe 0 und Spalte 0).

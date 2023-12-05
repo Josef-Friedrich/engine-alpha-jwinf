@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.platform.logic.map;
+package rocks.friedrich.jwinf.platform.logic.context;
 
 import ea.Direction;
 import rocks.friedrich.jwinf.platform.logic.Compass;

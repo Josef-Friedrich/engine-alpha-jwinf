@@ -6,11 +6,11 @@ import java.util.Map;
 
 import rocks.friedrich.jwinf.platform.data.JsonLoader;
 import rocks.friedrich.jwinf.platform.data.model.TaskData;
+import rocks.friedrich.jwinf.platform.logic.context.Context;
 import rocks.friedrich.jwinf.platform.logic.item.ItemDataStore;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
 import rocks.friedrich.jwinf.platform.logic.level.LevelCollection;
-import rocks.friedrich.jwinf.platform.logic.map.Context;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 /**
