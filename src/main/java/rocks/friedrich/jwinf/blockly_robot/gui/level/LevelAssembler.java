@@ -39,7 +39,7 @@ public class LevelAssembler
                 .loadClass(className).asSubclass(RobotWrapper.class)
                 .getDeclaredConstructor().newInstance();
         var context = level.getContext();
-        robot.actor = new ImageRobot("images/candle/robot.png",
+        robot.actor = new ImageRobot("images/robots/robot.png",
                 context.getRobot(), l);
         return robot;
     }
