@@ -26,7 +26,7 @@ import rocks.friedrich.jwinf.blockly_robot.logic.navigation.DirectionalCoords;
  */
 public class VirtualRobot implements Robot
 {
-    private List<MovementListener> movementListeners = new ArrayList<>();
+    private List<Predicate<Compass>> movementListeners = new ArrayList<>();
 
     public ActionLog actionLog;
 
@@ -106,7 +106,7 @@ public class VirtualRobot implements Robot
         dir = initPosition.getDir();
     }
 
-    public void addMovementListener(MovementListener listener)
+    public void addMovementListener(Predicate<Compass> listener)
     {
         movementListeners.add(listener);
     }
@@ -186,9 +186,9 @@ public class VirtualRobot implements Robot
     public boolean tryToBeOn(Compass direction)
     {
         boolean result = true;
-        for (MovementListener listener : this.movementListeners)
+        for (Predicate<Compass> listener : this.movementListeners)
         {
-            if (!listener.allowMovement(direction))
+            if (!listener.test(direction))
             {
                 result = false;
                 break;
