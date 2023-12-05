@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="14"
+   version="1.1"
+   width="14"
+   style="overflow:hidden"
+   id="svg6"
+   sodipodi:docname="star.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="31.238095"
+     inkscape:cx="2.5289634"
+     inkscape:cy="9.9397866"
+     inkscape:window-width="3840"
+     inkscape:window-height="1536"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <desc
+     id="desc1">Created with Raphaël 2.2.0</desc>
+  <defs
+     id="defs1" />
+  <path
+     fill="none"
+     stroke="#000000"
+     d="m 3.5000002,8.8021721 -2.80000014,-3.22 4.20000014,-0.98 2.1,-3.5 2.1,3.5 4.1999998,0.98 -2.8,3.22 0.42,4.1999999 -3.9199998,-1.819999 -3.92,1.819999 z"
+     stroke-width="0.7"
+     id="path6" />
+</svg>
