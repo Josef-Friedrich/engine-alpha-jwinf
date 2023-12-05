@@ -20,6 +20,7 @@ rocks.friedrich.jwinf.platform.gui.robot
 rocks.friedrich.jwinf.platform.gui.scenes
 rocks.friedrich.jwinf.platform.logic
 rocks.friedrich.jwinf.platform.logic.context
+rocks.friedrich.jwinf.platform.logic.context.item_relocation
 rocks.friedrich.jwinf.platform.logic.item
 rocks.friedrich.jwinf.platform.logic.level
 rocks.friedrich.jwinf.platform.logic.menu
