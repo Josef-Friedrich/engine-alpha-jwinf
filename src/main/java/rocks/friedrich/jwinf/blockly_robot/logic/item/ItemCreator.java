@@ -1,6 +1,5 @@
 package rocks.friedrich.jwinf.blockly_robot.logic.item;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,19 +38,14 @@ public class ItemCreator
         }
     }
 
-    public ItemData get(int num)
+    private ItemData get(int num)
     {
         return itemsByNumber.get(num);
     }
 
-    public ItemData get(String name)
+    private ItemData get(String name)
     {
         return itemsByName.get(name);
-    }
-
-    public Collection<ItemData> all()
-    {
-        return itemsByName.values();
     }
 
     /**
@@ -76,7 +70,7 @@ public class ItemCreator
      * @param num the number of the item
      * @return the created item
      */
-    public Item createItem(int num)
+    public Item create(int num)
     {
         return createItem(get(num));
     }
@@ -87,7 +81,7 @@ public class ItemCreator
      * @param name the name of the item
      * @return the created item
      */
-    public Item createItem(String name)
+    public Item create(String name)
     {
         return createItem(get(name));
     }

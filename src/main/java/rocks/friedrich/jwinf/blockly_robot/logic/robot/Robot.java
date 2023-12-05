@@ -28,7 +28,7 @@ public interface Robot
      *
      * @return the current position of the robot
      */
-    public Coords getPoint();
+    public Coords getCoords();
 
     public String[] reportActions();
 

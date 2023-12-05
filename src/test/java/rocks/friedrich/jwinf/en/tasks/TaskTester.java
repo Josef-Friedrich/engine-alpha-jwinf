@@ -28,13 +28,13 @@ public class TaskTester<T>
      * @param args       the expected route of the actor
      * @throws Exception if an error occurs during the assertion
      */
-    public void assertRoute(Difficulty difficulty, int test, int endRow,
+    public void assertActions(Difficulty difficulty, int test, int endRow,
             int endCol, String... args) throws Exception
     {
         var w = solver.solveVirtual(difficulty, test);
         assertArrayEquals(w.actor.reportActions(), args,
                 "\"" + String.join("\", \"", w.actor.reportActions()) + "\"");
-        Coords p = w.actor.getPoint();
+        Coords p = w.actor.getCoords();
         assertEquals(p.getRow(), endRow, "row");
         assertEquals(p.getCol(), endCol, "col");
     }

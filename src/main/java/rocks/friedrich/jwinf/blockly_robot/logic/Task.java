@@ -53,7 +53,7 @@ public class Task
 
     public LevelCollection levels;
 
-    private ItemCreator itemsData;
+    private ItemCreator itemCreator;
 
     /**
      * Die Anzahl an Tests (Level) der Schwierigkeitsstufe mit den meisten
@@ -74,7 +74,7 @@ public class Task
         }
         title = data.title;
         intro = data.intro;
-        itemsData = new ItemCreator(data.gridInfos.itemTypes);
+        itemCreator = new ItemCreator(data.gridInfos.itemTypes);
         levels = new LevelCollection(data.levels, this);
     }
 
@@ -98,9 +98,9 @@ public class Task
         return intro;
     }
 
-    public ItemCreator getItemsData()
+    public ItemCreator getItemCreator()
     {
-        return itemsData;
+        return itemCreator;
     }
 
     /**

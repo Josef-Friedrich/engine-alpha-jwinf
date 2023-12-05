@@ -21,14 +21,14 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testEasy() throws Exception
     {
-        assertRoute(EASY, 0, 2, 4, "east", "east", "east", "north", "north",
+        assertActions(EASY, 0, 2, 4, "east", "east", "east", "north", "north",
                 "north", "dropWithdrawable");
     }
 
     @Test
     void testMedium() throws Exception
     {
-        assertRoute(MEDIUM, 0, 5, 6, "east", "north", "north", "north", "north",
+        assertActions(MEDIUM, 0, 5, 6, "east", "north", "north", "north", "north",
                 "dropWithdrawable", "south", "south", "south", "south", "east",
                 "north", "north", "north", "north", "dropWithdrawable", "south",
                 "south", "south", "south", "east", "north", "north", "north",
@@ -42,7 +42,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testHard() throws Exception
     {
-        assertRoute(HARD, 0, 5, 8, "east", "north", "north", "north",
+        assertActions(HARD, 0, 5, 8, "east", "north", "north", "north",
                 "dropWithdrawable", "south", "south", "south", "east", "east",
                 "north", "north", "north", "dropWithdrawable", "south", "south",
                 "south", "east", "north", "north", "north", "dropWithdrawable",

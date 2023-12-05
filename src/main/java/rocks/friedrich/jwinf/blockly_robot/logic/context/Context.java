@@ -3,7 +3,6 @@ package rocks.friedrich.jwinf.blockly_robot.logic.context;
 import java.util.ArrayList;
 import java.util.List;
 
-import rocks.friedrich.jwinf.blockly_robot.data.model.ItemData;
 import rocks.friedrich.jwinf.blockly_robot.logic.Task;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.item_relocation.BagPacker;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.item_relocation.PlatformBuilder;
@@ -21,7 +20,7 @@ public class Context
 {
     private StackedItems[][] stackedItems;
 
-    private ItemCreator items;
+    private ItemCreator itemCreator;
 
     /**
      * Anzahl an Reihen (y-Richtung bzw. Höhe)
@@ -50,7 +49,8 @@ public class Context
      */
     private List<Item> bag = new ArrayList<>();
 
-    public Context(int[][] map, ItemCreator items, VirtualRobot robot, Task task, Level level)
+    public Context(int[][] map, ItemCreator itemCreator, VirtualRobot robot,
+            Task task, Level level)
     {
         rows = map.length;
         cols = map[0].length;
@@ -61,10 +61,10 @@ public class Context
             for (int col = 0; col < cols; col++)
             {
                 int itemNum = rowMap[col];
-                ItemData itemData = items.get(itemNum);
-                if (itemData != null)
+                Item item = itemCreator.create(itemNum);
+                if (item != null)
                 {
-                    stackedItems[row][col] = new StackedItems(itemData);
+                    stackedItems[row][col] = new StackedItems(item);
                 }
                 else
                 {
@@ -72,12 +72,17 @@ public class Context
                 }
             }
         }
-        this.items = items;
+        this.itemCreator = itemCreator;
         this.robot = robot;
         this.task = task;
         this.level = level;
         bagPacker = new BagPacker(this);
         platformBuilder = new PlatformBuilder(this);
+    }
+
+    public ItemCreator getItemCreator()
+    {
+        return itemCreator;
     }
 
     /**
@@ -111,20 +116,18 @@ public class Context
         return level;
     }
 
+    public BagPacker getBagPacker() {
+        return bagPacker;
+    }
+
+    public PlatformBuilder getPlatformBuilder()
+    {
+        return platformBuilder;
+    }
+
     public List<Item> getBag()
     {
         return bag;
-    }
-
-    /**
-     * Retrieves the item data by the specified item number.
-     *
-     * @param itemNum the number of the item data to retrieve
-     * @return the item data at the item number
-     */
-    public ItemData get(int itemNum)
-    {
-        return items.get(itemNum);
     }
 
     /**
@@ -132,18 +135,18 @@ public class Context
      */
     public Item drop(int row, int col, int itemNum)
     {
-        return drop(row, col, items.createItem(itemNum));
+        return drop(row, col, itemCreator.create(itemNum));
     }
 
     public Item drop(int row, int col, String itemName)
     {
-        return drop(row, col, items.createItem(itemName));
+        return drop(row, col, itemCreator.create(itemName));
     }
 
     public Item drop(Coords coords, String itemName)
     {
         return drop(coords.getRow(), coords.getCol(),
-                items.createItem(itemName));
+                itemCreator.create(itemName));
     }
 
     /**

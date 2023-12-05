@@ -21,7 +21,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testEasy() throws Exception
     {
-        assertRoute(EASY, 0, 2, 3, "dropPlatformInFront", "forward", "fall",
+        assertActions(EASY, 0, 2, 3, "dropPlatformInFront", "forward", "fall",
                 "forward", "fall", "withdraw", "forward", "fall",
                 "dropWithdrawable");
     }
@@ -29,7 +29,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testMedium() throws Exception
     {
-        assertRoute(MEDIUM, 0, 2, 11, "forward", "fall", "withdraw",
+        assertActions(MEDIUM, 0, 2, 11, "forward", "fall", "withdraw",
                 "dropPlatformInFront", "forward", "fall", "forward", "fall",
                 "forward", "fall", "dropPlatformInFront", "forward", "fall",
                 "forward", "fall", "dropPlatformInFront", "forward", "fall",
@@ -40,7 +40,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testHard() throws Exception
     {
-        assertRoute(HARD, 0, 0, 15, "forward", "fall", "dropPlatformInFront",
+        assertActions(HARD, 0, 0, 15, "forward", "fall", "dropPlatformInFront",
                 "forward", "fall", "forward", "fall", "turnAround", "forward",
                 "fall", "forward", "fall", "forward", "fall", "turnAround",
                 "forward", "fall", "forward", "fall", "forward", "fall", "jump",
@@ -56,10 +56,10 @@ public class TaskSolverTest extends TaskTester<Robot>
                 "fall", "turnAround", "forward", "fall", "forward", "fall",
                 "dropWithdrawable", "forward", "fall", "turnAround", "forward",
                 "fall", "forward", "fall", "forward", "fall",
-                "dropPlatformInFront", "jump", "forward", "fall", "withdraw",
+                "dropPlatformAbove", "jump", "forward", "fall", "withdraw",
                 "forward", "fall", "forward", "fall", "turnAround", "forward",
                 "fall", "dropWithdrawable", "forward", "fall", "forward",
                 "fall", "turnAround", "forward", "fall", "forward", "fall",
-                "forward", "fall", "dropPlatformInFront", "jump");
+                "forward", "fall", "dropPlatformAbove", "jump");
     }
 }

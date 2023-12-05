@@ -50,9 +50,9 @@ public class ImageRobot extends Image implements Robot
         return virtual.getCol();
     }
 
-    public Coords getPoint()
+    public Coords getCoords()
     {
-        return virtual.getPoint();
+        return virtual.getCoords();
     }
 
     public String[] reportActions()

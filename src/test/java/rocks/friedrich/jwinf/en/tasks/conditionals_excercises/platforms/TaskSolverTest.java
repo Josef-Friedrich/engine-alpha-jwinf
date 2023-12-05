@@ -21,7 +21,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testEasy() throws Exception
     {
-        assertRoute(EASY, 0, 1, 17, "forward", "fall", "withdraw", "forward",
+        assertActions(EASY, 0, 1, 17, "forward", "fall", "withdraw", "forward",
                 "fall", "jump", "forward", "fall", "forward", "fall", "forward",
                 "fall", "jump", "forward", "fall", "forward", "fall", "forward",
                 "fall", "jump", "forward", "fall", "jump", "forward", "fall",
@@ -33,7 +33,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testMedium() throws Exception
     {
-        assertRoute(MEDIUM, 0, 1, 6, "forward", "fall", "withdraw", "forward",
+        assertActions(MEDIUM, 0, 1, 6, "forward", "fall", "withdraw", "forward",
                 "fall", "jump", "forward", "fall", "forward", "fall", "forward",
                 "fall", "jump", "jump", "forward", "fall", "forward", "fall",
                 "forward", "fall", "forward", "fall", "turnAround", "forward",
@@ -51,7 +51,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testHard() throws Exception
     {
-        assertRoute(HARD, 0, 4, 15, "forward", "fall", "forward", "fall",
+        assertActions(HARD, 0, 4, 15, "forward", "fall", "forward", "fall",
                 "withdraw", "jump", "jump", "jump", "jump", "jump",
                 "dropWithdrawable", "forward", "fall", "backwards", "fall",
                 "backwards", "fall", "forward", "fall", "forward", "fall",

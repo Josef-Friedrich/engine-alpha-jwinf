@@ -47,7 +47,7 @@ public class Level
     private Context createContext(Task task)
     {
         VirtualRobot robot = createRobot();
-        Context context = new Context(data.tiles, task.getItemsData(), robot,
+        Context context = new Context(data.tiles, task.getItemCreator(), robot,
                 task, this);
         robot.setContext(context);
         return context;

@@ -84,7 +84,7 @@ public class VirtualRobot implements Robot
         return level.getTask();
     }
 
-    public Coords getPoint()
+    public Coords getCoords()
     {
         return new Coords(row, col);
     }
@@ -383,13 +383,6 @@ public class VirtualRobot implements Robot
         return action;
     }
 
-    private ItemRelocation reportItemRelocation(String name)
-    {
-        var action = new ItemRelocation(name);
-        actionLog.add(action);
-        return action;
-    }
-
     public Item dropWithdrawable(int itemNum)
     {
         Item item = null;
@@ -409,21 +402,10 @@ public class VirtualRobot implements Robot
         return item;
     }
 
-    private ItemRelocation dropPlatform(Coords coords, String name)
+    private <T> T log(T action)
     {
-        ItemRelocation action = reportItemRelocation(name);
-        if (getTask().getNbPlatforms() == 0)
-        {
-            return (ItemRelocation) action.setError(
-                    ErrorMessages.PLATFORMS_FAILURE_NOT_ENOUGH_PLATFORM);
-        }
-        if (context.isObstacle(coords))
-        {
-            return (ItemRelocation) action
-                    .setError(ErrorMessages.PLATFORMS_FAILURE_DROP_PLATFORM);
-        }
-        Item platform = context.drop(coords, "platform");
-        return action.setItem(platform);
+        actionLog.add((Action) action);
+        return action;
     }
 
     /**
@@ -433,7 +415,8 @@ public class VirtualRobot implements Robot
      */
     public ItemRelocation dropPlatformInFront()
     {
-        return dropPlatform(coordsInFront(dir).south(), "dropPlatformInFront");
+        return log(context.getPlatformBuilder().dropPlatform(
+                coordsInFront(dir).south(), "dropPlatformInFront"));
     }
 
     /**
@@ -443,7 +426,8 @@ public class VirtualRobot implements Robot
      */
     public ItemRelocation dropPlatformAbove()
     {
-        return dropPlatform(getPoint().north(), "dropPlatformInFront");
+        return log(context.getPlatformBuilder().dropPlatform(getCoords().north(),
+                "dropPlatformAbove"));
     }
 
     public Movement turnLeft()
