@@ -1,21 +1,21 @@
 package rocks.friedrich.jwinf.blockly_robot.logic.robot;
 
-import static rocks.friedrich.jwinf.blockly_robot.logic.Compass.EAST;
-import static rocks.friedrich.jwinf.blockly_robot.logic.Compass.NORTH;
-import static rocks.friedrich.jwinf.blockly_robot.logic.Compass.SOUTH;
-import static rocks.friedrich.jwinf.blockly_robot.logic.Compass.WEST;
+import static rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass.EAST;
+import static rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass.NORTH;
+import static rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass.SOUTH;
+import static rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass.WEST;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import rocks.friedrich.jwinf.blockly_robot.data.model.ItemData;
-import rocks.friedrich.jwinf.blockly_robot.logic.Compass;
 import rocks.friedrich.jwinf.blockly_robot.logic.Task;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.Context;
-import rocks.friedrich.jwinf.blockly_robot.logic.context.Coords;
-import rocks.friedrich.jwinf.blockly_robot.logic.context.DirectionalCoords;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.StackedItems;
 import rocks.friedrich.jwinf.blockly_robot.logic.level.Level;
+import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass;
+import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
+import rocks.friedrich.jwinf.blockly_robot.logic.navigation.DirectionalCoords;
 
 /**
  * Ein Roboter der nicht grafisch dargestellt ist, sondern der sich nur im

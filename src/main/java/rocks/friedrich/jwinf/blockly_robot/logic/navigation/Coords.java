@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.blockly_robot.logic.context;
+package rocks.friedrich.jwinf.blockly_robot.logic.navigation;
 
 /**
  * Ein Punkt auf dem Gitter. Der Ursprung ist links oben (Reihe 0 und Spalte 0).

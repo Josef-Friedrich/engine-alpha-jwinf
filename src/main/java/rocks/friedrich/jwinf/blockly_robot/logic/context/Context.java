@@ -1,12 +1,13 @@
 package rocks.friedrich.jwinf.blockly_robot.logic.context;
 
 import rocks.friedrich.jwinf.blockly_robot.logic.Task;
-import rocks.friedrich.jwinf.blockly_robot.logic.context.item_relocation.BagPacker;
-import rocks.friedrich.jwinf.blockly_robot.logic.context.item_relocation.PlatformBuilder;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.Item;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.ItemCreator;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.StackedItems;
+import rocks.friedrich.jwinf.blockly_robot.logic.item.relocation.BagPacker;
+import rocks.friedrich.jwinf.blockly_robot.logic.item.relocation.PlatformBuilder;
 import rocks.friedrich.jwinf.blockly_robot.logic.level.Level;
+import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
 import rocks.friedrich.jwinf.blockly_robot.logic.robot.VirtualRobot;
 
 /**
@@ -121,9 +122,9 @@ public class Context
         return stackedItems[row][col];
     }
 
-    public StackedItems get(Coords point)
+    public StackedItems get(Coords coords)
     {
-        return get(point.row, point.col);
+        return get(coords.getRow(), coords.getCol());
     }
 
     public Item bottom(int row, int col)

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import ea.Vector;
-import rocks.friedrich.jwinf.blockly_robot.logic.context.Coords;
+import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
 
 public class CoordinateSystemTranslatorTest
 {

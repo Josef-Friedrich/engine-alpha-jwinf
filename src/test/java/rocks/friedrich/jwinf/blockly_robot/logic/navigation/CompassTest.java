@@ -1,7 +1,7 @@
-package rocks.friedrich.jwinf.blockly_robot.logic;
+package rocks.friedrich.jwinf.blockly_robot.logic.navigation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static rocks.friedrich.jwinf.blockly_robot.logic.Compass.*;
+import static rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass.*;
 
 import org.junit.jupiter.api.Test;
 

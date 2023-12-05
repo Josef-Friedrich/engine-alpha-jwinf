@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.blockly_robot.logic;
+package rocks.friedrich.jwinf.blockly_robot.logic.navigation;
 
 import static ea.Direction.*;
 

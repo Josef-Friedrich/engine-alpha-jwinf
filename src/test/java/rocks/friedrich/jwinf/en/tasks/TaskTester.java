@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import rocks.friedrich.jwinf.blockly_robot.Solver;
-import rocks.friedrich.jwinf.blockly_robot.logic.context.Coords;
 import rocks.friedrich.jwinf.blockly_robot.logic.level.Difficulty;
+import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
 
 public class TaskTester<T>
 {

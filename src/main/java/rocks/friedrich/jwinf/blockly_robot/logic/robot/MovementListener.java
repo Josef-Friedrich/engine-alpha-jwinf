@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.blockly_robot.logic.robot;
 
-import rocks.friedrich.jwinf.blockly_robot.logic.Compass;
+import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass;
 
 interface MovementListener
 {

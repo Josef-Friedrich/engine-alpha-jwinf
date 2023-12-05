@@ -4,14 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static rocks.friedrich.jwinf.TestHelper.loadVirtualRobot;
-import static rocks.friedrich.jwinf.blockly_robot.logic.Compass.EAST;
-import static rocks.friedrich.jwinf.blockly_robot.logic.Compass.WEST;
+import static rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass.EAST;
+import static rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass.WEST;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import rocks.friedrich.jwinf.blockly_robot.logic.Compass;
+import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass;
 
 /**
  * https://jwinf.de/task/1158

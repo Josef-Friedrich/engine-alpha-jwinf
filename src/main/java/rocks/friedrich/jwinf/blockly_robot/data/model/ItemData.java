@@ -1,6 +1,6 @@
 package rocks.friedrich.jwinf.blockly_robot.data.model;
 
-import rocks.friedrich.jwinf.blockly_robot.logic.Compass;
+import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass;
 
 /**
  * Die Daten eines Gegenstands (Item).
@@ -44,7 +44,7 @@ public class ItemData implements Cloneable
      * <code>0</code> steht für Osten, <code>1</code> steht für Süden,
      * <code>2</code> steht für Westen, <code>3</code> steht für Norden.
      *
-     * @see rocks.friedrich.jwinf.blockly_robot.logic.Compass
+     * @see rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass
      */
     public int dir;
 

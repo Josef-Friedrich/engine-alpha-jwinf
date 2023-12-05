@@ -1,7 +1,6 @@
-package rocks.friedrich.jwinf.blockly_robot.logic.context;
+package rocks.friedrich.jwinf.blockly_robot.logic.navigation;
 
 import ea.Direction;
-import rocks.friedrich.jwinf.blockly_robot.logic.Compass;
 
 public class DirectionalCoords extends Coords
 {
