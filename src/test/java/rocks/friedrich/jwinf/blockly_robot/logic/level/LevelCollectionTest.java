@@ -6,7 +6,6 @@ import static rocks.friedrich.jwinf.TestHelper.loadTask;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-
 class LevelCollectionTest
 {
     static LevelCollection levels;

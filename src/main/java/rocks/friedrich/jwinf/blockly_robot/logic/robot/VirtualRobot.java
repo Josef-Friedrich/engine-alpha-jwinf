@@ -14,7 +14,6 @@ import rocks.friedrich.jwinf.blockly_robot.logic.Task;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.Context;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.Coords;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.DirectionalCoords;
-import rocks.friedrich.jwinf.blockly_robot.logic.item.Item;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.StackedItems;
 import rocks.friedrich.jwinf.blockly_robot.logic.level.Level;
 
@@ -341,30 +340,15 @@ public class VirtualRobot implements Robot
         return log(context.getBagPacker().withdraw(getCoords()));
     }
 
-    private ItemRelocation reportItemRelocation(String name, Item item)
+    public ItemRelocation dropWithdrawable(int itemNum)
     {
-        var action = new ItemRelocation(name, item);
-        actionLog.add(action);
-        return action;
+        return log(
+                context.getBagPacker().dropWithdrawable(getCoords(), itemNum));
     }
 
-    public Item dropWithdrawable(int itemNum)
+    public ItemRelocation drop()
     {
-        Item item = null;
-        var action = reportItemRelocation("dropWithdrawable", null);
-        if (onContainer())
-        {
-            item = context.drop(row, col, itemNum);
-        }
-        action.setItem(item);
-        return item;
-    }
-
-    public Item drop()
-    {
-        var item = context.drop(row, col);
-        reportItemRelocation("dropWithdrawable", item);
-        return item;
+        return log(context.getBagPacker().dropFromBag(getCoords()));
     }
 
     private <T> T log(T action)

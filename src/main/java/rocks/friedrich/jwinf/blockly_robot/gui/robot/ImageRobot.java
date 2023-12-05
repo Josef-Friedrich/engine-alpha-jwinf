@@ -259,16 +259,18 @@ public class ImageRobot extends Image implements Robot
         return relocation;
     }
 
-    public Item dropWithdrawable(int itemNum)
+    public ItemRelocation dropWithdrawable(int itemNum)
     {
-        return paintItem(virtual.dropWithdrawable(itemNum));
+        ItemRelocation action = virtual.dropWithdrawable(itemNum);
+        paintItem(action.getItem());
+        return action;
     }
 
-    public Item drop()
+    public ItemRelocation drop()
     {
-        Item item = virtual.drop();
-        item.add();
-        return item;
+        ItemRelocation action = virtual.drop();
+        action.getItem().add();
+        return action;
     }
 
     public ItemRelocation dropPlatformInFront()

@@ -1,8 +1,5 @@
 package rocks.friedrich.jwinf.blockly_robot.logic.context;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import rocks.friedrich.jwinf.blockly_robot.logic.Task;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.item_relocation.BagPacker;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.item_relocation.PlatformBuilder;
@@ -41,13 +38,6 @@ public class Context
     private BagPacker bagPacker;
 
     private PlatformBuilder platformBuilder;
-
-    /**
-     * Behälter in dem Objekte eingesammelt (withdraw) werden können.
-     *
-     * https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2458-L2478
-     */
-    private List<Item> bag = new ArrayList<>();
 
     public Context(int[][] map, ItemCreator itemCreator, VirtualRobot robot,
             Task task, Level level)
@@ -116,58 +106,14 @@ public class Context
         return level;
     }
 
-    public BagPacker getBagPacker() {
+    public BagPacker getBagPacker()
+    {
         return bagPacker;
     }
 
     public PlatformBuilder getPlatformBuilder()
     {
         return platformBuilder;
-    }
-
-    public List<Item> getBag()
-    {
-        return bag;
-    }
-
-    /**
-     * Adds an item on top to the specified position.
-     */
-    public Item drop(int row, int col, int itemNum)
-    {
-        return drop(row, col, itemCreator.create(itemNum));
-    }
-
-    public Item drop(int row, int col, String itemName)
-    {
-        return drop(row, col, itemCreator.create(itemName));
-    }
-
-    public Item drop(Coords coords, String itemName)
-    {
-        return drop(coords.getRow(), coords.getCol(),
-                itemCreator.create(itemName));
-    }
-
-    /**
-     * Adds an item on top to the specified position.
-     */
-    public Item drop(int row, int col, Item item)
-    {
-        item.setPosition(row, col);
-        get(row, col).add(item);
-        return item;
-    }
-
-    public Item drop(int row, int col)
-    {
-        if (bag.size() > 0)
-        {
-            Item item = bag.remove(bag.size() - 1);
-            drop(row, col, item);
-            return item;
-        }
-        return null;
     }
 
     public StackedItems get(int row, int col)

@@ -27,7 +27,7 @@ public class TaskSolverTest extends TaskTester<Robot>
                 "fall", "jump", "forward", "fall", "jump", "forward", "fall",
                 "forward", "fall", "jump", "forward", "fall", "forward", "fall",
                 "forward", "fall", "jump", "forward", "fall", "jump", "forward",
-                "fall", "dropWithdrawable", "forward", "fall");
+                "fall", "dropWithdrawableFromBag", "forward", "fall");
     }
 
     @Test
@@ -45,7 +45,7 @@ public class TaskSolverTest extends TaskTester<Robot>
                 "fall", "forward", "fall", "forward", "fall", "forward", "fall",
                 "turnAround", "forward", "fall", "forward", "fall", "forward",
                 "fall", "forward", "fall", "forward", "fall", "forward", "fall",
-                "forward", "fall", "dropWithdrawable");
+                "forward", "fall", "dropWithdrawableFromBag");
     }
 
     @Test
@@ -53,23 +53,24 @@ public class TaskSolverTest extends TaskTester<Robot>
     {
         assertActions(HARD, 0, 4, 15, "forward", "fall", "forward", "fall",
                 "withdraw", "jump", "jump", "jump", "jump", "jump",
-                "dropWithdrawable", "forward", "fall", "backwards", "fall",
-                "backwards", "fall", "forward", "fall", "forward", "fall",
-                "backwards", "fall", "backwards", "fall", "forward", "fall",
-                "forward", "fall", "forward", "fall", "forward", "fall",
+                "dropWithdrawableFromBag", "forward", "fall", "backwards",
+                "fall", "backwards", "fall", "forward", "fall", "forward",
+                "fall", "backwards", "fall", "backwards", "fall", "forward",
+                "fall", "forward", "fall", "forward", "fall", "forward", "fall",
                 "forward", "fall", "withdraw", "jump", "jump", "jump",
-                "dropWithdrawable", "jump", "jump", "forward", "fall",
+                "dropWithdrawableFromBag", "jump", "jump", "forward", "fall",
                 "backwards", "fall", "backwards", "fall", "forward", "fall",
                 "forward", "fall", "backwards", "fall", "backwards", "fall",
                 "forward", "fall", "forward", "fall", "forward", "fall",
                 "forward", "fall", "forward", "fall", "withdraw", "jump",
-                "dropWithdrawable", "jump", "jump", "jump", "jump", "forward",
-                "fall", "backwards", "fall", "backwards", "fall", "forward",
-                "fall", "forward", "fall", "backwards", "fall", "backwards",
-                "fall", "forward", "fall", "forward", "fall", "forward", "fall",
-                "forward", "fall", "forward", "fall", "withdraw", "jump",
-                "jump", "jump", "jump", "jump", "dropWithdrawable", "forward",
-                "fall", "!backwards", "!backwards", "!forward", "!forward",
-                "!backwards", "!backwards", "!forward", "!forward");
+                "dropWithdrawableFromBag", "jump", "jump", "jump", "jump",
+                "forward", "fall", "backwards", "fall", "backwards", "fall",
+                "forward", "fall", "forward", "fall", "backwards", "fall",
+                "backwards", "fall", "forward", "fall", "forward", "fall",
+                "forward", "fall", "forward", "fall", "forward", "fall",
+                "withdraw", "jump", "jump", "jump", "jump", "jump",
+                "dropWithdrawableFromBag", "forward", "fall", "!backwards",
+                "!backwards", "!forward", "!forward", "!backwards",
+                "!backwards", "!forward", "!forward");
     }
 }

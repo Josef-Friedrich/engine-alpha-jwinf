@@ -5,7 +5,6 @@ import static rocks.friedrich.jwinf.TestHelper.loadItemCreator;
 
 import org.junit.jupiter.api.Test;
 
-
 public class ItemCreatorTest
 {
     ItemCreator items = loadItemCreator(

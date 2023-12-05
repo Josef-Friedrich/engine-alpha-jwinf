@@ -28,15 +28,15 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testMedium() throws Exception
     {
-        assertActions(MEDIUM, 0, 5, 6, "east", "north", "north", "north", "north",
-                "dropWithdrawable", "south", "south", "south", "south", "east",
-                "north", "north", "north", "north", "dropWithdrawable", "south",
-                "south", "south", "south", "east", "north", "north", "north",
+        assertActions(MEDIUM, 0, 5, 6, "east", "north", "north", "north",
                 "north", "dropWithdrawable", "south", "south", "south", "south",
                 "east", "north", "north", "north", "north", "dropWithdrawable",
                 "south", "south", "south", "south", "east", "north", "north",
                 "north", "north", "dropWithdrawable", "south", "south", "south",
-                "south");
+                "south", "east", "north", "north", "north", "north",
+                "dropWithdrawable", "south", "south", "south", "south", "east",
+                "north", "north", "north", "north", "dropWithdrawable", "south",
+                "south", "south", "south");
     }
 
     @Test

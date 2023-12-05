@@ -23,7 +23,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     {
         assertActions(EASY, 0, 2, 3, "dropPlatformInFront", "forward", "fall",
                 "forward", "fall", "withdraw", "forward", "fall",
-                "dropWithdrawable");
+                "dropWithdrawableFromBag");
     }
 
     @Test
@@ -34,7 +34,8 @@ public class TaskSolverTest extends TaskTester<Robot>
                 "forward", "fall", "dropPlatformInFront", "forward", "fall",
                 "forward", "fall", "dropPlatformInFront", "forward", "fall",
                 "dropPlatformInFront", "forward", "fall", "forward", "fall",
-                "forward", "fall", "forward", "fall", "dropWithdrawable");
+                "forward", "fall", "forward", "fall",
+                "dropWithdrawableFromBag");
     }
 
     @Test
@@ -46,7 +47,7 @@ public class TaskSolverTest extends TaskTester<Robot>
                 "forward", "fall", "forward", "fall", "forward", "fall", "jump",
                 "forward", "fall", "dropPlatformInFront", "forward", "fall",
                 "forward", "fall", "withdraw", "turnAround", "forward", "fall",
-                "forward", "fall", "forward", "fall", "dropWithdrawable",
+                "forward", "fall", "forward", "fall", "dropWithdrawableFromBag",
                 "turnAround", "forward", "fall", "forward", "fall", "forward",
                 "fall", "jump", "dropPlatformInFront", "forward", "fall",
                 "forward", "fall", "forward", "fall", "turnAround", "forward",
@@ -54,11 +55,11 @@ public class TaskSolverTest extends TaskTester<Robot>
                 "forward", "fall", "forward", "fall", "forward", "fall", "jump",
                 "forward", "fall", "forward", "fall", "withdraw", "forward",
                 "fall", "turnAround", "forward", "fall", "forward", "fall",
-                "dropWithdrawable", "forward", "fall", "turnAround", "forward",
-                "fall", "forward", "fall", "forward", "fall",
+                "dropWithdrawableFromBag", "forward", "fall", "turnAround",
+                "forward", "fall", "forward", "fall", "forward", "fall",
                 "dropPlatformAbove", "jump", "forward", "fall", "withdraw",
                 "forward", "fall", "forward", "fall", "turnAround", "forward",
-                "fall", "dropWithdrawable", "forward", "fall", "forward",
+                "fall", "dropWithdrawableFromBag", "forward", "fall", "forward",
                 "fall", "turnAround", "forward", "fall", "forward", "fall",
                 "forward", "fall", "dropPlatformAbove", "jump");
     }

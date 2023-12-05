@@ -1,7 +1,6 @@
 package rocks.friedrich.jwinf.blockly_robot.logic.robot;
 
 import rocks.friedrich.jwinf.blockly_robot.logic.context.Coords;
-import rocks.friedrich.jwinf.blockly_robot.logic.item.Item;
 
 public interface Robot
 {
@@ -90,14 +89,14 @@ public interface Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3197-L3233">blocklyRobot_lib-1.1.js
      *      L3197-L3233</a>
      */
-    public Item drop();
+    public ItemRelocation drop();
 
     /**
      * @see <a href=
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3235-L3263">blocklyRobot_lib-1.1.js
      *      L3235-L3263</a>
      */
-    public Item dropWithdrawable(int itemNum);
+    public ItemRelocation dropWithdrawable(int itemNum);
 
     /**
      * @see <a href=
