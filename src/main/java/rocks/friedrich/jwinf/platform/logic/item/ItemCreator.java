@@ -20,10 +20,10 @@ public class ItemCreator
     {
         itemsByName = new HashMap<>();
         itemsByNumber = new HashMap<>();
-        items.forEach((name, tile) -> {
-            if (tile.name == null)
+        items.forEach((name, itemData) -> {
+            if (itemData.name == null)
             {
-                tile.name = name;
+                itemData.name = name;
             }
         });
         for (ItemData item : items.values())

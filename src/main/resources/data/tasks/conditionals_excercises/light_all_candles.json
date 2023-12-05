@@ -42,26 +42,23 @@
         "offsetY": 10,
         "zOrder": 1
       },
-      "initial_paint": {
+      "candle": {
         "num": 3,
         "img": "candle/candle.png",
-        "name": "candle",
         "side": 60,
         "isPaint": true,
         "zOrder": 1
       },
-      "paint": {
+      "flame": {
         "num": 2,
         "img": "candle/flame.png",
-        "name": "flame",
         "side": 60,
         "isWithdrawable": true,
         "zOrder": 1
       },
-      "marker": {
+      "wick": {
         "num": 4,
         "img": "candle/wick.png",
-        "name": "wick",
         "side": 60,
         "isContainer": true,
         "zOrder": 0

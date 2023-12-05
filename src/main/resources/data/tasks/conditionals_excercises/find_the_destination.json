@@ -66,10 +66,9 @@
         "offsetY": 3,
         "zOrder": 3
       },
-      "obstacle": {
+      "wall": {
         "num": 2,
         "img": "labyrinth/wall.png",
-        "name": "wall",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
@@ -77,7 +76,6 @@
       "flag": {
         "num": 3,
         "img": "labyrinth/flag.png",
-        "name": "flag",
         "side": 60,
         "isExit": true,
         "zOrder": 0

@@ -70,7 +70,6 @@
       "road": {
         "num": 1,
         "img": "sea/road.png",
-        "name": "road",
         "side": 60,
         "isObstacle": false,
         "zOrder": 0
@@ -78,39 +77,34 @@
       "sand": {
         "num": 3,
         "img": "sea/sand.png",
-        "name": "sand",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
       },
-      "beach_tl": {
+      "sea_tl": {
         "num": 6,
         "img": "sea/sea_tl.png",
-        "name": "sea_tl",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
       },
-      "beach_tr": {
+      "sea_tr": {
         "num": 7,
         "img": "sea/sea_tr.png",
-        "name": "sea_tr",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
       },
-      "beach_bl": {
+      "sea_bl": {
         "num": 8,
         "img": "sea/sea_bl.png",
-        "name": "sea_bl",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
       },
-      "beach_br": {
+      "sea_br": {
         "num": 9,
         "img": "sea/sea_br.png",
-        "name": "sea_br",
         "side": 60,
         "isObstacle": false,
         "isExit": true,
@@ -119,7 +113,6 @@
       "bush": {
         "num": 2,
         "img": "sea/bush.png",
-        "name": "bush",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
@@ -132,10 +125,9 @@
         "isExit": true,
         "zOrder": 0
       },
-      "gras": {
+      "grass": {
         "num": 5,
         "img": "sea/grass.png",
-        "name": "grass",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
@@ -150,7 +142,6 @@
       "tree": {
         "num": 15,
         "img": "sea/tree.png",
-        "name": "tree",
         "side": 80,
         "isObstacle": true,
         "zOrder": 2,
@@ -160,16 +151,14 @@
       "flowers": {
         "num": 16,
         "img": "sea/flowers.png",
-        "name": "flowers",
         "side": 50,
         "isObstacle": true,
         "zOrder": 1,
         "offsetX": 5
       },
-      "obstacle_small": {
+      "brick": {
         "num": 10,
         "img": "sea/brick.png",
-        "name": "brick",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0

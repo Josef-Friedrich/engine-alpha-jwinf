@@ -39,7 +39,6 @@
       "platform": {
         "num": 2,
         "img": "castle/platform.png",
-        "name": "platform",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
@@ -47,15 +46,13 @@
       "hearth": {
         "num": 4,
         "img": "castle/hearth.png",
-        "name": "hearth",
         "side": 60,
         "isContainer": true,
         "zOrder": 1
       },
-      "wood": {
+      "firewood": {
         "num": 5,
         "img": "castle/firewood.png",
-        "name": "firewood",
         "side": 60,
         "isWithdrawable": true,
         "zOrder": 2
@@ -63,7 +60,6 @@
       "wall": {
         "num": 6,
         "img": "labyrinth/wall.png",
-        "name": "wall",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
