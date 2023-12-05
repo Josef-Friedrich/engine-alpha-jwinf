@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import rocks.friedrich.jwinf.blockly_robot.data.model.ItemData;
-import rocks.friedrich.jwinf.blockly_robot.logic.robot.Filter;
 
 import java.util.Iterator;
 
@@ -55,11 +54,11 @@ public class StackedItems implements Iterable<Item>
         }
     }
 
-    public boolean has(Filter filter)
+    public boolean has(Predicate<Item> predicate)
     {
         for (Item item : items)
         {
-            if (filter.check(item))
+            if (predicate.test(item))
             {
                 return true;
             }

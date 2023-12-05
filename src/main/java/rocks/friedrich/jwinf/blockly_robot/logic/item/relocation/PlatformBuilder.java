@@ -4,7 +4,6 @@ import rocks.friedrich.jwinf.blockly_robot.logic.context.Context;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.Item;
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
 import rocks.friedrich.jwinf.blockly_robot.logic.robot.ErrorMessages;
-import rocks.friedrich.jwinf.blockly_robot.logic.robot.ItemRelocation;
 
 public class PlatformBuilder extends ItemRelocator
 {

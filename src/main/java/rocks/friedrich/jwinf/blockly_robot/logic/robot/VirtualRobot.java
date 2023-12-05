@@ -7,11 +7,14 @@ import static rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass.WEST;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import rocks.friedrich.jwinf.blockly_robot.data.model.ItemData;
 import rocks.friedrich.jwinf.blockly_robot.logic.Task;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.Context;
+import rocks.friedrich.jwinf.blockly_robot.logic.item.Item;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.StackedItems;
+import rocks.friedrich.jwinf.blockly_robot.logic.item.relocation.ItemRelocation;
 import rocks.friedrich.jwinf.blockly_robot.logic.level.Level;
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass;
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
@@ -222,9 +225,9 @@ public class VirtualRobot implements Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2872-L2880">blocklyRobot_lib-1.1.js
      *      L2872-L2880</a>
      */
-    private boolean hasOn(int row, int col, Filter filter)
+    private boolean hasOn(int row, int col, Predicate<Item> predicate)
     {
-        return context.get(row, col).has(filter);
+        return context.get(row, col).has(predicate);
     }
 
     /**
@@ -232,9 +235,9 @@ public class VirtualRobot implements Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2872-L2880">blocklyRobot_lib-1.1.js
      *      L2872-L2880</a>
      */
-    private boolean hasOn(Coords point, Filter filter)
+    private boolean hasOn(Coords point, Predicate<Item> predicate)
     {
-        return hasOn(point.getRow(), point.getCol(), filter);
+        return hasOn(point.getRow(), point.getCol(), predicate);
     }
 
     /**
@@ -242,9 +245,9 @@ public class VirtualRobot implements Robot
      *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2908-L2911">blocklyRobot_lib-1.1.js
      *      L2908-L2911</a>
      */
-    private boolean isInFront(Filter filter)
+    private boolean isInFront(Predicate<Item> predicate)
     {
-        return hasOn(coordsInFront(dir), filter);
+        return hasOn(coordsInFront(dir), predicate);
     }
 
     /**

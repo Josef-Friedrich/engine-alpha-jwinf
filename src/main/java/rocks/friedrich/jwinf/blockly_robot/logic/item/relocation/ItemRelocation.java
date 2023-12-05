@@ -1,6 +1,7 @@
-package rocks.friedrich.jwinf.blockly_robot.logic.robot;
+package rocks.friedrich.jwinf.blockly_robot.logic.item.relocation;
 
 import rocks.friedrich.jwinf.blockly_robot.logic.item.Item;
+import rocks.friedrich.jwinf.blockly_robot.logic.robot.Action;
 
 /**
  * Withdrawing or dropping an item.
