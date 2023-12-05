@@ -56,7 +56,7 @@ public class LevelScene extends Scene
 
     public Bounds getWindowBounds()
     {
-        return new Bounds(-0.5f, -0.5f, level.cols, level.rows);
+        return new Bounds(-0.5f, -0.5f, level.getCols(), level.getRows());
     }
 
     public String getTitle()

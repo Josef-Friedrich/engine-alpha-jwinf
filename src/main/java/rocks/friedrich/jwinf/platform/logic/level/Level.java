@@ -21,29 +21,17 @@ public class Level
 
     private Task task;
 
-    public Difficulty difficulty;
+    private Difficulty difficulty;
 
-    public int testIndex;
+    private int testIndex;
 
-    /**
-     * Zum Beispiel „Der Roboter soll den Edelstein einsammeln. Sobald er das
-     * Feld mit dem Edelstein erreicht, wird dieser automatisch eingesammelt.“
-     */
-    public String intro;
-
-    public int cols;
-
-    public int rows;
-
-    public Context context;
+    private Context context;
 
     public Level(LevelData data, Task task)
     {
         this.data = data;
         this.task = task;
-        context = new Context(data.tiles, task.getItemsData());
-        cols = context.getCols();
-        rows = context.getRows();
+        context = createContext();
         difficulty = data.difficulty;
         testIndex = data.testNo;
     }
@@ -56,9 +44,24 @@ public class Level
         return new LevelEnvironment(this, robot);
     }
 
+    private Context createContext()
+    {
+        return new Context(data.tiles, task.getItemsData());
+    }
+
     public Task getTask()
     {
         return task;
+    }
+
+    public Difficulty getDifficulty()
+    {
+        return difficulty;
+    }
+
+    public int getTestIndex()
+    {
+        return testIndex;
     }
 
     public Context getContext()
@@ -66,14 +69,24 @@ public class Level
         return context;
     }
 
+    public int getRows()
+    {
+        return context.getRows();
+    }
+
+    public int getCols()
+    {
+        return context.getCols();
+    }
+
     public ItemData getInitItem()
     {
         return data.getInitItem();
     }
 
-    public String getGridColor()
+    public String getBorderColor()
     {
-        return task.getGridColor();
+        return task.getBorderColor();
     }
 
     public String getBackgroundColor()

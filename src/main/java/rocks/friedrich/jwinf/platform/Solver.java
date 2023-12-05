@@ -96,7 +96,7 @@ public abstract class Solver<T>
         Controller.launchScene((WindowScene) scene);
         scene.getAssembledLevels().forEach((level) -> {
             new Thread(() -> {
-                switch (level.level.difficulty)
+                switch (level.level.getDifficulty())
                 {
                 case EASY:
                     easy((T) level.robot);

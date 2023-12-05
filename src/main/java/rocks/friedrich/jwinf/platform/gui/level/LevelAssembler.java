@@ -25,8 +25,8 @@ public class LevelAssembler
 
     public Grid createGrid()
     {
-        Grid grid = new Grid(level.cols, level.rows);
-        grid.setColor(new Color(level.getGridColor()));
+        Grid grid = new Grid(level.getCols(), level.getRows());
+        grid.setColor(new Color(level.getBorderColor()));
         grid.setBackground(new Color(level.getTask().getBackgroundColor()));
         return grid;
     }

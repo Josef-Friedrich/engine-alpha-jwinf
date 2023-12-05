@@ -20,7 +20,7 @@
     "bagSize": 8,
     "autoWithdraw": true,
     "backgroundColor": "#BF5E47",
-    "gridColor": "#96413B",
+    "borderColor": "#96413B",
     "itemTypes": {
       "robot": {
         "img": "yellow_robot.png",

@@ -32,7 +32,7 @@
       }
     },
     "backgroundColor": "#c5e2dd",
-    "gridColor": "#b4ccc7",
+    "borderColor": "#b4ccc7",
     "itemTypes": {
       "robot": {
         "img": "blue_robot.png",

@@ -37,12 +37,12 @@ class LevelCollectionTest
     @Test
     void testGetLevel()
     {
-        assertEquals(levels.getLevel(Difficulty.EASY, 0).testIndex, 0);
+        assertEquals(levels.getLevel(Difficulty.EASY, 0).getTestIndex(), 0);
     }
 
     @Test
     void testGetLevelNoTest()
     {
-        assertEquals(levels.getLevel(Difficulty.EASY).testIndex, 0);
+        assertEquals(levels.getLevel(Difficulty.EASY).getTestIndex(), 0);
     }
 }

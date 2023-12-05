@@ -55,7 +55,7 @@
     "ignoreInvalidMoves": false,
     "checkEndEveryTurn": true,
     "backgroundColor": "#c5b6af",
-    "gridColor": "#888888",
+    "borderColor": "#888888",
     "itemTypes": {
       "robot": {
         "img": "pink_robot.png",

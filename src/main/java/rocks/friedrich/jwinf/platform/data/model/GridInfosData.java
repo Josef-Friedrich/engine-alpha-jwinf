@@ -27,16 +27,16 @@ public class GridInfosData
     public String backgroundColor;
 
     /**
-     * Ist in
-     * https://jwinf.de/tasks/jwinf/_common/modules/pemFioi/blocklyRobot_lib-1.1.js
-     * definiert (borderColor)
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L2580-L2582">blocklyRobot_lib-1.1.js
+     *      L2580-L2582</a>
      */
-    public String gridColor;
+    public String borderColor;
 
     /**
-     * <a href=
-     * "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3140-L3140">blocklyRobot_lib-1.1.js
-     * L3140</a>
+     * @see <a href=
+     *      "https://github.com/France-ioi/bebras-modules/blob/ec1baf055c7f1c383ce8dfa5d27998463ef5be59/pemFioi/blocklyRobot_lib-1.1.js#L3140-L3140">blocklyRobot_lib-1.1.js
+     *      L3140</a>
      */
     public int bagSize;
 

@@ -113,27 +113,27 @@ class TaskTest
     }
 
     @Test
-    void testGetGridColor()
+    void testGetBorderColor()
     {
-        assertEquals(task.getGridColor(), "#b4ccc7");
+        assertEquals(task.getBorderColor(), "#b4ccc7");
     }
 
     @Test
     void testGetLevelIntDifficulty()
     {
-        assertEquals(task.getLevel(0).difficulty, EASY);
+        assertEquals(task.getLevel(0).getDifficulty(), EASY);
     }
 
     @Test
     void testGetLevelEnumDifficulty()
     {
-        assertEquals(task.getLevel(MEDIUM).difficulty, MEDIUM);
+        assertEquals(task.getLevel(MEDIUM).getDifficulty(), MEDIUM);
     }
 
     @Test
     void testGetLevelDifficultyAndTestIndex()
     {
-        assertEquals(task.getLevel(HARD, 0).difficulty, HARD);
+        assertEquals(task.getLevel(HARD, 0).getDifficulty(), HARD);
     }
 
     @Test

@@ -12,7 +12,7 @@ function convertToJson(baseName, input) {
   }
 
   if (result.gridInfos.borderColor != null) {
-    result.gridInfos.gridColor = result.gridInfos.borderColor
+    result.gridInfos.borderColor = result.gridInfos.borderColor
     delete result.gridInfos.borderColor
   }
   const json = JSON.stringify(result, null, 2)

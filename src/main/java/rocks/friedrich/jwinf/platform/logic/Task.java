@@ -108,9 +108,9 @@ public class Task
      *
      * @return the grid color as a String.
      */
-    public String getGridColor()
+    public String getBorderColor()
     {
-        return data.gridInfos.gridColor;
+        return data.gridInfos.borderColor;
     }
 
     /**

@@ -32,13 +32,13 @@ public class LevelCollection
     {
         for (Level level : list)
         {
-            if (level.cols > maxCols)
+            if (level.getCols() > maxCols)
             {
-                maxCols = level.cols;
+                maxCols = level.getCols();
             }
-            if (level.rows > maxRows)
+            if (level.getRows() > maxRows)
             {
-                maxRows = level.rows;
+                maxRows = level.getRows();
             }
         }
     }

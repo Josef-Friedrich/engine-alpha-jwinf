@@ -1,11 +1,11 @@
 package rocks.friedrich.jwinf.platform.logic.level;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static rocks.friedrich.jwinf.TestHelper.loadLevel;
+import static rocks.friedrich.jwinf.platform.logic.level.Difficulty.EASY;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static rocks.friedrich.jwinf.TestHelper.loadLevel;
 
 class LevelTest
 {
@@ -18,20 +18,56 @@ class LevelTest
     }
 
     @Test
-    void attributeRows()
+    void testGetTask()
     {
-        assertEquals(level.rows, 6);
+        assertEquals(level.getTask().getTitle(), "Kerzen anzünden");
     }
 
     @Test
-    void attributeCols()
+    void testGetDifficulty()
     {
-        assertEquals(level.cols, 9);
+        assertEquals(level.getDifficulty(), EASY);
     }
 
     @Test
-    void methodGetInitItem()
+    void testGetTestIndex()
+    {
+        assertEquals(level.getTestIndex(), 0);
+    }
+
+    @Test
+    void testGetContext()
+    {
+        assertEquals(level.getContext().getCols(), 9);
+    }
+
+    @Test
+    void testGetRows()
+    {
+        assertEquals(level.getRows(), 6);
+    }
+
+    @Test
+    void testGetCols()
+    {
+        assertEquals(level.getCols(), 9);
+    }
+
+    @Test
+    void testGetInitItem()
     {
         assertEquals(level.getInitItem().row, 5);
+    }
+
+    @Test
+    void testGetBorderColor()
+    {
+        assertEquals(level.getBorderColor(), "#b4ccc7");
+    }
+
+    @Test
+    void testGetBackgroundColor()
+    {
+        assertEquals(level.getBackgroundColor(), "#c5e2dd");
     }
 }

@@ -17,7 +17,7 @@
   ],
   "gridInfos": {
     "backgroundColor": "#1f003c",
-    "gridColor": "#888888",
+    "borderColor": "#888888",
     "conceptViewer": false,
     "hasGravity": true,
     "contextType": "castle",
