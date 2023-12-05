@@ -31,7 +31,6 @@ public class BagPacker extends ItemRelocator
         var action = reportItemRelocation(actionName, item);
         if (context.get(coords).isContainer())
         {
-            bag.add(item);
             drop(coords, item);
         }
         else

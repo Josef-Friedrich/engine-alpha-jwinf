@@ -22,7 +22,6 @@ public abstract class Solver<T>
     public Solver(String taskPath)
     {
         this.taskPath = taskPath;
-        // findTaskPathInClassHierarchy();
     }
 
     public Solver()
