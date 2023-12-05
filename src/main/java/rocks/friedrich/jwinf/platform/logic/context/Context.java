@@ -7,6 +7,7 @@ import rocks.friedrich.jwinf.platform.data.model.ItemData;
 import rocks.friedrich.jwinf.platform.logic.item.Item;
 import rocks.friedrich.jwinf.platform.logic.item.ItemDataStore;
 import rocks.friedrich.jwinf.platform.logic.item.StackedItems;
+import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 /**
  * Die mit Gegenständen (Item) ausgefüllte Karte (Map) einer
@@ -28,6 +29,8 @@ public class Context
      */
     private int cols;
 
+    private VirtualRobot robot;
+
     /**
      * Behälter in dem Objekte eingesammelt (withdraw) werden können.
      *
@@ -35,7 +38,7 @@ public class Context
      */
     private List<Item> bag = new ArrayList<>();
 
-    public Context(int[][] map, ItemDataStore items)
+    public Context(int[][] map, ItemDataStore items, VirtualRobot robot)
     {
         rows = map.length;
         cols = map[0].length;
@@ -58,6 +61,7 @@ public class Context
             }
         }
         this.items = items;
+        this.robot = robot;
     }
 
     /**
@@ -76,19 +80,14 @@ public class Context
         return cols;
     }
 
+    public VirtualRobot getRobot()
+    {
+        return robot;
+    }
+
     public List<Item> getBag()
     {
         return bag;
-    }
-
-    public Context(int[][] map)
-    {
-        this(map, new ItemDataStore());
-    }
-
-    public Context(int rows, int cols)
-    {
-        this(new int[rows][cols]);
     }
 
     /**

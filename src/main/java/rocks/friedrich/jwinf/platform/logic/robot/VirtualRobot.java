@@ -61,8 +61,12 @@ public class VirtualRobot implements Robot
     public VirtualRobot(Level level)
     {
         this.level = level;
-        this.context = level.getContext();
         actionLog = new ActionLog();
+    }
+
+    public void setContext(Context context)
+    {
+        this.context = context;
     }
 
     public int getRow()

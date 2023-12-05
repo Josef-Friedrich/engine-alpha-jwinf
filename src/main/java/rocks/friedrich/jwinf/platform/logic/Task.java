@@ -216,7 +216,7 @@ public class Task
      */
     public VirtualRobot getVirtualRobot()
     {
-        return getLevel().createEnvironment().getRobot();
+        return getLevel().getContext().getRobot();
     }
 
     /**

@@ -49,8 +49,8 @@ public abstract class Solver<T>
     {
         RobotWrapper robot = PackageClassLoader
                 .instantiateClass("en.tasks.%s.Robot".formatted(taskPath));
-        var environment = level.createEnvironment();
-        robot.actor = environment.getRobot();
+        var context = level.getContext();
+        robot.actor = context.getRobot();
         return robot;
     }
 

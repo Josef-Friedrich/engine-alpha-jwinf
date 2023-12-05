@@ -38,9 +38,9 @@ public class LevelAssembler
         RobotWrapper robot = RobotWrapper.class.getClassLoader()
                 .loadClass(className).asSubclass(RobotWrapper.class)
                 .getDeclaredConstructor().newInstance();
-        var environment = level.createEnvironment();
+        var context = level.getContext();
         robot.actor = new ImageRobot("images/candle/robot.png",
-                environment.getRobot(), l);
+                context.getRobot(), l);
         return robot;
     }
 

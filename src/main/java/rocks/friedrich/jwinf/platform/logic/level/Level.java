@@ -36,17 +36,20 @@ public class Level
         testIndex = data.testNo;
     }
 
-    public LevelEnvironment createEnvironment()
+    public VirtualRobot createRobot()
     {
         var robot = new VirtualRobot(this);
         robot.addDefaultMovementListener();
         robot.setInitPosition(getInitItem());
-        return new LevelEnvironment(this, robot);
+        return robot;
     }
 
     private Context createContext()
     {
-        return new Context(data.tiles, task.getItemsData());
+        VirtualRobot robot = createRobot();
+        Context context = new Context(data.tiles, task.getItemsData(), robot);
+        robot.setContext(context);
+        return context;
     }
 
     public Task getTask()

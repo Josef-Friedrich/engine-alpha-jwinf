@@ -1,9 +1,9 @@
 package rocks.friedrich.jwinf;
 
 import rocks.friedrich.jwinf.platform.logic.Task;
+import rocks.friedrich.jwinf.platform.logic.context.Context;
 import rocks.friedrich.jwinf.platform.logic.level.Difficulty;
 import rocks.friedrich.jwinf.platform.logic.level.Level;
-import rocks.friedrich.jwinf.platform.logic.level.LevelEnvironment;
 import rocks.friedrich.jwinf.platform.logic.robot.VirtualRobot;
 
 public class TestHelper
@@ -19,13 +19,13 @@ public class TestHelper
         return task.getLevel(Difficulty.EASY);
     }
 
-    public static LevelEnvironment loadLevelEnvironment(String taskPath)
+    public static Context loadContext(String taskPath)
     {
-        return loadLevel(taskPath).createEnvironment();
+        return loadLevel(taskPath).getContext();
     }
 
     public static VirtualRobot loadVirtualRobot(String taskPath)
     {
-        return loadLevelEnvironment(taskPath).getRobot();
+        return loadContext(taskPath).getRobot();
     }
 }
