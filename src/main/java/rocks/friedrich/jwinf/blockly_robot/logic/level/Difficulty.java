@@ -65,6 +65,11 @@ public enum Difficulty
         }
     }
 
+    /**
+     * Returns the index (0: EASY, 1: MEDIUM, 2: HARD) of the difficulty level.
+     *
+     * @return the index of the difficulty level
+     */
     public int getIndex()
     {
         return index;

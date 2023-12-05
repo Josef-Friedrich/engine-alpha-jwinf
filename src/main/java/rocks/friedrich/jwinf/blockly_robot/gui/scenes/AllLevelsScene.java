@@ -20,7 +20,7 @@ public class AllLevelsScene extends Scene
 
     private final ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();
 
-    public Task task;
+    private Task task;
 
     private final float INITIAL_X = 0;
 

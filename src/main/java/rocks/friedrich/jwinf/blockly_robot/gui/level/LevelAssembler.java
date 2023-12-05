@@ -3,6 +3,7 @@ package rocks.friedrich.jwinf.blockly_robot.gui.level;
 import ea.Scene;
 import ea.Vector;
 import rocks.friedrich.jwinf.blockly_robot.gui.Color;
+import rocks.friedrich.jwinf.blockly_robot.gui.Painter;
 import rocks.friedrich.jwinf.blockly_robot.gui.map.Grid;
 import rocks.friedrich.jwinf.blockly_robot.gui.map.ItemMapPainter;
 import rocks.friedrich.jwinf.blockly_robot.gui.robot.ImageRobot;
@@ -50,20 +51,21 @@ public class LevelAssembler
      */
     public AssembledLevel placeActorsInScene(Scene scene, float x, float y)
     {
-        AssembledLevel l = new AssembledLevel(level, scene, x, y);
+        AssembledLevel a = new AssembledLevel(level, scene, x, y);
         // Grid
-        l.grid = createGrid();
-        l.grid.setPosition(x - SHIFT, y - SHIFT);
-        scene.add(l.grid);
+        a.grid = createGrid();
+        a.grid.setPosition(x - SHIFT, y - SHIFT);
+        scene.add(a.grid);
         // ItemGrid
         new ItemMapPainter(level.getContext()).paint(scene, x - SHIFT,
                 y - SHIFT);
+        Painter.paintVersionHeading(scene, x, y + level.getRows(), level);
         try
         {
-            l.robot = createRobot(l);
-            Vector robotPosition = l.translate.toVector(level.getInitItem().row,
+            a.robot = createRobot(a);
+            Vector robotPosition = a.translate.toVector(level.getInitItem().row,
                     level.getInitItem().col);
-            ImageRobot robot = (ImageRobot) l.robot.actor;
+            ImageRobot robot = (ImageRobot) a.robot.actor;
             robot.setCenter(robotPosition.getX(), robotPosition.getY());
             scene.add(robot);
         }
@@ -71,6 +73,6 @@ public class LevelAssembler
         {
             e.printStackTrace();
         }
-        return l;
+        return a;
     }
 }

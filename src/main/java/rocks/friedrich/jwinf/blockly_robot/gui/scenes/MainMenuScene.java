@@ -7,7 +7,7 @@ import ea.actor.Text;
 import ea.internal.Bounds;
 import rocks.friedrich.jwinf.blockly_robot.gui.Color;
 import rocks.friedrich.jwinf.blockly_robot.gui.Controller;
-import rocks.friedrich.jwinf.blockly_robot.gui.Fonts;
+import rocks.friedrich.jwinf.blockly_robot.gui.TextMaker;
 import rocks.friedrich.jwinf.blockly_robot.gui.State;
 
 public class MainMenuScene extends Scene implements WindowScene
@@ -75,7 +75,7 @@ public class MainMenuScene extends Scene implements WindowScene
         private Text createText(String content)
         {
             Text text = new Text(content, FONT_SIZE);
-            text.setFont(Fonts.bold);
+            text.setFont(TextMaker.bold);
             text.setColor(Color.BLACK);
             return text;
         }

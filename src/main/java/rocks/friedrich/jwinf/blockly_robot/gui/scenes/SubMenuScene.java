@@ -6,7 +6,7 @@ import ea.actor.Text;
 import ea.internal.Bounds;
 import rocks.friedrich.jwinf.blockly_robot.gui.Color;
 import rocks.friedrich.jwinf.blockly_robot.gui.Controller;
-import rocks.friedrich.jwinf.blockly_robot.gui.Fonts;
+import rocks.friedrich.jwinf.blockly_robot.gui.TextMaker;
 import rocks.friedrich.jwinf.blockly_robot.gui.State;
 
 public class SubMenuScene extends Scene implements WindowScene
@@ -34,7 +34,7 @@ public class SubMenuScene extends Scene implements WindowScene
         this.main = main;
         State.menu.getSub(main).forEach((sub, id) -> {
             Text text = new Text(sub, FONT_SIZE);
-            text.setFont(Fonts.regular);
+            text.setFont(TextMaker.regular);
             if (id != null)
             {
                 text.setColor(Color.BLACK);
