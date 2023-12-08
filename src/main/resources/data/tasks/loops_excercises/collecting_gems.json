@@ -21,6 +21,32 @@
     "conceptViewer": false,
     "contextType": "gems",
     "actionDelay": 200,
+    "itemTypes": {
+      "robot": {
+        "img": "yellow_robot.png",
+        "side": 80,
+        "nbStates": 9,
+        "isRobot": true,
+        "offsetX": -11,
+        "zOrder": 2
+      },
+      "gem": {
+        "num": 3,
+        "img": "gems/gem.png",
+        "side": 60,
+        "isWithdrawable": true,
+        "autoWithdraw": true,
+        "zOrder": 1
+      },
+      "obstacle": {
+        "num": 4,
+        "img": "gems/brick_wall.png",
+        "side": 60,
+        "isObstacle": true,
+        "zOrder": 0
+      },
+      "number": { "num": 5, "side": 60, "zOrder": 1 }
+    },
     "maxInstructions": {
       "easy": 10,
       "medium": 20,
