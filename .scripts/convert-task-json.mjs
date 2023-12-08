@@ -11,11 +11,7 @@ function convertToJson(baseName, input) {
     levels: input.data
   }
 
-  if (result.gridInfos.borderColor != null) {
-    result.gridInfos.borderColor = result.gridInfos.borderColor
-    delete result.gridInfos.borderColor
-  }
-  const json = JSON.stringify(result, null, 2)
+  const json = JSON.stringify(input, null, 2)
   fs.writeFileSync(path.join(dataDir, baseName + '.json'), json)
 }
 

@@ -1,0 +1,131 @@
+{
+  "id": "http://castor-informatique.fr/questions/algorea_2017_1/collecting_gems",
+  "version": "de.01",
+  "authors": "Mathias Hiron",
+  "translators": ["Robert Czechowski", "Wolfgang Pohl"],
+  "title": "Edelsteine einsammeln",
+  "intro": "",
+  "intros": {
+    "easy": "",
+    "medium": "",
+    "hard": ""
+  },
+  "menu": ["Wiederholungen – Übungen", "Edelsteine sammeln"],
+  "sources": [
+    "https://jwinf.de/task/1139",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2017/17-FR-02-collecting-gems/index_new.html?channelId=task",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2017/17-FR-02-collecting-gems/task_new.js"
+  ],
+  "gridInfos": {
+    "hideSaveOrLoad": true,
+    "conceptViewer": false,
+    "contextType": "gems",
+    "actionDelay": 200,
+    "maxInstructions": {
+      "easy": 10,
+      "medium": 20,
+      "hard": 20
+    },
+    "includeBlocks": {
+      "groupByCategory": false,
+      "generatedBlocks": {
+        "robot": ["left", "right", "forward"]
+      },
+      "standardBlocks": {
+        "includeAll": false,
+        "wholeCategories": [],
+        "singleBlocks": {
+          "easy": [],
+          "medium": ["controls_repeat"],
+          "hard": ["controls_repeat"]
+        }
+      },
+      "pythonAdditionalFunctions": {
+        "medium": ["range"],
+        "hard": ["range"]
+      }
+    },
+    "blocklyColourTheme": "bwinf",
+    "additionalBlocksByLevel": {
+      "easy": {
+        "generatedBlocks": {},
+        "standardBlocks": {}
+      },
+      "medium": {
+        "standardBlocks": {}
+      }
+    },
+    "ignoreInvalidMoves": false,
+    "checkEndEveryTurn": false
+  },
+  "levels": {
+    "easy": [
+      {
+        "tiles": [
+          [1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 3, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1]
+        ],
+        "initItems": [
+          {
+            "row": 4,
+            "col": 0,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      }
+    ],
+    "medium": [
+      {
+        "tiles": [
+          [1, 1, 1, 3, 1, 1, 3, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 3, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 3, 1, 1, 1, 3, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1]
+        ],
+        "initItems": [
+          {
+            "row": 8,
+            "col": 0,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      }
+    ],
+    "hard": [
+      {
+        "tiles": [
+          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        ],
+        "initItems": [
+          {
+            "row": 10,
+            "col": 0,
+            "dir": 0,
+            "type": "robot"
+          }
+        ]
+      }
+    ]
+  }
+}
