@@ -172,5 +172,11 @@ class TaskTest
         {
             assertEquals(task.getItemCreator().create("gem").getName(), "gem");
         }
+
+        @Test
+        void testGetBagSize()
+        {
+            assertEquals(task.getBagSize(), 100);
+        }
     }
 }

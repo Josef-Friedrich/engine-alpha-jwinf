@@ -41,6 +41,9 @@ public class GridInfosData
      */
     public int bagSize;
 
+    /**
+     * Nicht in der blocky-robot-lib definiert auf GridInfosData Ebene.
+     */
     public boolean autoWithdraw;
 
     /**

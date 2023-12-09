@@ -1006,6 +1006,8 @@
     "checkEndCondition": null
   },
   "gems": {
+    "bagSize": 100,
+    "autoWithdraw": true,
     "backgroundColor": "#BF5E47",
     "borderColor": "#96413B",
     "itemTypes": {
