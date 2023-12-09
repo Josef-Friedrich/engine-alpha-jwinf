@@ -7,7 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(value = { "hideSaveOrLoad", "conceptViewer",
         "languageStrings", "limitedUses", "includeBlocks", "blocklyColourTheme",
         "checkEndEveryTurn", "ignoreInvalidMoves", "actionDelay",
-        "multiple_marbles", "additionalBlocksByLevel" })
+        "multiple_marbles", "additionalBlocksByLevel", "cellSide", "newBlocks",
+        "checkEndCondition" })
 public class GridInfosData
 {
     public boolean hasGravity;
@@ -52,4 +53,39 @@ public class GridInfosData
     public MaxInstructionsData maxInstructions;
 
     public Map<String, ItemData> itemTypes;
+
+    /**
+     * Found in contextParams.json
+     */
+    public int containerSize;
+
+    /**
+     * Found in contextParams.json
+     */
+    public Object bagInit;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean noBorders;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean ignoreBag;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean blockingFilter;
+
+    /**
+     * Found in contextParams.json
+     */
+    public int maxWireLength;
+
+    /**
+     * Found in contextParams.json
+     */
+    public int maxTotalLength;
 }

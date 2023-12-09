@@ -1,5 +1,7 @@
 package rocks.friedrich.jwinf.blockly_robot.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass;
 
 /**
@@ -17,6 +19,7 @@ import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass;
  *   }
  * }</pre>
  */
+@JsonIgnoreProperties(value = {})
 public class ItemData implements Cloneable
 {
     /**
@@ -134,6 +137,126 @@ public class ItemData implements Cloneable
     public boolean isWritable;
 
     public int nbStates;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean forwardsLeft;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean forwardsRight;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean forwardsTop;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean forwardsBottom;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isRound;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isQuadrille;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isSquare;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isTriangle;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isStriped;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isDotted;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isCross;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isStar;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean canBeOutside;
+
+    /**
+     * Found in contextParams.json
+     */
+    public String fontColor;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean fontBold;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isGreen;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isOpaque;
+
+    /**
+     * Found in contextParams.json
+     */
+    public String[] states;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isLight;
+
+    /**
+     * Found in contextParams.json
+     */
+    public int state;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isMirror;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isFake;
+
+    /**
+     * Found in contextParams.json
+     */
+    public boolean isWire;
+
+    /**
+     * Found in contextParams.json
+     */
+    public int plugType;
 
     public Compass getCompassDirection()
     {

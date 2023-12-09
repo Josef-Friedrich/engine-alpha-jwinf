@@ -12,7 +12,8 @@ import com.fasterxml.jackson.databind.DatabindException;
 class JsonLoaderTest
 {
     @Test
-    void loadTask() throws StreamReadException, DatabindException, IOException
+    void testLoadTask()
+            throws StreamReadException, DatabindException, IOException
     {
         var task = JsonLoader.loadTask(
                 "data/tasks/conditionals_excercises/light_all_candles.json");
@@ -20,12 +21,21 @@ class JsonLoaderTest
     }
 
     @Test
-    void loadMenu() throws StreamReadException, DatabindException, IOException
+    void testLoadMenu()
+            throws StreamReadException, DatabindException, IOException
     {
         var menu = JsonLoader.loadMenu();
         assertEquals(
                 menu.get("Bedingte Anweisungen – Übungen")
                         .get("Zünde alle Kerzen an"),
                 "conditionals_excercises/light_all_candles");
+    }
+
+    @Test
+    void testLoadContexts()
+            throws StreamReadException, DatabindException, IOException
+    {
+        var contexts = JsonLoader.loadContexts();
+        assertEquals(contexts.get("castle").backgroundColor, "#1f003c");
     }
 }
