@@ -28,7 +28,7 @@ class TaskTest
         final Task loadedTask = Task
                 .loadByTaskPath("conditionals_excercises/light_all_candles");
         assertNotNull(loadedTask);
-        assertEquals(loadedTask.title, "Kerzen anzünden");
+        assertEquals(loadedTask.getTitle(), "Kerzen anzünden");
     }
 
     @Nested
@@ -60,13 +60,13 @@ class TaskTest
     @Test
     void testTitle()
     {
-        assertEquals(task.title, "Kerzen anzünden");
+        assertEquals(task.getTitle(), "Kerzen anzünden");
     }
 
     @Test
     void testIntro()
     {
-        assertEquals(task.intro, "Programmiere den Roboter:\n"
+        assertEquals(task.getIntro(), "Programmiere den Roboter:\n"
                 + "Der Roboter soll alle Kerzen anzünden.");
     }
 
@@ -102,7 +102,7 @@ class TaskTest
         for (final String id : list.getRelPaths())
         {
             final Task task = Task.loadByTaskPath(id);
-            assertTrue(task.title != null);
+            assertTrue(task.getTitle() != null);
         }
     }
 

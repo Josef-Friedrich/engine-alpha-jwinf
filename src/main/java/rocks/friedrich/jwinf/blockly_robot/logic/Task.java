@@ -40,21 +40,21 @@ public class Task
 
     String taskPath;
 
-    public TaskData data;
+    private TaskData data;
 
-    private GridInfosData context;
+    private GridInfosData contextData;
 
     /**
      * Zum Beispiel „Edelsteine einsammeln“
      */
-    public String title;
+    private String title;
 
     /**
      * Zum Beispiel „Programmiere den Roboter“
      */
-    public String intro;
+    private String intro;
 
-    public LevelCollection levels;
+    private LevelCollection levels;
 
     private ItemCreator itemCreator;
 
@@ -75,7 +75,7 @@ public class Task
             if (data.gridInfos.contextType != null)
             {
                 var contexts = JsonLoader.loadContexts();
-                context = contexts.get(data.gridInfos.contextType);
+                contextData = contexts.get(data.gridInfos.contextType);
             }
             itemCreator = setupItemCreator();
             levels = new LevelCollection(data.levels, this);
@@ -92,9 +92,9 @@ public class Task
         {
             return new ItemCreator(data.gridInfos.itemTypes);
         }
-        else if (context != null && context.itemTypes != null)
+        else if (contextData != null && contextData.itemTypes != null)
         {
-            return new ItemCreator(context.itemTypes);
+            return new ItemCreator(contextData.itemTypes);
         }
         return null;
     }
@@ -136,9 +136,9 @@ public class Task
         {
             return borderColor;
         }
-        if (context != null && context.borderColor != null)
+        if (contextData != null && contextData.borderColor != null)
         {
-            return context.borderColor;
+            return contextData.borderColor;
         }
         return null;
     }
@@ -155,9 +155,9 @@ public class Task
         {
             return backgroundColor;
         }
-        if (context != null && context.backgroundColor != null)
+        if (contextData != null && contextData.backgroundColor != null)
         {
-            return context.backgroundColor;
+            return contextData.backgroundColor;
         }
         return null;
     }
@@ -241,7 +241,12 @@ public class Task
         return getLevel(Difficulty.EASY, 0);
     }
 
-    public Context getMap()
+    public LevelCollection getLevelCollection()
+    {
+        return levels;
+    }
+
+    public Context getContextData()
     {
         return getLevel().getContext();
     }

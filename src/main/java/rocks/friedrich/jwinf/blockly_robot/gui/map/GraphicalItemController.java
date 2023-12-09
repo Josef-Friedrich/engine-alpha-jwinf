@@ -54,7 +54,6 @@ public class GraphicalItemController implements ItemController
     @Override
     public void move(int row, int col)
     {
-        // TODO Auto-generated method stub
     }
 
     public void withdraw()

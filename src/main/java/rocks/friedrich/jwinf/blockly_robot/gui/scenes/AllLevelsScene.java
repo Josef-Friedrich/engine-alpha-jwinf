@@ -66,7 +66,7 @@ public class AllLevelsScene extends Scene
 
     public String getTitle()
     {
-        return task.title;
+        return task.getTitle();
     }
 
     public Bounds getWindowBounds()

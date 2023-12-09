@@ -61,7 +61,7 @@ public class LevelScene extends Scene
 
     public String getTitle()
     {
-        return level.getTask().title;
+        return level.getTask().getTitle();
     }
 
     public void setAction(RobotAction action)
