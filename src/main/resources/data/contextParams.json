@@ -1019,7 +1019,7 @@
       },
       "gem": {
         "num": 3,
-        "img": "gem.png",
+        "img": "gems/gem.png",
         "side": 60,
         "isWithdrawable": true,
         "autoWithdraw": true,
@@ -1027,7 +1027,7 @@
       },
       "obstacle": {
         "num": 4,
-        "img": "brick_wall.png",
+        "img": "gems/brick_wall.png",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0

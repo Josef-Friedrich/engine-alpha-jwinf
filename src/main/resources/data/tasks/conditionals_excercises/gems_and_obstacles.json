@@ -19,34 +19,6 @@
   "gridInfos": {
     "bagSize": 8,
     "autoWithdraw": true,
-    "backgroundColor": "#BF5E47",
-    "borderColor": "#96413B",
-    "itemTypes": {
-      "robot": {
-        "img": "yellow_robot.png",
-        "side": 80,
-        "nbStates": 9,
-        "isRobot": true,
-        "offsetX": -11,
-        "zOrder": 2
-      },
-      "gem": {
-        "num": 3,
-        "img": "gems/gem.png",
-        "side": 60,
-        "isWithdrawable": true,
-        "autoWithdraw": true,
-        "zOrder": 1
-      },
-      "obstacle": {
-        "num": 4,
-        "img": "gems/brick_wall.png",
-        "side": 60,
-        "isObstacle": true,
-        "zOrder": 0
-      },
-      "number": { "num": 5, "side": 60, "zOrder": 1 }
-    },
     "hideSaveOrLoad": true,
     "conceptViewer": false,
     "contextType": "gems",

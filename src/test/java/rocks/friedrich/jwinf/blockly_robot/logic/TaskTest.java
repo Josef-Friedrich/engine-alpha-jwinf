@@ -58,13 +58,13 @@ class TaskTest
     }
 
     @Test
-    void attributeTitle()
+    void testTitle()
     {
         assertEquals(task.title, "Kerzen anzünden");
     }
 
     @Test
-    void attributeIntro()
+    void testIntro()
     {
         assertEquals(task.intro, "Programmiere den Roboter:\n"
                 + "Der Roboter soll alle Kerzen anzünden.");
@@ -148,5 +148,29 @@ class TaskTest
     {
         // Assuming that the number of difficulties is 3 (EASY, MEDIUM, HARD)
         assertEquals(task.getNumberOfDifficulties(), 3);
+    }
+
+    @Nested
+    class TaskFromContextTest
+    {
+        Task task = Task.loadByTaskPath("loops_excercises/collecting_gems");
+
+        @Test
+        void testGetBackgroundColor()
+        {
+            assertEquals(task.getBackgroundColor(), "#BF5E47");
+        }
+
+        @Test
+        void testGetBorderColor()
+        {
+            assertEquals(task.getBorderColor(), "#96413B");
+        }
+
+        @Test
+        void testGetItemCreator()
+        {
+            assertEquals(task.getItemCreator().create("gem").getName(), "gem");
+        }
     }
 }

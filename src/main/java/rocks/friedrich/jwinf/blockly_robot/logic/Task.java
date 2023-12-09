@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import rocks.friedrich.jwinf.blockly_robot.data.JsonLoader;
+import rocks.friedrich.jwinf.blockly_robot.data.model.GridInfosData;
 import rocks.friedrich.jwinf.blockly_robot.data.model.TaskData;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.Context;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.ItemCreator;
@@ -41,6 +42,8 @@ public class Task
 
     public TaskData data;
 
+    private GridInfosData context;
+
     /**
      * Zum Beispiel „Edelsteine einsammeln“
      */
@@ -67,15 +70,33 @@ public class Task
         {
             data = JsonLoader.loadTask(filePath);
             taskPath = extractTaskPath(filePath);
+            title = data.title;
+            intro = data.intro;
+            if (data.gridInfos.contextType != null)
+            {
+                var contexts = JsonLoader.loadContexts();
+                context = contexts.get(data.gridInfos.contextType);
+            }
+            itemCreator = setupItemCreator();
+            levels = new LevelCollection(data.levels, this);
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
-        title = data.title;
-        intro = data.intro;
-        itemCreator = new ItemCreator(data.gridInfos.itemTypes);
-        levels = new LevelCollection(data.levels, this);
+    }
+
+    private ItemCreator setupItemCreator()
+    {
+        if (data.gridInfos.itemTypes != null)
+        {
+            return new ItemCreator(data.gridInfos.itemTypes);
+        }
+        else if (context != null && context.itemTypes != null)
+        {
+            return new ItemCreator(context.itemTypes);
+        }
+        return null;
     }
 
     public String getTaskPath()
@@ -110,7 +131,16 @@ public class Task
      */
     public String getBorderColor()
     {
-        return data.gridInfos.borderColor;
+        String borderColor = data.gridInfos.borderColor;
+        if (borderColor != null)
+        {
+            return borderColor;
+        }
+        if (context != null && context.borderColor != null)
+        {
+            return context.borderColor;
+        }
+        return null;
     }
 
     /**
@@ -120,7 +150,16 @@ public class Task
      */
     public String getBackgroundColor()
     {
-        return data.gridInfos.backgroundColor;
+        String backgroundColor = data.gridInfos.backgroundColor;
+        if (backgroundColor != null)
+        {
+            return backgroundColor;
+        }
+        if (context != null && context.backgroundColor != null)
+        {
+            return context.backgroundColor;
+        }
+        return null;
     }
 
     public int getBagSize()
