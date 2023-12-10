@@ -14,17 +14,13 @@ import rocks.friedrich.jwinf.blockly_robot.logic.robot.RobotWrapper;
  */
 public class AssembledLevel
 {
-    public float x;
+    private Grid grid;
 
-    public float y;
+    private RobotWrapper robot;
 
-    public Grid grid;
+    private Scene scene;
 
-    public RobotWrapper robot;
-
-    public Scene scene;
-
-    public Level level;
+    private Level level;
 
     public CoordinateSystemTranslator translate;
 
@@ -32,8 +28,6 @@ public class AssembledLevel
     {
         this.level = level;
         this.scene = scene;
-        this.x = x;
-        this.y = y;
         var context = level.getContext();
         translate = new CoordinateSystemTranslator(context.getRows(),
                 context.getCols(), x, y);
@@ -41,6 +35,31 @@ public class AssembledLevel
         {
             item.setController(getItemController(item));
         }
+    }
+
+    public Level getLevel()
+    {
+        return level;
+    }
+
+    public Grid getGrid()
+    {
+        return grid;
+    }
+
+    public void setGrid(Grid grid)
+    {
+        this.grid = grid;
+    }
+
+    public RobotWrapper getRobot()
+    {
+        return robot;
+    }
+
+    public void setRobot(RobotWrapper robot)
+    {
+        this.robot = robot;
     }
 
     public GraphicalItemController getItemController(Item item)

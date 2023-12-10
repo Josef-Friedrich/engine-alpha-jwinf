@@ -45,7 +45,7 @@ public class LevelScene extends Scene
         level = task.getLevel(difficulty, test);
         var assembler = new LevelAssembler(level);
         var assembledLevel = assembler.placeActorsInScene(this, 0, 0);
-        robot = (ImageRobot) assembledLevel.robot.actor;
+        robot = (ImageRobot) assembledLevel.getRobot().actor;
         assembledLevels.add(assembledLevel);
     }
 

@@ -53,19 +53,19 @@ public class LevelAssembler
     {
         AssembledLevel a = new AssembledLevel(level, scene, x, y);
         // Grid
-        a.grid = createGrid();
-        a.grid.setPosition(x - SHIFT, y - SHIFT);
-        scene.add(a.grid);
+        a.setGrid(createGrid());
+        a.getGrid().setPosition(x - SHIFT, y - SHIFT);
+        scene.add(a.getGrid());
         // ItemGrid
         new ItemMapPainter(level.getContext()).paint(scene, x - SHIFT,
                 y - SHIFT);
         Painter.paintVersionHeading(scene, x, y + level.getRows(), level);
         try
         {
-            a.robot = createRobot(a);
+            a.setRobot(createRobot(a));
             Vector robotPosition = a.translate.toVector(level.getInitItem().row,
                     level.getInitItem().col);
-            ImageRobot robot = (ImageRobot) a.robot.actor;
+            ImageRobot robot = (ImageRobot) a.getRobot().actor;
             robot.setCenter(robotPosition.getX(), robotPosition.getY());
             scene.add(robot);
         }

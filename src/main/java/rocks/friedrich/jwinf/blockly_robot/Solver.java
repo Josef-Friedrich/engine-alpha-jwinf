@@ -95,18 +95,18 @@ public abstract class Solver<T>
         Controller.launchScene((WindowScene) scene);
         scene.getAssembledLevels().forEach((level) -> {
             new Thread(() -> {
-                switch (level.level.getDifficulty())
+                switch (level.getLevel().getDifficulty())
                 {
                 case EASY:
-                    easy((T) level.robot);
+                    easy((T) level.getRobot());
                     break;
 
                 case MEDIUM:
-                    medium((T) level.robot);
+                    medium((T) level.getRobot());
                     break;
 
                 case HARD:
-                    hard((T) level.robot);
+                    hard((T) level.getRobot());
                     break;
 
                 default:
