@@ -561,14 +561,14 @@
       },
       "marker": {
         "num": 2,
-        "img": "marker.png",
+        "img": "cones/marker.png",
         "side": 60,
         "isContainer": true,
         "zOrder": 0
       },
       "cone": {
         "num": 3,
-        "img": "cone.png",
+        "img": "cones/cone.png",
         "side": 60,
         "isWithdrawable": true,
         "isObstacle": true,
@@ -576,13 +576,13 @@
       },
       "contour": {
         "num": 4,
-        "img": "contour.png",
+        "img": "cones/contour.png",
         "side": 60,
         "zOrder": 1
       },
       "fixed_cone": {
         "num": 5,
-        "img": "cone.png",
+        "img": "cones/cone.png",
         "side": 60,
         "isObstacle": true,
         "zOrder": 1

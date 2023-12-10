@@ -53,11 +53,11 @@ public class TaskData
 
     public GridInfosData gridInfos;
 
-    public LevelCollectionData levels;
+    public LevelCollectionData data;
 
     public LevelData getLevel(Difficulty difficulty, int test)
     {
-        return levels.getLevel(difficulty, test);
+        return data.getLevel(difficulty, test);
     }
 
     public LevelData getLevel(Difficulty difficulty)

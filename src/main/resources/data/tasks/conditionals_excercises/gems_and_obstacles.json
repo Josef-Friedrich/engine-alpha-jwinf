@@ -69,7 +69,7 @@
     "ignoreInvalidMoves": false,
     "checkEndEveryTurn": false
   },
-  "levels": {
+  "data": {
     "easy": [
       {
         "tiles": [

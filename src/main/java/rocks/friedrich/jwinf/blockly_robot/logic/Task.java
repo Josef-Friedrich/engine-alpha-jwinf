@@ -87,7 +87,7 @@ public class Task
                 contextData = contexts.get(data.gridInfos.contextType);
             }
             itemCreator = setupItemCreator();
-            levels = new LevelCollection(data.levels, this);
+            levels = new LevelCollection(data.data, this);
         }
         catch (IOException e)
         {

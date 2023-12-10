@@ -1,4 +1,14 @@
 {
+  "id": "securing_the_road",
+  "version": "de.01",
+  "authors": "Hannah Rauterberg",
+  "title": "Straße sichern",
+  "menu": ["Wiederholungen – Übungen", "Straße sichern"],
+  "sources": [
+    "https://jwinf.de/task/1140",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/beispiele/Cones/index.html?channelId=task",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/beispiele/Cones/task.js"
+  ],
   "gridInfos": {
     "conceptViewer": false,
     "contextType": "cones",

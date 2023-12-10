@@ -47,9 +47,9 @@ public class Item
      * Gibt den eindeutigen Namen, der den Gegenstand identifiziert. Zum
      * Beispiel: <code>candle</code>
      */
-    public String getName()
+    public String getType()
     {
-        return data.name;
+        return data.type;
     }
 
     /**

@@ -170,7 +170,7 @@ class TaskTest
         @Test
         void testGetItemCreator()
         {
-            assertEquals(task.getItemCreator().create("gem").getName(), "gem");
+            assertEquals(task.getItemCreator().create("gem").getType(), "gem");
         }
 
         @Test

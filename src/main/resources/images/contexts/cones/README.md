@@ -1,0 +1,1 @@
+https://jwinf.de/tasks/jwinf/_common/modules/img/algorea/cone.png

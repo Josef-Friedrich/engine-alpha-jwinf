@@ -28,12 +28,6 @@ public class ItemData implements Cloneable
     public int num;
 
     /**
-     * Ein eindeutiger Name, der den Gegenstand identifiziert. Zum Beispiel:
-     * <code>candle</code>
-     */
-    public String name;
-
-    /**
      * Die Zeilennummer, in der der Gegenstand plaziert ist.
      */
     public int row;
@@ -52,7 +46,8 @@ public class ItemData implements Cloneable
     public int dir;
 
     /**
-     * Hat meistens den Wert <code>robot</code>.
+     * Hat meistens den Wert <code>robot</code>. Ein eindeutiger Name, der den Gegenstand identifiziert. Zum Beispiel:
+     * <code>candle</code>
      */
     public String type;
 

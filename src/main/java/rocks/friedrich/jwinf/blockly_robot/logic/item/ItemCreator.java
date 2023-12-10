@@ -19,17 +19,17 @@ public class ItemCreator
     {
         itemsByName = new HashMap<>();
         itemsByNumber = new HashMap<>();
-        items.forEach((name, itemData) -> {
-            if (itemData.name == null)
+        items.forEach((type, itemData) -> {
+            if (itemData.type == null)
             {
-                itemData.name = name;
+                itemData.type = type;
             }
         });
         for (ItemData item : items.values())
         {
-            if (item.name != null)
+            if (item.type != null)
             {
-                itemsByName.put(item.name, item);
+                itemsByName.put(item.type, item);
             }
             if (item.num != 0)
             {
@@ -43,9 +43,9 @@ public class ItemCreator
         return itemsByNumber.get(num);
     }
 
-    private ItemData get(String name)
+    private ItemData get(String type)
     {
-        return itemsByName.get(name);
+        return itemsByName.get(type);
     }
 
     /**
@@ -78,11 +78,11 @@ public class ItemCreator
     /**
      * Creates an item with the given name.
      *
-     * @param name the name of the item
+     * @param type the name of the item
      * @return the created item
      */
-    public Item create(String name)
+    public Item create(String type)
     {
-        return createItem(get(name));
+        return createItem(get(type));
     }
 }
