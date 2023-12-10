@@ -238,7 +238,7 @@ public class Task
      */
     public Map<Difficulty, List<Level>> getLevels()
     {
-        return levels.levels;
+        return levels.getLevels();
     }
 
     /**
@@ -316,7 +316,7 @@ public class Task
      */
     public int getMaxCols()
     {
-        return levels.maxCols;
+        return levels.getMaxCols();
     }
 
     /**
@@ -325,7 +325,7 @@ public class Task
      */
     public int getMaxRows()
     {
-        return levels.maxRows;
+        return levels.getMaxRows();
     }
 
     /**
@@ -333,7 +333,7 @@ public class Task
      */
     public int getNumberOfDifficulties()
     {
-        return levels.levels.size();
+        return levels.getNumberOfDifficulties();
     }
 
     /**
@@ -355,7 +355,7 @@ public class Task
      */
     public int getNumberOfLevels()
     {
-        return levels.numberOfLevels;
+        return levels.getNumberOfLevels();
     }
 
     public boolean hasGravity()

@@ -20,19 +20,19 @@ class LevelCollectionTest
     @Test
     void testNumberOfLevels()
     {
-        assertEquals(levels.numberOfLevels, 3);
+        assertEquals(levels.getNumberOfLevels(), 3);
     }
 
     @Test
-    void testMaxCols()
+    void testGetMaxCols()
     {
-        assertEquals(levels.maxCols, 10);
+        assertEquals(levels.getMaxCols(), 10);
     }
 
     @Test
-    void testMaxRows()
+    void testGetMaxRows()
     {
-        assertEquals(levels.maxRows, 6);
+        assertEquals(levels.getMaxRows(), 6);
     }
 
     @Test

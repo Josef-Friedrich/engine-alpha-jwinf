@@ -16,36 +16,18 @@ import rocks.friedrich.jwinf.blockly_robot.logic.Task;
  */
 public class LevelCollection
 {
-    public Task task;
+    private Map<Difficulty, List<Level>> levels;
 
-    public Map<Difficulty, List<Level>> levels;
+    private List<Level> list;
 
-    public List<Level> list;
+    private int numberOfLevels;
 
-    public int numberOfLevels;
+    private int maxCols;
 
-    public int maxCols;
-
-    public int maxRows;
-
-    private void setMaxRowsAndCols()
-    {
-        for (Level level : list)
-        {
-            if (level.getCols() > maxCols)
-            {
-                maxCols = level.getCols();
-            }
-            if (level.getRows() > maxRows)
-            {
-                maxRows = level.getRows();
-            }
-        }
-    }
+    private int maxRows;
 
     public LevelCollection(LevelCollectionData data, Task task)
     {
-        this.task = task;
         list = new ArrayList<>();
         levels = new EnumMap<>(Difficulty.class);
         for (LevelData levelData : data.getLevelList())
@@ -63,6 +45,46 @@ public class LevelCollection
         }
         numberOfLevels = list.size();
         setMaxRowsAndCols();
+    }
+
+    private void setMaxRowsAndCols()
+    {
+        for (Level level : list)
+        {
+            if (level.getCols() > maxCols)
+            {
+                maxCols = level.getCols();
+            }
+            if (level.getRows() > maxRows)
+            {
+                maxRows = level.getRows();
+            }
+        }
+    }
+
+    public Map<Difficulty, List<Level>> getLevels()
+    {
+        return levels;
+    }
+
+    public int getMaxCols()
+    {
+        return maxCols;
+    }
+
+    public int getMaxRows()
+    {
+        return maxRows;
+    }
+
+    public int getNumberOfDifficulties()
+    {
+        return levels.size();
+    }
+
+    public int getNumberOfLevels()
+    {
+        return numberOfLevels;
     }
 
     /**
