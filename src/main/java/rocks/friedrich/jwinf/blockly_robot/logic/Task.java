@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import rocks.friedrich.jwinf.blockly_robot.data.JsonLoader;
+import rocks.friedrich.jwinf.blockly_robot.data.model.BagInit;
 import rocks.friedrich.jwinf.blockly_robot.data.model.GridInfosData;
 import rocks.friedrich.jwinf.blockly_robot.data.model.ItemData;
 import rocks.friedrich.jwinf.blockly_robot.data.model.TaskData;
@@ -366,5 +367,18 @@ public class Task
             autoWithdraw = contextData.autoWithdraw;
         }
         return autoWithdraw;
+    }
+
+    public BagInit getBagInit()
+    {
+        if (data.gridInfos.bagInit != null)
+        {
+            return data.gridInfos.bagInit;
+        }
+        if (contextData != null && contextData.bagInit != null)
+        {
+            return contextData.bagInit;
+        }
+        return null;
     }
 }

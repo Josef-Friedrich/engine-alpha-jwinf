@@ -23,9 +23,14 @@ abstract class ItemRelocator
         return action;
     }
 
-    protected Item createItem(int itemNum)
+    protected Item createItem(int num)
     {
-        return itemCreator.create(itemNum);
+        return itemCreator.create(num);
+    }
+
+    protected Item createItem(String type)
+    {
+        return itemCreator.create(type);
     }
 
     protected Item drop(Coords coords, int itemNum)
@@ -33,9 +38,9 @@ abstract class ItemRelocator
         return drop(coords, itemCreator.create(itemNum));
     }
 
-    protected Item drop(Coords coords, String itemName)
+    protected Item drop(Coords coords, String type)
     {
-        return drop(coords, itemCreator.create(itemName));
+        return drop(coords, itemCreator.create(type));
     }
 
     protected Item drop(Coords coords, Item item)

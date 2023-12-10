@@ -23,6 +23,19 @@ public class BagPacker extends ItemRelocator
     public BagPacker(Context context)
     {
         super(context);
+        var bagInit = context.getTask().getBagInit();
+        if (bagInit != null)
+        {
+            for (int i = 0; i < bagInit.count; i++)
+            {
+                bag.add(createItem(bagInit.type));
+            }
+        }
+    }
+
+    public int getBagSize()
+    {
+        return bag.size();
     }
 
     private ItemRelocation dropWithdrawable(Coords coords, Item item,

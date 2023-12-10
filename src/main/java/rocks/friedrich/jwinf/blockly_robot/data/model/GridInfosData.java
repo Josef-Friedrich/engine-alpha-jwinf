@@ -4,8 +4,8 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(value = { "hideSaveOrLoad", "conceptViewer",
-        "languageStrings", "limitedUses", "includeBlocks", "blocklyColourTheme",
+@JsonIgnoreProperties(value = { "conceptViewer", "languageStrings",
+        "limitedUses", "includeBlocks", "blocklyColourTheme",
         "checkEndEveryTurn", "ignoreInvalidMoves", "actionDelay",
         "multiple_marbles", "additionalBlocksByLevel", "cellSide", "newBlocks",
         "checkEndCondition" })
@@ -47,12 +47,17 @@ public class GridInfosData
     public boolean autoWithdraw;
 
     /**
-     * For example „labyrinth“.
+     * For example „labyrinth“. Hier wird der Kontext definiert. Mit dem Kontext
+     * werden ItemTypes und Aufgabenspezifische Übersetzungen geladen.
      */
     public String contextType;
 
     public int nbPlatforms;
 
+    /**
+     * Gibt an, wie viele Blöcke für welche Versionen maximal zur Verfügung
+     * stehen
+     */
     public MaxInstructionsData maxInstructions;
 
     public Map<String, ItemData> itemTypes;
@@ -65,7 +70,7 @@ public class GridInfosData
     /**
      * Found in contextParams.json
      */
-    public Object bagInit;
+    public BagInit bagInit;
 
     /**
      * Found in contextParams.json
@@ -91,4 +96,10 @@ public class GridInfosData
      * Found in contextParams.json
      */
     public int maxTotalLength;
+
+    /**
+     * Gibt an, ob die Programme gespeichert und geladen werden können über das
+     * Menu auf der rechten Seite. Für Wettbewerbe immer auf true setzen
+     */
+    public boolean hideSaveOrLoad;
 }
