@@ -13,8 +13,6 @@
   "menu": ["Bedingte Anweisungen – Übungen", "Plattformen"],
   "sources": ["https://jwinf.de/task/1160", "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2017/17-FR-07-platforms-marbles/task_new.js", "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2017/17-FR-07-platforms-marbles/index_new.html?channelId=task"],
   "gridInfos": {
-    "backgroundColor": "#1f003c",
-    "borderColor": "#888888",
     "bagSize": 1,
     "hideSaveOrLoad": true,
     "conceptViewer": false,
@@ -27,36 +25,6 @@
       "hard": 20
     },
     "itemTypes": {
-      "robot": {
-        "img": "castle_robot.png",
-        "side": 80,
-        "nbStates": 9,
-        "isRobot": true,
-        "offsetX": -11,
-        "offsetY": 3,
-        "zOrder": 3
-      },
-      "platform": {
-        "num": 2,
-        "img": "castle/platform.png",
-        "side": 60,
-        "isObstacle": true,
-        "zOrder": 0
-      },
-      "hearth": {
-        "num": 4,
-        "img": "castle/hearth.png",
-        "side": 60,
-        "isContainer": true,
-        "zOrder": 1
-      },
-      "firewood": {
-        "num": 5,
-        "img": "castle/firewood.png",
-        "side": 60,
-        "isWithdrawable": true,
-        "zOrder": 2
-      },
       "wall": {
         "num": 6,
         "img": "labyrinth/wall.png",

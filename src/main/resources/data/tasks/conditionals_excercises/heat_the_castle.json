@@ -16,8 +16,6 @@
     "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/training/training-plattformen-if/index.html?channelId=task"
   ],
   "gridInfos": {
-    "backgroundColor": "#1f003c",
-    "borderColor": "#888888",
     "conceptViewer": false,
     "hasGravity": true,
     "contextType": "castle",
@@ -28,45 +26,6 @@
       "easy": 12,
       "medium": 20,
       "hard": 30
-    },
-    "itemTypes": {
-      "robot": {
-        "img": "castle_robot.png",
-        "side": 80,
-        "nbStates": 9,
-        "isRobot": true,
-        "offsetX": -11,
-        "offsetY": 3,
-        "zOrder": 3
-      },
-      "platform": {
-        "num": 2,
-        "img": "castle/platform.png",
-        "side": 60,
-        "isObstacle": true,
-        "zOrder": 0
-      },
-      "hearth": {
-        "num": 4,
-        "img": "castle/hearth.png",
-        "side": 60,
-        "isContainer": true,
-        "zOrder": 1
-      },
-      "firewood": {
-        "num": 5,
-        "img": "castle/firewood.png",
-        "side": 60,
-        "isWithdrawable": true,
-        "zOrder": 2
-      },
-      "wall": {
-        "num": 6,
-        "img": "grey_brick_wall.png",
-        "side": 60,
-        "isObstacle": true,
-        "zOrder": 0
-      }
     },
     "includeBlocks": {
       "groupByCategory": false,

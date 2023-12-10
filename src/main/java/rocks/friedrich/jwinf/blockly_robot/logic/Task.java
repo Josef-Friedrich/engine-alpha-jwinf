@@ -7,6 +7,7 @@ import java.util.Map;
 
 import rocks.friedrich.jwinf.blockly_robot.data.JsonLoader;
 import rocks.friedrich.jwinf.blockly_robot.data.model.GridInfosData;
+import rocks.friedrich.jwinf.blockly_robot.data.model.ItemData;
 import rocks.friedrich.jwinf.blockly_robot.data.model.TaskData;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.Context;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.ItemCreator;
@@ -89,7 +90,18 @@ public class Task
 
     private ItemCreator setupItemCreator()
     {
-        if (data.gridInfos.itemTypes != null)
+        Map<String, ItemData> fromTask = data.gridInfos.itemTypes;
+        Map<String, ItemData> fromContext = null;
+        if (contextData != null && contextData.itemTypes != null)
+        {
+            fromContext = contextData.itemTypes;
+        }
+        if (fromTask != null && fromContext != null)
+        {
+            fromTask.putAll(fromContext);
+            return new ItemCreator(fromTask);
+        }
+        else if (data.gridInfos.itemTypes != null)
         {
             return new ItemCreator(data.gridInfos.itemTypes);
         }

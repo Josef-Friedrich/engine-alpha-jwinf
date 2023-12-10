@@ -13,7 +13,6 @@
   "gridInfos": {
     "hideSaveOrLoad": true,
     "conceptViewer": false,
-    "contextType": "paint",
     "actionDelay": 200,
     "languageStrings": {
       "blocklyRobot_lib": {
@@ -26,8 +25,8 @@
           "dropObject": "zuendeKerzeAn"
         },
         "messages": {
-          "successContainersFilled": "Bravo, der Roboter hat alle Kerzen angezÃ¼ndet!",
-          "failureContainersFilled": "Der Roboter hat die Kerzen nicht korrekt angezÃ¼ndet."
+          "successContainersFilled": "Bravo, der Roboter hat alle Kerzen angezündet!",
+          "failureContainersFilled": "Der Roboter hat die Kerzen nicht korrekt angezündet."
         }
       }
     },
