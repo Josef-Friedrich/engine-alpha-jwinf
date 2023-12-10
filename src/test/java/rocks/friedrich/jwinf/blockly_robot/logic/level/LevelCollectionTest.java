@@ -13,7 +13,8 @@ class LevelCollectionTest
     @BeforeAll
     static void getLevel()
     {
-        levels = loadTask("conditionals_excercises/light_all_candles").getLevelCollection();
+        levels = loadTask("conditionals_excercises/light_all_candles")
+                .getLevelCollection();
     }
 
     @Test

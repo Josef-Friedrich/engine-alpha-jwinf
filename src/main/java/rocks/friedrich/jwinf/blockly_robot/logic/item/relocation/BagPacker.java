@@ -1,6 +1,7 @@
 package rocks.friedrich.jwinf.blockly_robot.logic.item.relocation;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import rocks.friedrich.jwinf.blockly_robot.logic.context.Context;
@@ -11,7 +12,7 @@ import rocks.friedrich.jwinf.blockly_robot.logic.robot.ErrorMessages;
 /**
  * Gegenstände in die Tasche (Bag) packen.
  */
-public class BagPacker extends ItemRelocator
+public class BagPacker extends ItemRelocator implements Iterable<Item>
 {
     /**
      * Behälter in dem Objekte eingesammelt (withdraw) werden können.
@@ -31,6 +32,12 @@ public class BagPacker extends ItemRelocator
                 bag.add(createItem(bagInit.type));
             }
         }
+    }
+
+    @Override
+    public Iterator<Item> iterator()
+    {
+        return bag.iterator();
     }
 
     public int getBagSize()

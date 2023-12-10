@@ -23,7 +23,6 @@ public class Robot extends RobotWrapper
         actor.turnRight();
     }
 
-
     /**
      * gehe vorwärts
      */

@@ -46,8 +46,8 @@ public class ItemData implements Cloneable
     public int dir;
 
     /**
-     * Hat meistens den Wert <code>robot</code>. Ein eindeutiger Name, der den Gegenstand identifiziert. Zum Beispiel:
-     * <code>candle</code>
+     * Hat meistens den Wert <code>robot</code>. Ein eindeutiger Name, der den
+     * Gegenstand identifiziert. Zum Beispiel: <code>candle</code>
      */
     public String type;
 

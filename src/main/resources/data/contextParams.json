@@ -561,7 +561,7 @@
       },
       "marker": {
         "num": 2,
-        "img": "cones/marker.png",
+        "img": "cones/cones_marker.png",
         "side": 60,
         "isContainer": true,
         "zOrder": 0

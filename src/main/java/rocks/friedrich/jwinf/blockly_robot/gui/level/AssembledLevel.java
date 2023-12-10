@@ -34,9 +34,13 @@ public class AssembledLevel
         this.scene = scene;
         this.x = x;
         this.y = y;
-        var map = level.getContext();
-        translate = new CoordinateSystemTranslator(map.getRows(), map.getCols(),
-                x, y);
+        var context = level.getContext();
+        translate = new CoordinateSystemTranslator(context.getRows(),
+                context.getCols(), x, y);
+        for (Item item : context.getBagPacker())
+        {
+            item.setController(getItemController(item));
+        }
     }
 
     public GraphicalItemController getItemController(Item item)

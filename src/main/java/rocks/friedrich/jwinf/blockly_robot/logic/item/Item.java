@@ -117,6 +117,10 @@ public class Item
 
     public void setController(ItemController controller)
     {
+        if (this.controller != null)
+        {
+            throw new IllegalStateException("Controller already set");
+        }
         this.controller = controller;
     }
 

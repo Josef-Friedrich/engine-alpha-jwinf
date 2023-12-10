@@ -164,6 +164,10 @@ public class Task
         {
             borderColor = contextData.borderColor;
         }
+        else
+        {
+            borderColor = "#cccccc";
+        }
         return borderColor;
     }
 
@@ -185,6 +189,10 @@ public class Task
         else if (contextData != null && contextData.backgroundColor != null)
         {
             backgroundColor = contextData.backgroundColor;
+        }
+        else
+        {
+            backgroundColor = "#ffffff";
         }
         return backgroundColor;
     }
