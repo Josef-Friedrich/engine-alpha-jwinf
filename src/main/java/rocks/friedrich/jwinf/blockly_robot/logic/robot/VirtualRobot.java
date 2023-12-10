@@ -433,7 +433,7 @@ public class VirtualRobot implements Robot
         row = newRow;
         col = newCol;
         dir = newDir;
-        if (getTask().doAutoWithdraw())
+        if (getTask().getAutoWithdraw())
         {
             withdrawAuto();
         }

@@ -1,7 +1,6 @@
 package rocks.friedrich.jwinf.blockly_robot.logic;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 
@@ -65,6 +64,14 @@ public class Task
      * Tests.
      */
     private int maxLevelsPerDifficulty;
+
+    private String borderColor;
+
+    private String backgroundColor;
+
+    private int bagSize;
+
+    private boolean autoWithdraw;
 
     public Task(String filePath)
     {
@@ -144,7 +151,19 @@ public class Task
      */
     public String getBorderColor()
     {
-        return getValue("borderColor");
+        if (borderColor != null)
+        {
+            return borderColor;
+        }
+        if (data.gridInfos.borderColor != null)
+        {
+            borderColor = data.gridInfos.borderColor;
+        }
+        else if (contextData != null && contextData.borderColor != null)
+        {
+            borderColor = contextData.borderColor;
+        }
+        return borderColor;
     }
 
     /**
@@ -154,53 +173,36 @@ public class Task
      */
     public String getBackgroundColor()
     {
-        return getValue("backgroundColor");
-    }
-
-    @SuppressWarnings("unchecked")
-    private <T> T getValue(Object o, String name)
-    {
-        try
+        if (backgroundColor != null)
         {
-            Class<?> c = o.getClass();
-            Field f = c.getDeclaredField(name);
-            f.setAccessible(true);
-            Object value = f.get(o);
-            if (value instanceof Integer)
-            {
-                int i = (Integer) value;
-                if (i == 0)
-                {
-                    return null;
-                }
-            }
-            return (T) value;
+            return backgroundColor;
         }
-        catch (Exception e)
+        if (data.gridInfos.backgroundColor != null)
         {
-            e.printStackTrace();
+            backgroundColor = data.gridInfos.backgroundColor;
         }
-        return null;
-    }
-
-    private <T> T getValue(String name)
-    {
-        T value = getValue(data.gridInfos, name);
-        if (value != null)
+        else if (contextData != null && contextData.backgroundColor != null)
         {
-            return value;
+            backgroundColor = contextData.backgroundColor;
         }
-        value = getValue(contextData, name);
-        if (value != null)
-        {
-            return value;
-        }
-        return null;
+        return backgroundColor;
     }
 
     public int getBagSize()
     {
-        return getValue("bagSize");
+        if (bagSize > 0)
+        {
+            return bagSize;
+        }
+        if (data.gridInfos.bagSize > 0)
+        {
+            bagSize = data.gridInfos.bagSize;
+        }
+        else if (contextData != null && contextData.bagSize > 0)
+        {
+            bagSize = contextData.bagSize;
+        }
+        return bagSize;
     }
 
     public int getMaxFallAltitude()
@@ -352,15 +354,16 @@ public class Task
         return data.gridInfos.hasGravity;
     }
 
-    public boolean doAutoWithdraw()
+    public boolean getAutoWithdraw()
     {
-        boolean autoWithdraw = data.gridInfos.autoWithdraw;
-        if (!autoWithdraw)
+        if (autoWithdraw)
         {
-            if (contextData != null && contextData.autoWithdraw)
-            {
-                return contextData.autoWithdraw;
-            }
+            return autoWithdraw;
+        }
+        autoWithdraw = data.gridInfos.autoWithdraw;
+        if (!autoWithdraw && contextData != null && contextData.autoWithdraw)
+        {
+            autoWithdraw = contextData.autoWithdraw;
         }
         return autoWithdraw;
     }
