@@ -8,25 +8,25 @@ import rocks.friedrich.jwinf.blockly_robot.logic.item.StackedItems;
 
 public class ItemMapPainter
 {
-    private Context map;
+    private Context context;
 
     private CoordinateSystemTranslator translate;
 
-    public ItemMapPainter(Context map)
+    public ItemMapPainter(Context context)
     {
-        this.map = map;
-        translate = new CoordinateSystemTranslator(map.getRows(),
-                map.getCols());
+        this.context = context;
+        translate = new CoordinateSystemTranslator(context.getRows(),
+                context.getCols());
     }
 
     public void paint(Scene scene, float x, float y)
     {
         translate.setPosition(x, y);
-        for (int row = 0; row < map.getRows(); row++)
+        for (int row = 0; row < context.getRows(); row++)
         {
-            for (int col = 0; col < map.getCols(); col++)
+            for (int col = 0; col < context.getCols(); col++)
             {
-                paintStackedItems(scene, col, row, map.get(row, col));
+                paintStackedItems(scene, col, row, context.get(row, col));
             }
         }
     }
