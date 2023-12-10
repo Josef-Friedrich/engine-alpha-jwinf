@@ -22,9 +22,9 @@ public class LevelCollection
 
     private int numberOfLevels;
 
-    private int maxCols;
-
     private int maxRows;
+
+    private int maxCols;
 
     public LevelCollection(LevelCollectionData data, Task task)
     {
@@ -67,9 +67,9 @@ public class LevelCollection
         return levels;
     }
 
-    public int getMaxCols()
+    public int getNumberOfLevels()
     {
-        return maxCols;
+        return numberOfLevels;
     }
 
     public int getMaxRows()
@@ -77,32 +77,34 @@ public class LevelCollection
         return maxRows;
     }
 
+    public int getMaxCols()
+    {
+        return maxCols;
+    }
+
     public int getNumberOfDifficulties()
     {
         return levels.size();
-    }
-
-    public int getNumberOfLevels()
-    {
-        return numberOfLevels;
     }
 
     /**
      * Retrieves the level for the given difficulty and test index.
      *
      * @param difficulty the difficulty of the level
-     * @param test       the test index of the level (0 is the first test)
+     * @param testIndex  the test index of the level (0 is the first test)
+     * 
      * @return the level corresponding to the given difficulty and test index
      */
-    public Level getLevel(Difficulty difficulty, int test)
+    public Level getLevel(Difficulty difficulty, int testIndex)
     {
-        return levels.get(difficulty).get(test);
+        return levels.get(difficulty).get(testIndex);
     }
 
     /**
      * Retrieves the level for the specified difficulty.
      *
      * @param difficulty the difficulty of the level to retrieve
+     * 
      * @return the level for the specified difficulty
      */
     public Level getLevel(Difficulty difficulty)
@@ -114,6 +116,7 @@ public class LevelCollection
      * Retrieves the level with the specified difficulty.
      *
      * @param difficulty the difficulty level of the level to retrieve
+     * 
      * @return the level with the specified difficulty
      */
     public Level getLevel(int difficulty)

@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static rocks.friedrich.jwinf.TestHelper.loadTask;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class LevelCollectionTest
@@ -18,15 +20,15 @@ class LevelCollectionTest
     }
 
     @Test
-    void testNumberOfLevels()
+    void testGetLevels()
     {
-        assertEquals(levels.getNumberOfLevels(), 3);
+        assertEquals(levels.getLevels().size(), 3);
     }
 
     @Test
-    void testGetMaxCols()
+    void testGetNumberOfLevels()
     {
-        assertEquals(levels.getMaxCols(), 10);
+        assertEquals(levels.getNumberOfLevels(), 3);
     }
 
     @Test
@@ -36,14 +38,37 @@ class LevelCollectionTest
     }
 
     @Test
-    void testGetLevel()
+    void testGetMaxCols()
     {
-        assertEquals(levels.getLevel(Difficulty.EASY, 0).getTestIndex(), 0);
+        assertEquals(levels.getMaxCols(), 10);
     }
 
     @Test
-    void testGetLevelNoTest()
+    void testGetNumberOfDifficulties()
     {
-        assertEquals(levels.getLevel(Difficulty.EASY).getTestIndex(), 0);
+        assertEquals(levels.getNumberOfDifficulties(), 3);
+    }
+
+    @Nested
+    @DisplayName("Test getter getLevel()")
+    class GetLevelTest
+    {
+        @Test
+        void testAllParameters()
+        {
+            assertEquals(levels.getLevel(Difficulty.EASY, 0).getTestIndex(), 0);
+        }
+
+        @Test
+        void testDifficultyAsEnum()
+        {
+            assertEquals(levels.getLevel(Difficulty.EASY).getTestIndex(), 0);
+        }
+
+        @Test
+        void testDifficultyAsInt()
+        {
+            assertEquals(levels.getLevel(0).getTestIndex(), 0);
+        }
     }
 }
