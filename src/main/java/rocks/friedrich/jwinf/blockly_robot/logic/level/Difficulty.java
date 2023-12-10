@@ -41,27 +41,47 @@ public enum Difficulty
         }
     }
 
-    public static Difficulty indexOf(int level)
+    public static Difficulty indexOf(int difficulty)
     {
-        return (Difficulty) map.get(level);
+        return (Difficulty) map.get(difficulty);
     }
 
-    public static Difficulty indexOf(String level)
+    public static Difficulty indexOf(String difficulty)
     {
-        switch (level)
+        difficulty = difficulty.toLowerCase();
+        switch (difficulty)
         {
+        case "**":
         case "easy":
             return Difficulty.EASY;
 
+        case "***":
         case "medium":
             return Difficulty.MEDIUM;
 
+        case "****":
         case "hard":
             return Difficulty.HARD;
 
         default:
             throw new IllegalArgumentException(
-                    "Unknown difficulty level %s".formatted(level));
+                    "Unknown difficulty level %s".formatted(difficulty));
+        }
+    }
+
+    public static Difficulty indexOf(Object difficulty)
+    {
+        if (difficulty instanceof Integer)
+        {
+            return indexOf((int) difficulty);
+        }
+        else if (difficulty instanceof String)
+        {
+            return indexOf((String) difficulty);
+        }
+        else
+        {
+            return EASY;
         }
     }
 

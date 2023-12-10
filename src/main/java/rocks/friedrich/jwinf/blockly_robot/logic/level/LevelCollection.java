@@ -146,4 +146,15 @@ public class LevelCollection
     {
         return filter(difficulty -> true);
     }
+
+    public Map<Difficulty, List<Level>> filter(Object difficulty, int testIndex)
+    {
+        return filter(d -> d == Difficulty.indexOf(difficulty),
+                l -> l.getTestIndex() == testIndex);
+    }
+
+    public Map<Difficulty, List<Level>> filter(Object difficulty)
+    {
+        return filter(difficulty, 0);
+    }
 }

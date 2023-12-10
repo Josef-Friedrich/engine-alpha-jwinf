@@ -3,6 +3,7 @@ package rocks.friedrich.jwinf.blockly_robot.gui.scenes;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import ea.Scene;
 import ea.event.KeyListener;
@@ -11,6 +12,8 @@ import rocks.friedrich.jwinf.blockly_robot.gui.Controller;
 import rocks.friedrich.jwinf.blockly_robot.gui.level.AssembledLevel;
 import rocks.friedrich.jwinf.blockly_robot.gui.level.LevelAssembler;
 import rocks.friedrich.jwinf.blockly_robot.logic.Task;
+import rocks.friedrich.jwinf.blockly_robot.logic.level.Difficulty;
+import rocks.friedrich.jwinf.blockly_robot.logic.level.Level;
 import rocks.friedrich.jwinf.blockly_robot.logic.menu.TaskList;
 
 public class AllLevelsScene extends Scene
@@ -41,15 +44,24 @@ public class AllLevelsScene extends Scene
      */
     private float y = 0;
 
-    public AllLevelsScene(Task task)
+    private Map<Difficulty, List<Level>> levels;
+
+    public AllLevelsScene(Task task, Object difficulty, int testIndex)
     {
         this.task = task;
+        // levels = task.getLevelCollection().filter(difficulty, testIndex);
+        levels = task.getLevels();
         paintLevels();
+    }
+
+    public AllLevelsScene(String taskPath, Object difficulty, int testIndex)
+    {
+        this(Task.loadByTaskPath(taskPath), difficulty, testIndex);
     }
 
     public AllLevelsScene(String taskPath)
     {
-        this(Task.loadByTaskPath(taskPath));
+        this(taskPath, "easy", 0);
     }
 
     public float getWidth()
@@ -84,7 +96,7 @@ public class AllLevelsScene extends Scene
     public void paintLevels()
     {
         x = INITIAL_X;
-        task.getLevels().forEach((difficulty, levels) -> {
+        levels.forEach((difficulty, levels) -> {
             y = INITIAL_Y;
             levels.forEach((level) -> {
                 var assembler = new LevelAssembler(level);

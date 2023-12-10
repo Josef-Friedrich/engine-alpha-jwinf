@@ -98,5 +98,17 @@ class LevelCollectionTest
         {
             assertEquals(levels.filter().size(), 3);
         }
+
+        @Test
+        void testFilterByDifficultyAsString()
+        {
+            assertEquals(levels.filter("easy").size(), 1);
+        }
+
+        @Test
+        void testFilterByDifficultyAsInteger()
+        {
+            assertEquals(levels.filter(0).size(), 1);
+        }
     }
 }
