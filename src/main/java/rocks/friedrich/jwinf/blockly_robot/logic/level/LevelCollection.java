@@ -168,4 +168,17 @@ public class LevelCollection
     {
         return filter(difficulty, 0);
     }
+
+    public static int getMaxColsOfList(List<Level> levels)
+    {
+        int maxCols = 0;
+        for (Level level : levels)
+        {
+            if (level.getCols() > maxCols)
+            {
+                maxCols = level.getCols();
+            }
+        }
+        return maxCols;
+    }
 }

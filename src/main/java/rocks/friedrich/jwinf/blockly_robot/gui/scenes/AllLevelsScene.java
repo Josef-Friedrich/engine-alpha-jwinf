@@ -14,6 +14,7 @@ import rocks.friedrich.jwinf.blockly_robot.gui.level.LevelAssembler;
 import rocks.friedrich.jwinf.blockly_robot.logic.Task;
 import rocks.friedrich.jwinf.blockly_robot.logic.level.Difficulty;
 import rocks.friedrich.jwinf.blockly_robot.logic.level.Level;
+import rocks.friedrich.jwinf.blockly_robot.logic.level.LevelCollection;
 import rocks.friedrich.jwinf.blockly_robot.logic.menu.TaskList;
 
 public class AllLevelsScene extends Scene
@@ -60,7 +61,7 @@ public class AllLevelsScene extends Scene
 
     public AllLevelsScene(String taskPath)
     {
-        this(taskPath, "easy", 0);
+        this(taskPath, "all", 0);
     }
 
     public float getWidth()
@@ -98,18 +99,17 @@ public class AllLevelsScene extends Scene
         levels.forEach((difficulty, levels) -> {
             y = INITIAL_Y;
             levels.forEach((level) -> {
-                System.out.println(level);
                 var assembler = new LevelAssembler(level);
+                y -= level.getRows() + 1;
                 assembledLevels.add(assembler.placeActorsInScene(this, x, y));
-                y -= task.getMaxRows() + 1;
             });
-            x += task.getMaxCols() + 1;
+            x += LevelCollection.getMaxColsOfList(levels) + 1;
         });
     }
 
     public static void launch(String taskPath, Object difficulty, int testIndex)
     {
-        var scene = new AllLevelsScene(taskPath);
+        var scene = new AllLevelsScene(taskPath, difficulty, testIndex);
         Controller.launchScene((WindowScene) scene);
     }
 
@@ -138,6 +138,9 @@ public class AllLevelsScene extends Scene
     public static void main(String[] args)
     {
         // launch("conditionals_excercises/light_all_candles");
-        launch("conditionals_excercises/find_the_destination");
+        // launch("conditionals_excercises/platforms");
+        // launch("conditionals_excercises/gems_and_obstacles");
+        launch("conditionals_excercises/heat_the_castle");
+        // launch("conditionals_excercises/find_the_destination", "easy", 0);
     }
 }

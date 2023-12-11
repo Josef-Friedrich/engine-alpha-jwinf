@@ -16,6 +16,18 @@ Die meiste Spiellogik ist in dem Javascript-Module
 [blocklyRobot_lib-1.1.js](https://github.com/France-ioi/bebras-modules/blob/master/pemFioi/blocklyRobot_lib-1.1.js)
 implementiert.
 
+
+# Task paths:
+
+* `conditionals_excercises/find_the_destination`
+* `conditionals_excercises/find_the_way_to_the_lake`
+* `conditionals_excercises/gems_and_obstacles`
+* `conditionals_excercises/heat_the_castle`
+* `conditionals_excercises/light_all_candles`
+* `conditionals_excercises/platforms`
+* `loops_excercises/collecting_gems`
+* `loops_excercises/securing_the_road`
+
 # Build dependency
 
 make dependency
