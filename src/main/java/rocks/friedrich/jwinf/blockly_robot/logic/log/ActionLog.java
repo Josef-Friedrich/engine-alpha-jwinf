@@ -1,4 +1,4 @@
-package rocks.friedrich.jwinf.blockly_robot.logic.robot;
+package rocks.friedrich.jwinf.blockly_robot.logic.log;
 
 import java.util.ArrayList;
 import java.util.List;

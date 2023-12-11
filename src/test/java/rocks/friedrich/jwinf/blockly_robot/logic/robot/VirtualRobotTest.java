@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import rocks.friedrich.jwinf.blockly_robot.logic.log.Movement;
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass;
 
 /**

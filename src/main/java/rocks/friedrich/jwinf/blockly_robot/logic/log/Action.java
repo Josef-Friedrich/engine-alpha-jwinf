@@ -1,4 +1,6 @@
-package rocks.friedrich.jwinf.blockly_robot.logic.robot;
+package rocks.friedrich.jwinf.blockly_robot.logic.log;
+
+import rocks.friedrich.jwinf.blockly_robot.logic.robot.ErrorMessages;
 
 public class Action
 {

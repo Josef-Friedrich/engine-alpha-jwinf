@@ -12,9 +12,9 @@ import ea.animation.interpolation.SinusFloat;
 import rocks.friedrich.jwinf.blockly_robot.gui.State;
 import rocks.friedrich.jwinf.blockly_robot.gui.level.AssembledLevel;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.Item;
-import rocks.friedrich.jwinf.blockly_robot.logic.item.relocation.ItemRelocation;
+import rocks.friedrich.jwinf.blockly_robot.logic.log.ItemRelocation;
+import rocks.friedrich.jwinf.blockly_robot.logic.log.Movement;
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
-import rocks.friedrich.jwinf.blockly_robot.logic.robot.Movement;
 import rocks.friedrich.jwinf.blockly_robot.logic.robot.Robot;
 import rocks.friedrich.jwinf.blockly_robot.logic.robot.VirtualRobot;
 

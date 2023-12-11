@@ -1,6 +1,7 @@
 package rocks.friedrich.jwinf.blockly_robot.logic.robot;
 
-import rocks.friedrich.jwinf.blockly_robot.logic.item.relocation.ItemRelocation;
+import rocks.friedrich.jwinf.blockly_robot.logic.log.ItemRelocation;
+import rocks.friedrich.jwinf.blockly_robot.logic.log.Movement;
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
 
 public interface Robot

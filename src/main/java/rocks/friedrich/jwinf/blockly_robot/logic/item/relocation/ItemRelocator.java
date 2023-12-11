@@ -3,6 +3,7 @@ package rocks.friedrich.jwinf.blockly_robot.logic.item.relocation;
 import rocks.friedrich.jwinf.blockly_robot.logic.context.Context;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.Item;
 import rocks.friedrich.jwinf.blockly_robot.logic.item.ItemCreator;
+import rocks.friedrich.jwinf.blockly_robot.logic.log.ItemRelocation;
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
 
 abstract class ItemRelocator

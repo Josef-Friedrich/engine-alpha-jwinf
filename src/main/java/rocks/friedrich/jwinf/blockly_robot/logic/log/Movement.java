@@ -1,8 +1,10 @@
-package rocks.friedrich.jwinf.blockly_robot.logic.robot;
+package rocks.friedrich.jwinf.blockly_robot.logic.log;
 
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Compass;
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.Coords;
 import rocks.friedrich.jwinf.blockly_robot.logic.navigation.DirectionalCoords;
+import rocks.friedrich.jwinf.blockly_robot.logic.robot.ErrorMessages;
+import rocks.friedrich.jwinf.blockly_robot.logic.robot.VirtualRobot;
 
 /**
  * Represents a movement made by a robot.
