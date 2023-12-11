@@ -11,6 +11,12 @@ import rocks.friedrich.jwinf.blockly_robot.gui.scenes.WindowScene;
 
 public class Controller
 {
+
+    public static void setDebug(boolean debug)
+    {
+        Game.setDebug(debug);
+    }
+
     public static void toggleInterpolator()
     {
         if (!(State.interpolator instanceof EaseInOutFloat))

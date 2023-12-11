@@ -35,10 +35,7 @@ public class LevelData
 
     public Difficulty difficulty;
 
-    /**
-     * 0 no other test 1: first test of x 2: second test of x. x > 2
-     */
-    public int testNo;
+    public int testIndex;
 
     public int getCols()
     {

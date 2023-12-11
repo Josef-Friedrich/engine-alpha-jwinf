@@ -33,7 +33,7 @@ public class Level
         this.task = task;
         context = createContext(task);
         difficulty = data.difficulty;
-        testIndex = data.testNo;
+        testIndex = data.testIndex;
     }
 
     public VirtualRobot createRobot()

@@ -49,8 +49,7 @@ public class AllLevelsScene extends Scene
     public AllLevelsScene(Task task, Object difficulty, int testIndex)
     {
         this.task = task;
-        // levels = task.getLevelCollection().filter(difficulty, testIndex);
-        levels = task.getLevels();
+        levels = task.getLevelCollection().filter(difficulty, testIndex);
         paintLevels();
     }
 
@@ -99,6 +98,7 @@ public class AllLevelsScene extends Scene
         levels.forEach((difficulty, levels) -> {
             y = INITIAL_Y;
             levels.forEach((level) -> {
+                System.out.println(level);
                 var assembler = new LevelAssembler(level);
                 assembledLevels.add(assembler.placeActorsInScene(this, x, y));
                 y -= task.getMaxRows() + 1;
@@ -107,10 +107,15 @@ public class AllLevelsScene extends Scene
         });
     }
 
-    public static void launch(String taskPath)
+    public static void launch(String taskPath, Object difficulty, int testIndex)
     {
         var scene = new AllLevelsScene(taskPath);
         Controller.launchScene((WindowScene) scene);
+    }
+
+    public static void launch(String taskPath)
+    {
+        launch(taskPath, null, 0);
     }
 
     @Override

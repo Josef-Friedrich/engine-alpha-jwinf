@@ -32,19 +32,10 @@ public class LevelCollectionData
     private void prepareList(LevelData[] levels, Difficulty difficulty,
             Collection<LevelData> collection)
     {
-        if (levels.length > 1)
+        for (int i = 0; i < levels.length; i++)
         {
-            for (int i = 1; i <= levels.length; i++)
-            {
-                LevelData level = levels[i - 1];
-                level.testNo = i;
-                level.difficulty = difficulty;
-                collection.add(level);
-            }
-        }
-        else
-        {
-            LevelData level = levels[0];
+            LevelData level = levels[i];
+            level.testIndex = i;
             level.difficulty = difficulty;
             collection.add(level);
         }

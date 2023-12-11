@@ -110,5 +110,38 @@ class LevelCollectionTest
         {
             assertEquals(levels.filter(0).size(), 1);
         }
+
+        @Test
+        void testFilterByDifficultyAsIntegerAndTestIndex()
+        {
+            assertEquals(levels.filter(0, 0).get(EASY).get(0).getBorderColor(),
+                    "#b4ccc7");
+        }
+
+        @Test
+        void testFilterByDifficultyAsStringAndTestIndex()
+        {
+            assertEquals(
+                    levels.filter("easy", 0).get(EASY).get(0).getBorderColor(),
+                    "#b4ccc7");
+        }
+
+        @Test
+        void testFilterByDifficultyAll()
+        {
+            assertEquals(levels.filter("all").size(), 3);
+        }
+
+        @Test
+        void testFilterByDifficultyNull()
+        {
+            assertEquals(levels.filter(null, 0).size(), 3);
+        }
+
+        @Test
+        void testFilterByDifficultyAsEnum()
+        {
+            assertEquals(levels.filter(EASY).size(), 1);
+        }
     }
 }
