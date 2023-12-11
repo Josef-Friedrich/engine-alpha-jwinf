@@ -12,6 +12,7 @@ rocks.friedrich.jwinf.blockly_robot.logic.context
 rocks.friedrich.jwinf.blockly_robot.logic.item
 rocks.friedrich.jwinf.blockly_robot.logic.item.relocation
 rocks.friedrich.jwinf.blockly_robot.logic.level
+rocks.friedrich.jwinf.blockly_robot.logic.log
 rocks.friedrich.jwinf.blockly_robot.logic.menu
 rocks.friedrich.jwinf.blockly_robot.logic.navigation
 rocks.friedrich.jwinf.blockly_robot.logic.robot
