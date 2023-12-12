@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import ea.Scene;
+import ea.actor.Text;
 import ea.event.KeyListener;
 import ea.internal.Bounds;
 import rocks.friedrich.jwinf.blockly_robot.gui.Controller;
+import rocks.friedrich.jwinf.blockly_robot.gui.TextMaker;
 import rocks.friedrich.jwinf.blockly_robot.gui.level.AssembledLevel;
 import rocks.friedrich.jwinf.blockly_robot.gui.level.LevelAssembler;
 import rocks.friedrich.jwinf.blockly_robot.logic.Task;
@@ -21,6 +23,8 @@ public class AllLevelsScene extends Scene
         implements WindowScene, KeyListener, AssembledLevelScene
 {
     static TaskList taskList = TaskList.readFromMenu();
+
+    static float SHIFT = LevelAssembler.SHIFT;
 
     private final ArrayList<AssembledLevel> assembledLevels = new ArrayList<>();
 
@@ -40,10 +44,14 @@ public class AllLevelsScene extends Scene
      */
     private float x = 0;
 
+    private float xMax = 0;
+
     /**
      * aktuelle y-Position
      */
     private float y = 0;
+
+    private float yMin = 0;
 
     private Map<Difficulty, List<Level>> levels;
 
@@ -62,6 +70,24 @@ public class AllLevelsScene extends Scene
     public AllLevelsScene(String taskPath)
     {
         this(taskPath, "all", 0);
+    }
+
+    private void setY(float y)
+    {
+        if (y < yMin)
+        {
+            yMin = y;
+        }
+        this.y = y;
+    }
+
+    private void setX(float x)
+    {
+        if (x > xMax)
+        {
+            xMax = x;
+        }
+        this.x = x;
     }
 
     public float getWidth()
@@ -83,9 +109,9 @@ public class AllLevelsScene extends Scene
 
     public Bounds getWindowBounds()
     {
-        return new Bounds(INITIAL_X - 0.5f,
-                INITIAL_Y - getHeight() + task.getMaxRows() - 0.5f, getWidth(),
-                getHeight());
+        float shift = SHIFT * 2;
+        return new Bounds(INITIAL_X - shift, yMin - shift, xMax,
+                (yMin * -1) + shift + SHIFT);
     }
 
     public List<AssembledLevel> getAssembledLevels()
@@ -93,17 +119,44 @@ public class AllLevelsScene extends Scene
         return assembledLevels;
     }
 
+    private void writeVersionHeading(Difficulty difficulty)
+    {
+        Text text = TextMaker.createText(
+                "Version " + "*".repeat(difficulty.getIndex() + 2), 1);
+        text.setPosition(x - SHIFT, y - SHIFT);
+        setY(y - 1);
+        add(text);
+    }
+
+    private void writeTestIndexHeading(List<Level> levelList, Level level)
+    {
+        if (levelList.size() > 1)
+        {
+            if (level.getTestIndex() > 0)
+            {
+                setY(y - 1);
+            }
+            var text = TextMaker.createText(
+                    "Test %d".formatted(level.getTestIndex() + 1), 0.75f);
+            text.setPosition(x - SHIFT, y - SHIFT);
+            setY(y - 1);
+            add(text);
+        }
+    }
+
     public void paintLevels()
     {
-        x = INITIAL_X;
-        levels.forEach((difficulty, levels) -> {
-            y = INITIAL_Y;
-            levels.forEach((level) -> {
+        setX(INITIAL_X);
+        levels.forEach((difficulty, levelList) -> {
+            setY(INITIAL_Y);
+            writeVersionHeading(difficulty);
+            levelList.forEach((level) -> {
+                writeTestIndexHeading(levelList, level);
                 var assembler = new LevelAssembler(level);
-                y -= level.getRows() + 1;
+                setY(y - (level.getRows() - 1));
                 assembledLevels.add(assembler.placeActorsInScene(this, x, y));
             });
-            x += LevelCollection.getMaxColsOfList(levels) + 1;
+            setX(x + LevelCollection.getMaxColsOfList(levelList) + 1);
         });
     }
 

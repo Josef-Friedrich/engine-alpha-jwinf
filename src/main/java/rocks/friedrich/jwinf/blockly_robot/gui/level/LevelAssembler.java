@@ -3,7 +3,6 @@ package rocks.friedrich.jwinf.blockly_robot.gui.level;
 import ea.Scene;
 import ea.Vector;
 import rocks.friedrich.jwinf.blockly_robot.gui.Color;
-import rocks.friedrich.jwinf.blockly_robot.gui.Painter;
 import rocks.friedrich.jwinf.blockly_robot.gui.map.Grid;
 import rocks.friedrich.jwinf.blockly_robot.gui.map.ItemMapPainter;
 import rocks.friedrich.jwinf.blockly_robot.gui.robot.ImageRobot;
@@ -59,7 +58,6 @@ public class LevelAssembler
         // ItemGrid
         new ItemMapPainter(level.getContext()).paint(scene, x - SHIFT,
                 y - SHIFT);
-        Painter.paintVersionHeading(scene, x, y + level.getRows(), level);
         try
         {
             a.setRobot(createRobot(a));
