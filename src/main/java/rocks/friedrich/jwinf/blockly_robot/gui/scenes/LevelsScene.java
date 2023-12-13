@@ -143,7 +143,7 @@ public class LevelsScene extends Scene implements WindowScene, KeyListener
         }
     }
 
-    public void paintLevels()
+    private void paintLevels()
     {
         setX(INITIAL_X);
         levels.forEach((difficulty, levelList) -> {
