@@ -19,8 +19,7 @@ import rocks.friedrich.jwinf.blockly_robot.logic.level.Level;
 import rocks.friedrich.jwinf.blockly_robot.logic.level.LevelCollection;
 import rocks.friedrich.jwinf.blockly_robot.logic.menu.TaskList;
 
-public class AllLevelsScene extends Scene
-        implements WindowScene, KeyListener, AssembledLevelScene
+public class LevelsScene extends Scene implements WindowScene, KeyListener
 {
     static TaskList taskList = TaskList.readFromMenu();
 
@@ -55,19 +54,19 @@ public class AllLevelsScene extends Scene
 
     private Map<Difficulty, List<Level>> levels;
 
-    public AllLevelsScene(Task task, Object difficulty, int testIndex)
+    public LevelsScene(Task task, Object difficulty, int testIndex)
     {
         this.task = task;
         levels = task.getLevelCollection().filter(difficulty, testIndex);
         paintLevels();
     }
 
-    public AllLevelsScene(String taskPath, Object difficulty, int testIndex)
+    public LevelsScene(String taskPath, Object difficulty, int testIndex)
     {
         this(Task.loadByTaskPath(taskPath), difficulty, testIndex);
     }
 
-    public AllLevelsScene(String taskPath)
+    public LevelsScene(String taskPath)
     {
         this(taskPath, "all", 0);
     }
@@ -162,7 +161,7 @@ public class AllLevelsScene extends Scene
 
     public static void launch(String taskPath, Object difficulty, int testIndex)
     {
-        var scene = new AllLevelsScene(taskPath, difficulty, testIndex);
+        var scene = new LevelsScene(taskPath, difficulty, testIndex);
         Controller.launchScene((WindowScene) scene);
     }
 

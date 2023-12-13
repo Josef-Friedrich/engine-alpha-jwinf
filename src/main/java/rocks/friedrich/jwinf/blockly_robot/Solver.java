@@ -1,9 +1,7 @@
 package rocks.friedrich.jwinf.blockly_robot;
 
 import rocks.friedrich.jwinf.blockly_robot.gui.Controller;
-import rocks.friedrich.jwinf.blockly_robot.gui.scenes.AllLevelsScene;
-import rocks.friedrich.jwinf.blockly_robot.gui.scenes.AssembledLevelScene;
-import rocks.friedrich.jwinf.blockly_robot.gui.scenes.LevelScene;
+import rocks.friedrich.jwinf.blockly_robot.gui.scenes.LevelsScene;
 import rocks.friedrich.jwinf.blockly_robot.gui.scenes.WindowScene;
 import rocks.friedrich.jwinf.blockly_robot.logic.Task;
 import rocks.friedrich.jwinf.blockly_robot.logic.level.Difficulty;
@@ -71,27 +69,18 @@ public abstract class Solver<T>
 
     public void solve()
     {
-        solve(null, 0);
+        solve("all", 0);
     }
 
-    public void solve(String difficutly)
+    public void solve(Object difficutly)
     {
         solve(difficutly, 0);
     }
 
     @SuppressWarnings("unchecked")
-    public void solve(String difficutly, int test)
+    public void solve(Object difficutly, int test)
     {
-        AssembledLevelScene scene;
-        if (difficutly == null)
-        {
-            scene = new AllLevelsScene(taskPath);
-        }
-        else
-        {
-            scene = new LevelScene(taskPath, Difficulty.indexOf(difficutly),
-                    test);
-        }
+        LevelsScene scene = new LevelsScene(taskPath, difficutly, test);
         Controller.launchScene((WindowScene) scene);
         scene.getAssembledLevels().forEach((level) -> {
             new Thread(() -> {

@@ -41,7 +41,7 @@ public class SubMenuScene extends Scene implements WindowScene
                 text.addMouseClickListener((vector, mouseButton) -> {
                     if (text.contains(vector))
                     {
-                        AllLevelsScene.launch(id);
+                        LevelsScene.launch(id);
                     }
                 });
                 text.addFrameUpdateListener((deltaSeconds) -> {
