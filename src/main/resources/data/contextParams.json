@@ -1296,14 +1296,14 @@
       },
       "box": {
         "num": 2,
-        "img": "cardboard_box.png",
+        "img": "packages/cardboard_box.png",
         "side": 60,
         "isContainer": true,
         "zOrder": 2
       },
       "books": {
         "num": 3,
-        "img": "books.png",
+        "img": "packages/books.png",
         "side": 60,
         "isWithdrawable": true,
         "offsetY": 12,
@@ -1311,7 +1311,7 @@
       },
       "books_outside": {
         "num": 4,
-        "img": "books.png",
+        "img": "packages/books.png",
         "side": 60,
         "isWithdrawable": true,
         "offsetY": 12,
@@ -1340,14 +1340,14 @@
       },
       "platform": {
         "num": 7,
-        "img": "shelf.png",
+        "img": "packages/shelf.png",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
       },
       "square_platform": {
         "num": 8,
-        "img": "square_shelf.png",
+        "img": "packages/square_shelf.png",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
@@ -1828,21 +1828,21 @@
       },
       "wall": {
         "num": 2,
-        "img": "grey_brick_wall.png",
+        "img": "sokoban/grey_brick_wall.png",
         "side": 60,
         "isObstacle": true,
         "zOrder": 0
       },
       "marker": {
         "num": 3,
-        "img": "marker.png",
+        "img": "sokoban/marker.png",
         "side": 60,
         "isContainer": true,
         "zOrder": 0
       },
       "box": {
         "num": 4,
-        "img": "box.png",
+        "img": "sokoban/box.png",
         "side": 60,
         "isObstacle": true,
         "isPushable": true,

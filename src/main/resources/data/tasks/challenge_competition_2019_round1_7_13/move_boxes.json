@@ -1,0 +1,201 @@
+{
+  "id": "http://castor-informatique.fr/questions/algorea_2017_1/collecting_gems",
+  "version": "fr.01",
+  "authors": "Mathias Hiron, Marielle Léonard",
+  "title": "Kisten verschieben",
+  "menu": [
+    "Herausforderung: Wettbewerb 2019 Runde 1: Jgst. 7 – 13",
+    "Kisten verschieben"
+  ],
+  "sources": [
+    "https://jwinf.de/task/975",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2019/19-FR-xx-05_repeat_nested_if_04_sokoban/index_new.html?channelId=task",
+    "https://jwinf.de/tasks/jwinf/jwinf-aufgaben/2019/19-FR-xx-05_repeat_nested_if_04_sokoban/task_new.js"
+  ],
+  "gridInfos": {
+    "contextType": "sokoban",
+    "conceptViewer": false,
+    "blocklyColourTheme": "bwinf",
+    "maxInstructions": {
+      "easy": 20,
+      "medium": 25,
+      "hard": 40
+    },
+    "includeBlocks": {
+      "groupByCategory": false,
+      "generatedBlocks": {
+        "robot": {
+          "shared": [
+            "left",
+            "right",
+            "forward",
+            "pushObject",
+            "pushableInFront"
+          ],
+          "hard": ["obstacleInFront"]
+        }
+      },
+      "standardBlocks": {
+        "includeAll": false,
+        "wholeCategories": [],
+        "singleBlocks": {
+          "shared": ["controls_repeat", "controls_if", "controls_if_else"],
+          "hard": ["logic_negate"]
+        }
+      }
+    }
+  },
+  "data": {
+    "easy": [
+      {
+        "tiles": [
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 1, 1, 3, 1, 3, 3, 1, 1, 3, 1, 3, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+        ],
+        "initItems": [
+          {
+            "row": 3,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          },
+          {
+            "row": 2,
+            "col": 3,
+            "type": "box"
+          },
+          {
+            "row": 2,
+            "col": 5,
+            "type": "box"
+          },
+          {
+            "row": 2,
+            "col": 6,
+            "type": "box"
+          },
+          {
+            "row": 2,
+            "col": 9,
+            "type": "box"
+          },
+          {
+            "row": 2,
+            "col": 11,
+            "type": "box"
+          }
+        ]
+      }
+    ],
+    "medium": [
+      {
+        "tiles": [
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 1, 3, 3, 1, 1, 3, 1, 3, 3, 1, 3, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+        ],
+        "initItems": [
+          {
+            "row": 9,
+            "col": 1,
+            "dir": 0,
+            "type": "robot"
+          },
+          {
+            "row": 4,
+            "col": 2,
+            "type": "box"
+          },
+          {
+            "row": 8,
+            "col": 3,
+            "type": "box"
+          },
+          {
+            "row": 6,
+            "col": 6,
+            "type": "box"
+          },
+          {
+            "row": 2,
+            "col": 8,
+            "type": "box"
+          },
+          {
+            "row": 5,
+            "col": 9,
+            "type": "box"
+          },
+          {
+            "row": 7,
+            "col": 11,
+            "type": "box"
+          }
+        ]
+      }
+    ],
+    "hard": [
+      {
+        "tiles": [
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 2, 2, 2, 1, 1, 1, 1, 3, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 2, 2, 2, 1, 1, 1, 3, 1, 1, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 1, 1, 1, 3, 1, 1, 1, 2, 2, 2, 1, 2],
+          [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+        ],
+        "initItems": [
+          {
+            "row": 11,
+            "col": 1,
+            "dir": 3,
+            "type": "robot"
+          },
+          {
+            "row": 2,
+            "col": 8,
+            "type": "box"
+          },
+          {
+            "row": 4,
+            "col": 2,
+            "type": "box"
+          },
+          {
+            "row": 4,
+            "col": 7,
+            "type": "box"
+          },
+          {
+            "row": 6,
+            "col": 6,
+            "type": "box"
+          },
+          {
+            "row": 10,
+            "col": 2,
+            "type": "box"
+          }
+        ]
+      }
+    ]
+  }
+}

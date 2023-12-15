@@ -1,118 +1,110 @@
 const subTask = {};
 
-export default subTask;
+var initArray = function (n, elem) {
+  var res = [];
+  for (var i = 0; i < n; i++) {
+    res.push(elem);
+  }
+  return res;
+};
 
+export default subTask;
    subTask.gridInfos = {
+      contextType: "sokoban",
       conceptViewer: false,
-      //Hier wird der Kontext definiert. Mit dem Kontext werden ItemTypes und Aufgabenspezifische Übersetzungen geladen
-      contextType: "cones",
-      //Die BWINF-spezifischen Farben. Bitte in jeder Aufgabendatei laden, da die Blocktypen sonst nicht konsistent eingefärbt sind
-      //(Unsere Farben sind natürlich schöner)
       blocklyColourTheme: "bwinf",
-      //Gibt an, wie viele Blöcke für welche Versionen maimal zur Verfügung stehen
-      maxInstructions: {
-         easy: 10,
-         medium: 15,
-         hard: 20
-      },
-      //Hier kann angegeben werden, welche Blöcke für die Aufgabe zur Verfügung stehen.
-      includeBlocks: {
-         //Bei true werden die Blöcke nach Kategorien gruppiert. 
-         //Dies kann Sinn ergebene, wenn sehr viele Blöcke zur Verfügung stehen.
-         //Dies ist notwendig, wenn Funktionen oder Variablen (zum selber erstellen/nicht vordefiniert) benutzt werden.
-         groupByCategory: false,
-         //Hier stehen für alle Versionen die gleichen Blöcke zur Verfügung
-         generatedBlocks: {
-            robot: ["left", "right", "forward", "dropObject"]
+		maxInstructions: {
+            easy: 20,
+            medium: 25,
+            hard: 40
          },
-         //Allgemeine Blöcke wie Bedingungen und Schleifen.
+      includeBlocks: {
+         groupByCategory: false,
+         generatedBlocks: {
+            robot: {
+					shared: ["left", "right", "forward", "pushObject", "pushableInFront"],
+					hard: ["obstacleInFront"]
+				}
+         },
          standardBlocks: {
             includeAll: false,
             wholeCategories: [],
-            singleBlocks: ["controls_repeat"]
-         },
-         pythonAdditionalFunctions: {
-            shared: ["range"]
+            singleBlocks: {shared: ["controls_repeat", "controls_if", "controls_if_else"], hard: ["logic_negate"]}
          }
-      },
-      //Ändere Hintergrundfarbe von weiß
-      backgroundColor: "#f0f0f8",
-      //Gibt an, ob die Programme gespeichert und geladen werden können über das Menu auf der rechten Seite.
-      //Für Wettbewerbe immer auf true setzen
-      hideSaveOrLoad: true,
+      }
    };
 
-   //Hier werden die Aufgaben definiert
-   //Index row und col starten bei 0
    subTask.data = {
-      //Version **
-      easy: [{
-         //Jede Zahl steht für ein spezifisches Object
-         //2 ist zum Beispiel die Markierung wo ein Leitkegel hin muss
-         tiles: [
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-         ],
-         //Definieren, wo der Roboter starten soll
-         //dir: Gibt die Richtung an, in die der Roboter bei Start schaut
-         initItems: [{
-            row: 1,
-            col: 10,
-            dir: 2,
-            type: "robot"
-         }]
-      }],
-      //Version ***
-      medium: [{
-         tiles: [
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-         ],
-         initItems: [{
-               row: 2,
-               col: 1,
-               dir: 0,
-               type: "robot"
-            },
-            {
-               row: 1,
-               col: 4,
-               type: "cone"
-            },
-            {
-               row: 1,
-               col: 7,
-               type: "cone"
-            },
-            {
-               row: 1,
-               col: 10,
-               type: "cone"
-            },
-            {
-               row: 1,
-               col: 1,
-               type: "cone"
-            }
-         ]
-      }],
-      //Version ****
-      hard: [{
-         tiles: [
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1],
-            [1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-         ],
-         initItems: [{
-            row: 2,
-            col: 0,
-            dir: 0,
-            type: "robot"
-         }]
-      }]
+      easy: [
+         {
+            tiles: [
+                   [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                   [2, 1, 1, 3, 1, 3, 3, 1, 1, 3, 1, 3, 2],
+                   [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+               ],
+            initItems: [
+                  { row: 3, col: 1, dir: 0, type: "robot" },
+                  { row: 2, col: 3, type: "box" },
+						{ row: 2, col: 5, type: "box" },
+						{ row: 2, col: 6, type: "box" },
+						{ row: 2, col: 9, type: "box" },
+						{ row: 2, col: 11, type: "box" }
+               ]
+         }
+      ],
+      medium: [
+         {
+            tiles: [
+                   [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                   [2, 1, 3, 3, 1, 1, 3, 1, 3, 3, 1, 3, 2],
+                   [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+               ],
+            initItems: [
+                  { row: 9, col: 1, dir: 0, type: "robot" },
+                  { row: 4, col: 2, type: "box" },
+						{ row: 8, col: 3, type: "box" },
+						{ row: 6, col: 6, type: "box" },
+						{ row: 2, col: 8, type: "box" },
+						{ row: 5, col: 9, type: "box" },
+						{ row: 7, col: 11, type: "box" }
+					]
+         }
+      ],
+      hard: [
+         {
+            tiles: [
+                   [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                   [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 2, 2, 2, 1, 1, 1, 1, 3, 1, 2],
+                   [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 2, 2, 2, 1, 1, 1, 3, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 1, 1, 1, 3, 1, 1, 1, 2, 2, 2, 1, 2],
+						 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+						 [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+               ],
+            initItems: [
+                  { row: 11, col: 1, dir: 3, type: "robot" },
+                  { row: 2, col: 8, type: "box" },
+						{ row: 4, col: 2, type: "box" },
+						{ row: 4, col: 7, type: "box" },
+						{ row: 6, col: 6, type: "box" },
+						{ row: 10, col: 2, type: "box" }
+					]
+         }
+      ]
    };
-

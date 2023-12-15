@@ -67,6 +67,10 @@ public class Item
      */
     public String getFilePath()
     {
+        if (data.img == null)
+        {
+            return null;
+        }
         return "images/contexts/%s".formatted(data.img);
     }
 

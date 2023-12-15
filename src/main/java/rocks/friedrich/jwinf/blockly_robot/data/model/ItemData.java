@@ -253,6 +253,8 @@ public class ItemData implements Cloneable
      */
     public int plugType;
 
+    public int containerSize;
+
     public Compass getCompassDirection()
     {
         return Compass.fromNumber(dir);
